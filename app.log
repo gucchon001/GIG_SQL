@@ -1,0 +1,1201 @@
+2024-03-11 13:42:09,358 - __main__ - INFO - データベースに接続しました。
+2024-03-11 13:42:10,289 - __main__ - INFO - データベース接続を閉じました。
+2024-03-11 13:42:10,392 - __main__ - INFO - SSHトンネルを閉じました。
+2024-03-11 17:59:13,665 - __main__ - INFO - データベースに接続しました。
+2024-03-11 17:59:14,438 - __main__ - INFO - データベース接続を閉じました。
+2024-03-11 17:59:14,564 - __main__ - INFO - SSHトンネルを閉じました。
+2024-03-11 18:00:49,406 - __main__ - INFO - データベースに接続しました。
+2024-03-11 18:00:50,219 - __main__ - INFO - データベース接続を閉じました。
+2024-03-11 18:00:50,253 - __main__ - INFO - SSHトンネルを閉じました。
+2024-03-11 18:02:01,685 - __main__ - INFO - データベースに接続しました。
+2024-03-11 18:02:02,485 - __main__ - INFO - データベース接続を閉じました。
+2024-03-11 18:02:02,536 - __main__ - INFO - SSHトンネルを閉じました。
+2024-03-14 15:28:43,564 - __main__ - INFO - データベースに接続しました。
+2024-03-14 15:28:43,882 - __main__ - INFO - データベース接続を閉じました。
+2024-03-14 15:28:43,985 - __main__ - INFO - SSHトンネルを閉じました。
+2024-04-07 11:16:17,220 - main - INFO - データベース接続を閉じました。
+2024-04-07 11:16:17,329 - main - INFO - SSHトンネルを閉じました。
+2024-04-07 11:21:18,183 - main - INFO - データベース接続を閉じました。
+2024-04-07 11:21:18,268 - main - INFO - SSHトンネルを閉じました。
+2024-04-07 13:46:49,357 - main - INFO - データベース接続を閉じました。
+2024-04-07 13:46:49,365 - main - INFO - SSHトンネルを閉じました。
+2024-04-08 01:08:11,056 - main - INFO - データベース接続を閉じました。
+2024-04-08 01:08:11,115 - main - INFO - SSHトンネルを閉じました。
+2024-04-08 01:12:02,427 - main - INFO - データベース接続を閉じました。
+2024-04-08 01:12:02,493 - main - INFO - SSHトンネルを閉じました。
+2024-04-08 01:17:02,095 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 50, in <module>
+    sql_file_name = sql_file_info['sql_file_name']
+TypeError: tuple indices must be integers or slices, not str
+
+2024-04-08 01:17:02,773 - main - INFO - データベース接続を閉じました。
+2024-04-08 01:17:02,874 - main - INFO - SSHトンネルを閉じました。
+2024-04-08 01:21:48,617 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 48, in <module>
+    sql_file_name = file_info['sql_file_name']
+TypeError: tuple indices must be integers or slices, not str
+
+2024-04-08 01:21:49,440 - main - INFO - データベース接続を閉じました。
+2024-04-08 01:21:49,520 - main - INFO - SSHトンネルを閉じました。
+2024-04-08 01:22:59,764 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 48, in <module>
+    sql_file_name, csv_file_name, include_timestamp = file_info  # タプルをアンパック
+ValueError: not enough values to unpack (expected 3, got 2)
+
+2024-04-08 01:23:00,570 - main - INFO - データベース接続を閉じました。
+2024-04-08 01:23:00,602 - main - INFO - SSHトンネルを閉じました。
+2024-04-08 01:24:04,257 - main - INFO - データベース接続を閉じました。
+2024-04-08 01:24:04,322 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 08:23:51,601 - main - INFO - データベース接続を閉じました。
+2024-04-09 08:23:51,657 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 08:32:08,363 - main - INFO - データベース接続を閉じました。
+2024-04-09 08:32:08,412 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 08:55:10,854 - main - INFO - データベース接続を閉じました。
+2024-04-09 08:55:10,939 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 09:04:36,254 - main - INFO - データベース接続を閉じました。
+2024-04-09 09:04:36,309 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 09:06:49,937 - main - INFO - データベース接続を閉じました。
+2024-04-09 09:06:49,973 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 10:05:03,129 - main - INFO - データベース接続を閉じました。
+2024-04-09 10:05:03,160 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 17:41:10,965 - main - INFO - データベース接続を閉じました。
+2024-04-09 17:41:11,018 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 18:02:28,868 - main - INFO - データベース接続を閉じました。
+2024-04-09 18:02:28,930 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 18:15:48,373 - main - INFO - データベース接続を閉じました。
+2024-04-09 18:15:48,406 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 19:06:48,948 - main - INFO - データベース接続を閉じました。
+2024-04-09 19:06:48,981 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 19:11:24,191 - main - INFO - データベース接続を閉じました。
+2024-04-09 19:11:24,226 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 19:17:15,002 - main - INFO - データベース接続を閉じました。
+2024-04-09 19:17:15,090 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 19:30:19,074 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, sql_query)
+TypeError: set_period_condition() missing 1 required positional argument: 'sql_query'
+
+2024-04-09 19:30:19,713 - main - INFO - データベース接続を閉じました。
+2024-04-09 19:30:19,772 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 19:31:35,486 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, sql_query)
+TypeError: set_period_condition() missing 1 required positional argument: 'sql_query'
+
+2024-04-09 19:31:36,147 - main - INFO - データベース接続を閉じました。
+2024-04-09 19:31:36,192 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 19:34:22,911 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 63, in <module>
+    csvfile_export(conn, sql_query_with_conditions, csv_file_path, include_timestamp=include_timestamp)
+NameError: name 'include_timestamp' is not defined
+
+2024-04-09 19:34:23,560 - main - INFO - データベース接続を閉じました。
+2024-04-09 19:34:23,611 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 19:39:01,079 - main - INFO - データベース接続を閉じました。
+2024-04-09 19:39:01,173 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 19:48:31,112 - main - INFO - データベース接続を閉じました。
+2024-04-09 19:48:31,144 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:05:59,131 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:05:59,166 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:08:44,112 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:08:44,217 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:10:30,615 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:10:30,627 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:25:22,443 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 294, in set_period_condition
+    yesterday = (today - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+TypeError: unsupported operand type(s) for -: 'str' and 'datetime.timedelta'
+
+2024-04-09 20:25:23,076 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:25:23,144 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:26:59,974 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:27:00,046 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:32:17,660 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:32:17,755 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:34:43,951 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:34:44,054 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:36:48,987 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:36:49,059 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:38:44,698 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:38:44,784 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:41:05,830 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:41:05,932 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:43:42,885 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:43:42,940 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:46:36,260 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:46:36,370 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:48:06,767 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 62, in <module>
+    csvfile_export(conn, sql_query_with_conditions, csv_file_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 104, in csvfile_export
+    cursor.close()
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\mysql\connector\cursor.py", line 525, in close
+    self._connection.handle_unread_result()
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\mysql\connector\connection.py", line 1543, in handle_unread_result
+    raise InternalError("Unread result found")
+mysql.connector.errors.InternalError: Unread result found
+
+2024-04-09 20:48:07,460 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:48:07,527 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:49:12,538 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:49:12,577 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:52:24,902 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:52:24,985 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:56:23,234 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:56:23,332 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:57:39,037 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:57:39,114 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 20:59:43,121 - main - INFO - データベース接続を閉じました。
+2024-04-09 20:59:43,205 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:03:03,152 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:03:03,237 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:05:32,031 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:05:32,099 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:07:00,086 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:07:00,173 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:07:45,272 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:07:45,318 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:09:15,642 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:09:15,671 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:11:43,066 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:11:43,148 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:13:05,726 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:13:05,827 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:17:20,156 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:17:20,164 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:18:20,221 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:18:20,320 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:19:08,407 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:19:08,488 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:19:39,117 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:19:39,134 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:22:51,595 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 60, in <module>
+    sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 131, in add_conditions_to_sql
+    columns_mapping = extract_columns_mapping(sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 116, in extract_columns_mapping
+    matches = pattern.findall(sql_query)
+TypeError: expected string or bytes-like object
+
+2024-04-09 21:22:52,238 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:22:52,284 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:25:05,391 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:25:05,458 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:25:24,638 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 60, in <module>
+    sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 131, in add_conditions_to_sql
+    columns_mapping = extract_columns_mapping(sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 116, in extract_columns_mapping
+    matches = pattern.findall(sql_query)
+TypeError: expected string or bytes-like object
+
+2024-04-09 21:25:25,345 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:25:25,377 - main - INFO - SSHトンネルを閉じました。
+2024-04-09 21:27:07,594 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 334, in set_period_condition
+    upper_query = sql_query.upper().str
+AttributeError: 'str' object has no attribute 'str'
+
+2024-04-09 21:27:08,287 - main - INFO - データベース接続を閉じました。
+2024-04-09 21:27:08,295 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 01:24:00,803 - main - INFO - データベース接続を閉じました。
+2024-04-10 01:24:00,874 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 01:32:40,109 - main - INFO - データベース接続を閉じました。
+2024-04-10 01:32:40,155 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 01:38:12,930 - main - INFO - データベース接続を閉じました。
+2024-04-10 01:38:13,047 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 01:43:32,675 - main - INFO - データベース接続を閉じました。
+2024-04-10 01:43:32,786 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 01:49:41,436 - main - INFO - データベース接続を閉じました。
+2024-04-10 01:49:41,496 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 01:55:09,389 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 345, in set_period_condition
+    before_from_lines = lines[:upper_lines.index(upper_query[:from_index].split('\n')[-1]) + 1]
+ValueError: '' is not in list
+
+2024-04-10 01:55:10,066 - main - INFO - データベース接続を閉じました。
+2024-04-10 01:55:10,106 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 01:57:50,846 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 345, in set_period_condition
+    before_from_lines = lines[:lines.index(upper_query[:from_index].split('\n')[-1]) + 1]
+ValueError: '' is not in list
+
+2024-04-10 01:57:51,512 - main - INFO - データベース接続を閉じました。
+2024-04-10 01:57:51,593 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 02:00:23,577 - main - INFO - データベース接続を閉じました。
+2024-04-10 02:00:23,654 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 02:09:41,156 - main - INFO - データベース接続を閉じました。
+2024-04-10 02:09:41,229 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 02:21:51,273 - main - INFO - データベース接続を閉じました。
+2024-04-10 02:21:51,324 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 02:25:53,073 - main - INFO - データベース接続を閉じました。
+2024-04-10 02:25:53,174 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 02:31:58,944 - main - INFO - データベース接続を閉じました。
+2024-04-10 02:31:59,026 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 02:34:47,444 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 356, in set_period_condition
+    print('before_where_lines:'+before_where_lines)
+TypeError: can only concatenate str (not "list") to str
+
+2024-04-10 02:34:48,082 - main - INFO - データベース接続を閉じました。
+2024-04-10 02:34:48,185 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 02:36:54,787 - main - INFO - データベース接続を閉じました。
+2024-04-10 02:36:54,823 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 02:40:24,902 - main - INFO - データベース接続を閉じました。
+2024-04-10 02:40:24,938 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 02:52:51,332 - main - INFO - データベース接続を閉じました。
+2024-04-10 02:52:51,437 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 03:03:11,855 - main - INFO - データベース接続を閉じました。
+2024-04-10 03:03:11,863 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 03:09:24,017 - main - INFO - データベース接続を閉じました。
+2024-04-10 03:09:24,075 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 03:12:30,114 - main - INFO - データベース接続を閉じました。
+2024-04-10 03:12:30,173 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 03:21:06,647 - main - INFO - データベース接続を閉じました。
+2024-04-10 03:21:06,706 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 03:26:02,578 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 323, in set_period_condition
+    raise ValueError("適切なエイリアスまたはテーブル名がFROM句の後に見つかりませんでした。")
+ValueError: 適切なエイリアスまたはテーブル名がFROM句の後に見つかりませんでした。
+
+2024-04-10 03:26:03,439 - main - INFO - データベース接続を閉じました。
+2024-04-10 03:26:03,544 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 03:29:25,629 - main - INFO - データベース接続を閉じました。
+2024-04-10 03:29:25,705 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 03:30:52,886 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 323, in set_period_condition
+    raise ValueError("適切なエイリアスまたはテーブル名がFROM句の後に見つかりませんでした。")
+ValueError: 適切なエイリアスまたはテーブル名がFROM句の後に見つかりませんでした。
+
+2024-04-10 03:30:53,725 - main - INFO - データベース接続を閉じました。
+2024-04-10 03:30:53,793 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 03:55:46,686 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 308, in set_period_condition
+    raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
+ValueError: 「FROM句」コメントが見つからないか、複数存在します
+
+2024-04-10 03:55:47,495 - main - INFO - データベース接続を閉じました。
+2024-04-10 03:55:47,578 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:00:00,806 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 308, in set_period_condition
+    raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
+ValueError: 「FROM句」コメントが見つからないか、複数存在します
+
+2024-04-10 04:00:01,443 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:00:01,544 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:02:48,167 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 308, in set_period_condition
+    raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
+ValueError: 「FROM句」コメントが見つからないか、複数存在します
+
+2024-04-10 04:02:49,005 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:02:49,013 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:04:46,454 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 310, in set_period_condition
+    raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
+ValueError: 「FROM句」コメントが見つからないか、複数存在します
+
+2024-04-10 04:04:47,259 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:04:47,336 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:06:49,094 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 310, in set_period_condition
+    raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
+ValueError: 「FROM句」コメントが見つからないか、複数存在します
+
+2024-04-10 04:06:49,752 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:06:49,798 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:11:32,885 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 308, in set_period_condition
+    raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
+ValueError: 「FROM句」コメントが見つからないか、複数存在します
+
+2024-04-10 04:11:33,700 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:11:33,765 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:15:27,462 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 308, in set_period_condition
+    raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
+ValueError: 「FROM句」コメントが見つからないか、複数存在します
+
+2024-04-10 04:15:28,272 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:15:28,309 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:17:14,705 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:17:14,765 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:22:16,867 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:22:16,950 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:25:54,626 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:25:54,668 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:35:15,036 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 45, in <module>
+    sql_file_name, csv_file_name, period_condition, period_criteria = file_info
+ValueError: too many values to unpack (expected 4)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 47, in <module>
+    sql_file_name, csv_file_name = file_info
+ValueError: too many values to unpack (expected 2)
+
+2024-04-10 04:35:15,885 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:35:15,923 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:39:56,892 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 45, in <module>
+    sql_file_name, csv_file_name, period_condition, period_criteria = file_info
+ValueError: too many values to unpack (expected 4)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 48, in <module>
+    sql_file_name, csv_file_name = file_info
+ValueError: too many values to unpack (expected 2)
+
+2024-04-10 04:39:57,595 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:39:57,654 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 04:50:27,334 - main - INFO - データベース接続を閉じました。
+2024-04-10 04:50:27,436 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 10:59:38,565 - main - INFO - データベース接続を閉じました。
+2024-04-10 10:59:38,643 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:15:06,466 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('dblist_export.sql', 'dblist.csv', '', '', '', 'CSV')
+2024-04-10 11:15:06,482 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('tablelist_export.sql', 'tablelist.csv', '', '', '', 'CSV')
+2024-04-10 11:15:06,482 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('primary_key_export.sql', 'primarykeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:15:06,487 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('foreign_key_export.sql', 'foreignkeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:15:06,488 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', '1_companies_2024-04-10.csv', '当日', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:15:06,491 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('2_client_users_admin.sql', '2_client_users_admin2024-04-10.csv', '前日', '登録日時', '', 'CSV')
+2024-04-10 11:15:06,492 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('3_brands.sql', '3_brands_20240410111505.csv', '前日まで累積', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:15:06,495 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('4_contracts.sql', '4_contracts.csv', '2019年4月1日～前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:15:06,496 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('6_classrooms.sql', '6_classrooms_2024-04-10.csv', '3日前時点を1日分', '登録日時', '', 'CSV')
+2024-04-10 11:15:06,497 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('14_candidate_users.sql', '14_candidate_users.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:15:06,497 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('15_job_candidate_fact.sql', '20240410_15_job_candidate_fact.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:15:06,497 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('16_saiyo.sql', '16_saiyo.csv', '前日まで累積', '更新日時', '', 'CSV')
+2024-04-10 11:15:06,497 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', 773887623, '前日まで累積', '登録日時', '1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q', 'スプシ')
+2024-04-10 11:15:11,377 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:15:11,427 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:15:54,931 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('dblist_export.sql', 'dblist.csv', '', '', '', 'CSV')
+2024-04-10 11:15:54,931 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('tablelist_export.sql', 'tablelist.csv', '', '', '', 'CSV')
+2024-04-10 11:15:54,931 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('primary_key_export.sql', 'primarykeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:15:54,937 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('foreign_key_export.sql', 'foreignkeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:15:54,939 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', '1_companies_2024-04-10.csv', '当日', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:15:54,940 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('2_client_users_admin.sql', '2_client_users_admin2024-04-10.csv', '前日', '登録日時', '', 'CSV')
+2024-04-10 11:15:54,941 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('3_brands.sql', '3_brands_20240410111553.csv', '前日まで累積', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:15:54,942 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('4_contracts.sql', '4_contracts.csv', '2019年4月1日～前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:15:54,942 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('6_classrooms.sql', '6_classrooms_2024-04-10.csv', '3日前時点を1日分', '登録日時', '', 'CSV')
+2024-04-10 11:15:54,946 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('14_candidate_users.sql', '14_candidate_users.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:15:54,948 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('15_job_candidate_fact.sql', '20240410_15_job_candidate_fact.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:15:54,949 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('16_saiyo.sql', '16_saiyo.csv', '前日まで累積', '更新日時', '', 'CSV')
+2024-04-10 11:15:54,951 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', 773887623, '前日まで累積', '登録日時', '1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q', 'スプシ')
+2024-04-10 11:16:02,145 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:16:02,176 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:16:52,836 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('dblist_export.sql', 'dblist.csv', '', '', '', 'CSV')
+2024-04-10 11:16:52,839 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('tablelist_export.sql', 'tablelist.csv', '', '', '', 'CSV')
+2024-04-10 11:16:52,842 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('primary_key_export.sql', 'primarykeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:16:52,844 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('foreign_key_export.sql', 'foreignkeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:16:52,846 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', '1_companies_2024-04-10.csv', '当日', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:16:52,847 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('2_client_users_admin.sql', '2_client_users_admin2024-04-10.csv', '前日', '登録日時', '', 'CSV')
+2024-04-10 11:16:52,848 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('3_brands.sql', '3_brands_20240410111650.csv', '前日まで累積', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:16:52,851 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('4_contracts.sql', '4_contracts.csv', '2019年4月1日～前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:16:52,852 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('6_classrooms.sql', '6_classrooms_2024-04-10.csv', '3日前時点を1日分', '登録日時', '', 'CSV')
+2024-04-10 11:16:52,854 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('14_candidate_users.sql', '14_candidate_users.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:16:52,856 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('15_job_candidate_fact.sql', '20240410_15_job_candidate_fact.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:16:52,858 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('16_saiyo.sql', '16_saiyo.csv', '前日まで累積', '更新日時', '', 'CSV')
+2024-04-10 11:16:52,859 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', 773887623, '前日まで累積', '登録日時', '1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q', 'スプシ')
+2024-04-10 11:16:57,009 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:16:57,068 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:18:23,090 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('dblist_export.sql', 'dblist.csv', '', '', '', 'CSV')
+2024-04-10 11:18:23,090 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('tablelist_export.sql', 'tablelist.csv', '', '', '', 'CSV')
+2024-04-10 11:18:23,090 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('primary_key_export.sql', 'primarykeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:18:23,099 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('foreign_key_export.sql', 'foreignkeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:18:23,104 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', '1_companies_2024-04-10.csv', '当日', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:18:23,105 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('2_client_users_admin.sql', '2_client_users_admin2024-04-10.csv', '前日', '登録日時', '', 'CSV')
+2024-04-10 11:18:23,106 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('3_brands.sql', '3_brands_20240410111822.csv', '前日まで累積', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:18:23,108 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('4_contracts.sql', '4_contracts.csv', '2019年4月1日～前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:18:23,110 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('6_classrooms.sql', '6_classrooms_2024-04-10.csv', '3日前時点を1日分', '登録日時', '', 'CSV')
+2024-04-10 11:18:23,112 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('14_candidate_users.sql', '14_candidate_users.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:18:23,114 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('15_job_candidate_fact.sql', '20240410_15_job_candidate_fact.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:18:23,115 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('16_saiyo.sql', '16_saiyo.csv', '前日まで累積', '更新日時', '', 'CSV')
+2024-04-10 11:18:23,116 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', 773887623, '前日まで累積', '登録日時', '1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q', 'スプシ')
+2024-04-10 11:18:29,330 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:18:29,368 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:23:23,259 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('dblist_export.sql', 'dblist.csv', '', '', '', 'CSV')
+2024-04-10 11:23:23,259 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('tablelist_export.sql', 'tablelist.csv', '', '', '', 'CSV')
+2024-04-10 11:23:23,259 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('primary_key_export.sql', 'primarykeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:23:23,259 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('foreign_key_export.sql', 'foreignkeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:23:23,268 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', '1_companies_2024-04-10.csv', '当日', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:23:23,271 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('2_client_users_admin.sql', '2_client_users_admin2024-04-10.csv', '前日', '登録日時', '', 'CSV')
+2024-04-10 11:23:23,272 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('3_brands.sql', '3_brands_20240410112322.csv', '前日まで累積', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:23:23,272 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('4_contracts.sql', '4_contracts.csv', '2019年4月1日～前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:23:23,272 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('6_classrooms.sql', '6_classrooms_2024-04-10.csv', '3日前時点を1日分', '登録日時', '', 'CSV')
+2024-04-10 11:23:23,276 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('14_candidate_users.sql', '14_candidate_users.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:23:23,282 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('15_job_candidate_fact.sql', '20240410_15_job_candidate_fact.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:23:23,284 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('16_saiyo.sql', '16_saiyo.csv', '前日まで累積', '更新日時', '', 'CSV')
+2024-04-10 11:23:23,294 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', 773887623, '前日まで累積', '登録日時', '1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q', 'スプシ')
+2024-04-10 11:23:27,314 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:23:27,331 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:26:22,732 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('dblist_export.sql', 'dblist.csv', '', '', '', 'CSV')
+2024-04-10 11:26:22,732 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('tablelist_export.sql', 'tablelist.csv', '', '', '', 'CSV')
+2024-04-10 11:26:22,732 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('primary_key_export.sql', 'primarykeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:26:22,741 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('foreign_key_export.sql', 'foreignkeylist.csv', '', '', '', 'CSV')
+2024-04-10 11:26:22,742 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', '1_companies_2024-04-10.csv', '当日', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:26:22,745 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('2_client_users_admin.sql', '2_client_users_admin2024-04-10.csv', '前日', '登録日時', '', 'CSV')
+2024-04-10 11:26:22,746 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('3_brands.sql', '3_brands_20240410112621.csv', '前日まで累積', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV')
+2024-04-10 11:26:22,746 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('4_contracts.sql', '4_contracts.csv', '2019年4月1日～前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:26:22,746 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('6_classrooms.sql', '6_classrooms_2024-04-10.csv', '3日前時点を1日分', '登録日時', '', 'CSV')
+2024-04-10 11:26:22,746 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('14_candidate_users.sql', '14_candidate_users.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:26:22,746 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('15_job_candidate_fact.sql', '20240410_15_job_candidate_fact.csv', '前日まで累積', '登録日時', '', 'CSV')
+2024-04-10 11:26:22,754 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('16_saiyo.sql', '16_saiyo.csv', '前日まで累積', '更新日時', '', 'CSV')
+2024-04-10 11:26:22,755 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', 773887623, '前日まで累積', '登録日時', '1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q', 'スプシ')
+2024-04-10 11:26:26,772 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:26:26,871 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:31:44,034 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 61, in <module>
+    csv_file_path = os.path.join(save_path_id, csv_file_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\ntpath.py", line 117, in join
+    genericpath._check_arg_types('join', path, *paths)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\genericpath.py", line 152, in _check_arg_types
+    raise TypeError(f'{funcname}() argument must be str, bytes, or '
+TypeError: join() argument must be str, bytes, or os.PathLike object, not 'int'
+
+2024-04-10 11:31:44,690 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:31:44,701 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:34:50,914 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 61, in <module>
+    csv_file_path = os.path.join(save_path_id, csv_file_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\ntpath.py", line 117, in join
+    genericpath._check_arg_types('join', path, *paths)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\genericpath.py", line 152, in _check_arg_types
+    raise TypeError(f'{funcname}() argument must be str, bytes, or '
+TypeError: join() argument must be str, bytes, or os.PathLike object, not 'int'
+
+2024-04-10 11:34:51,691 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:34:51,749 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:40:27,974 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 61, in <module>
+    csv_file_path = os.path.join(save_path_id, csv_file_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\ntpath.py", line 117, in join
+    genericpath._check_arg_types('join', path, *paths)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\genericpath.py", line 152, in _check_arg_types
+    raise TypeError(f'{funcname}() argument must be str, bytes, or '
+TypeError: join() argument must be str, bytes, or os.PathLike object, not 'int'
+
+2024-04-10 11:40:28,632 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:40:28,712 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:47:53,642 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 61, in <module>
+    csv_file_path = os.path.join(save_path_id, csv_file_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\ntpath.py", line 117, in join
+    genericpath._check_arg_types('join', path, *paths)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\genericpath.py", line 152, in _check_arg_types
+    raise TypeError(f'{funcname}() argument must be str, bytes, or '
+TypeError: join() argument must be str, bytes, or os.PathLike object, not 'int'
+
+2024-04-10 11:47:54,318 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:47:54,433 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:48:49,190 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:48:49,268 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:53:19,205 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 68, in <module>
+    export_to_spreadsheet(conn, sql_query_with_conditions, csv_file_name, json_keyfile_path)
+TypeError: export_to_spreadsheet() missing 1 required positional argument: 'json_keyfile_path'
+
+2024-04-10 11:53:19,858 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:53:19,879 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:55:20,583 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:55:20,654 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 11:56:18,310 - main - INFO - データベース接続を閉じました。
+2024-04-10 11:56:18,370 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 12:02:20,614 - main - INFO - データベース接続を閉じました。
+2024-04-10 12:02:20,645 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 12:05:11,599 - main - INFO - データベース接続を閉じました。
+2024-04-10 12:05:11,664 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 12:08:13,126 - main - INFO - データベース接続を閉じました。
+2024-04-10 12:08:13,222 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 12:32:40,094 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types)
+TypeError: add_conditions_to_sql() missing 1 required positional argument: 'deletion_exclusion'
+
+2024-04-10 12:32:40,743 - main - INFO - データベース接続を閉じました。
+2024-04-10 12:32:40,855 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 12:34:54,806 - main - INFO - データベース接続を閉じました。
+2024-04-10 12:34:54,906 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 15:00:34,676 - main - INFO - データベース接続を閉じました。
+2024-04-10 15:00:34,743 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 18:42:22,782 - main - INFO - データベース接続を閉じました。
+2024-04-10 18:42:22,839 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 18:45:56,677 - main - INFO - データベース接続を閉じました。
+2024-04-10 18:45:56,787 - main - INFO - SSHトンネルを閉じました。
+2024-04-10 18:48:41,122 - main - INFO - データベース接続を閉じました。
+2024-04-10 18:48:41,203 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 11:03:14,084 - main - INFO - データベース接続を閉じました。
+2024-04-11 11:03:14,168 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:20:15,253 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('dblist_export.sql', 'dblist.csv', '', '', '', 'CSV', 'FALSE', '')
+2024-04-11 14:20:15,268 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('tablelist_export.sql', 'tablelist.csv', '', '', '', 'CSV', 'FALSE', '')
+2024-04-11 14:20:15,271 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('primary_key_export.sql', 'primarykeylist.csv', '', '', '', 'CSV', 'FALSE', '')
+2024-04-11 14:20:15,272 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('foreign_key_export.sql', 'foreignkeylist.csv', '', '', '', 'CSV', 'FALSE', '')
+2024-04-11 14:20:15,273 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', '1_companies_2024-04-11.csv', '当日', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV', 'FALSE', '')
+2024-04-11 14:20:15,275 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('2_client_users_admin.sql', '2_client_users_admin2024-04-11.csv', '前日', '登録日時', '', 'CSV', 'FALSE', '')
+2024-04-11 14:20:15,276 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('3_brands.sql', '3_brands_20240411142014.csv', '前日まで累積', '登録日時', '\\\\nas\\public\\事務業務資料\\100000管理部門\\101000システム\\事業部プログラム\\講師求人部門\\GIG塾STMYSQL\\data\\test', 'CSV', 'TRUE', '')
+2024-04-11 14:20:15,278 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('4_contracts.sql', '4_contracts.csv', '2019年4月1日～前日まで累積', '登録日時', '', 'CSV', 'FALSE', '')
+2024-04-11 14:20:15,279 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('6_classrooms.sql', '6_classrooms_2024-04-11.csv', '3日前時点を1日分', '登録日時', '', 'CSV', 'FALSE', '')
+2024-04-11 14:20:15,282 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('14_candidate_users.sql', '14_candidate_users.csv', '前日まで累積', '登録日時', '', 'CSV', 'FALSE', '')
+2024-04-11 14:20:15,283 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('15_job_candidate_fact.sql', '20240411_15_job_candidate_fact.csv', '前日まで累積', '登録日時', '', 'CSV', 'FALSE', '')
+2024-04-11 14:20:15,285 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('16_saiyo.sql', '16_saiyo.csv', '2019年4月1日～前日まで累積', '更新日時', '', 'CSV', 'TRUE', '')
+2024-04-11 14:20:15,286 - main - ERROR - file_infoのアンパック中にエラーが発生しました: ('1_companies.sql', 'スプシテスト', '前日まで累積', '登録日時', '1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q', 'スプシ', 'TRUE', '全張替え')
+2024-04-11 14:20:19,649 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:20:19,722 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:21:43,427 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 68, in <module>
+    export_to_spreadsheet(conn, sql_query_with_conditions, spreadsheet_id, csv_file_name, json_keyfile_path)
+TypeError: export_to_spreadsheet() missing 1 required positional argument: 'paste_format'
+
+2024-04-11 14:21:44,135 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:21:44,148 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:23:12,759 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 58, in <module>
+    sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types, deletion_exclusion, paste_format)
+TypeError: add_conditions_to_sql() takes 4 positional arguments but 5 were given
+
+2024-04-11 14:23:13,428 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:23:13,487 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:24:54,090 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:24:54,191 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:27:05,685 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:27:05,760 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:29:41,208 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:29:41,217 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:32:22,849 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:32:22,922 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:33:05,271 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:33:05,371 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:42:18,018 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:42:18,062 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:43:00,154 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:43:00,238 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:44:26,342 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:44:26,451 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:46:42,065 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:46:42,132 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 14:48:53,761 - main - INFO - データベース接続を閉じました。
+2024-04-11 14:48:53,802 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 15:40:49,800 - main - INFO - データベース接続を閉じました。
+2024-04-11 15:40:49,837 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 15:42:35,966 - main - INFO - データベース接続を閉じました。
+2024-04-11 15:42:36,021 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 16:11:47,714 - main - INFO - データベース接続を閉じました。
+2024-04-11 16:11:47,779 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 16:12:43,659 - main - INFO - データベース接続を閉じました。
+2024-04-11 16:12:43,751 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 16:14:13,603 - main - INFO - データベース接続を閉じました。
+2024-04-11 16:14:13,646 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 16:14:33,939 - main - INFO - データベース接続を閉じました。
+2024-04-11 16:14:34,001 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 16:19:59,786 - main - INFO - データベース接続を閉じました。
+2024-04-11 16:19:59,806 - main - INFO - SSHトンネルを閉じました。
+2024-04-11 16:22:18,952 - main - INFO - データベース接続を閉じました。
+2024-04-11 16:22:19,021 - main - INFO - SSHトンネルを閉じました。
+2024-04-15 17:56:35,885 - main - INFO - データベース接続を閉じました。
+2024-04-15 17:56:35,988 - main - INFO - SSHトンネルを閉じました。
+2024-04-15 18:02:23,873 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 59, in <module>
+    sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types, deletion_exclusion)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 193, in add_conditions_to_sql
+    raise ValueError("Invalid value for deletion_exclusion. It should be either True or False.")
+ValueError: Invalid value for deletion_exclusion. It should be either True or False.
+
+2024-04-15 18:02:24,569 - main - INFO - データベース接続を閉じました。
+2024-04-15 18:02:24,633 - main - INFO - SSHトンネルを閉じました。
+2024-04-15 18:06:18,248 - main - INFO - データベース接続を閉じました。
+2024-04-15 18:06:18,333 - main - INFO - SSHトンネルを閉じました。
+2024-04-16 17:35:59,142 - main - ERROR - 17_gift_firtst.sql の読み込みに失敗しました。
+2024-04-16 17:35:59,164 - main - ERROR - 17_gift_second.sql の読み込みに失敗しました。
+2024-04-16 17:36:08,620 - main - INFO - データベース接続を閉じました。
+2024-04-16 17:36:08,664 - main - INFO - SSHトンネルを閉じました。
+2024-04-16 17:45:42,552 - main - INFO - データベース接続を閉じました。
+2024-04-16 17:45:42,616 - main - INFO - SSHトンネルを閉じました。
+2024-04-16 17:48:27,108 - main - INFO - データベース接続を閉じました。
+2024-04-16 17:48:27,206 - main - INFO - SSHトンネルを閉じました。
+2024-04-16 17:54:53,453 - main - INFO - データベース接続を閉じました。
+2024-04-16 17:54:53,525 - main - INFO - SSHトンネルを閉じました。
+2024-04-18 17:04:25,894 - main - INFO - データベース接続を閉じました。
+2024-04-18 17:04:25,927 - main - INFO - SSHトンネルを閉じました。
+2024-04-18 17:06:19,164 - main - INFO - データベース接続を閉じました。
+2024-04-18 17:06:19,239 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 13:58:47,310 - main - INFO - データベース接続を閉じました。
+2024-04-19 13:58:47,365 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 14:38:29,754 - main - INFO - データベース接続を閉じました。
+2024-04-19 14:38:29,789 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 14:40:01,376 - main - INFO - データベース接続を閉じました。
+2024-04-19 14:40:01,393 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 17:24:51,128 - main - INFO - データベース接続を閉じました。
+2024-04-19 17:24:51,248 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 17:26:57,664 - main - INFO - データベース接続を閉じました。
+2024-04-19 17:26:57,716 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 17:31:47,540 - main - INFO - データベース接続を閉じました。
+2024-04-19 17:31:47,653 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 17:33:29,704 - main - INFO - データベース接続を閉じました。
+2024-04-19 17:33:29,803 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 17:34:03,742 - main - INFO - データベース接続を閉じました。
+2024-04-19 17:34:03,782 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 17:34:16,432 - main - INFO - データベース接続を閉じました。
+2024-04-19 17:34:16,435 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 17:35:14,531 - main - INFO - データベース接続を閉じました。
+2024-04-19 17:35:14,624 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 17:36:21,716 - main - INFO - データベース接続を閉じました。
+2024-04-19 17:36:21,754 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 17:56:22,788 - main - INFO - データベース接続を閉じました。
+2024-04-19 17:56:22,820 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 18:41:04,479 - main - INFO - データベース接続を閉じました。
+2024-04-19 18:41:04,498 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 18:42:57,863 - main - INFO - データベース接続を閉じました。
+2024-04-19 18:42:57,970 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 02:35:34,819 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 02:35:36,205 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 02:35:37,558 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:35:38,917 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:35:40,252 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 02:35:41,583 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 02:35:42,935 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 02:35:42,939 - main - INFO - データベース接続を閉じました。
+2024-04-21 02:35:42,976 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 02:40:54,569 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 02:40:55,878 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 02:40:57,208 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:40:58,513 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:40:59,889 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 02:41:01,169 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 02:41:02,462 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 02:41:02,467 - main - INFO - データベース接続を閉じました。
+2024-04-21 02:41:02,563 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 02:45:27,555 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 02:45:28,988 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 02:45:30,431 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:45:31,848 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:45:33,179 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 02:45:34,592 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 02:45:35,988 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 02:45:35,990 - main - INFO - データベース接続を閉じました。
+2024-04-21 02:45:36,027 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 02:46:52,235 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 02:46:53,604 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 02:46:54,961 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:46:56,413 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:46:57,872 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 02:46:59,285 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 02:47:00,642 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 02:47:00,644 - main - INFO - データベース接続を閉じました。
+2024-04-21 02:47:00,697 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 02:48:24,388 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 02:48:25,703 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 02:48:27,081 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:48:28,660 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:48:30,063 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 02:48:31,435 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 02:48:32,784 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 02:48:32,787 - main - INFO - データベース接続を閉じました。
+2024-04-21 02:48:32,897 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 02:49:00,053 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 02:49:01,338 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 02:49:02,644 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:49:03,927 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:49:05,200 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 02:49:06,466 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 02:49:07,740 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 02:49:07,742 - main - INFO - データベース接続を閉じました。
+2024-04-21 02:49:07,799 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 02:50:12,975 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 02:50:14,240 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 02:50:15,505 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:50:16,759 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:50:18,056 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 02:50:19,362 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 02:50:20,642 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 02:50:20,646 - main - INFO - データベース接続を閉じました。
+2024-04-21 02:50:20,737 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 02:54:02,826 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 54, in <module>
+    sql_query = load_sql_from_file(sql_file_name, google_drive_id, json_keyfile_path)
+TypeError: load_sql_from_file() takes 2 positional arguments but 3 were given
+
+2024-04-21 02:54:03,519 - main - INFO - データベース接続を閉じました。
+2024-04-21 02:54:03,532 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 02:57:40,249 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 02:57:41,551 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 02:57:42,865 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:57:44,204 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:57:45,543 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 02:57:46,891 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 02:57:48,246 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 02:57:48,248 - main - INFO - データベース接続を閉じました。
+2024-04-21 02:57:48,284 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 02:59:02,866 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 02:59:04,156 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 02:59:05,476 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:59:06,781 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 02:59:08,097 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 02:59:09,406 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 02:59:10,720 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 02:59:10,722 - main - INFO - データベース接続を閉じました。
+2024-04-21 02:59:10,756 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 03:04:22,686 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 03:04:24,052 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 03:04:25,397 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:04:26,703 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:04:28,077 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 03:04:29,450 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 03:04:30,747 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 03:04:30,751 - main - INFO - データベース接続を閉じました。
+2024-04-21 03:04:30,802 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 03:06:12,596 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 03:06:13,933 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 03:06:15,306 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:06:16,646 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:06:17,962 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 03:06:19,292 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 03:06:20,616 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 03:06:20,619 - main - INFO - データベース接続を閉じました。
+2024-04-21 03:06:20,683 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 03:08:36,120 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 03:08:37,721 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 03:08:39,327 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:08:40,912 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:08:42,466 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 03:08:44,141 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 03:08:45,695 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 03:08:45,699 - main - INFO - データベース接続を閉じました。
+2024-04-21 03:08:45,800 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 03:13:30,265 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 03:13:31,577 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 03:13:32,899 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:13:34,210 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:13:35,521 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 03:13:36,799 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 03:13:38,108 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 03:13:38,113 - main - INFO - データベース接続を閉じました。
+2024-04-21 03:13:38,205 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 03:21:38,482 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 03:21:39,885 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 03:21:41,239 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:21:42,581 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:21:43,928 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 03:21:45,273 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 03:21:46,641 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 03:21:46,645 - main - INFO - データベース接続を閉じました。
+2024-04-21 03:21:46,661 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 03:23:41,529 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 03:23:42,877 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 03:23:44,282 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:23:45,619 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:23:46,951 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 03:23:48,294 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 03:23:49,623 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 03:23:49,629 - main - INFO - データベース接続を閉じました。
+2024-04-21 03:23:49,669 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 03:26:08,833 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 03:26:10,214 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 03:26:11,560 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:26:12,874 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:26:14,218 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 03:26:15,618 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 03:26:17,034 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 03:26:17,038 - main - INFO - データベース接続を閉じました。
+2024-04-21 03:26:17,051 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 03:33:09,880 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 03:33:11,292 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 03:33:12,689 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:33:14,040 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:33:15,412 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 03:33:16,837 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 03:33:18,373 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 03:33:18,375 - main - INFO - データベース接続を閉じました。
+2024-04-21 03:33:18,387 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 03:38:22,767 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 03:38:24,100 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 03:38:25,438 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:38:26,786 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:38:28,197 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 03:38:29,630 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 03:38:31,134 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 03:38:31,141 - main - INFO - データベース接続を閉じました。
+2024-04-21 03:38:31,173 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 03:43:48,401 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-04-21 03:43:49,785 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-04-21 03:43:51,125 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:43:52,445 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-04-21 03:43:53,827 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-04-21 03:43:55,163 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-04-21 03:43:56,447 - main - ERROR - SOURCE_1_jobapply.sql の読み込みに失敗しました。
+2024-04-21 03:43:56,449 - main - INFO - データベース接続を閉じました。
+2024-04-21 03:43:56,482 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 09:33:09,788 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 60, in <module>
+    sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types, deletion_exclusion)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 217, in add_conditions_to_sql
+    raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
+ValueError: 「FROM句」コメントが見つからないか、複数存在します
+
+2024-04-21 09:33:10,472 - main - INFO - データベース接続を閉じました。
+2024-04-21 09:33:10,506 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 09:40:24,171 - main - INFO - データベース接続を閉じました。
+2024-04-21 09:40:24,209 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 09:48:04,575 - main - INFO - データベース接続を閉じました。
+2024-04-21 09:48:04,673 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 09:57:55,652 - main - INFO - データベース接続を閉じました。
+2024-04-21 09:57:55,700 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 10:14:02,847 - main - INFO - データベース接続を閉じました。
+2024-04-21 10:14:02,933 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 10:19:57,098 - main - INFO - データベース接続を閉じました。
+2024-04-21 10:19:57,195 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 10:49:21,557 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 52, in <module>
+    full_sql_file_path = os.path.join(sql_file_path, sql_file_name)
+NameError: name 'sql_file_path' is not defined
+
+2024-04-21 10:49:22,227 - main - INFO - データベース接続を閉じました。
+2024-04-21 10:49:22,320 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 10:51:30,109 - main - INFO - データベース接続を閉じました。
+2024-04-21 10:51:30,189 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 10:56:26,955 - main - INFO - データベース接続を閉じました。
+2024-04-21 10:56:27,066 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 11:09:05,534 - main - INFO - データベース接続を閉じました。
+2024-04-21 11:09:05,607 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 11:14:42,711 - main - INFO - データベース接続を閉じました。
+2024-04-21 11:14:42,756 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 11:21:03,965 - main - INFO - データベース接続を閉じました。
+2024-04-21 11:21:04,021 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 11:25:01,594 - main - INFO - データベース接続を閉じました。
+2024-04-21 11:25:01,703 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 15:40:17,837 - main - INFO - データベース接続を閉じました。
+2024-04-21 15:40:17,938 - main - INFO - SSHトンネルを閉じました。
+2024-04-21 18:13:29,908 - main - INFO - データベース接続を閉じました。
+2024-04-21 18:13:29,939 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 20:33:34,226 - main - ERROR - SOURCE_2_jobapply.sql の読み込みに失敗しました。
+2024-04-22 20:33:36,680 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 562, in setup_test_environment
+    worksheet = spreadsheet.worksheet(test_sheet_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 応募_test
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 50, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 564, in setup_test_environment
+    source_sheet = spreadsheet.worksheet(csv_file_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 応募
+
+2024-04-22 20:33:37,406 - main - INFO - データベース接続を閉じました。
+2024-04-22 20:33:37,441 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 20:35:18,653 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 562, in setup_test_environment
+    worksheet = spreadsheet.worksheet(test_sheet_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 応募_test
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 50, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 564, in setup_test_environment
+    source_sheet = spreadsheet.worksheet(csv_file_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 応募
+
+2024-04-22 20:35:19,320 - main - INFO - データベース接続を閉じました。
+2024-04-22 20:35:19,408 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 20:39:53,283 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 562, in setup_test_environment
+    worksheet = spreadsheet.worksheet(test_sheet_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 応募_test
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 50, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 565, in setup_test_environment
+    source_sheet = spreadsheet.worksheet(csv_file_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 応募
+
+2024-04-22 20:39:53,952 - main - INFO - データベース接続を閉じました。
+2024-04-22 20:39:53,957 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 20:44:45,829 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 50, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 560, in setup_test_environment
+    print('spreadsheet:'+spreadsheet)
+TypeError: can only concatenate str (not "Spreadsheet") to str
+
+2024-04-22 20:44:46,538 - main - INFO - データベース接続を閉じました。
+2024-04-22 20:44:46,582 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 20:46:18,048 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 564, in setup_test_environment
+    worksheet = spreadsheet.worksheet(test_sheet_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 応募_test
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 50, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 567, in setup_test_environment
+    source_sheet = spreadsheet.worksheet(csv_file_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 応募
+
+2024-04-22 20:46:18,802 - main - INFO - データベース接続を閉じました。
+2024-04-22 20:46:18,819 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 20:51:40,053 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 206, in open_by_key
+    spreadsheet = Spreadsheet(self, {"id": key})
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 37, in __init__
+    metadata = self.fetch_sheet_metadata()
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 245, in fetch_sheet_metadata
+    r = self.client.request("get", url, params=params)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 403, 'message': 'The caller does not have permission', 'status': 'PERMISSION_DENIED'}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 50, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 559, in setup_test_environment
+    spreadsheet = gc.open_by_key(save_path_id)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 211, in open_by_key
+    raise PermissionError from ex
+PermissionError
+
+2024-04-22 20:51:40,722 - main - INFO - データベース接続を閉じました。
+2024-04-22 20:51:40,824 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:06:20,715 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 206, in open_by_key
+    spreadsheet = Spreadsheet(self, {"id": key})
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 37, in __init__
+    metadata = self.fetch_sheet_metadata()
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 245, in fetch_sheet_metadata
+    r = self.client.request("get", url, params=params)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 403, 'message': 'The caller does not have permission', 'status': 'PERMISSION_DENIED'}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 50, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 563, in setup_test_environment
+    spreadsheet = gc.open_by_key(spreadsheet_id)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 211, in open_by_key
+    raise PermissionError from ex
+PermissionError
+
+2024-04-22 21:06:21,384 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:06:21,390 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:09:24,551 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:09:24,577 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:10:58,553 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:10:58,592 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:17:27,526 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:17:27,564 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:18:28,501 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:18:28,568 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:21:50,810 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:21:50,911 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:22:51,580 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:22:51,600 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:23:43,841 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:23:43,932 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:24:56,058 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:24:56,167 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:28:39,112 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 206, in open_by_key
+    spreadsheet = Spreadsheet(self, {"id": key})
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 37, in __init__
+    metadata = self.fetch_sheet_metadata()
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 245, in fetch_sheet_metadata
+    r = self.client.request("get", url, params=params)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 403, 'message': 'The caller does not have permission', 'status': 'PERMISSION_DENIED'}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 50, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 563, in setup_test_environment
+    spreadsheet = gc.open_by_key(spreadsheet_id)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 211, in open_by_key
+    raise PermissionError from ex
+PermissionError
+
+2024-04-22 21:28:39,774 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:28:39,808 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:29:26,816 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:29:26,847 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:32:39,986 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:32:40,038 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:34:00,055 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:34:00,081 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:39:56,193 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:39:56,222 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:40:47,398 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:40:47,493 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:41:43,265 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:41:43,366 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:46:27,939 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:46:27,978 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:55:36,041 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:55:36,059 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:57:25,031 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:57:25,105 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 21:59:26,107 - main - INFO - データベース接続を閉じました。
+2024-04-22 21:59:26,159 - main - INFO - SSHトンネルを閉じました。
+2024-04-22 22:07:10,008 - main - INFO - データベース接続を閉じました。
+2024-04-22 22:07:10,110 - main - INFO - SSHトンネルを閉じました。
+2024-04-23 13:51:31,052 - main - INFO - データベース接続を閉じました。
+2024-04-23 13:51:31,137 - main - INFO - SSHトンネルを閉じました。
+2024-04-23 14:11:58,761 - main - INFO - データベース接続を閉じました。
+2024-04-23 14:11:58,836 - main - INFO - SSHトンネルを閉じました。
+2024-04-23 14:14:16,566 - main - INFO - データベース接続を閉じました。
+2024-04-23 14:14:16,585 - main - INFO - SSHトンネルを閉じました。
+2024-04-23 14:29:33,712 - main - INFO - データベース接続を閉じました。
+2024-04-23 14:29:33,798 - main - INFO - SSHトンネルを閉じました。
+2024-04-23 14:32:19,436 - main - INFO - データベース接続を閉じました。
+2024-04-23 14:32:19,562 - main - INFO - SSHトンネルを閉じました。
+2024-04-23 14:44:59,644 - main - INFO - データベース接続を閉じました。
+2024-04-23 14:44:59,756 - main - INFO - SSHトンネルを閉じました。
+2024-04-23 15:25:12,340 - main - INFO - データベース接続を閉じました。
+2024-04-23 15:25:12,430 - main - INFO - SSHトンネルを閉じました。
+2024-04-23 15:30:23,969 - main - INFO - データベース接続を閉じました。
+2024-04-23 15:30:24,029 - main - INFO - SSHトンネルを閉じました。
+2024-04-25 20:11:54,070 - main - INFO - データベース接続を閉じました。
+2024-04-25 20:11:54,195 - main - INFO - SSHトンネルを閉じました。
+2024-04-25 20:13:47,044 - main - INFO - データベース接続を閉じました。
+2024-04-25 20:13:47,136 - main - INFO - SSHトンネルを閉じました。
+2024-04-25 20:57:48,070 - main - INFO - データベース接続を閉じました。
+2024-04-25 20:57:48,180 - main - INFO - SSHトンネルを閉じました。
+2024-04-25 21:54:37,491 - main - ERROR -  の読み込みに失敗しました。
+2024-04-25 21:54:37,494 - main - INFO - データベース接続を閉じました。
+2024-04-25 21:54:37,575 - main - INFO - SSHトンネルを閉じました。
+2024-04-25 22:08:18,618 - main - INFO - データベース接続を閉じました。
+2024-04-25 22:08:18,652 - main - INFO - SSHトンネルを閉じました。
+2024-04-29 20:25:11,087 - main - INFO - データベース接続を閉じました。
+2024-04-29 20:25:11,195 - main - INFO - SSHトンネルを閉じました。

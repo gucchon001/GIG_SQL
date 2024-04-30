@@ -1,0 +1,115 @@
+import configparser
+import os
+import traceback
+from ssh_connection import create_ssh_tunnel
+from database_connection import create_database_connection
+from config_loader import load_config
+from subcode_loader import load_sql_file_list_from_spreadsheet, load_sql_from_file, csvfile_export, add_conditions_to_sql, set_period_condition, export_to_spreadsheet, setup_test_environment
+#from mysql_tableexport import googlesheet_export
+from my_logging import setup_department_logger
+import slack_notify
+
+#print(os.getcwd())
+
+# 設定ファイルのパス
+base_dir = os.path.dirname(os.path.abspath(__file__))
+#print('main_base_dir:'+base_dir)
+#config_file = os.path.join(base_dir, 'config.ini')
+#config = configparser.ConfigParser()
+#config.read(config_file, encoding='utf-8')
+config = configparser.ConfigParser()
+config.read('config.ini', encoding='utf-8')
+config_file = os.path.join(base_dir, 'config.ini')
+spreadsheet_id = config['Spreadsheet']['spreadsheet_id']
+sheet_name = config['Spreadsheet']['main_sheet']
+json_keyfile_path = config['Credentials']['json_keyfile_path']
+csv_base_path = config['Paths']['csv_base_path']
+google_folder_id = config['GoogleDrive']['google_folder_id']
+
+# ロギングの設定
+LOGGER = setup_department_logger('main')
+
+# スプレッドシートから実行対象のSQLファイルリストとCSVファイル名を取得
+sql_and_csv_files = load_sql_file_list_from_spreadsheet(spreadsheet_id, sheet_name, json_keyfile_path)
+
+# 設定の読み込み
+ssh_config, db_config, local_port = load_config(config_file)
+
+# SSH接続設定
+ssh_config['db_host'] = db_config['host']
+ssh_config['db_port'] = db_config['port']
+ssh_config['local_port'] = local_port
+
+# SSHトンネルを確立
+tunnel = create_ssh_tunnel(ssh_config)
+
+results = []
+
+if tunnel:
+    try:
+        conn = create_database_connection(db_config, tunnel.local_bind_port)
+        if conn:
+            for file_info in sql_and_csv_files:
+                try:
+                    sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution = file_info
+                except ValueError as e:
+                    LOGGER.error(f"file_infoのアンパック中にエラーが発生しました: {file_info}")
+                    results.append(f"{file_info}: 失敗 (file_infoのアンパック中にエラー)")
+                    continue
+
+                save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+
+                sql_query = load_sql_from_file(sql_file_name, google_folder_id, json_keyfile_path)
+                if sql_query:
+                    # 入力データに基づいてSQL文に条件を追加
+                    input_values, input_fields_types = {}, {}
+                    # 取得期間の条件を追加
+                    sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
+                    sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types, deletion_exclusion)
+
+                    if output_to_spreadsheet == 'CSV':
+                        if save_path_id and save_path_id.strip():
+                            csv_file_path = os.path.join(save_path_id, csv_file_name)
+                        else:
+                            csv_file_path = os.path.join(csv_base_path, csv_file_name)
+                        try:
+                            csvfile_export(conn, sql_query_with_conditions, csv_file_path)
+                            result = f"{sql_file_name}: 成功 (保存先: {csv_file_path})"
+                        except Exception as e:
+                            LOGGER.error(f"CSVファイルのエクスポート中にエラーが発生しました: {e}")
+                            result = f"{sql_file_name}: 失敗 (CSVファイルのエクスポート中にエラー)"
+                    elif output_to_spreadsheet == 'スプシ':
+                        print(f"Exporting to spreadsheet: save_path_id={save_path_id}, csv_file_name={csv_file_name}")
+                        try:
+                            export_to_spreadsheet(conn, sql_query_with_conditions, save_path_id, csv_file_name, json_keyfile_path, paste_format, sheet_name)
+                            result = f"{sql_file_name}: 成功 (保存先: {save_path_id}, シート名: {csv_file_name})"
+                        except Exception as e:
+                            LOGGER.error(f"スプレッドシートへのエクスポート中にエラーが発生しました: {e}")
+                            result = f"{sql_file_name}: 失敗 (スプレッドシートへのエクスポート中にエラー)"
+                    else:
+                        LOGGER.error(f"無効な出力先が指定されました: {output_to_spreadsheet}")
+                        result = f"{sql_file_name}: 失敗 (無効な出力先: {output_to_spreadsheet})"
+                else:
+                    LOGGER.error(f"{sql_file_name} の読み込みに失敗しました。")
+                    result = f"{sql_file_name}: 失敗 (SQLファイルの読み込みに失敗)"
+
+                results.append(result)
+
+            #googlesheet_export(config_file)
+        else:
+            LOGGER.error("データベース接続に失敗しました。")
+    except Exception as e:
+        LOGGER.error(f"処理中にエラーが発生しました: {traceback.format_exc()}")
+        slack_notify.send_slack_error_message(e, config=config)
+    finally:
+        if conn:
+            conn.close()
+            LOGGER.info("データベース接続を閉じました。")
+        tunnel.stop()
+        LOGGER.info("SSHトンネルを閉じました。")
+else:
+    LOGGER.error("SSHトンネルの開設に失敗しました。")
+
+print("\n処理結果一覧:")
+for result in results:
+    print(result)

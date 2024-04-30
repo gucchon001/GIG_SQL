@@ -1,0 +1,42 @@
+2024-04-19 14:04:34,739 - main - INFO - データベース接続を閉じました。
+2024-04-19 14:04:34,791 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 14:28:21,625 - main - INFO - データベース接続を閉じました。
+2024-04-19 14:28:21,742 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 14:37:36,780 - main - INFO - データベース接続を閉じました。
+2024-04-19 14:37:36,830 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 14:39:26,270 - main - INFO - データベース接続を閉じました。
+2024-04-19 14:39:26,317 - main - INFO - SSHトンネルを閉じました。
+2024-04-19 17:22:34,741 - main - INFO - データベース接続を閉じました。
+2024-04-19 17:22:34,819 - main - INFO - SSHトンネルを閉じました。
+2024-04-25 19:58:51,389 - main - ERROR - SOURCE_2_jobapply.sql の読み込みに失敗しました。
+2024-04-25 19:58:55,332 - main - ERROR - SOURCE_3_jobapply.sql の読み込みに失敗しました。
+2024-04-25 19:58:55,386 - main - ERROR - SOURCE_8_keiyaku_log.sql の読み込みに失敗しました。
+2024-04-25 19:58:57,453 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "gspread\spreadsheet.py", line 343, in worksheet
+  File "gspread\utils.py", line 140, in finditem
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "subcode_loader.py", line 528, in setup_test_environment
+  File "gspread\spreadsheet.py", line 349, in worksheet
+gspread.exceptions.WorksheetNotFound: シート1_test
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "gspread\spreadsheet.py", line 343, in worksheet
+  File "gspread\utils.py", line 140, in finditem
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main.py", line 50, in <module>
+  File "subcode_loader.py", line 530, in setup_test_environment
+  File "gspread\spreadsheet.py", line 349, in worksheet
+gspread.exceptions.WorksheetNotFound: シート1
+
+2024-04-25 19:58:58,138 - main - INFO - データベース接続を閉じました。
+2024-04-25 19:58:58,172 - main - INFO - SSHトンネルを閉じました。

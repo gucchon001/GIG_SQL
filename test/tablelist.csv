@@ -1,0 +1,83 @@
+TABLE_NAME,CREATE_TIME,UPDATE_TIME
+addresses,2023-09-11 03:13:50,2024-03-29 09:17:31
+am_admin_emails,2023-08-30 05:25:43,2024-04-12 07:00:33
+am_admin_emails_histories,2023-08-30 05:25:44,2024-04-12 07:00:33
+am_admins,2023-09-08 08:38:35,2024-04-15 11:24:34
+am_admins_histories,2023-08-30 05:25:44,2024-04-15 11:24:34
+am_email_verifications,2023-08-30 05:25:43,2024-04-12 07:00:33
+am_login_histories,2023-08-30 05:25:44,2024-04-15 11:24:34
+am_password_resets,2023-08-30 05:25:44,2024-02-29 01:05:55
+am_two_step_auth_tokens,2023-08-30 05:25:44,None
+area_job_features,2024-03-29 09:07:28,2024-03-29 09:07:32
+area_job_parttime_faqs,2024-03-28 11:00:14,2024-03-28 11:00:17
+bounce_emails,2024-01-25 04:23:03,None
+brand_companies,2023-09-08 08:38:36,2024-04-12 09:15:02
+brand_qas,2023-09-14 07:32:01,2024-04-12 09:14:17
+brands,2024-01-19 11:34:43,2024-04-12 09:14:17
+cities,2023-09-11 03:13:52,2024-03-29 09:17:31
+classroom_application_contacts,2024-01-19 11:34:43,2024-04-15 09:46:43
+classroom_basic_informations,2024-01-19 11:34:45,2024-04-15 09:47:50
+classroom_images,2024-01-19 11:34:44,2024-04-15 09:46:43
+classroom_self_rating_informations,2024-01-19 11:34:43,2024-04-15 09:46:43
+cm_client_attributes,2023-11-17 08:21:47,None
+cm_client_departments,2023-11-17 08:21:47,None
+cm_client_departments_histories,2023-11-17 08:21:47,None
+cm_clients,2023-11-17 08:21:47,None
+cm_clients_histories,2023-11-17 08:21:47,None
+companies,2024-01-19 11:34:42,2024-04-12 09:12:41
+company_billing_accounts,2024-01-19 11:34:45,2024-04-11 04:12:06
+company_company_users_relations,2023-11-17 08:21:48,2024-04-12 10:01:54
+company_monthly_stats,2024-03-28 11:00:13,2024-04-10 15:45:02
+company_setting_admins,2023-09-08 08:38:35,2024-04-12 09:12:41
+company_setting_clients,2023-09-08 08:38:35,2024-04-12 09:12:41
+company_users,2024-01-19 11:34:43,2024-04-12 10:01:54
+contracts,2024-02-26 12:22:27,2024-04-15 09:36:19
+failed_jobs,2023-12-25 09:59:23,2024-04-01 01:05:11
+gift_cards,2024-02-26 12:22:27,2024-03-13 00:50:02
+gift_requests,2024-03-12 06:57:15,2024-04-15 04:03:27
+gift_survey_answers,2024-01-19 11:34:45,2024-04-15 04:03:27
+invoice_billing_items,2024-01-23 06:27:51,2024-04-15 09:36:19
+invoice_pdf_files,2024-01-19 11:34:45,2024-04-12 09:47:37
+invoices,2024-02-06 04:38:42,2024-04-15 09:36:19
+job_appeal_informations,2024-01-19 11:34:44,2024-04-15 09:46:43
+job_application_conditions,2024-01-19 11:34:44,2024-04-15 09:46:43
+job_application_training_conditions,2024-01-19 11:34:44,2024-04-15 09:46:43
+job_basic_informations,2024-02-28 08:07:46,2024-04-15 09:46:43
+job_batches,2024-02-01 03:56:59,2024-02-21 01:41:11
+job_work_guidance_conditions,2024-01-24 01:42:16,2024-04-15 09:46:43
+lines,2023-10-20 06:49:19,2023-10-24 06:55:35
+migrations,2023-08-30 05:25:43,2024-03-29 11:13:53
+personal_access_tokens,2023-08-30 05:25:43,None
+prefectures,2024-03-28 11:00:13,2024-03-28 11:00:14
+review_item_values,2023-12-20 11:42:52,2024-04-15 04:03:27
+reviews,2024-01-19 11:34:45,2024-04-15 04:03:27
+services,2024-02-05 03:30:27,2024-04-10 01:13:44
+stations,2023-10-20 06:49:19,2023-10-24 06:55:41
+um_user_approved_ads,2023-10-20 06:49:15,None
+um_user_approved_ads_histories,2023-10-20 06:49:16,None
+um_user_attribute_choices,2023-10-20 06:49:15,None
+um_user_attribute_items,2023-10-20 06:49:15,None
+um_user_attributes,2023-10-20 06:49:15,None
+um_user_attributes_histories,2023-10-20 06:49:16,None
+um_user_deletions,2023-10-20 06:49:15,None
+um_user_educational_backgrounds,2023-10-20 06:49:22,2024-04-12 06:37:10
+um_user_email_verifications,2023-10-20 06:49:15,2024-04-12 09:55:32
+um_user_emails,2023-11-23 08:16:13,2024-04-12 09:55:32
+um_user_emails_histories,2023-10-20 06:49:16,2024-04-12 09:55:32
+um_user_login_histories,2023-10-20 06:49:15,2024-04-15 09:29:02
+um_user_password_resets,2023-10-20 06:49:15,2024-04-05 09:56:56
+um_user_profiles,2024-02-26 12:22:28,2024-04-15 09:31:15
+um_user_profiles_histories,2023-10-20 06:49:16,None
+um_user_settings,2023-10-20 06:49:22,2024-04-12 06:37:10
+um_user_social_tokens,2023-10-20 06:49:15,None
+um_user_social_tokens_histories,2023-10-20 06:49:16,None
+um_users,2023-12-20 11:42:51,2024-04-15 09:29:01
+um_users_histories,2023-10-20 06:49:16,2024-04-15 09:29:01
+user_application_messages,2024-03-29 10:31:52,2024-04-11 09:18:20
+user_applications,2024-03-29 11:13:53,2024-04-15 09:31:15
+user_ban_companies,2023-12-20 11:42:51,2024-04-03 06:50:19
+user_job_bookmarks,2023-11-24 11:38:49,2024-04-15 09:29:01
+user_job_view_logs,2023-11-24 11:38:49,2024-04-15 09:34:49
+user_subjects,2023-11-17 08:21:48,2024-04-04 07:02:18
+user_teaching_experiences,2023-11-24 11:38:48,2024-04-10 04:30:19
+user_work_conditions,2023-11-17 08:21:49,2024-04-10 04:30:19
