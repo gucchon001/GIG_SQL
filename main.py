@@ -12,6 +12,7 @@ import slack_notify
 #print(os.getcwd())
 
 # 設定ファイルのパス
+
 base_dir = os.path.dirname(os.path.abspath(__file__))
 #print('main_base_dir:'+base_dir)
 #config_file = os.path.join(base_dir, 'config.ini')

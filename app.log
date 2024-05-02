@@ -1201,3 +1201,66 @@ PermissionError
 2024-04-29 20:25:11,195 - main - INFO - SSHトンネルを閉じました。
 2024-04-30 23:44:42,202 - main - INFO - データベース接続を閉じました。
 2024-04-30 23:44:42,279 - main - INFO - SSHトンネルを閉じました。
+2024-05-01 16:38:24,174 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 206, in open_by_key
+    spreadsheet = Spreadsheet(self, {"id": key})
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 37, in __init__
+    metadata = self.fetch_sheet_metadata()
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 245, in fetch_sheet_metadata
+    r = self.client.request("get", url, params=params)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 403, 'message': 'The caller does not have permission', 'status': 'PERMISSION_DENIED'}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 60, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 572, in setup_test_environment
+    spreadsheet = gc.open_by_key(save_path_id)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 211, in open_by_key
+    raise PermissionError from ex
+PermissionError
+
+2024-05-01 16:38:24,876 - main - INFO - データベース接続を閉じました。
+2024-05-01 16:38:24,955 - main - INFO - SSHトンネルを閉じました。
+2024-05-01 17:19:39,407 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 206, in open_by_key
+    spreadsheet = Spreadsheet(self, {"id": key})
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 37, in __init__
+    metadata = self.fetch_sheet_metadata()
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 245, in fetch_sheet_metadata
+    r = self.client.request("get", url, params=params)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 403, 'message': 'The caller does not have permission', 'status': 'PERMISSION_DENIED'}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 60, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 572, in setup_test_environment
+    spreadsheet = gc.open_by_key(save_path_id)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 211, in open_by_key
+    raise PermissionError from ex
+PermissionError
+
+2024-05-01 17:19:40,093 - main - INFO - データベース接続を閉じました。
+2024-05-01 17:19:40,178 - main - INFO - SSHトンネルを閉じました。
+2024-05-01 17:22:03,961 - main - ERROR - SOURCE_65_採用確認データ2.sql の読み込みに失敗しました。
+2024-05-01 17:22:03,964 - main - INFO - データベース接続を閉じました。
+2024-05-01 17:22:04,070 - main - INFO - SSHトンネルを閉じました。
+2024-05-01 17:24:36,386 - main - ERROR - SOURCE_65_saiyoConfirm2.sql の読み込みに失敗しました。
+2024-05-01 17:24:36,392 - main - INFO - データベース接続を閉じました。
+2024-05-01 17:24:36,496 - main - INFO - SSHトンネルを閉じました。
+2024-05-01 17:27:22,146 - main - INFO - データベース接続を閉じました。
+2024-05-01 17:27:22,241 - main - INFO - SSHトンネルを閉じました。
+2024-05-01 17:50:21,648 - main - ERROR - 無効な出力先が指定されました: 
+2024-05-01 17:50:21,652 - main - INFO - データベース接続を閉じました。
+2024-05-01 17:50:21,739 - main - INFO - SSHトンネルを閉じました。
+2024-05-01 17:57:56,819 - main - INFO - データベース接続を閉じました。
+2024-05-01 17:57:56,918 - main - INFO - SSHトンネルを閉じました。
+2024-05-01 18:04:35,477 - main - INFO - データベース接続を閉じました。
+2024-05-01 18:04:35,588 - main - INFO - SSHトンネルを閉じました。

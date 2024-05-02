@@ -61,7 +61,8 @@ def load_sql_file_list_from_spreadsheet(spreadsheet_id, sheet_name, json_keyfile
                     'yyyyMMdd_{filename}': now.strftime('%Y%m%d_') + filename_without_ext,
                     '{filename}_yyyy-MM-dd': filename_without_ext + '_' + now.strftime('%Y-%m-%d'),
                     '{filename}yyyy-MM-dd': filename_without_ext + now.strftime('%Y-%m-%d'),
-                    '{filename}_yyyyMMddhhmmss': filename_without_ext + '_' + now.strftime('%Y%m%d%H%M%S')
+                    '{filename}_yyyyMMddhhmmss': filename_without_ext + '_' + now.strftime('%Y%m%d%H%M%S'),
+                    '{filename}_yyyy-MM': filename_without_ext + '_' + now.strftime('%Y-%m')
                 }
                 for pattern, value in filename_patterns.items():
                     if pattern in filename_format:
@@ -69,7 +70,6 @@ def load_sql_file_list_from_spreadsheet(spreadsheet_id, sheet_name, json_keyfile
                         break
                 else:
                     csv_file_name = filename_format + '.csv'
-
             sql_and_csv_files.append((sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution))
 
     return sql_and_csv_files
