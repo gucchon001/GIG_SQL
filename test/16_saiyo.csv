@@ -1,284 +1,270 @@
 開始列,提出ステータス,追加確認理由,応募ID,応募日,応募時刻,教室ID,教室名,会員ID,応募媒体,採用ステータス,研修初日,在籍確認,備考,メモ(admin用),データタイプ,最終提出日,最終提出時刻,請求確定日,請求確定時刻,提出期限超過月数,保留月数,最終変更者,更新日,更新時刻,企業コード,最終列
 DUMMY,None,None,1,2023/11/24,17:51:13,29,DatHM Classroom 3,10000008,None,None,None,None,None,None,None,None,None,None,None,None,None,54,2023/11/26,18:41:46,A0000066,DUMMY
-DUMMY,None,None,2,2023/11/24,20:40:03,44,TH Classroom 1,10000013,None,None,None,None,None,None,None,None,None,None,None,None,None,8,2023/11/27,13:27:09,A0000083,DUMMY
-DUMMY,None,None,3,2023/11/24,21:13:16,44,TH Classroom 1,10000012,None,None,None,None,None,None,None,None,None,None,None,None,None,10000012,2023/11/24,21:13:16,A0000083,DUMMY
-DUMMY,提出中,None,4,2023/11/26,18:38:36,50,DatHM Classroom Sunday,10000008,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000066,DUMMY
-DUMMY,提出中,None,5,2023/11/26,18:40:23,29,DatHM Classroom 3,10000008,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000066,DUMMY
-DUMMY,提出中,None,6,2023/11/26,18:40:57,50,DatHM Classroom Sunday,10000008,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000066,DUMMY
-DUMMY,提出中,None,7,2023/11/26,21:19:07,29,DatHM Classroom 3,10000002,None,None,None,None,None,None,0,2024/03/29,17:32:27,None,None,None,None,204,2024/03/29,17:32:27,A0000066,DUMMY
-DUMMY,None,None,8,2023/11/26,21:41:02,29,DatHM Classroom 3,10000002,None,None,None,None,None,None,None,None,None,None,None,None,None,10000002,2023/11/26,21:41:02,A0000066,DUMMY
-DUMMY,None,None,9,2023/11/27,10:35:24,29,DatHM Classroom 3,10000013,None,None,None,None,None,None,None,None,None,None,None,None,None,10000013,2023/11/27,10:35:24,A0000066,DUMMY
-DUMMY,None,None,10,2023/11/27,11:07:57,49,TH Classroom 3,10000013,None,None,None,None,None,None,None,None,None,None,None,None,None,10000013,2023/11/27,11:07:57,A0000083,DUMMY
-DUMMY,提出中,None,11,2023/11/27,11:12:36,49,TH Classroom 3,10000013,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000083,DUMMY
-DUMMY,None,None,12,2023/11/27,13:26:01,51,Test 青嶋,10000008,None,None,None,None,None,None,None,None,None,None,None,None,None,10000008,2023/11/27,13:26:01,A0000093,DUMMY
-DUMMY,None,None,13,2023/11/27,15:10:00,51,Test 青嶋,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,144,2023/11/27,15:10:54,A0000093,DUMMY
-DUMMY,None,None,14,2023/11/27,19:52:23,49,TH Classroom 3,10000013,None,None,None,None,None,None,None,None,None,None,None,None,None,10000013,2023/11/27,19:52:23,A0000083,DUMMY
-DUMMY,提出中,None,15,2023/11/27,20:35:28,45,DatHM Classroom 4,10000002,None,None,None,None,None,None,0,2024/03/29,17:32:27,None,None,None,None,204,2024/03/29,17:32:27,A0000066,DUMMY
-DUMMY,None,None,16,2023/11/28,11:15:42,45,DatHM Classroom 4,10000012,None,None,None,None,None,None,None,None,None,None,None,None,None,10000012,2023/11/28,11:15:42,A0000066,DUMMY
-DUMMY,None,None,17,2023/11/28,17:46:33,52,青嶋2ばんめ,10000008,None,None,None,None,None,None,None,None,None,None,None,None,None,10000008,2023/12/21,11:19:21,A0000094,DUMMY
-DUMMY,None,None,18,2023/11/28,19:27:56,47,TH Classroom 2,10000013,None,None,None,None,None,None,None,None,None,None,None,None,None,10000013,2024/03/04,16:21:39,A0000083,DUMMY
-DUMMY,None,None,19,2023/11/30,13:44:47,52,青嶋2ばんめ,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/11/30,13:44:47,A0000094,DUMMY
-DUMMY,None,None,20,2023/12/01,12:59:56,54,早稲田アカデミー 中野富士見町校,10000036,None,None,None,None,None,None,None,None,None,None,None,None,None,10000036,2023/12/01,12:59:56,A0000086,DUMMY
-DUMMY,None,None,21,2023/12/01,13:17:36,54,早稲田アカデミー 中野富士見町校,10000036,None,None,None,None,None,None,None,None,None,None,None,None,None,10000036,2023/12/01,13:17:36,A0000086,DUMMY
-DUMMY,None,None,22,2023/12/01,18:18:45,54,早稲田アカデミー 中野富士見町校,10000037,None,None,None,None,None,None,None,None,None,None,None,None,None,10000037,2023/12/01,18:18:45,A0000086,DUMMY
-DUMMY,None,None,23,2023/12/01,19:37:35,50,DatHM Classroom Sunday,10000034,None,None,None,None,None,None,None,None,None,None,None,None,None,10000034,2024/02/28,19:53:20,A0000066,DUMMY
-DUMMY,None,None,24,2023/12/01,21:17:03,36,東京個別指導学院(ベネッセグループ)練馬教室,10000038,None,None,None,None,None,None,None,None,None,None,None,None,None,1,2024/02/14,15:11:25,A0000085,DUMMY
-DUMMY,None,None,25,2023/12/06,18:51:50,52,青嶋2ばんめ,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:51:50,A0000094,DUMMY
-DUMMY,None,None,26,2023/12/06,18:53:36,54,早稲田アカデミー 中野富士見町校,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:53:36,A0000086,DUMMY
-DUMMY,None,None,27,2023/12/06,18:53:55,54,早稲田アカデミー 中野富士見町校,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:53:55,A0000086,DUMMY
-DUMMY,None,None,28,2023/12/06,18:54:38,44,TH Classroom 1,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:54:38,A0000083,DUMMY
-DUMMY,None,None,29,2023/12/06,18:55:22,45,DatHM Classroom 4,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:55:22,A0000066,DUMMY
-DUMMY,None,None,30,2023/12/06,18:55:43,45,DatHM Classroom 4,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:55:43,A0000066,DUMMY
-DUMMY,None,None,31,2023/12/06,18:56:57,47,TH Classroom 2,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:56:57,A0000083,DUMMY
-DUMMY,None,None,32,2023/12/06,18:57:14,44,TH Classroom 1,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:57:14,A0000083,DUMMY
-DUMMY,None,None,33,2023/12/06,18:58:15,50,DatHM Classroom Sunday,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:58:15,A0000066,DUMMY
-DUMMY,None,None,34,2023/12/06,18:58:46,24,Test,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:58:46,A0000072,DUMMY
-DUMMY,None,None,35,2023/12/06,18:59:15,49,TH Classroom 3,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:59:15,A0000083,DUMMY
-DUMMY,None,None,36,2023/12/06,18:59:34,50,DatHM Classroom Sunday,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:59:34,A0000066,DUMMY
-DUMMY,None,None,37,2023/12/06,18:59:52,50,DatHM Classroom Sunday,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:59:52,A0000066,DUMMY
-DUMMY,None,None,38,2023/12/06,19:00:13,29,DatHM Classroom 3,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,19:00:13,A0000066,DUMMY
-DUMMY,None,None,39,2023/12/06,19:01:44,49,TH Classroom 3,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,19:01:44,A0000083,DUMMY
-DUMMY,None,None,40,2023/12/06,19:02:01,28,DatHM Classroom 2,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,19:02:01,A0000066,DUMMY
-DUMMY,None,None,41,2023/12/06,19:02:21,47,TH Classroom 2,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,19:02:21,A0000083,DUMMY
-DUMMY,None,None,42,2023/12/06,19:02:40,36,東京個別指導学院(ベネッセグループ)練馬教室,10000020,None,None,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,19:02:40,A0000085,DUMMY
-DUMMY,None,None,43,2023/12/06,19:09:08,52,青嶋2ばんめ,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:09:08,A0000094,DUMMY
-DUMMY,None,None,44,2023/12/06,19:09:32,29,DatHM Classroom 3,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:09:32,A0000066,DUMMY
-DUMMY,None,None,45,2023/12/06,19:09:47,45,DatHM Classroom 4,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:09:47,A0000066,DUMMY
-DUMMY,None,None,46,2023/12/06,19:10:04,49,TH Classroom 3,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:10:04,A0000083,DUMMY
-DUMMY,None,None,47,2023/12/06,19:10:47,54,早稲田アカデミー 中野富士見町校,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:10:47,A0000086,DUMMY
-DUMMY,None,None,48,2023/12/06,19:11:05,52,青嶋2ばんめ,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:11:05,A0000094,DUMMY
-DUMMY,None,None,49,2023/12/06,19:11:32,44,TH Classroom 1,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:11:32,A0000083,DUMMY
-DUMMY,None,None,50,2023/12/06,19:12:23,49,TH Classroom 3,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:12:23,A0000083,DUMMY
-DUMMY,None,None,51,2023/12/06,19:13:11,45,DatHM Classroom 4,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:13:11,A0000066,DUMMY
-DUMMY,None,None,52,2023/12/06,19:13:46,36,東京個別指導学院(ベネッセグループ)練馬教室,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:13:46,A0000085,DUMMY
-DUMMY,None,None,53,2023/12/06,19:14:49,44,TH Classroom 1,10000039,None,None,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:14:49,A0000083,DUMMY
-DUMMY,None,None,54,2023/12/08,12:42:56,52,青嶋2ばんめ,10000010,None,None,None,None,None,None,None,None,None,None,None,None,None,10000010,2023/12/08,12:42:56,A0000094,DUMMY
-DUMMY,提出中,None,55,2023/12/14,17:32:36,50,DatHM Classroom Sunday,10000010,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
-DUMMY,提出中,None,56,2023/12/15,11:00:19,56,早稲田アカデミー 練馬校,10000038,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000086,DUMMY
-DUMMY,None,None,57,2023/12/20,13:10:50,50,DatHM Classroom Sunday,10000010,None,None,None,None,None,None,None,None,None,None,None,None,None,10000010,2023/12/20,13:10:50,A0000066,DUMMY
-DUMMY,None,None,58,2023/12/21,10:43:17,28,DatHM Classroom 2,10000010,None,None,None,None,None,None,None,None,None,None,None,None,None,10000010,2023/12/21,10:43:17,A0000066,DUMMY
-DUMMY,提出中,None,59,2023/12/21,11:46:26,45,DatHM Classroom 4,10000008,None,None,None,None,None,None,0,2024/03/29,19:13:18,None,None,None,None,54,2024/03/29,19:13:18,A0000066,DUMMY
-DUMMY,None,None,60,2023/12/21,13:21:05,44,TH Classroom 1,10000013,None,None,None,None,None,None,None,None,None,None,None,None,None,10000013,2023/12/21,13:21:05,A0000083,DUMMY
-DUMMY,提出中,None,61,2023/12/21,15:43:46,50,DatHM Classroom Sunday,10000013,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
-DUMMY,提出中,None,62,2023/12/21,17:34:09,50,DatHM Classroom Sunday,10000002,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,None,204,2024/03/29,16:28:22,A0000066,DUMMY
-DUMMY,提出中,None,63,2023/12/21,18:10:31,50,DatHM Classroom Sunday,10000054,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
-DUMMY,None,None,64,2023/12/21,19:25:12,44,TH Classroom 1,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/22,15:41:18,A0000083,DUMMY
-DUMMY,None,None,65,2023/12/22,15:27:22,44,TH Classroom 1,10000066,None,None,None,None,None,None,None,None,None,None,None,None,None,10000066,2023/12/22,15:27:22,A0000083,DUMMY
-DUMMY,None,None,66,2023/12/22,15:40:56,50,DatHM Classroom Sunday,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/22,15:41:39,A0000066,DUMMY
-DUMMY,提出中,None,67,2023/12/25,16:45:15,50,DatHM Classroom Sunday,10000072,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
-DUMMY,None,None,68,2023/12/26,12:02:43,60,さいとうテスト教室,10000010,None,None,None,None,None,None,None,None,None,None,None,None,None,10000010,2023/12/26,12:02:43,A0000099,DUMMY
-DUMMY,None,None,69,2023/12/26,12:37:48,55,大塚のテスト教室,10000010,None,None,None,None,None,None,None,None,None,None,None,None,None,10000010,2023/12/26,12:37:48,A0000095,DUMMY
-DUMMY,提出中,None,70,2023/12/26,12:42:47,55,大塚のテスト教室,10000010,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000095,DUMMY
-DUMMY,None,None,71,2023/12/26,16:03:48,49,TH Classroom 3,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,18:09:58,A0000083,DUMMY
-DUMMY,差し戻し,None,72,2023/09/06,10:03:49,58,教室名,10000002,None,None,2024/03/01 00:00:00,None,退職日時未記入採用お祝い不一致,退職日時未記入採用お祝い不一致,0,2024/03/29,17:40:40,None,None,1,None,None,2024/05/01,00:00:03,A0000101,DUMMY
-DUMMY,提出中,None,73,2023/12/26,16:28:33,50,DatHM Classroom Sunday,10000072,None,None,None,None,None,None,0,2024/03/29,17:22:52,None,None,None,None,1,2024/03/29,17:22:52,A0000066,DUMMY
-DUMMY,None,None,74,2023/12/26,16:30:52,49,TH Classroom 3,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,16:34:30,A0000083,DUMMY
-DUMMY,提出中,None,75,2023/12/26,17:39:03,55,大塚のテスト教室,10000020,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,None,204,2024/03/29,16:28:22,A0000095,DUMMY
-DUMMY,提出中,None,76,2023/12/26,17:46:53,52,青嶋2ばんめ,10000020,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000094,DUMMY
-DUMMY,提出中,None,77,2023/12/26,17:47:26,52,青嶋2ばんめ,10000020,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000094,DUMMY
-DUMMY,None,None,78,2023/12/26,18:12:39,47,TH Classroom 2,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,18:13:00,A0000083,DUMMY
-DUMMY,None,None,79,2023/12/26,18:15:35,47,TH Classroom 2,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,18:15:45,A0000083,DUMMY
-DUMMY,None,None,80,2023/12/26,18:20:58,50,DatHM Classroom Sunday,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,18:21:05,A0000066,DUMMY
-DUMMY,None,None,81,2023/12/26,19:21:09,50,DatHM Classroom Sunday,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,19:21:09,A0000066,DUMMY
-DUMMY,None,None,82,2023/12/27,10:35:12,61,CLASSROOM  HoaTT 1,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/27,10:35:12,A0000092,DUMMY
-DUMMY,提出中,None,83,2023/12/27,10:55:36,61,CLASSROOM  HoaTT 1,10000084,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000092,DUMMY
-DUMMY,提出中,None,84,2023/12/27,12:33:44,56,早稲田アカデミー 練馬校,10000010,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000086,DUMMY
-DUMMY,差し戻し,None,85,2023/12/27,18:31:50,61,CLASSROOM  HoaTT 1,10000072,None,None,2024/03/29 00:00:00,None,退職日時未記入退職日時未記入退職日時未記入採用お祝い不一致退職日時未記入退職日時未記入採用お祝い不一致採用お祝い不一致応募重複確認退職日時未記入,退職日時未記入退職日時未記入退職日時未記入採用お祝い不一致退職日時未記入退職日時未記入採用お祝い不一致採用お祝い不一致応募重複確認退職日時未記入,0,2024/03/29,17:45:48,None,None,None,None,204,2024/03/29,20:18:05,A0000092,DUMMY
-DUMMY,提出中,None,86,2023/12/27,18:32:57,59,HuongDT Class,10000081,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
-DUMMY,提出中,None,87,2023/12/27,19:03:55,64,CLASSROOM check delete Job,10000084,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000092,DUMMY
-DUMMY,提出中,None,88,2023/12/28,11:01:34,55,大塚のテスト教室,10000075,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000095,DUMMY
-DUMMY,提出中,None,89,2024/01/02,19:16:20,45,DatHM Classroom 4,10000002,None,None,None,None,None,None,0,2024/03/29,17:32:27,None,None,None,None,204,2024/03/29,17:32:27,A0000066,DUMMY
-DUMMY,None,None,90,2024/01/02,19:20:04,46,DatHM Classroom 5,10000002,None,None,None,1,None,None,1,None,None,2024/02/27,00:00:00,None,None,10000002,2024/02/27,19:53:11,A0000066,DUMMY
-DUMMY,提出中,None,91,2024/01/08,12:39:01,64,CLASSROOM check delete Job,10000072,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000092,DUMMY
-DUMMY,提出中,None,92,2024/01/15,17:06:24,55,大塚のテスト教室,10000075,None,None,2024/04/15 00:00:00,None,None,None,0,2024/04/12,19:10:44,None,None,None,None,204,2024/04/12,19:10:44,A0000095,DUMMY
-DUMMY,提出中,None,93,2024/01/15,17:11:52,58,教室名,10000075,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000101,DUMMY
-DUMMY,提出中,None,94,2024/01/15,17:13:57,61,CLASSROOM  HoaTT 1,10000075,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000092,DUMMY
-DUMMY,提出中,None,95,2024/01/15,17:14:48,56,早稲田アカデミー 練馬校,10000075,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000086,DUMMY
-DUMMY,提出中,None,96,2024/01/15,17:35:27,36,東京個別指導学院(ベネッセグループ)練馬教室,10000075,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,None,204,2024/03/29,16:28:22,A0000085,DUMMY
-DUMMY,提出中,None,97,2024/01/18,10:41:58,65,さいとうテスト教室,10000075,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
-DUMMY,提出中,None,98,2024/01/18,10:42:06,65,さいとうテスト教室,10000075,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
-DUMMY,提出中,None,99,2024/01/18,10:42:12,65,さいとうテスト教室,10000075,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
-DUMMY,提出中,None,100,2024/01/18,10:42:34,56,早稲田アカデミー 練馬校,10000075,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,None,204,2024/03/29,16:28:22,A0000086,DUMMY
-DUMMY,提出中,None,101,2024/01/18,13:30:41,58,教室名,10000075,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000101,DUMMY
-DUMMY,提出中,None,102,2024/01/19,15:50:22,47,TH Classroom 2,10000038,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,None,204,2024/03/29,16:28:22,A0000083,DUMMY
-DUMMY,提出中,None,103,2024/01/19,17:07:51,69,Classroom Career,10000092,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
-DUMMY,提出中,None,104,2024/01/22,16:56:09,65,さいとうテスト教室,10000085,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
-DUMMY,提出中,None,105,2024/01/22,17:13:50,56,早稲田アカデミー 練馬校,10000036,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000086,DUMMY
-DUMMY,None,None,106,2024/01/22,17:55:17,59,HuongDT Class,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2024/01/22,17:55:17,A0000066,DUMMY
-DUMMY,提出中,None,107,2024/01/23,20:06:28,67,NC Classroom,10000036,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,None,204,2024/03/29,16:28:22,A0000103,DUMMY
-DUMMY,提出中,None,108,2024/01/24,10:52:27,67,NC Classroom,10000038,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000103,DUMMY
-DUMMY,提出中,None,109,2024/01/26,11:53:48,69,Classroom Career,10000081,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
-DUMMY,提出中,None,110,2024/01/26,15:24:03,59,HuongDT Class,10000038,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
-DUMMY,提出中,None,111,2024/01/29,17:45:13,74,青嶋テスト クライアント画面CK,10000020,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,None,204,2024/03/29,16:28:22,A0000104,DUMMY
-DUMMY,None,None,112,2024/01/30,12:00:38,125,HuongDT Class new,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2024/02/16,19:02:02,A0000106,DUMMY
-DUMMY,提出中,None,113,2023/07/30,20:11:42,125,HuongDT Class new,10000002,None,None,2024/03/31 00:00:00,None,None,None,0,2024/04/11,18:19:11,None,None,None,None,168,2024/04/11,18:19:11,A0000106,DUMMY
-DUMMY,提出中,None,114,2024/01/31,17:26:10,65,さいとうテスト教室,10000090,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
-DUMMY,提出中,None,115,2024/02/01,14:19:44,74,青嶋テスト クライアント画面CK,10000100,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000104,DUMMY
-DUMMY,提出中,None,116,2024/02/01,17:27:08,58,教室名,10000100,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000101,DUMMY
-DUMMY,提出中,None,117,2024/02/01,17:27:25,69,Classroom Career,10000100,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
-DUMMY,提出中,None,118,2024/02/01,17:27:39,67,NC Classroom,10000100,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000103,DUMMY
-DUMMY,提出中,None,119,2024/02/01,17:29:32,74,青嶋テスト クライアント画面CK,10000100,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000104,DUMMY
-DUMMY,提出中,None,120,2024/02/01,19:32:05,69,Classroom Career,10000100,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
-DUMMY,提出中,None,121,2024/02/02,16:45:11,36,東京個別指導学院(ベネッセグループ)練馬教室,10000036,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000085,DUMMY
-DUMMY,提出中,None,122,2024/02/06,12:44:38,67,NC Classroom,10000026,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000103,DUMMY
-DUMMY,提出中,None,123,2024/02/06,15:39:31,65,さいとうテスト教室,10000026,None,None,None,None,None,None,0,2024/04/05,12:38:00,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
-DUMMY,提出中,None,124,2024/02/07,11:30:38,58,教室名,10000026,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,None,204,2024/03/29,16:28:22,A0000101,DUMMY
-DUMMY,提出中,None,125,2024/02/15,12:17:13,65,さいとうテスト教室,10000107,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000102,DUMMY
-DUMMY,提出中,None,126,2024/02/15,16:50:56,65,さいとうテスト教室,10000105,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,None,204,2024/03/29,16:28:22,A0000102,DUMMY
-DUMMY,提出中,None,127,2024/02/16,10:08:37,65,さいとうテスト教室,10000105,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000102,DUMMY
-DUMMY,提出中,None,128,2024/02/16,13:55:41,65,さいとうテスト教室,10000107,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000102,DUMMY
-DUMMY,提出中,None,129,2024/02/16,13:56:02,65,さいとうテスト教室,10000107,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000102,DUMMY
-DUMMY,提出中,None,130,2024/02/16,17:25:25,56,早稲田アカデミー 練馬校,10000107,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000086,DUMMY
-DUMMY,提出中,None,131,2024/02/16,17:26:25,135,新宿あああああああ,10000107,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000102,DUMMY
-DUMMY,提出中,None,132,2024/02/22,13:13:57,244,勤務アンケートテスト教室,10000090,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000102,DUMMY
-DUMMY,提出中,None,133,2024/02/27,10:37:25,50,DatHM Classroom Sunday,10000116,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000066,DUMMY
-DUMMY,提出中,None,134,2024/02/27,11:22:28,246,Class 246,10000116,None,None,None,None,gfhfgh,gfhfgh,0,2024/05/03,18:10:29,None,None,None,None,224,2024/05/03,18:10:29,A0000106,DUMMY
-DUMMY,提出中,None,135,2024/02/27,11:25:39,246,Class 246,10000117,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000106,DUMMY
-DUMMY,提出中,None,136,2024/02/27,11:33:11,246,Class 246,10000118,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000106,DUMMY
-DUMMY,提出中,None,137,2024/02/27,11:34:17,246,Class 246,10000119,None,None,2024/02/28 00:00:00,None,None,None,0,2024/04/11,17:41:29,None,None,None,None,168,2024/04/11,17:41:29,A0000106,DUMMY
-DUMMY,None,None,138,2024/02/27,11:36:33,244,勤務アンケートテスト教室,10000119,None,None,None,None,None,None,None,None,None,None,None,None,None,10000119,2024/02/27,17:48:43,A0000102,DUMMY
-DUMMY,提出中,None,139,2024/02/27,12:00:19,247,Classroom_Hongntk Test,10000119,None,None,None,1,None,None,0,2024/04/12,13:40:00,None,None,None,None,124,2024/04/12,13:40:00,A0000105,DUMMY
-DUMMY,提出中,None,140,2024/02/27,12:47:24,69,Classroom Career,10000081,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000066,DUMMY
-DUMMY,提出中,None,141,2024/02/27,12:51:05,69,Classroom Career,10000121,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000066,DUMMY
-DUMMY,提出中,None,142,2024/02/27,15:42:56,248,Class 248,10000081,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000066,DUMMY
-DUMMY,提出中,None,143,2024/02/27,15:51:12,248,Class 248,10000122,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000066,DUMMY
-DUMMY,提出中,None,144,2024/02/27,18:02:46,249,Class name_HoaNT,10000119,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,1,None,2024/03/30,00:45:03,A0000112,DUMMY
-DUMMY,提出中,None,145,2024/02/27,18:03:13,69,Classroom Career,10000119,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000066,DUMMY
-DUMMY,提出中,None,146,2024/02/27,18:11:06,246,Class 246,10000123,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000106,DUMMY
-DUMMY,提出中,None,147,2024/02/27,18:51:01,249,Class name_HoaNT,10000124,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/25,14:56:52,A0000112,DUMMY
-DUMMY,提出中,None,148,2024/02/27,19:02:14,249,Class name_HoaNT,10000100,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000112,DUMMY
-DUMMY,完了,None,149,2024/02/27,19:39:02,246,Class 246,10000002,None,None,None,None,None,None,1,2024/03/29,17:32:27,None,None,1,None,224,2024/04/18,14:10:02,A0000106,DUMMY
-DUMMY,提出中,None,150,2024/02/27,19:49:02,249,Class name_HoaNT,10000125,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000112,DUMMY
-DUMMY,提出中,None,151,2024/02/28,01:44:47,50,DatHM Classroom Sunday,10000126,None,None,None,None,None,None,0,2024/04/18,14:10:02,None,None,None,None,224,2024/04/18,14:10:02,A0000066,DUMMY
-DUMMY,提出中,None,152,2024/02/28,10:58:16,249,Class name_HoaNT,10000127,None,None,None,None,None,None,0,2024/04/12,16:22:25,None,None,None,None,124,2024/04/12,16:22:25,A0000112,DUMMY
-DUMMY,提出中,None,153,2024/02/28,11:27:03,50,DatHM Classroom Sunday,10000118,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
-DUMMY,提出中,None,154,2024/02/28,11:59:54,69,Classroom Career,10000118,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
-DUMMY,提出中,None,155,2024/02/28,12:16:53,246,Class 246,10000119,None,None,2024/04/11 00:00:00,None,退職日時未記入,退職日時未記入,0,2024/04/01,11:36:18,None,None,None,1,None,2024/04/11,00:45:02,A0000106,DUMMY
-DUMMY,提出中,None,156,2024/02/28,12:23:22,249,Class name_HoaNT,10000119,None,None,None,None,None,None,0,2024/03/29,16:28:22,None,None,None,None,204,2024/03/29,16:28:22,A0000112,DUMMY
-DUMMY,提出中,None,157,2024/02/28,12:23:57,54,早稲田アカデミー 中野富士見町校,10000119,None,None,None,None,None,None,0,2024/04/11,17:41:29,None,None,None,None,168,2024/04/11,17:41:29,A0000086,DUMMY
-DUMMY,提出中,None,158,2024/02/28,12:32:28,69,Classroom Career,10000122,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
-DUMMY,提出中,None,159,2024/02/28,12:34:04,69,Classroom Career,10000128,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
-DUMMY,提出中,None,160,2024/02/28,13:06:04,67,NC Classroom,10000128,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000103,DUMMY
-DUMMY,提出中,None,161,2024/02/28,13:24:03,249,Class name_HoaNT,10000100,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000112,DUMMY
-DUMMY,提出中,None,162,2024/02/28,16:13:27,74,青嶋テスト クライアント画面CK,10000130,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000104,DUMMY
-DUMMY,提出中,None,163,2024/02/28,16:22:24,69,Classroom Career,10000131,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
-DUMMY,提出中,None,164,2024/02/28,16:24:26,69,Classroom Career,10000130,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
-DUMMY,提出中,None,165,2024/02/28,16:32:06,50,DatHM Classroom Sunday,10000081,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
-DUMMY,提出中,None,166,2024/02/28,16:34:08,69,Classroom Career,10000132,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
-DUMMY,提出中,None,167,2024/02/28,16:39:01,74,青嶋テスト クライアント画面CK,10000132,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000104,DUMMY
-DUMMY,提出中,None,168,2024/02/28,16:39:23,249,Class name_HoaNT,10000132,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000112,DUMMY
-DUMMY,提出中,None,169,2024/02/28,16:56:04,248,Class 248,10000119,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
-DUMMY,提出中,None,170,2024/02/29,10:44:34,56,早稲田アカデミー 練馬校,10000105,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000086,DUMMY
-DUMMY,提出中,None,171,2024/02/29,11:04:47,65,さいとうテスト教室,10000105,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000102,DUMMY
-DUMMY,提出中,None,172,2024/02/29,11:33:04,69,Classroom Career,10000134,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
-DUMMY,提出中,None,173,2024/02/29,11:34:17,249,Class name_HoaNT,10000148,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000112,DUMMY
-DUMMY,提出中,None,174,2024/02/29,11:36:11,249,Class name_HoaNT,10000134,None,None,None,None,None,None,0,2024/04/12,16:17:24,None,None,None,None,124,2024/04/12,16:17:24,A0000112,DUMMY
-DUMMY,提出中,None,175,2024/03/01,13:05:43,249,Class name_HoaNT,10000075,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000112,DUMMY
-DUMMY,提出中,None,176,2024/03/04,16:52:15,74,青嶋テスト クライアント画面CK,10000138,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000104,DUMMY
-DUMMY,提出中,None,177,2024/03/04,17:40:28,244,勤務アンケートテスト教室,10000075,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
-DUMMY,提出中,None,178,2024/03/05,11:02:00,251,テスト教室,10000139,None,None,2024/03/06 00:00:00,None,None,None,0,2024/04/11,18:24:26,None,None,1,None,168,2024/04/11,18:24:26,A0000113,DUMMY
-DUMMY,提出中,None,179,2024/03/05,11:05:17,251,テスト教室,10000057,None,None,None,None,None,None,None,None,None,None,None,None,1,None,2024/04/09,00:45:02,A0000113,DUMMY
-DUMMY,None,None,180,2024/03/05,11:11:06,249,Class name_HoaNT,10000057,None,None,None,None,None,None,None,None,None,None,None,None,None,10000057,2024/03/14,18:08:10,A0000112,DUMMY
-DUMMY,提出中,None,181,2024/03/05,13:11:00,249,Class name_HoaNT,10000135,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000112,DUMMY
-DUMMY,提出中,None,182,2024/03/05,13:14:10,249,Class name_HoaNT,10000135,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000112,DUMMY
-DUMMY,提出中,None,183,2024/03/05,13:39:07,244,勤務アンケートテスト教室,10000142,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
-DUMMY,提出中,None,184,2024/03/05,14:00:15,245,キャリアテスト教室,10000143,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
-DUMMY,提出中,None,185,2024/03/05,14:03:30,245,キャリアテスト教室,10000144,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
-DUMMY,提出中,None,186,2024/03/05,15:58:18,244,勤務アンケートテスト教室,10000075,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
-DUMMY,提出中,None,187,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000146,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
-DUMMY,提出中,None,188,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000147,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
-DUMMY,提出中,None,189,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000148,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
-DUMMY,提出中,None,190,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000149,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
-DUMMY,提出中,None,191,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000150,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
-DUMMY,提出中,None,192,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000151,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
-DUMMY,提出中,None,193,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000152,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
-DUMMY,提出中,None,194,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000153,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
-DUMMY,提出中,None,195,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000154,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
-DUMMY,提出中,None,196,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000155,None,None,None,None,None,None,0,2024/04/11,18:07:46,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
-DUMMY,提出中,None,197,2024/03/06,11:24:07,249,Class name_HoaNT,10000135,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000112,DUMMY
-DUMMY,提出中,None,198,2024/03/06,12:37:02,36,東京個別指導学院(ベネッセグループ)練馬教室,10000156,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000085,DUMMY
-DUMMY,提出中,None,199,2024/03/06,18:16:07,244,勤務アンケートテスト教室,10000157,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
-DUMMY,提出中,None,200,2024/03/07,10:28:35,244,勤務アンケートテスト教室,10000158,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
-DUMMY,提出中,None,201,2024/03/07,10:42:16,252,限定求人テスト文字数テスト文字数テスト文字数テスト文字数テスト文字数テスト文字数テスト,10000159,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
-DUMMY,提出中,None,202,2024/03/07,15:37:44,244,勤務アンケートテスト教室,10000075,None,None,None,None,"採用お祝い不一致確認 2024/04/18 17:08:20
-最終出勤日：2024/04/01
-退職手続日：2024/04/04
-testtesttesttesttest
-※こちらの履歴は消去されないようご注意ください。","採用お祝い不一致確認 2024/04/18 17:08:20
-最終出勤日：2024/04/01
-退職手続日：2024/04/04
-testtesttesttesttest
-※こちらの履歴は消去されないようご注意ください。",0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/18,17:08:20,A0000102,DUMMY
-DUMMY,提出中,None,203,2024/03/07,15:40:16,244,勤務アンケートテスト教室,10000160,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
-DUMMY,提出中,None,204,2024/03/07,15:40:35,244,勤務アンケートテスト教室,10000160,None,None,2024/04/04 00:00:00,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/18,17:02:23,A0000102,DUMMY
-DUMMY,提出中,None,205,2024/03/07,15:40:49,244,勤務アンケートテスト教室,10000160,None,None,None,None,"採用お祝い不一致確認 2024/04/18 17:05:25
-不採用の詳細：不合格
-testtest
-※こちらの履歴は消去されないようご注意ください。","採用お祝い不一致確認 2024/04/18 17:05:25
-不採用の詳細：不合格
-testtest
-※こちらの履歴は消去されないようご注意ください。",0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/18,17:05:25,A0000102,DUMMY
-DUMMY,提出中,None,206,2024/03/08,14:30:17,56,早稲田アカデミー 練馬校,10000161,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000086,DUMMY
-DUMMY,提出中,None,207,2024/03/08,17:29:02,54,早稲田アカデミー 中野富士見町校,10000162,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000086,DUMMY
-DUMMY,提出中,None,208,2024/03/08,17:32:52,246,Class 246,10000163,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000106,DUMMY
-DUMMY,提出中,None,209,2024/03/08,17:36:12,246,Class 246,10000164,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,None,2024/05/01,00:00:03,A0000106,DUMMY
-DUMMY,提出中,None,210,2024/03/08,17:42:26,251,テスト教室,10000165,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000113,DUMMY
-DUMMY,提出中,None,211,2024/03/08,17:49:08,252,限定求人テスト文字数テスト文字数テスト文字数テスト文字数テスト文字数テスト文字数テスト,10000166,None,None,None,None,None,None,0,2024/04/12,16:17:25,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
-DUMMY,提出中,None,212,2024/03/13,18:27:32,244,勤務アンケートテスト教室,10000168,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000102,DUMMY
-DUMMY,提出中,None,213,2024/03/14,17:08:39,244,勤務アンケートテスト教室,10000170,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000102,DUMMY
-DUMMY,提出中,None,214,2024/03/14,17:13:21,244,勤務アンケートテスト教室,10000171,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000102,DUMMY
-DUMMY,提出中,None,215,2024/03/15,18:32:38,249,Class name_HoaNT,10000100,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000112,DUMMY
-DUMMY,提出中,None,216,2024/03/18,11:57:09,244,勤務アンケートテスト教室,10000174,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000102,DUMMY
-DUMMY,提出中,None,217,2024/03/18,16:18:40,258,テスト教室,10000175,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000118,DUMMY
-DUMMY,提出中,None,218,2024/03/19,16:24:58,256,テスト教室1,10000100,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000115,DUMMY
-DUMMY,提出中,None,219,2024/03/19,18:42:19,244,勤務アンケートテスト教室,10000180,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000102,DUMMY
-DUMMY,提出中,None,220,2024/03/21,15:51:38,262,new教室名,10000038,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000101,DUMMY
-DUMMY,提出中,None,221,2024/03/27,10:34:06,247,Classroom_Hongntk Test,10000186,None,None,None,None,None,None,0,2024/04/11,17:21:09,None,None,None,None,168,2024/04/11,17:21:09,A0000105,DUMMY
-DUMMY,完了,None,222,2024/03/29,17:38:55,247,Classroom_Hongntk Test,10000184,None,None,None,None,None,None,1,None,None,None,None,2,None,7,2024/04/03,13:26:30,A0000105,DUMMY
-DUMMY,提出中,None,223,2024/04/01,16:57:45,269,Class 269,10000081,None,None,2024/03/14 00:00:00,None,None,None,0,2024/04/18,13:31:17,None,None,None,None,224,2024/05/02,13:30:12,A0000106,DUMMY
-DUMMY,提出中,None,224,2024/04/01,18:02:29,269,Class 269,10000193,None,None,2024/03/31 00:00:00,None,None,None,0,2024/04/11,18:31:19,None,None,None,None,168,2024/04/11,18:31:19,A0000106,DUMMY
-DUMMY,未提出,None,225,2024/04/01,18:09:12,269,Class 269,10000195,None,None,None,None,None,None,None,None,None,None,None,None,None,10000195,2024/04/01,18:09:12,A0000106,DUMMY
-DUMMY,未提出,None,226,2024/04/01,23:48:05,269,Class 269,10000196,None,None,None,None,None,None,None,None,None,None,None,None,None,10000196,2024/04/01,23:48:05,A0000106,DUMMY
-DUMMY,未提出,None,227,2024/04/02,16:30:09,268,Class 268,10000101,None,None,None,None,None,None,None,None,None,None,None,None,None,10000101,2024/04/02,16:30:09,A0000106,DUMMY
-DUMMY,未提出,None,228,2024/04/02,19:03:40,262,new教室名,10000100,None,None,None,None,None,None,None,None,None,None,None,None,None,10000100,2024/04/02,19:03:40,A0000101,DUMMY
-DUMMY,未提出,None,229,2024/04/03,16:52:18,262,new教室名,10000199,None,None,None,None,None,None,None,None,None,None,None,None,None,10000199,2024/04/03,16:52:18,A0000101,DUMMY
-DUMMY,未提出,None,230,2024/04/04,16:01:36,269,Class 269,10000068,None,None,None,None,None,None,None,None,None,None,None,None,None,10000068,2024/04/04,16:02:37,A0000106,DUMMY
-DUMMY,未提出,None,231,2024/04/04,16:29:16,258,テスト教室,10000075,None,None,None,None,None,None,None,None,None,None,None,None,None,124,2024/04/08,13:52:33,A0000118,DUMMY
-DUMMY,未提出,None,232,2024/04/04,16:44:21,269,Class 269,10000186,None,None,None,None,None,None,None,None,None,None,None,None,None,10000186,2024/04/04,16:44:21,A0000106,DUMMY
-DUMMY,未提出,None,233,2024/04/04,17:17:51,268,Class 268,10000198,None,None,None,None,None,None,None,None,None,None,None,None,None,10000198,2024/04/04,17:17:51,A0000106,DUMMY
-DUMMY,未提出,None,234,2024/04/04,17:32:17,269,Class 269,10000202,None,None,None,None,None,None,None,None,None,None,None,None,None,10000202,2024/04/04,17:32:17,A0000106,DUMMY
-DUMMY,未提出,None,235,2024/04/04,18:53:39,269,Class 269,10000203,None,None,None,None,None,None,None,None,None,None,None,None,None,10000203,2024/04/04,18:53:39,A0000106,DUMMY
-DUMMY,提出中,None,236,2024/04/05,16:28:50,244,勤務アンケートテスト教室,10000204,None,None,None,None,None,None,None,2024/04/05,17:14:49,None,None,None,None,10000204,2024/04/05,17:14:49,A0000102,DUMMY
-DUMMY,提出中,None,237,2024/04/05,16:33:02,244,勤務アンケートテスト教室,10000205,None,None,None,None,None,None,None,2024/04/05,17:14:49,None,None,None,None,10000205,2024/04/05,17:23:12,A0000102,DUMMY
-DUMMY,提出中,None,238,2024/04/05,16:36:52,244,勤務アンケートテスト教室,10000206,None,None,None,None,None,None,None,2024/04/05,17:14:49,None,None,None,None,124,2024/04/05,17:36:25,A0000102,DUMMY
-DUMMY,提出中,None,239,2024/04/05,16:55:09,244,勤務アンケートテスト教室,10000207,None,None,None,None,None,None,None,2024/04/05,17:14:49,None,None,None,None,10000207,2024/04/05,17:14:49,A0000102,DUMMY
-DUMMY,提出中,None,240,2024/04/05,16:58:51,244,勤務アンケートテスト教室,10000208,None,None,None,None,None,None,None,2024/04/05,17:14:49,None,None,None,None,10000208,2024/04/05,17:14:49,A0000102,DUMMY
-DUMMY,提出中,None,241,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000209,None,None,None,None,None,None,None,2024/04/05,17:14:49,None,None,None,None,10000209,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,提出中,None,242,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000210,None,None,None,None,None,None,None,2024/04/05,17:14:49,None,None,None,None,10000210,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,未提出,None,243,2024/04/05,17:08:14,268,Class 268,10000212,None,None,None,None,None,None,None,None,None,None,None,None,None,10000212,2024/04/05,17:08:14,A0000106,DUMMY
-DUMMY,提出中,None,244,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000211,None,None,None,None,None,None,None,2024/04/05,17:14:49,None,None,None,None,10000211,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,提出中,None,245,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000213,None,None,None,None,None,None,None,2024/04/05,17:14:49,None,None,None,None,10000213,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,完了,None,246,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000214,None,None,2024/03/31 00:00:00,None,採用お祝い不一致,採用お祝い不一致,0,2024/04/05,17:14:49,None,None,None,None,None,2024/05/01,00:00:03,A0000102,DUMMY
-DUMMY,未提出,None,247,2024/04/05,18:00:13,267,basic,10000036,None,None,None,None,None,None,None,None,None,None,None,None,None,10000036,2024/04/05,18:00:13,A0000112,DUMMY
-DUMMY,完了,None,248,2024/04/06,17:57:57,267,basic,10000215,None,None,None,None,None,None,1,None,None,None,None,None,None,124,2024/04/12,13:39:14,A0000112,DUMMY
-DUMMY,未提出,None,249,2024/04/06,18:05:25,267,basic,10000217,None,None,None,None,None,None,None,None,None,None,None,None,None,10000217,2024/04/06,18:05:25,A0000112,DUMMY
-DUMMY,提出中,None,250,2024/04/08,13:56:50,244,勤務アンケートテスト教室,10000085,None,None,None,None,None,None,None,2024/04/11,18:51:01,None,None,None,None,10000085,2024/04/11,18:51:01,A0000102,DUMMY
-DUMMY,提出中,None,251,2024/04/08,16:09:01,271,勤務アンケートテスト教室,10000085,None,None,None,None,None,None,None,2024/04/11,18:51:01,None,None,None,None,10000085,2024/04/11,18:51:01,A0000102,DUMMY
-DUMMY,提出中,None,252,2024/04/08,16:21:28,244,勤務アンケートテスト教室,10000010,None,None,None,None,None,None,None,2024/04/11,18:51:01,None,None,None,None,10000010,2024/04/11,18:51:01,A0000102,DUMMY
-DUMMY,提出中,None,253,2024/04/08,16:26:45,244,勤務アンケートテスト教室,10000067,None,None,None,None,None,None,None,2024/04/11,18:51:01,None,None,None,None,10000067,2024/04/11,18:51:01,A0000102,DUMMY
-DUMMY,完了,None,254,2024/04/08,17:09:55,244,勤務アンケートテスト教室,10000219,None,None,2024/03/31 00:00:00,None,None,None,0,2024/04/11,18:06:18,None,None,None,None,None,2024/05/01,00:00:03,A0000102,DUMMY
-DUMMY,差し戻し,None,255,2024/04/09,16:54:40,244,勤務アンケートテスト教室,10000220,None,None,None,None,退職日時未記入退職日時未記入,退職日時未記入退職日時未記入,0,2024/04/11,18:50:24,None,None,None,None,124,2024/04/12,15:55:44,A0000102,DUMMY
-DUMMY,未提出,None,256,2024/04/09,18:16:57,244,勤務アンケートテスト教室,10000221,None,None,2024/03/03 00:00:00,None,None,None,0,2024/04/11,18:06:18,None,None,None,None,None,2024/04/12,00:45:02,A0000102,DUMMY
-DUMMY,差し戻し,None,257,2024/04/10,11:32:19,267,basic,10000222,None,None,None,None,採用お祝い不一致,採用お祝い不一致,0,None,None,None,None,None,None,168,2024/04/11,17:54:09,A0000112,DUMMY
-DUMMY,完了,None,258,2024/04/10,13:27:28,267,basic,10000223,None,None,None,None,None,None,1,2024/04/11,17:59:52,None,None,None,None,168,2024/04/11,18:01:24,A0000112,DUMMY
-DUMMY,提出中,None,259,2024/04/11,10:21:11,272,てすと教室,10000198,None,None,2024/02/25 00:00:00,None,None,None,0,2024/04/12,14:04:38,None,None,None,None,124,2024/04/12,14:04:38,A0000122,DUMMY
-DUMMY,提出中,None,260,2024/04/11,18:42:05,244,勤務アンケートテスト教室,10000224,None,None,None,None,None,None,None,2024/04/11,18:49:41,None,None,None,None,10000224,2024/04/15,10:24:15,A0000102,DUMMY
-DUMMY,提出中,None,261,2024/04/12,00:00:10,258,テスト教室,10000225,None,None,None,None,None,None,0,2024/04/12,13:01:39,None,None,None,None,168,2024/04/12,13:01:39,A0000118,DUMMY
-DUMMY,未提出,None,262,2024/04/12,15:25:58,275,てすと教室4,10000226,None,None,None,None,None,None,None,None,None,None,None,None,None,10000226,2024/04/12,15:25:58,A0000122,DUMMY
-DUMMY,未提出,None,263,2024/04/12,15:37:10,274,てすと教室3,10000227,None,None,None,None,None,None,None,None,None,None,None,None,None,10000227,2024/04/12,15:37:10,A0000122,DUMMY
-DUMMY,完了,None,264,2024/04/15,18:30:04,289,佐久間テスト教室2,10000037,None,None,None,None,None,None,1,None,None,None,None,None,None,168,2024/04/16,19:19:59,A0000107,DUMMY
-DUMMY,提出中,None,265,2024/04/15,18:30:47,287,佐久間テスト教室,10000037,None,None,2024/03/31 00:00:00,None,None,None,None,2024/04/16,15:43:17,None,None,None,None,10000037,2024/04/16,15:43:17,A0000107,DUMMY
-DUMMY,差し戻し,None,266,2024/04/15,18:31:15,129,【テスト】個別指導塾トモノカイ,10000037,None,None,None,None,"採用お祝い不一致確認 2024/04/16 15:18:59
+DUMMY,None,None,2,2023/11/24,20:40:03,44,TH Classroom 1,10000013,None,1,None,None,None,None,None,None,None,None,None,None,None,8,2023/11/27,13:27:09,A0000083,DUMMY
+DUMMY,None,None,3,2023/11/24,21:13:16,44,TH Classroom 1,10000012,None,1,None,None,None,None,None,None,None,None,None,None,None,10000012,2023/11/24,21:13:16,A0000083,DUMMY
+DUMMY,None,None,4,2023/11/26,18:38:36,50,DatHM Classroom Sunday,10000008,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000066,DUMMY
+DUMMY,None,None,5,2023/11/26,18:40:23,29,DatHM Classroom 3,10000008,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000066,DUMMY
+DUMMY,None,None,6,2023/11/26,18:40:57,50,DatHM Classroom Sunday,10000008,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000066,DUMMY
+DUMMY,None,None,7,2023/11/26,21:19:07,29,DatHM Classroom 3,10000002,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,17:32:27,A0000066,DUMMY
+DUMMY,None,None,8,2023/11/26,21:41:02,29,DatHM Classroom 3,10000002,None,1,None,None,None,None,None,None,None,None,None,None,None,10000002,2023/11/26,21:41:02,A0000066,DUMMY
+DUMMY,None,None,9,2023/11/27,10:35:24,29,DatHM Classroom 3,10000013,None,1,None,None,None,None,None,None,None,None,None,None,None,10000013,2023/11/27,10:35:24,A0000066,DUMMY
+DUMMY,None,None,10,2023/11/27,11:07:57,49,TH Classroom 3,10000013,None,1,None,None,None,None,None,None,None,None,None,None,None,10000013,2023/11/27,11:07:57,A0000083,DUMMY
+DUMMY,None,None,11,2023/11/27,11:12:36,49,TH Classroom 3,10000013,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000083,DUMMY
+DUMMY,None,None,12,2023/11/27,13:26:01,51,Test 青嶋,10000008,None,1,None,None,None,None,None,None,None,None,None,None,None,10000008,2023/11/27,13:26:01,A0000093,DUMMY
+DUMMY,None,None,13,2023/11/27,15:10:00,51,Test 青嶋,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,144,2023/11/27,15:10:54,A0000093,DUMMY
+DUMMY,None,None,14,2023/11/27,19:52:23,49,TH Classroom 3,10000013,None,1,None,None,None,None,None,None,None,None,None,None,None,10000013,2023/11/27,19:52:23,A0000083,DUMMY
+DUMMY,None,None,15,2023/11/27,20:35:28,45,DatHM Classroom 4,10000002,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,17:32:27,A0000066,DUMMY
+DUMMY,None,None,16,2023/11/28,11:15:42,45,DatHM Classroom 4,10000012,None,1,None,None,None,None,None,None,None,None,None,None,None,10000012,2023/11/28,11:15:42,A0000066,DUMMY
+DUMMY,None,None,17,2023/11/28,17:46:33,52,青嶋2ばんめ,10000008,None,1,None,None,None,None,None,None,None,None,None,None,None,10000008,2023/12/21,11:19:21,A0000094,DUMMY
+DUMMY,None,None,18,2023/11/28,19:27:56,47,TH Classroom 2,10000013,None,1,None,None,None,None,None,None,None,None,None,None,None,10000013,2024/03/04,16:21:39,A0000083,DUMMY
+DUMMY,None,None,19,2023/11/30,13:44:47,52,青嶋2ばんめ,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/11/30,13:44:47,A0000094,DUMMY
+DUMMY,None,None,20,2023/12/01,12:59:56,54,早稲田アカデミー 中野富士見町校,10000036,None,1,None,None,None,None,None,None,None,None,None,None,None,10000036,2023/12/01,12:59:56,A0000086,DUMMY
+DUMMY,None,None,21,2023/12/01,13:17:36,54,早稲田アカデミー 中野富士見町校,10000036,None,1,None,None,None,None,None,None,None,None,None,None,None,10000036,2023/12/01,13:17:36,A0000086,DUMMY
+DUMMY,None,None,22,2023/12/01,18:18:45,54,早稲田アカデミー 中野富士見町校,10000037,None,1,None,None,None,None,None,None,None,None,None,None,None,10000037,2023/12/01,18:18:45,A0000086,DUMMY
+DUMMY,None,None,23,2023/12/01,19:37:35,50,DatHM Classroom Sunday,10000034,None,1,None,None,None,None,None,None,None,None,None,None,None,10000034,2024/02/28,19:53:20,A0000066,DUMMY
+DUMMY,None,None,24,2023/12/01,21:17:03,36,東京個別指導学院(ベネッセグループ)練馬教室,10000038,None,1,None,None,None,None,None,None,None,None,None,None,None,1,2024/02/14,15:11:25,A0000085,DUMMY
+DUMMY,None,None,25,2023/12/06,18:51:50,52,青嶋2ばんめ,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:51:50,A0000094,DUMMY
+DUMMY,None,None,26,2023/12/06,18:53:36,54,早稲田アカデミー 中野富士見町校,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:53:36,A0000086,DUMMY
+DUMMY,None,None,27,2023/12/06,18:53:55,54,早稲田アカデミー 中野富士見町校,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:53:55,A0000086,DUMMY
+DUMMY,None,None,28,2023/12/06,18:54:38,44,TH Classroom 1,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:54:38,A0000083,DUMMY
+DUMMY,None,None,29,2023/12/06,18:55:22,45,DatHM Classroom 4,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:55:22,A0000066,DUMMY
+DUMMY,None,None,30,2023/12/06,18:55:43,45,DatHM Classroom 4,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:55:43,A0000066,DUMMY
+DUMMY,None,None,31,2023/12/06,18:56:57,47,TH Classroom 2,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:56:57,A0000083,DUMMY
+DUMMY,None,None,32,2023/12/06,18:57:14,44,TH Classroom 1,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:57:14,A0000083,DUMMY
+DUMMY,None,None,33,2023/12/06,18:58:15,50,DatHM Classroom Sunday,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:58:15,A0000066,DUMMY
+DUMMY,None,None,34,2023/12/06,18:58:46,24,Test,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:58:46,A0000072,DUMMY
+DUMMY,None,None,35,2023/12/06,18:59:15,49,TH Classroom 3,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:59:15,A0000083,DUMMY
+DUMMY,None,None,36,2023/12/06,18:59:34,50,DatHM Classroom Sunday,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:59:34,A0000066,DUMMY
+DUMMY,None,None,37,2023/12/06,18:59:52,50,DatHM Classroom Sunday,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,18:59:52,A0000066,DUMMY
+DUMMY,None,None,38,2023/12/06,19:00:13,29,DatHM Classroom 3,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,19:00:13,A0000066,DUMMY
+DUMMY,None,None,39,2023/12/06,19:01:44,49,TH Classroom 3,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,19:01:44,A0000083,DUMMY
+DUMMY,None,None,40,2023/12/06,19:02:01,28,DatHM Classroom 2,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,19:02:01,A0000066,DUMMY
+DUMMY,None,None,41,2023/12/06,19:02:21,47,TH Classroom 2,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,19:02:21,A0000083,DUMMY
+DUMMY,None,None,42,2023/12/06,19:02:40,36,東京個別指導学院(ベネッセグループ)練馬教室,10000020,None,1,None,None,None,None,None,None,None,None,None,None,None,10000020,2023/12/06,19:02:40,A0000085,DUMMY
+DUMMY,None,None,43,2023/12/06,19:09:08,52,青嶋2ばんめ,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:09:08,A0000094,DUMMY
+DUMMY,None,None,44,2023/12/06,19:09:32,29,DatHM Classroom 3,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:09:32,A0000066,DUMMY
+DUMMY,None,None,45,2023/12/06,19:09:47,45,DatHM Classroom 4,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:09:47,A0000066,DUMMY
+DUMMY,None,None,46,2023/12/06,19:10:04,49,TH Classroom 3,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:10:04,A0000083,DUMMY
+DUMMY,None,None,47,2023/12/06,19:10:47,54,早稲田アカデミー 中野富士見町校,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:10:47,A0000086,DUMMY
+DUMMY,None,None,48,2023/12/06,19:11:05,52,青嶋2ばんめ,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:11:05,A0000094,DUMMY
+DUMMY,None,None,49,2023/12/06,19:11:32,44,TH Classroom 1,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:11:32,A0000083,DUMMY
+DUMMY,None,None,50,2023/12/06,19:12:23,49,TH Classroom 3,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:12:23,A0000083,DUMMY
+DUMMY,None,None,51,2023/12/06,19:13:11,45,DatHM Classroom 4,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:13:11,A0000066,DUMMY
+DUMMY,None,None,52,2023/12/06,19:13:46,36,東京個別指導学院(ベネッセグループ)練馬教室,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:13:46,A0000085,DUMMY
+DUMMY,None,None,53,2023/12/06,19:14:49,44,TH Classroom 1,10000039,None,1,None,None,None,None,None,None,None,None,None,None,None,10000039,2023/12/06,19:14:49,A0000083,DUMMY
+DUMMY,None,None,54,2023/12/08,12:42:56,52,青嶋2ばんめ,10000010,None,1,None,None,None,None,None,None,None,None,None,None,None,10000010,2023/12/08,12:42:56,A0000094,DUMMY
+DUMMY,None,None,55,2023/12/14,17:32:36,50,DatHM Classroom Sunday,10000010,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
+DUMMY,None,None,56,2023/12/15,11:00:19,56,早稲田アカデミー 練馬校,10000038,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000086,DUMMY
+DUMMY,None,None,57,2023/12/20,13:10:50,50,DatHM Classroom Sunday,10000010,None,1,None,None,None,None,None,None,None,None,None,None,None,10000010,2023/12/20,13:10:50,A0000066,DUMMY
+DUMMY,None,None,58,2023/12/21,10:43:17,28,DatHM Classroom 2,10000010,None,1,None,None,None,None,None,None,None,None,None,None,None,10000010,2023/12/21,10:43:17,A0000066,DUMMY
+DUMMY,None,None,59,2023/12/21,11:46:26,45,DatHM Classroom 4,10000008,None,2,None,None,None,None,0,None,None,None,None,None,None,54,2024/03/29,19:13:18,A0000066,DUMMY
+DUMMY,None,None,60,2023/12/21,13:21:05,44,TH Classroom 1,10000013,None,1,None,None,None,None,None,None,None,None,None,None,None,10000013,2023/12/21,13:21:05,A0000083,DUMMY
+DUMMY,None,None,61,2023/12/21,15:43:46,50,DatHM Classroom Sunday,10000013,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
+DUMMY,None,None,62,2023/12/21,17:34:09,50,DatHM Classroom Sunday,10000002,None,2,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,16:28:22,A0000066,DUMMY
+DUMMY,None,None,63,2023/12/21,18:10:31,50,DatHM Classroom Sunday,10000054,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
+DUMMY,None,None,64,2023/12/21,19:25:12,44,TH Classroom 1,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/22,15:41:18,A0000083,DUMMY
+DUMMY,None,None,65,2023/12/22,15:27:22,44,TH Classroom 1,10000066,None,1,None,None,None,None,None,None,None,None,None,None,None,10000066,2023/12/22,15:27:22,A0000083,DUMMY
+DUMMY,None,None,66,2023/12/22,15:40:56,50,DatHM Classroom Sunday,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/22,15:41:39,A0000066,DUMMY
+DUMMY,None,None,67,2023/12/25,16:45:15,50,DatHM Classroom Sunday,10000072,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
+DUMMY,None,None,68,2023/12/26,12:02:43,60,さいとうテスト教室,10000010,None,1,None,None,None,None,None,None,None,None,None,None,None,10000010,2023/12/26,12:02:43,A0000099,DUMMY
+DUMMY,None,None,69,2023/12/26,12:37:48,55,大塚のテスト教室,10000010,None,1,None,None,None,None,None,None,None,None,None,None,None,10000010,2023/12/26,12:37:48,A0000095,DUMMY
+DUMMY,None,None,70,2023/12/26,12:42:47,55,大塚のテスト教室,10000010,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000095,DUMMY
+DUMMY,None,None,71,2023/12/26,16:03:48,49,TH Classroom 3,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,18:09:58,A0000083,DUMMY
+DUMMY,None,None,72,2023/09/06,10:03:49,58,教室名,10000002,None,2,2024/03/01 00:00:00,None,退職日時未記入採用お祝い不一致,退職日時未記入採用お祝い不一致,0,None,None,None,None,None,None,204,2024/03/29,19:27:32,A0000101,DUMMY
+DUMMY,None,None,73,2023/12/26,16:28:33,50,DatHM Classroom Sunday,10000072,None,1,None,None,None,None,0,None,None,None,None,None,None,1,2024/03/29,17:22:52,A0000066,DUMMY
+DUMMY,None,None,74,2023/12/26,16:30:52,49,TH Classroom 3,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,16:34:30,A0000083,DUMMY
+DUMMY,None,None,75,2023/12/26,17:39:03,55,大塚のテスト教室,10000020,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,16:28:22,A0000095,DUMMY
+DUMMY,None,None,76,2023/12/26,17:46:53,52,青嶋2ばんめ,10000020,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000094,DUMMY
+DUMMY,None,None,77,2023/12/26,17:47:26,52,青嶋2ばんめ,10000020,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000094,DUMMY
+DUMMY,None,None,78,2023/12/26,18:12:39,47,TH Classroom 2,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,18:13:00,A0000083,DUMMY
+DUMMY,None,None,79,2023/12/26,18:15:35,47,TH Classroom 2,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,18:15:45,A0000083,DUMMY
+DUMMY,None,None,80,2023/12/26,18:20:58,50,DatHM Classroom Sunday,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,18:21:05,A0000066,DUMMY
+DUMMY,None,None,81,2023/12/26,19:21:09,50,DatHM Classroom Sunday,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/26,19:21:09,A0000066,DUMMY
+DUMMY,None,None,82,2023/12/27,10:35:12,61,CLASSROOM  HoaTT 1,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2023/12/27,10:35:12,A0000092,DUMMY
+DUMMY,None,None,83,2023/12/27,10:55:36,61,CLASSROOM  HoaTT 1,10000084,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000092,DUMMY
+DUMMY,None,None,84,2023/12/27,12:33:44,56,早稲田アカデミー 練馬校,10000010,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000086,DUMMY
+DUMMY,None,None,85,2023/12/27,18:31:50,61,CLASSROOM  HoaTT 1,10000072,None,3,2024/03/29 00:00:00,None,退職日時未記入退職日時未記入退職日時未記入採用お祝い不一致退職日時未記入退職日時未記入採用お祝い不一致採用お祝い不一致応募重複確認退職日時未記入,退職日時未記入退職日時未記入退職日時未記入採用お祝い不一致退職日時未記入退職日時未記入採用お祝い不一致採用お祝い不一致応募重複確認退職日時未記入,0,None,None,None,None,None,None,204,2024/03/29,20:18:05,A0000092,DUMMY
+DUMMY,None,None,86,2023/12/27,18:32:57,59,HuongDT Class,10000081,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
+DUMMY,None,None,87,2023/12/27,19:03:55,64,CLASSROOM check delete Job,10000084,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000092,DUMMY
+DUMMY,None,None,88,2023/12/28,11:01:34,55,大塚のテスト教室,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000095,DUMMY
+DUMMY,None,None,89,2024/01/02,19:16:20,45,DatHM Classroom 4,10000002,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,17:32:27,A0000066,DUMMY
+DUMMY,None,None,90,2024/01/02,19:20:04,46,DatHM Classroom 5,10000002,None,1,None,1,None,None,1,None,None,2024/02/27,00:00:00,None,None,10000002,2024/02/27,19:53:11,A0000066,DUMMY
+DUMMY,None,None,91,2024/01/08,12:39:01,64,CLASSROOM check delete Job,10000072,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000092,DUMMY
+DUMMY,None,None,92,2024/01/15,17:06:24,55,大塚のテスト教室,10000075,None,2,2024/04/15 00:00:00,None,None,None,0,None,None,None,None,None,None,204,2024/04/12,19:10:44,A0000095,DUMMY
+DUMMY,None,None,93,2024/01/15,17:11:52,58,教室名,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000101,DUMMY
+DUMMY,None,None,94,2024/01/15,17:13:57,61,CLASSROOM  HoaTT 1,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000092,DUMMY
+DUMMY,None,None,95,2024/01/15,17:14:48,56,早稲田アカデミー 練馬校,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000086,DUMMY
+DUMMY,None,None,96,2024/01/15,17:35:27,36,東京個別指導学院(ベネッセグループ)練馬教室,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,16:28:22,A0000085,DUMMY
+DUMMY,None,None,97,2024/01/18,10:41:58,65,さいとうテスト教室,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
+DUMMY,None,None,98,2024/01/18,10:42:06,65,さいとうテスト教室,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
+DUMMY,None,None,99,2024/01/18,10:42:12,65,さいとうテスト教室,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
+DUMMY,None,None,100,2024/01/18,10:42:34,56,早稲田アカデミー 練馬校,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,16:28:22,A0000086,DUMMY
+DUMMY,None,None,101,2024/01/18,13:30:41,58,教室名,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000101,DUMMY
+DUMMY,None,None,102,2024/01/19,15:50:22,47,TH Classroom 2,10000038,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,16:28:22,A0000083,DUMMY
+DUMMY,None,None,103,2024/01/19,17:07:51,69,Classroom Career,10000092,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
+DUMMY,None,None,104,2024/01/22,16:56:09,65,さいとうテスト教室,10000085,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
+DUMMY,None,None,105,2024/01/22,17:13:50,56,早稲田アカデミー 練馬校,10000036,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000086,DUMMY
+DUMMY,None,None,106,2024/01/22,17:55:17,59,HuongDT Class,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2024/01/22,17:55:17,A0000066,DUMMY
+DUMMY,None,None,107,2024/01/23,20:06:28,67,NC Classroom,10000036,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,16:28:22,A0000103,DUMMY
+DUMMY,None,None,108,2024/01/24,10:52:27,67,NC Classroom,10000038,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000103,DUMMY
+DUMMY,None,None,109,2024/01/26,11:53:48,69,Classroom Career,10000081,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
+DUMMY,None,None,110,2024/01/26,15:24:03,59,HuongDT Class,10000038,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
+DUMMY,None,None,111,2024/01/29,17:45:13,74,青嶋テスト クライアント画面CK,10000020,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,16:28:22,A0000104,DUMMY
+DUMMY,None,None,112,2024/01/30,12:00:38,125,HuongDT Class new,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2024/02/16,19:02:02,A0000106,DUMMY
+DUMMY,None,None,113,2023/07/30,20:11:42,125,HuongDT Class new,10000002,None,1,2024/03/31 00:00:00,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:19:11,A0000106,DUMMY
+DUMMY,None,None,114,2024/01/31,17:26:10,65,さいとうテスト教室,10000090,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
+DUMMY,None,None,115,2024/02/01,14:19:44,74,青嶋テスト クライアント画面CK,10000100,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000104,DUMMY
+DUMMY,None,None,116,2024/02/01,17:27:08,58,教室名,10000100,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000101,DUMMY
+DUMMY,None,None,117,2024/02/01,17:27:25,69,Classroom Career,10000100,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
+DUMMY,None,None,118,2024/02/01,17:27:39,67,NC Classroom,10000100,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000103,DUMMY
+DUMMY,None,None,119,2024/02/01,17:29:32,74,青嶋テスト クライアント画面CK,10000100,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000104,DUMMY
+DUMMY,None,None,120,2024/02/01,19:32:05,69,Classroom Career,10000100,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000066,DUMMY
+DUMMY,None,None,121,2024/02/02,16:45:11,36,東京個別指導学院(ベネッセグループ)練馬教室,10000036,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000085,DUMMY
+DUMMY,None,None,122,2024/02/06,12:44:38,67,NC Classroom,10000026,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000103,DUMMY
+DUMMY,None,None,123,2024/02/06,15:39:31,65,さいとうテスト教室,10000026,None,1,None,None,None,None,0,None,None,None,None,None,None,224,2024/04/05,12:38:00,A0000102,DUMMY
+DUMMY,None,None,124,2024/02/07,11:30:38,58,教室名,10000026,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,16:28:22,A0000101,DUMMY
+DUMMY,None,None,125,2024/02/15,12:17:13,65,さいとうテスト教室,10000107,None,1,None,None,None,None,None,None,None,None,None,None,None,10000107,2024/02/15,12:17:13,A0000102,DUMMY
+DUMMY,None,None,126,2024/02/15,16:50:56,65,さいとうテスト教室,10000105,None,1,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,16:28:22,A0000102,DUMMY
+DUMMY,None,None,127,2024/02/16,10:08:37,65,さいとうテスト教室,10000105,None,1,None,None,None,None,None,None,None,None,None,None,None,124,2024/02/16,12:45:03,A0000102,DUMMY
+DUMMY,None,None,128,2024/02/16,13:55:41,65,さいとうテスト教室,10000107,None,1,None,None,None,None,None,None,None,None,None,None,None,214,2024/02/16,13:57:16,A0000102,DUMMY
+DUMMY,None,None,129,2024/02/16,13:56:02,65,さいとうテスト教室,10000107,None,1,None,None,None,None,None,None,None,None,None,None,None,214,2024/02/16,16:29:40,A0000102,DUMMY
+DUMMY,None,None,130,2024/02/16,17:25:25,56,早稲田アカデミー 練馬校,10000107,None,1,None,None,None,None,None,None,None,None,None,None,None,10000107,2024/02/16,17:25:25,A0000086,DUMMY
+DUMMY,None,None,131,2024/02/16,17:26:25,135,新宿あああああああ,10000107,None,1,None,None,None,None,None,None,None,None,None,None,None,10000107,2024/02/16,17:26:25,A0000102,DUMMY
+DUMMY,None,None,132,2024/02/22,13:13:57,244,勤務アンケートテスト教室,10000090,None,1,None,None,None,None,None,None,None,None,None,None,None,124,2024/02/22,13:14:44,A0000102,DUMMY
+DUMMY,None,None,133,2024/02/27,10:37:25,50,DatHM Classroom Sunday,10000116,None,1,None,None,None,None,None,None,None,None,None,None,None,10000116,2024/02/27,10:45:12,A0000066,DUMMY
+DUMMY,None,None,134,2024/02/27,11:22:28,246,Class 246,10000116,None,1,None,None,None,None,None,None,None,None,None,None,None,10000116,2024/02/27,11:22:28,A0000106,DUMMY
+DUMMY,None,None,135,2024/02/27,11:25:39,246,Class 246,10000117,None,1,None,None,None,None,None,None,None,None,None,None,None,10000117,2024/02/27,11:28:53,A0000106,DUMMY
+DUMMY,None,None,136,2024/02/27,11:33:11,246,Class 246,10000118,None,1,None,None,None,None,None,None,None,None,None,None,None,10000118,2024/02/27,11:33:11,A0000106,DUMMY
+DUMMY,None,None,137,2024/02/27,11:34:17,246,Class 246,10000119,None,2,2024/02/28 00:00:00,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:41:29,A0000106,DUMMY
+DUMMY,None,None,138,2024/02/27,11:36:33,244,勤務アンケートテスト教室,10000119,None,1,None,None,None,None,None,None,None,None,None,None,None,10000119,2024/02/27,17:48:43,A0000102,DUMMY
+DUMMY,None,None,139,2024/02/27,12:00:19,247,Classroom_Hongntk Test,10000119,None,1,None,1,None,None,0,None,None,None,None,None,None,124,2024/04/12,13:40:00,A0000105,DUMMY
+DUMMY,None,None,140,2024/02/27,12:47:24,69,Classroom Career,10000081,None,1,None,None,None,None,None,None,None,None,None,None,None,10000081,2024/02/27,12:47:24,A0000066,DUMMY
+DUMMY,None,None,141,2024/02/27,12:51:05,69,Classroom Career,10000121,None,1,None,None,None,None,None,None,None,None,None,None,None,10000121,2024/02/27,12:56:26,A0000066,DUMMY
+DUMMY,None,None,142,2024/02/27,15:42:56,248,Class 248,10000081,None,1,None,None,None,None,None,None,None,None,None,None,None,10000081,2024/03/26,11:02:55,A0000066,DUMMY
+DUMMY,None,None,143,2024/02/27,15:51:12,248,Class 248,10000122,None,1,None,None,None,None,None,None,None,None,None,None,None,10000122,2024/02/27,15:51:12,A0000066,DUMMY
+DUMMY,None,None,144,2024/02/27,18:02:46,249,Class name_HoaNT,10000119,None,1,None,None,None,None,0,None,None,None,None,None,None,None,2024/03/30,00:45:03,A0000112,DUMMY
+DUMMY,None,None,145,2024/02/27,18:03:13,69,Classroom Career,10000119,None,1,None,None,None,None,None,None,None,None,None,None,None,10000119,2024/02/27,18:04:37,A0000066,DUMMY
+DUMMY,None,None,146,2024/02/27,18:11:06,246,Class 246,10000123,None,1,None,None,None,None,None,None,None,None,None,None,None,10000123,2024/02/27,18:11:40,A0000106,DUMMY
+DUMMY,None,None,147,2024/02/27,18:51:01,249,Class name_HoaNT,10000124,None,1,None,None,None,None,None,None,None,None,None,None,None,10000124,2024/02/27,18:51:01,A0000112,DUMMY
+DUMMY,None,None,148,2024/02/27,19:02:14,249,Class name_HoaNT,10000100,None,1,None,None,None,None,None,None,None,None,None,None,None,10000100,2024/03/19,16:09:01,A0000112,DUMMY
+DUMMY,None,None,149,2024/02/27,19:39:02,246,Class 246,10000002,None,1,None,None,None,None,0,None,None,None,None,None,None,None,2024/04/11,00:45:02,A0000106,DUMMY
+DUMMY,None,None,150,2024/02/27,19:49:02,249,Class name_HoaNT,10000125,None,1,None,None,None,None,None,None,None,None,None,None,None,10000125,2024/02/27,19:49:02,A0000112,DUMMY
+DUMMY,None,None,151,2024/02/28,01:44:47,50,DatHM Classroom Sunday,10000126,None,1,None,None,None,None,None,None,None,None,None,None,None,10000126,2024/02/28,01:44:47,A0000066,DUMMY
+DUMMY,None,None,152,2024/02/28,10:58:16,249,Class name_HoaNT,10000127,None,2,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:22:25,A0000112,DUMMY
+DUMMY,None,None,153,2024/02/28,11:27:03,50,DatHM Classroom Sunday,10000118,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
+DUMMY,None,None,154,2024/02/28,11:59:54,69,Classroom Career,10000118,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
+DUMMY,None,None,155,2024/02/28,12:16:53,246,Class 246,10000119,None,1,2024/04/11 00:00:00,None,退職日時未記入,退職日時未記入,0,None,None,None,None,None,None,None,2024/04/11,00:45:02,A0000106,DUMMY
+DUMMY,None,None,156,2024/02/28,12:23:22,249,Class name_HoaNT,10000119,None,2,None,None,None,None,0,None,None,None,None,None,None,204,2024/03/29,16:28:22,A0000112,DUMMY
+DUMMY,None,None,157,2024/02/28,12:23:57,54,早稲田アカデミー 中野富士見町校,10000119,None,2,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:41:29,A0000086,DUMMY
+DUMMY,None,None,158,2024/02/28,12:32:28,69,Classroom Career,10000122,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
+DUMMY,None,None,159,2024/02/28,12:34:04,69,Classroom Career,10000128,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
+DUMMY,None,None,160,2024/02/28,13:06:04,67,NC Classroom,10000128,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000103,DUMMY
+DUMMY,None,None,161,2024/02/28,13:24:03,249,Class name_HoaNT,10000100,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000112,DUMMY
+DUMMY,None,None,162,2024/02/28,16:13:27,74,青嶋テスト クライアント画面CK,10000130,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000104,DUMMY
+DUMMY,None,None,163,2024/02/28,16:22:24,69,Classroom Career,10000131,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
+DUMMY,None,None,164,2024/02/28,16:24:26,69,Classroom Career,10000130,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
+DUMMY,None,None,165,2024/02/28,16:32:06,50,DatHM Classroom Sunday,10000081,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
+DUMMY,None,None,166,2024/02/28,16:34:08,69,Classroom Career,10000132,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
+DUMMY,None,None,167,2024/02/28,16:39:01,74,青嶋テスト クライアント画面CK,10000132,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000104,DUMMY
+DUMMY,None,None,168,2024/02/28,16:39:23,249,Class name_HoaNT,10000132,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000112,DUMMY
+DUMMY,None,None,169,2024/02/28,16:56:04,248,Class 248,10000119,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
+DUMMY,None,None,170,2024/02/29,10:44:34,56,早稲田アカデミー 練馬校,10000105,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000086,DUMMY
+DUMMY,None,None,171,2024/02/29,11:04:47,65,さいとうテスト教室,10000105,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000102,DUMMY
+DUMMY,None,None,172,2024/02/29,11:33:04,69,Classroom Career,10000134,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000066,DUMMY
+DUMMY,None,None,173,2024/02/29,11:34:17,249,Class name_HoaNT,10000148,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000112,DUMMY
+DUMMY,None,None,174,2024/02/29,11:36:11,249,Class name_HoaNT,10000134,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:24,A0000112,DUMMY
+DUMMY,None,None,175,2024/03/01,13:05:43,249,Class name_HoaNT,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000112,DUMMY
+DUMMY,None,None,176,2024/03/04,16:52:15,74,青嶋テスト クライアント画面CK,10000138,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000104,DUMMY
+DUMMY,None,None,177,2024/03/04,17:40:28,244,勤務アンケートテスト教室,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,178,2024/03/05,11:02:00,251,テスト教室,10000139,None,2,2024/03/06 00:00:00,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:24:26,A0000113,DUMMY
+DUMMY,None,None,179,2024/03/05,11:05:17,251,テスト教室,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,None,2024/04/09,00:45:02,A0000113,DUMMY
+DUMMY,None,None,180,2024/03/05,11:11:06,249,Class name_HoaNT,10000057,None,1,None,None,None,None,None,None,None,None,None,None,None,10000057,2024/03/14,18:08:10,A0000112,DUMMY
+DUMMY,None,None,181,2024/03/05,13:11:00,249,Class name_HoaNT,10000135,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000112,DUMMY
+DUMMY,None,None,182,2024/03/05,13:14:10,249,Class name_HoaNT,10000135,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000112,DUMMY
+DUMMY,None,None,183,2024/03/05,13:39:07,244,勤務アンケートテスト教室,10000142,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,184,2024/03/05,14:00:15,245,キャリアテスト教室,10000143,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,185,2024/03/05,14:03:30,245,キャリアテスト教室,10000144,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,186,2024/03/05,15:58:18,244,勤務アンケートテスト教室,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,187,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000146,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
+DUMMY,None,None,188,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000147,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
+DUMMY,None,None,189,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000148,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
+DUMMY,None,None,190,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000149,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
+DUMMY,None,None,191,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000150,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
+DUMMY,None,None,192,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000151,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
+DUMMY,None,None,193,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000152,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
+DUMMY,None,None,194,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000153,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
+DUMMY,None,None,195,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000154,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
+DUMMY,None,None,196,2023/08/29,10:03:49,244,勤務アンケートテスト教室,10000155,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:07:46,A0000102,DUMMY
+DUMMY,None,None,197,2024/03/06,11:24:07,249,Class name_HoaNT,10000135,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000112,DUMMY
+DUMMY,None,None,198,2024/03/06,12:37:02,36,東京個別指導学院(ベネッセグループ)練馬教室,10000156,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000085,DUMMY
+DUMMY,None,None,199,2024/03/06,18:16:07,244,勤務アンケートテスト教室,10000157,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,200,2024/03/07,10:28:35,244,勤務アンケートテスト教室,10000158,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,201,2024/03/07,10:42:16,252,限定求人テスト文字数テスト文字数テスト文字数テスト文字数テスト文字数テスト文字数テスト,10000159,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,202,2024/03/07,15:37:44,244,勤務アンケートテスト教室,10000075,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,203,2024/03/07,15:40:16,244,勤務アンケートテスト教室,10000160,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,204,2024/03/07,15:40:35,244,勤務アンケートテスト教室,10000160,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,205,2024/03/07,15:40:49,244,勤務アンケートテスト教室,10000160,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,206,2024/03/08,14:30:17,56,早稲田アカデミー 練馬校,10000161,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000086,DUMMY
+DUMMY,None,None,207,2024/03/08,17:29:02,54,早稲田アカデミー 中野富士見町校,10000162,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000086,DUMMY
+DUMMY,None,None,208,2024/03/08,17:32:52,246,Class 246,10000163,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000106,DUMMY
+DUMMY,None,None,209,2024/03/08,17:36:12,246,Class 246,10000164,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000106,DUMMY
+DUMMY,None,None,210,2024/03/08,17:42:26,251,テスト教室,10000165,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000113,DUMMY
+DUMMY,None,None,211,2024/03/08,17:49:08,252,限定求人テスト文字数テスト文字数テスト文字数テスト文字数テスト文字数テスト文字数テスト,10000166,None,1,None,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,16:17:25,A0000102,DUMMY
+DUMMY,None,None,212,2024/03/13,18:27:32,244,勤務アンケートテスト教室,10000168,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000102,DUMMY
+DUMMY,None,None,213,2024/03/14,17:08:39,244,勤務アンケートテスト教室,10000170,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000102,DUMMY
+DUMMY,None,None,214,2024/03/14,17:13:21,244,勤務アンケートテスト教室,10000171,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000102,DUMMY
+DUMMY,None,None,215,2024/03/15,18:32:38,249,Class name_HoaNT,10000100,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000112,DUMMY
+DUMMY,None,None,216,2024/03/18,11:57:09,244,勤務アンケートテスト教室,10000174,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000102,DUMMY
+DUMMY,None,None,217,2024/03/18,16:18:40,258,テスト教室,10000175,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000118,DUMMY
+DUMMY,None,None,218,2024/03/19,16:24:58,256,テスト教室1,10000100,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000115,DUMMY
+DUMMY,None,None,219,2024/03/19,18:42:19,244,勤務アンケートテスト教室,10000180,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000102,DUMMY
+DUMMY,None,None,220,2024/03/21,15:51:38,262,new教室名,10000038,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000101,DUMMY
+DUMMY,None,None,221,2024/03/27,10:34:06,247,Classroom_Hongntk Test,10000186,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,17:21:09,A0000105,DUMMY
+DUMMY,None,None,222,2024/03/29,17:38:55,247,Classroom_Hongntk Test,10000184,None,1,None,None,None,None,1,None,None,None,None,None,None,7,2024/04/03,13:26:30,A0000105,DUMMY
+DUMMY,None,None,223,2024/04/01,16:57:45,269,Class 269,10000081,None,2,2024/03/31 00:00:00,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:24:26,A0000106,DUMMY
+DUMMY,None,None,224,2024/04/01,18:02:29,269,Class 269,10000193,None,1,2024/03/31 00:00:00,None,None,None,0,None,None,None,None,None,None,168,2024/04/11,18:31:19,A0000106,DUMMY
+DUMMY,None,None,225,2024/04/01,18:09:12,269,Class 269,10000195,None,1,None,None,None,None,None,None,None,None,None,None,None,10000195,2024/04/01,18:09:12,A0000106,DUMMY
+DUMMY,None,None,226,2024/04/01,23:48:05,269,Class 269,10000196,None,1,None,None,None,None,None,None,None,None,None,None,None,10000196,2024/04/01,23:48:05,A0000106,DUMMY
+DUMMY,None,None,227,2024/04/02,16:30:09,268,Class 268,10000101,None,1,None,None,None,None,None,None,None,None,None,None,None,10000101,2024/04/02,16:30:09,A0000106,DUMMY
+DUMMY,None,None,228,2024/04/02,19:03:40,262,new教室名,10000100,None,1,None,None,None,None,None,None,None,None,None,None,None,10000100,2024/04/02,19:03:40,A0000101,DUMMY
+DUMMY,None,None,229,2024/04/03,16:52:18,262,new教室名,10000199,None,1,None,None,None,None,None,None,None,None,None,None,None,10000199,2024/04/03,16:52:18,A0000101,DUMMY
+DUMMY,None,None,230,2024/04/04,16:01:36,269,Class 269,10000068,None,1,None,None,None,None,None,None,None,None,None,None,None,10000068,2024/04/04,16:02:37,A0000106,DUMMY
+DUMMY,None,None,231,2024/04/04,16:29:16,258,テスト教室,10000075,None,1,None,None,None,None,None,None,None,None,None,None,None,124,2024/04/08,13:52:33,A0000118,DUMMY
+DUMMY,None,None,232,2024/04/04,16:44:21,269,Class 269,10000186,None,1,None,None,None,None,None,None,None,None,None,None,None,10000186,2024/04/04,16:44:21,A0000106,DUMMY
+DUMMY,None,None,233,2024/04/04,17:17:51,268,Class 268,10000198,None,1,None,None,None,None,None,None,None,None,None,None,None,10000198,2024/04/04,17:17:51,A0000106,DUMMY
+DUMMY,None,None,234,2024/04/04,17:32:17,269,Class 269,10000202,None,1,None,None,None,None,None,None,None,None,None,None,None,10000202,2024/04/04,17:32:17,A0000106,DUMMY
+DUMMY,None,None,235,2024/04/04,18:53:39,269,Class 269,10000203,None,1,None,None,None,None,None,None,None,None,None,None,None,10000203,2024/04/04,18:53:39,A0000106,DUMMY
+DUMMY,None,None,236,2024/04/05,16:28:50,244,勤務アンケートテスト教室,10000204,None,2,None,None,None,None,None,None,None,None,None,None,None,10000204,2024/04/05,17:14:49,A0000102,DUMMY
+DUMMY,None,None,237,2024/04/05,16:33:02,244,勤務アンケートテスト教室,10000205,None,2,None,None,None,None,None,None,None,None,None,None,None,10000205,2024/04/05,17:23:12,A0000102,DUMMY
+DUMMY,None,None,238,2024/04/05,16:36:52,244,勤務アンケートテスト教室,10000206,None,2,None,None,None,None,None,None,None,None,None,None,None,124,2024/04/05,17:36:25,A0000102,DUMMY
+DUMMY,None,None,239,2024/04/05,16:55:09,244,勤務アンケートテスト教室,10000207,None,2,None,None,None,None,None,None,None,None,None,None,None,10000207,2024/04/05,17:14:49,A0000102,DUMMY
+DUMMY,None,None,240,2024/04/05,16:58:51,244,勤務アンケートテスト教室,10000208,None,2,None,None,None,None,None,None,None,None,None,None,None,10000208,2024/04/05,17:14:49,A0000102,DUMMY
+DUMMY,None,None,241,2024/04/05,17:03:22,244,勤務アンケートテスト教室,10000209,None,2,None,None,None,None,None,None,None,None,None,None,None,10000209,2024/04/05,17:14:49,A0000102,DUMMY
+DUMMY,None,None,242,2024/04/05,17:06:01,244,勤務アンケートテスト教室,10000210,None,2,None,None,None,None,None,None,None,None,None,None,None,10000210,2024/04/05,17:14:49,A0000102,DUMMY
+DUMMY,None,None,243,2024/04/05,17:08:14,268,Class 268,10000212,None,1,None,None,None,None,None,None,None,None,None,None,None,10000212,2024/04/05,17:08:14,A0000106,DUMMY
+DUMMY,None,None,244,2024/04/05,17:08:15,244,勤務アンケートテスト教室,10000211,None,2,None,None,None,None,None,None,None,None,None,None,None,10000211,2024/04/05,17:14:49,A0000102,DUMMY
+DUMMY,None,None,245,2024/04/05,17:10:36,244,勤務アンケートテスト教室,10000213,None,2,None,None,None,None,None,None,None,None,None,None,None,10000213,2024/04/08,12:25:11,A0000102,DUMMY
+DUMMY,None,None,246,2024/04/05,17:12:36,244,勤務アンケートテスト教室,10000214,None,2,2024/03/31 00:00:00,None,採用お祝い不一致,採用お祝い不一致,0,None,None,None,None,None,None,168,2024/04/11,17:51:51,A0000102,DUMMY
+DUMMY,None,None,247,2024/04/05,18:00:13,267,basic,10000036,None,1,None,None,None,None,None,None,None,None,None,None,None,10000036,2024/04/05,18:00:13,A0000112,DUMMY
+DUMMY,None,None,248,2024/04/06,17:57:57,267,basic,10000215,None,1,None,None,None,None,1,None,None,None,None,None,None,124,2024/04/12,13:39:14,A0000112,DUMMY
+DUMMY,None,None,249,2024/04/06,18:05:25,267,basic,10000217,None,1,None,None,None,None,None,None,None,None,None,None,None,10000217,2024/04/06,18:05:25,A0000112,DUMMY
+DUMMY,None,None,250,2024/04/08,13:56:50,244,勤務アンケートテスト教室,10000085,None,2,None,None,None,None,None,None,None,None,None,None,None,10000085,2024/04/11,18:51:01,A0000102,DUMMY
+DUMMY,None,None,251,2024/04/08,16:09:01,271,勤務アンケートテスト教室,10000085,None,2,None,None,None,None,None,None,None,None,None,None,None,10000085,2024/04/11,18:51:01,A0000102,DUMMY
+DUMMY,None,None,252,2024/04/08,16:21:28,244,勤務アンケートテスト教室,10000010,None,2,None,None,None,None,None,None,None,None,None,None,None,10000010,2024/04/11,18:51:01,A0000102,DUMMY
+DUMMY,None,None,253,2024/04/08,16:26:45,244,勤務アンケートテスト教室,10000067,None,2,None,None,None,None,None,None,None,None,None,None,None,10000067,2024/04/11,18:51:01,A0000102,DUMMY
+DUMMY,None,None,254,2024/04/08,17:09:55,244,勤務アンケートテスト教室,10000219,None,2,2024/03/31 00:00:00,None,None,None,1,None,None,None,None,None,None,168,2024/04/11,18:06:47,A0000102,DUMMY
+DUMMY,None,None,255,2024/04/09,16:54:40,244,勤務アンケートテスト教室,10000220,None,2,None,None,退職日時未記入退職日時未記入,退職日時未記入退職日時未記入,0,None,None,None,None,None,None,124,2024/04/12,15:55:44,A0000102,DUMMY
+DUMMY,None,None,256,2024/04/09,18:16:57,244,勤務アンケートテスト教室,10000221,None,1,2024/03/03 00:00:00,None,None,None,0,None,None,None,None,None,None,None,2024/04/12,00:45:02,A0000102,DUMMY
+DUMMY,None,None,257,2024/04/10,11:32:19,267,basic,10000222,None,1,None,None,採用お祝い不一致,採用お祝い不一致,0,None,None,None,None,None,None,168,2024/04/11,17:54:09,A0000112,DUMMY
+DUMMY,None,None,258,2024/04/10,13:27:28,267,basic,10000223,None,4,None,None,None,None,1,None,None,None,None,None,None,168,2024/04/11,18:01:24,A0000112,DUMMY
+DUMMY,None,None,259,2024/04/11,10:21:11,272,てすと教室,10000198,None,1,2024/02/25 00:00:00,None,None,None,0,None,None,None,None,None,None,124,2024/04/12,14:04:38,A0000122,DUMMY
+DUMMY,None,None,260,2024/04/11,18:42:05,244,勤務アンケートテスト教室,10000224,None,2,None,None,None,None,None,None,None,None,None,None,None,10000224,2024/04/15,10:24:15,A0000102,DUMMY
+DUMMY,None,None,261,2024/04/12,00:00:10,258,テスト教室,10000225,None,1,None,None,None,None,0,None,None,None,None,None,None,168,2024/04/12,13:01:39,A0000118,DUMMY
+DUMMY,None,None,262,2024/04/12,15:25:58,275,てすと教室4,10000226,None,1,None,None,None,None,None,None,None,None,None,None,None,10000226,2024/04/12,15:25:58,A0000122,DUMMY
+DUMMY,None,None,263,2024/04/12,15:37:10,274,てすと教室3,10000227,None,1,None,None,None,None,None,None,None,None,None,None,None,10000227,2024/04/12,15:37:10,A0000122,DUMMY
+DUMMY,None,None,264,2024/04/15,18:30:04,289,佐久間テスト教室2,10000037,None,1,None,None,None,None,None,None,None,None,None,None,None,10000037,2024/04/15,18:30:04,A0000107,DUMMY
+DUMMY,None,None,265,2024/04/15,18:30:47,287,佐久間テスト教室,10000037,None,2,2024/03/31 00:00:00,None,None,None,None,None,None,None,None,None,None,10000037,2024/04/16,15:43:17,A0000107,DUMMY
+DUMMY,None,None,266,2024/04/15,18:31:15,129,【テスト】個別指導塾トモノカイ,10000037,None,3,None,None,"採用お祝い不一致確認 2024/04/16 15:18:59
 不採用の詳細:不合格
 テスト
 ※こちらの履歴は消去されないようご注意ください。採用お祝い不一致確認 2024/04/16 15:19:59
@@ -300,51 +286,6 @@ DUMMY,差し戻し,None,266,2024/04/15,18:31:15,129,【テスト】個別指導塾トモノカイ,1
 最終出勤日:2024/04/16
 退職手続日:2024/04/16
 テスト
-※こちらの履歴は消去されないようご注意ください。採用お祝い不一致",0,2024/04/16,15:14:58,None,None,None,None,168,2024/04/16,15:40:08,A0000107,DUMMY
-DUMMY,未提出,None,267,2024/04/16,11:24:56,272,てすと教室,10000228,None,None,None,None,None,None,None,None,None,None,None,None,None,10000228,2024/04/16,11:24:56,A0000122,DUMMY
-DUMMY,未提出,None,268,2024/04/16,11:32:31,271,勤務アンケートテスト教室,10000228,None,None,None,None,None,None,None,None,None,None,None,None,None,10000228,2024/04/16,11:32:31,A0000102,DUMMY
-DUMMY,未提出,None,269,2024/04/16,22:14:13,299,コピー先_キャリア,10000229,None,None,None,None,None,None,None,None,None,None,None,None,None,10000229,2024/04/16,22:14:13,A0000127,DUMMY
-DUMMY,提出中,None,270,2024/04/16,22:18:41,299,コピー先_キャリア,10000230,None,None,None,None,あああああ,あああああ,None,2024/04/16,22:55:42,None,None,None,None,10000230,2024/04/25,10:00:04,A0000127,DUMMY
-DUMMY,未提出,None,271,2024/04/17,10:39:23,271,勤務アンケートテスト教室,10000231,None,None,None,None,None,None,None,None,None,None,None,None,None,10000231,2024/04/17,10:39:23,A0000102,DUMMY
-DUMMY,未提出,None,272,2024/04/17,11:21:12,263,東京個別指導学院(ベネッセグループ)練馬教室,10000038,None,None,None,None,None,None,None,None,None,None,None,None,None,10000038,2024/04/17,11:21:12,A0000085,DUMMY
-DUMMY,未提出,None,273,2024/04/18,12:04:26,272,てすと教室,10000075,None,None,None,None,None,None,None,None,None,None,None,None,None,10000075,2024/04/18,12:04:26,A0000122,DUMMY
-DUMMY,未提出,None,274,2024/04/18,12:05:04,272,てすと教室,10000075,None,None,None,None,None,None,None,None,None,None,None,None,None,10000075,2024/04/18,12:05:04,A0000122,DUMMY
-DUMMY,未提出,None,275,2024/04/18,12:05:31,272,てすと教室,10000075,None,None,None,None,None,None,None,None,None,None,None,None,None,10000075,2024/04/18,12:05:31,A0000122,DUMMY
-DUMMY,提出中,None,276,2024/04/18,12:09:49,187,ハテヌナアカデミー45教室,10000075,None,None,None,None,None,None,None,2024/04/23,17:04:43,None,None,None,None,10000075,2024/04/23,17:04:43,A0000102,DUMMY
-DUMMY,提出中,None,277,2024/04/18,12:10:51,187,ハテヌナアカデミー45教室,10000075,None,None,None,None,None,None,None,2024/04/23,17:04:43,None,None,None,None,10000075,2024/04/23,17:04:43,A0000102,DUMMY
-DUMMY,提出中,None,278,2024/04/18,12:12:01,187,ハテヌナアカデミー45教室,10000075,None,None,None,None,None,None,None,2024/04/23,17:04:43,None,None,None,None,10000075,2024/04/23,17:04:43,A0000102,DUMMY
-DUMMY,提出中,None,279,2024/04/18,12:13:43,192,勤務アンケートテスト教室,10000075,None,None,None,None,None,None,None,2024/04/23,17:04:43,None,None,None,None,10000075,2024/04/23,17:04:43,A0000102,DUMMY
-DUMMY,提出中,None,280,2024/04/18,12:14:28,192,勤務アンケートテスト教室,10000075,None,None,None,None,None,None,None,2024/04/18,16:09:10,None,None,None,None,10000075,2024/04/18,16:09:10,A0000102,DUMMY
-DUMMY,未提出,None,281,2024/04/18,12:19:21,191,勤務アンケートテスト教室,10000075,None,不合格,2024/04/19 00:00:00,None,None,None,None,2024/04/18,16:09:10,None,None,None,None,None,2024/05/01,00:00:03,A0000102,DUMMY
-DUMMY,提出中,None,282,2024/04/18,12:19:37,191,勤務アンケートテスト教室,10000075,None,None,None,None,None,None,0,2024/04/18,14:25:33,None,None,None,1,None,2024/04/19,00:45:02,A0000102,DUMMY
-DUMMY,提出中,None,283,2024/04/18,12:19:49,191,勤務アンケートテスト教室,10000075,None,None,None,None,None,None,0,2024/04/18,14:25:33,None,None,None,1,None,2024/04/19,00:45:02,A0000102,DUMMY
-DUMMY,未提出,None,284,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000146,None,None,None,None,None,None,None,None,None,None,None,None,None,10000146,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,未提出,None,285,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000147,None,None,None,None,None,None,None,None,None,None,None,None,None,10000147,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,未提出,None,286,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000148,None,None,None,None,None,None,None,None,None,None,None,None,None,10000148,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,未提出,None,287,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000149,None,None,None,None,None,None,None,None,None,None,None,None,None,10000149,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,提出中,None,288,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000150,None,不合格,None,None,None,None,0,2024/04/19,13:04:22,None,None,None,None,7,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,完了,None,289,2024/04/19,14:12:05,244,勤務アンケートテスト教室,10000010,None,None,None,None,None,None,1,2024/04/22,18:16:04,None,None,None,None,124,2024/04/23,17:05:50,A0000102,DUMMY
-DUMMY,完了,None,290,2024/04/19,14:13:44,244,勤務アンケートテスト教室,10000085,None,None,2024/04/24 00:00:00,None,None,None,0,2024/04/23,10:15:44,None,None,None,1,None,2024/05/01,00:00:03,A0000102,DUMMY
-DUMMY,未提出,None,291,2024/04/19,16:07:12,244,勤務アンケートテスト教室,10000232,None,None,None,None,None,None,None,None,None,None,None,None,None,10000232,2024/04/19,16:07:12,A0000102,DUMMY
-DUMMY,提出中,None,292,2024/04/19,16:09:09,244,勤務アンケートテスト教室,10000233,None,None,None,None,None,None,None,2024/04/19,16:25:35,None,None,None,1,None,2024/04/19,17:00:03,A0000102,DUMMY
-DUMMY,完了,None,293,2024/04/19,16:22:25,244,勤務アンケートテスト教室,10000234,None,None,None,None,None,None,1,2024/04/19,16:26:40,None,None,None,None,124,2024/04/23,17:05:50,A0000102,DUMMY
-DUMMY,完了,None,294,2024/04/19,16:24:17,244,勤務アンケートテスト教室,10000235,None,None,None,None,None,None,1,2024/04/19,16:26:40,None,None,None,None,124,2024/04/23,17:05:50,A0000102,DUMMY
-DUMMY,未提出,None,295,2024/04/22,10:19:11,59,HuongDT Class,10000236,None,None,None,None,None,None,None,None,None,None,None,None,None,10000236,2024/04/22,10:19:11,A0000066,DUMMY
-DUMMY,完了,None,296,2024/04/23,10:24:05,252,限定求人テスト文字数テスト文字数テスト文字数テスト文字数テスト文字数テスト文字数テスト,10000238,None,None,None,None,None,None,1,2024/04/23,10:32:59,None,None,None,None,124,2024/04/23,10:35:15,A0000102,DUMMY
-DUMMY,完了,None,297,2024/04/23,12:01:59,303,761バッチテスト求人,10000238,None,None,2024/03/28 00:00:00,None,None,None,0,2024/04/23,12:03:34,None,None,None,None,None,2024/05/01,00:00:03,A0000102,DUMMY
-DUMMY,未提出,None,298,2024/04/25,13:11:31,247,Classroom_Hongntk Test,10000242,None,None,None,None,None,None,None,None,None,None,None,None,None,10000242,2024/04/25,13:11:31,A0000105,DUMMY
-DUMMY,未提出,None,299,2024/04/25,13:51:46,191,勤務アンケートテスト教室,10000228,None,None,None,None,None,None,None,None,None,None,None,None,None,10000228,2024/04/25,13:51:46,A0000102,DUMMY
-DUMMY,未提出,None,300,2024/04/25,14:25:39,191,勤務アンケートテスト教室,10000236,None,None,None,None,None,None,None,None,None,None,None,None,None,10000236,2024/04/25,14:25:39,A0000102,DUMMY
-DUMMY,未提出,None,301,2024/04/26,18:35:05,61,CLASSROOM  HoaTT 1,10000038,None,None,None,None,None,None,None,None,None,None,None,None,None,10000038,2024/04/26,18:35:05,A0000092,DUMMY
-DUMMY,未提出,None,302,2024/04/26,18:37:59,304,Test,10000247,None,None,None,None,None,None,None,None,None,None,None,None,None,10000247,2024/04/26,18:37:59,A0000106,DUMMY
-DUMMY,未提出,None,303,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000036,None,None,None,None,,,None,None,None,None,None,None,None,10000146,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,未提出,None,304,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000038,None,None,None,None,,,None,None,None,None,None,None,None,10000146,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,未提出,None,305,2024/04/30,02:04:57,50,DatHM Classroom Sunday,10000248,None,None,None,None,None,None,None,None,None,None,None,None,None,10000248,2024/04/30,02:04:57,A0000066,DUMMY
-DUMMY,未提出,None,306,2024/04/30,10:51:42,296,【テスト】個別指導塾トモノカイ_コピー元,10000236,None,None,None,None,None,None,None,None,None,None,None,None,None,10000236,2024/04/30,10:51:42,A0000127,DUMMY
-DUMMY,未提出,None,307,2024/04/30,10:52:43,304,Test,10000236,None,None,None,None,None,None,None,None,None,None,None,None,None,10000236,2024/04/30,10:52:43,A0000106,DUMMY
-DUMMY,未提出,None,308,2024/04/30,10:56:03,296,【テスト】個別指導塾トモノカイ_コピー元,10000249,None,None,None,None,None,None,None,None,None,None,None,None,None,10000249,2024/04/30,10:56:03,A0000127,DUMMY
-DUMMY,未提出,None,309,2024/04/30,10:57:27,244,勤務アンケートテスト教室,10000250,None,None,None,None,None,None,None,None,None,None,None,None,None,10000250,2024/04/30,10:57:27,A0000102,DUMMY
-DUMMY,提出中,None,311,2024/04/30,11:16:12,304,Test,10000249,None,None,None,None,gfdgfdgfdfd,gfdgfdgfdfd,None,2024/05/03,18:09:31,None,None,None,None,10000249,2024/05/03,18:09:31,A0000106,DUMMY
-DUMMY,未提出,None,313,2023/10/15,00:00:00,244,勤務アンケートテスト教室,10000250,None,None,None,None,,,None,None,None,None,None,None,None,10000250,2023/10/15,00:00:00,A0000102,DUMMY
-DUMMY,未提出,None,314,2024/05/02,19:11:44,74,青嶋テスト クライアント画面CK,10000253,None,None,None,None,None,None,None,None,None,None,None,None,None,10000253,2024/05/02,19:11:44,A0000104,DUMMY
-DUMMY,完了,None,315,2024/05/03,11:31:18,268,Class 268,10000081,None,None,2024/04/30 00:00:00,1,Class 268,Class 268,1,2024/05/03,11:34:17,2024/04/30,00:00:00,None,None,7,2024/05/03,12:15:13,A0000106,DUMMY
+※こちらの履歴は消去されないようご注意ください。採用お祝い不一致",0,None,None,None,None,None,None,168,2024/04/16,15:40:08,A0000107,DUMMY
+DUMMY,None,None,267,2024/04/16,11:24:56,272,てすと教室,10000228,None,1,None,None,None,None,None,None,None,None,None,None,None,10000228,2024/04/16,11:24:56,A0000122,DUMMY
+DUMMY,None,None,268,2024/04/16,11:32:31,271,勤務アンケートテスト教室,10000228,None,1,None,None,None,None,None,None,None,None,None,None,None,10000228,2024/04/16,11:32:31,A0000102,DUMMY
