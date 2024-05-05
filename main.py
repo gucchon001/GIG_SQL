@@ -106,7 +106,6 @@ print("\n処理結果一覧:")
 for result in results:
     print(result)
 
-
 # 個別実行
 def execute_sql_file(conn, file_info):
     sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution = file_info

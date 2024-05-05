@@ -1659,3 +1659,83 @@ gspread.exceptions.APIError: {'code': 400, 'message': 'Invalid requests[0].addSh
 2024-05-05 20:03:13,606 - main - INFO - データベース接続を閉じました。
 2024-05-05 20:03:13,650 - main - INFO - SSHトンネルを閉じました。
 2024-05-05 20:03:13,650 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 20:49:54,746 - main - INFO - データベース接続を閉じました。
+2024-05-05 20:49:54,746 - main - INFO - データベース接続を閉じました。
+2024-05-05 20:49:54,796 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 20:49:54,796 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 20:54:47,527 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ANDdeleted_at IS NULL
+GROUP BY 
+    o.company_id' at line 10
+2024-05-05 20:54:47,527 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ANDdeleted_at IS NULL
+GROUP BY 
+    o.company_id' at line 10
+2024-05-05 20:54:47,539 - main - INFO - データベース接続を閉じました。
+2024-05-05 20:54:47,539 - main - INFO - データベース接続を閉じました。
+2024-05-05 20:54:47,553 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 20:54:47,553 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 21:00:16,692 - main - INFO - データベース接続を閉じました。
+2024-05-05 21:00:16,692 - main - INFO - データベース接続を閉じました。
+2024-05-05 21:00:16,728 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 21:00:16,728 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:44:31,090 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:44:31,090 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:44:31,108 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:44:31,108 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:45:13,006 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 23:45:13,006 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 23:45:17,606 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 23:45:17,606 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 23:45:17,612 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:45:17,612 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:45:17,706 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:45:17,706 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:45:57,761 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 23:45:57,761 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 23:45:57,761 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:45:57,761 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:45:57,828 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:45:57,828 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:46:23,425 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:46:23,425 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:46:23,452 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:46:23,452 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:47:13,211 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 23:47:13,211 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 23:47:13,223 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:47:13,223 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:47:13,320 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:47:13,320 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:52:38,514 - main - ERROR - SQLクエリの処理中にエラーが発生しました: check_and_prepare_where_clause() missing 1 required positional argument: 'additional_conditions'
+2024-05-05 23:52:38,514 - main - ERROR - SQLクエリの処理中にエラーが発生しました: check_and_prepare_where_clause() missing 1 required positional argument: 'additional_conditions'
+2024-05-05 23:52:38,521 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:52:38,521 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:52:38,597 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:52:38,597 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:54:55,982 - main - ERROR - SQLクエリの処理中にエラーが発生しました: check_and_prepare_where_clause() missing 1 required positional argument: 'additional_conditions'
+2024-05-05 23:54:55,982 - main - ERROR - SQLクエリの処理中にエラーが発生しました: check_and_prepare_where_clause() missing 1 required positional argument: 'additional_conditions'
+2024-05-05 23:54:55,999 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:54:55,999 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:54:56,015 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:54:56,015 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:57:08,318 - main - ERROR - SQLクエリの処理中にエラーが発生しました: check_and_prepare_where_clause() missing 1 required positional argument: 'additional_conditions'
+2024-05-05 23:57:08,318 - main - ERROR - SQLクエリの処理中にエラーが発生しました: check_and_prepare_where_clause() missing 1 required positional argument: 'additional_conditions'
+2024-05-05 23:57:08,327 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:57:08,327 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:57:08,342 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:57:08,342 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:59:17,862 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:59:17,862 - main - INFO - データベース接続を閉じました。
+2024-05-05 23:59:17,912 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 23:59:17,912 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 00:00:07,956 - main - INFO - データベース接続を閉じました。
+2024-05-06 00:00:07,956 - main - INFO - データベース接続を閉じました。
+2024-05-06 00:00:08,046 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 00:00:08,046 - main - INFO - SSHトンネルを閉じました。
