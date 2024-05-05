@@ -142,3 +142,21 @@
 2024-05-04 04:00:34,017 - googlesheet_export - DEBUG - CSVファイル 'foreignkeylist.csv': シート 'foreignkeylist' に対応します。
 2024-05-04 04:00:34,047 - googlesheet_export - INFO - foreignkeylist.csv から 108 行読み込まれました。
 2024-05-04 04:00:34,627 - googlesheet_export - INFO - foreignkeylist シートにデータが更新されました。
+2024-05-05 04:00:25,301 - googlesheet_export - DEBUG - 設定ファイルを読み込みます: config.ini
+2024-05-05 04:00:25,329 - googlesheet_export - DEBUG - CSVファイルの基本パス: \\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\data
+2024-05-05 04:00:25,331 - googlesheet_export - DEBUG - 認証情報のJSONキーファイルパス: \\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\boxwood-dynamo-384411-6dec80faabfc.json
+2024-05-05 04:00:25,333 - googlesheet_export - DEBUG - スプレッドシートID: 1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q
+2024-05-05 04:00:25,416 - googlesheet_export - INFO - Google スプレッドシートへの認証が完了しました。
+2024-05-05 04:00:31,165 - googlesheet_export - INFO - スプレッドシートを開きました: ADMIN_CSV_DLツール_v1.0
+2024-05-05 04:00:31,168 - googlesheet_export - DEBUG - CSVファイル 'dblist.csv': シート 'dblist' に対応します。
+2024-05-05 04:00:31,185 - googlesheet_export - INFO - dblist.csv から 1419 行読み込まれました。
+2024-05-05 04:00:32,275 - googlesheet_export - INFO - dblist シートにデータが更新されました。
+2024-05-05 04:00:32,277 - googlesheet_export - DEBUG - CSVファイル 'tablelist.csv': シート 'tablelist' に対応します。
+2024-05-05 04:00:32,290 - googlesheet_export - INFO - tablelist.csv から 95 行読み込まれました。
+2024-05-05 04:00:32,894 - googlesheet_export - INFO - tablelist シートにデータが更新されました。
+2024-05-05 04:00:32,902 - googlesheet_export - DEBUG - CSVファイル 'primarykeylist.csv': シート 'primarykeylist' に対応します。
+2024-05-05 04:00:32,916 - googlesheet_export - INFO - primarykeylist.csv から 92 行読み込まれました。
+2024-05-05 04:00:34,462 - googlesheet_export - INFO - primarykeylist シートにデータが更新されました。
+2024-05-05 04:00:34,469 - googlesheet_export - DEBUG - CSVファイル 'foreignkeylist.csv': シート 'foreignkeylist' に対応します。
+2024-05-05 04:00:34,497 - googlesheet_export - INFO - foreignkeylist.csv から 110 行読み込まれました。
+2024-05-05 04:00:35,197 - googlesheet_export - INFO - foreignkeylist シートにデータが更新されました。

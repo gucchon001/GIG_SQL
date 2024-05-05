@@ -183,10 +183,12 @@ def extract_columns_mapping(sql_query):
 def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_exclusion, skip_deletion_exclusion=False):
     try:
         columns_mapping = extract_columns_mapping(sql_query)
-        print("columns_mapping:", columns_mapping)
+        print("Original SQL Query:")
+        print(sql_query)
 
         additional_conditions = []
 
+        # その他の条件の生成
         for db_item, values in input_values.items():
             if db_item in columns_mapping and values:
                 column_name = columns_mapping[db_item]
@@ -208,67 +210,52 @@ def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_
                         condition = f"{column_name} = '{values}'"
                         additional_conditions.append(condition)
 
-        sql_parts = sql_query.split('FROM clause')
-        if len(sql_parts) != 2:
-            raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
-
-        from_clause_onward = sql_parts[1]
-        alias_match = re.search(r"FROM\s+[\w\.]+\s+(\w+)", from_clause_onward, re.IGNORECASE)
-        alias_name = alias_match.group(1) if alias_match else ''
-
-        deleted_at_column = f"{alias_name}.deleted_at" if alias_name else "deleted_at"
-
+        # 削除除外条件の追加
         if not skip_deletion_exclusion:
             deletion_exclusion = str(deletion_exclusion).upper()
             if deletion_exclusion == 'TRUE':
-                additional_conditions.append(f"{deleted_at_column} IS NULL")
-            elif deletion_exclusion == 'FALSE':
-                pass
-            else:
+                additional_conditions.append("deleted_at IS NULL")
+            elif deletion_exclusion != 'FALSE':
                 raise ValueError("Invalid value for deletion_exclusion. It should be either True or False.")
 
+        # SQLクエリの前処理
         if sql_query.strip().endswith(";"):
             sql_query = sql_query.strip()[:-1]
         else:
             sql_query = sql_query.strip()
 
-        lines = sql_query.split('\n')
-
-        upper_lines = [line.upper() for line in lines if 'CASE WHEN' not in line.upper()]
-        upper_query = '\n'.join(upper_lines)
-
-        from_index = upper_query.find("FROM")
-
-        if from_index != -1:
-            before_from_lines = lines[:lines.index(next(line for line in lines if "FROM" in line.upper())) + 1]
-            after_from_lines = lines[lines.index(next(line for line in lines if "FROM" in line.upper())) + 1:]
-
-            where_index = upper_query.find("WHERE", from_index)
-
-            if where_index != -1:
-                before_where_lines = after_from_lines[:upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper()))]
-                after_where_lines = after_from_lines[upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper())):]
-
-                if additional_conditions:
-                    modified_after_from_lines = before_where_lines + [f"AND {' AND '.join(additional_conditions)}"] + after_where_lines
-                else:
-                    modified_after_from_lines = before_where_lines + after_where_lines
-            else:
-                if additional_conditions:
-                    modified_after_from_lines = after_from_lines + [f"WHERE {' AND '.join(additional_conditions)}"]
-                else:
-                    modified_after_from_lines = after_from_lines
-
-            modified_lines = before_from_lines + modified_after_from_lines
-            sql_query = '\n'.join(modified_lines)
-
+        # GROUP BY 句を検出して分割
+        group_by_index = sql_query.upper().find("GROUP BY")
+        if group_by_index != -1:
+            before_group_by = sql_query[:group_by_index]
+            group_by_clause = sql_query[group_by_index:]
         else:
-            raise ValueError("FROM句が見つかりませんでした")
+            before_group_by = sql_query
+            group_by_clause = ""
 
-        sql_query = sql_query.strip() + ";"
+        # WHERE 句の処理
+        where_index = before_group_by.upper().find("WHERE")
+        if where_index != -1:
+            before_where = before_group_by[:where_index + 5]  # 'WHERE'を含む
+            after_where = before_group_by[where_index + 5:]
+            if additional_conditions:
+                additional_condition_string = ' AND '.join(additional_conditions)
+                modified_sql = f"{before_where} {additional_condition_string} AND {after_where}"
+            else:
+                modified_sql = before_group_by
+        else:
+            if additional_conditions:
+                additional_condition_string = ' AND '.join(additional_conditions)
+                modified_sql = f"{before_group_by} WHERE {additional_condition_string}"
+            else:
+                modified_sql = before_group_by
 
-        print("Modified SQL Query:", sql_query)
-        return sql_query
+        # GROUP BY 句の再追加
+        final_sql = f"{modified_sql} {group_by_clause}".strip() + ";"
+
+        print("Modified SQL Query:")
+        print(final_sql)
+        return final_sql
     except Exception as e:
         LOGGER.error(f"add_conditions_to_sql関数内でエラーが発生しました: {e}")
         raise
@@ -386,84 +373,81 @@ def copy_to_clipboard(conn, sql_query, include_header):
 
 def set_period_condition(period_condition, period_criteria, sql_query):
     try:
+        # 日付関連の計算
         today = datetime.date.today()
         yesterday = today - datetime.timedelta(days=1)
         three_days_ago = today - datetime.timedelta(days=3)
 
+        # 時間関連のカラム名を設定
         if period_criteria == '登録日時':
             column_name = 'created_at'
         elif period_criteria == '更新日時':
             column_name = 'updated_at'
         else:
             return sql_query
+        
+        print('Original SQL query:')
+        print(sql_query)
 
-        sql_parts = sql_query.split('FROM clause')
-        if len(sql_parts) != 2:
-            raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
-
-        from_clause_onward = sql_parts[1]
-        alias_match = re.search(r"FROM\s+[\w\.]+\s+(\w+)", from_clause_onward, re.IGNORECASE)
-        alias_name = alias_match.group(1) if alias_match else ''
-
-        column_name = f"{alias_name}.{column_name}" if alias_name else column_name
-
-        if period_condition == '当日':
-            condition = f"DATE({column_name}) = '{today}'"
-        elif period_condition == '前日':
-            condition = f"DATE({column_name}) = '{yesterday}'"
-        elif period_condition == '前日まで累積':
-            condition = f"DATE({column_name}) <= '{yesterday}'"
-        elif period_condition.endswith('～前日まで累積'):
-            start_date_str = period_condition.split('～')[0].strip()
-            start_date = datetime.datetime.strptime(start_date_str, '%Y年%m月%d日').date()
-            condition = f"DATE({column_name}) BETWEEN '{start_date}' AND '{yesterday}'"
-        elif period_condition.endswith('日前時点を1日分'):
-            days_ago = int(period_condition.split('日前')[0])
-            target_date = today - datetime.timedelta(days=days_ago)
-            condition = f"DATE({column_name}) = '{target_date}'"
-        else:
-            return sql_query
-
+        # SQLクエリの整形
         if sql_query.strip().endswith(";"):
             sql_query = sql_query.strip()[:-1]
-        else:
-            sql_query = sql_query.strip()
 
+        # SQL文を分割して大文字に変換し、GROUP BY句を検出
         lines = sql_query.split('\n')
-
-        upper_lines = [line.upper() for line in lines if 'CASE WHEN' not in line.upper()]
+        upper_lines = [line.upper() for line in lines]
         upper_query = '\n'.join(upper_lines)
 
-        from_index = upper_query.find("FROM")
+        group_by_index = upper_query.find("GROUP BY")
 
-        if from_index != -1:
-            before_from_lines = lines[:lines.index(next(line for line in lines if "FROM" in line.upper())) + 1]
-            after_from_lines = lines[lines.index(next(line for line in lines if "FROM" in line.upper())) + 1:]
-
-            where_index = upper_query.find("WHERE", from_index)
-
-            if where_index != -1:
-                before_where_lines = after_from_lines[:upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper()))]
-                after_where_lines = after_from_lines[upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper())):]
-
-                modified_after_from_lines = before_where_lines + [f"AND {condition}"] + after_where_lines
-            else:
-                modified_after_from_lines = after_from_lines + [f"WHERE {condition}"]
-
-            modified_lines = before_from_lines + modified_after_from_lines
-            sql_query = '\n'.join(modified_lines)
-
+        # GROUP BY句が見つかった場合の処理
+        if group_by_index != -1:
+            group_by_clause = sql_query[group_by_index:]
+            sql_query = sql_query[:group_by_index].strip()
+            print("GROUP BY clause:")
+            print(group_by_clause)
         else:
-            raise ValueError("FROM句が見つかりませんでした")
+            group_by_clause = ''
 
-        sql_query = sql_query.strip() + ";"
+        # WHERE句の追加
+        where_index = upper_query.find("WHERE")
+        if where_index == -1:
+            sql_query += " WHERE"
+        else:
+            sql_query += " AND"
+
+        # 期間条件に基づくWHERE句の条件を追加
+        if period_condition == '当日':
+            condition = f" DATE({column_name}) = '{today}'"
+        elif period_condition == '前日':
+            condition = f" DATE({column_name}) = '{yesterday}'"
+        elif period_condition == '前日まで累積':
+            condition = f" DATE({column_name}) <= '{yesterday}'"
+        elif '～前日まで累積' in period_condition:
+            start_date_str = period_condition.split('～')[0].strip()
+            start_date = datetime.datetime.strptime(start_date_str, '%Y年%m月%d日').date()
+            condition = f" DATE({column_name}) BETWEEN '{start_date}' AND '{yesterday}'"
+        elif '日前時点を1日分' in period_condition:
+            days_ago = int(period_condition.split('日前')[0])
+            target_date = today - datetime.timedelta(days=days_ago)
+            condition = f" DATE({column_name}) = '{target_date}'"
+        else:
+            condition = ""
+
+        sql_query += condition
+
+        # GROUP BY句を再追加
+        if group_by_clause:
+            sql_query += "\n" + group_by_clause
+        else:
+            sql_query += ";"
 
         print('Modified SQL query:')
         print(sql_query)
 
         return sql_query
     except Exception as e:
-        LOGGER.error(f"set_period_condition関数内でエラーが発生しました: {e}")
+        print(f"An error occurred: {e}")
         raise
 
 #スプシ貼り付け

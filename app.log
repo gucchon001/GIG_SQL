@@ -1373,3 +1373,289 @@ AttributeError: module 'main' has no attribute 'execute_sql_file'
 2024-05-02 22:07:10,900 - main - INFO - データベース接続を閉じました。
 2024-05-02 22:07:10,912 - main - INFO - SSHトンネルを閉じました。
 2024-05-02 22:07:10,912 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 00:47:46,454 - main - INFO - データベース接続を閉じました。
+2024-05-05 00:47:46,454 - main - INFO - データベース接続を閉じました。
+2024-05-05 00:47:46,542 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 00:47:46,542 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 00:48:45,997 - main - INFO - データベース接続を閉じました。
+2024-05-05 00:48:45,997 - main - INFO - データベース接続を閉じました。
+2024-05-05 00:48:46,038 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 00:48:46,038 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 15:30:15,629 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'AS.created_at' in 'where clause'
+2024-05-05 15:30:15,629 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'AS.created_at' in 'where clause'
+2024-05-05 15:30:15,655 - main - INFO - データベース接続を閉じました。
+2024-05-05 15:30:15,655 - main - INFO - データベース接続を閉じました。
+2024-05-05 15:30:15,686 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 15:30:15,686 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 15:37:34,552 - main - INFO - データベース接続を閉じました。
+2024-05-05 15:37:34,552 - main - INFO - データベース接続を閉じました。
+2024-05-05 15:37:34,598 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 15:37:34,598 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 15:55:15,536 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 551, in setup_test_environment
+    worksheet = spreadsheet.worksheet(test_sheet_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 自動オファー_test
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 47, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 556, in setup_test_environment
+    worksheet = spreadsheet.add_worksheet(title=test_sheet_name, rows=source_sheet.row_count, cols=source_sheet.col_count)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 383, in add_worksheet
+    data = self.batch_update(body)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 122, in batch_update
+    r = self.client.request(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 400, 'message': 'Invalid requests[0].addSheet: This action would increase the number of cells in the workbook above the limit of 10000000 cells.', 'status': 'INVALID_ARGUMENT'}
+
+2024-05-05 15:55:15,536 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 551, in setup_test_environment
+    worksheet = spreadsheet.worksheet(test_sheet_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 自動オファー_test
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 47, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 556, in setup_test_environment
+    worksheet = spreadsheet.add_worksheet(title=test_sheet_name, rows=source_sheet.row_count, cols=source_sheet.col_count)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 383, in add_worksheet
+    data = self.batch_update(body)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 122, in batch_update
+    r = self.client.request(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 400, 'message': 'Invalid requests[0].addSheet: This action would increase the number of cells in the workbook above the limit of 10000000 cells.', 'status': 'INVALID_ARGUMENT'}
+
+2024-05-05 15:55:16,243 - main - INFO - データベース接続を閉じました。
+2024-05-05 15:55:16,243 - main - INFO - データベース接続を閉じました。
+2024-05-05 15:55:16,344 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 15:55:16,344 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 15:58:24,528 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 551, in setup_test_environment
+    worksheet = spreadsheet.worksheet(test_sheet_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 自動オファー_test
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 47, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 556, in setup_test_environment
+    worksheet = spreadsheet.add_worksheet(title=test_sheet_name, rows=source_sheet.row_count, cols=source_sheet.col_count)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 383, in add_worksheet
+    data = self.batch_update(body)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 122, in batch_update
+    r = self.client.request(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 400, 'message': 'Invalid requests[0].addSheet: This action would increase the number of cells in the workbook above the limit of 10000000 cells.', 'status': 'INVALID_ARGUMENT'}
+
+2024-05-05 15:58:24,528 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 341, in worksheet
+    item = finditem(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\utils.py", line 149, in finditem
+    return next(item for item in seq if func(item))
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 551, in setup_test_environment
+    worksheet = spreadsheet.worksheet(test_sheet_name)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 347, in worksheet
+    raise WorksheetNotFound(title)
+gspread.exceptions.WorksheetNotFound: 自動オファー_test
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 47, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 556, in setup_test_environment
+    worksheet = spreadsheet.add_worksheet(title=test_sheet_name, rows=source_sheet.row_count, cols=source_sheet.col_count)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 383, in add_worksheet
+    data = self.batch_update(body)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 122, in batch_update
+    r = self.client.request(
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 400, 'message': 'Invalid requests[0].addSheet: This action would increase the number of cells in the workbook above the limit of 10000000 cells.', 'status': 'INVALID_ARGUMENT'}
+
+2024-05-05 15:58:25,192 - main - INFO - データベース接続を閉じました。
+2024-05-05 15:58:25,192 - main - INFO - データベース接続を閉じました。
+2024-05-05 15:58:25,263 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 15:58:25,263 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 15:58:59,554 - main - INFO - データベース接続を閉じました。
+2024-05-05 15:58:59,554 - main - INFO - データベース接続を閉じました。
+2024-05-05 15:58:59,574 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 15:58:59,574 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 16:01:41,032 - main - INFO - データベース接続を閉じました。
+2024-05-05 16:01:41,032 - main - INFO - データベース接続を閉じました。
+2024-05-05 16:01:41,063 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 16:01:41,063 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 16:53:00,356 - main - INFO - データベース接続を閉じました。
+2024-05-05 16:53:00,356 - main - INFO - データベース接続を閉じました。
+2024-05-05 16:53:00,401 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 16:53:00,401 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 16:53:30,413 - main - INFO - データベース接続を閉じました。
+2024-05-05 16:53:30,413 - main - INFO - データベース接続を閉じました。
+2024-05-05 16:53:30,431 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 16:53:30,431 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 16:59:56,149 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE DATE(created_at) = '2024-05-04'' at line 11
+2024-05-05 16:59:56,149 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE DATE(created_at) = '2024-05-04'' at line 11
+2024-05-05 16:59:56,154 - main - INFO - データベース接続を閉じました。
+2024-05-05 16:59:56,154 - main - INFO - データベース接続を閉じました。
+2024-05-05 16:59:56,230 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 16:59:56,230 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:05:39,175 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE DATE(created_at) = '2024-05-04'' at line 11
+2024-05-05 17:05:39,175 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE DATE(created_at) = '2024-05-04'' at line 11
+2024-05-05 17:05:39,181 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:05:39,181 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:05:39,271 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:05:39,271 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:18:34,126 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:18:34,126 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:18:34,192 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:18:34,192 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:19:12,597 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:19:12,597 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:19:12,713 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:19:12,713 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:20:23,467 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:20:23,467 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:20:23,484 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:20:23,484 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:40:39,874 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:40:39,874 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:40:39,918 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:40:39,918 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:41:04,077 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:41:04,077 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:41:04,167 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:41:04,167 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:51:37,696 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:51:37,696 - main - INFO - データベース接続を閉じました。
+2024-05-05 17:51:37,755 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 17:51:37,755 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:09:45,725 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:09:45,725 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:09:45,752 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:09:45,752 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:16:51,068 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:16:51,068 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:16:51,085 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:16:51,085 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:31:07,787 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:31:07,787 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:31:07,870 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:31:07,870 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:33:51,777 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:33:51,777 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:33:51,889 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:33:51,889 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:36:55,880 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:36:55,880 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:36:55,933 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:36:55,933 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:40:53,411 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:40:53,411 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:40:53,530 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:40:53,530 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:49:27,100 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:49:27,100 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:49:27,113 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:49:27,113 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:56:50,439 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:56:50,439 - main - INFO - データベース接続を閉じました。
+2024-05-05 18:56:50,541 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 18:56:50,541 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:10:14,146 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:10:14,146 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:10:14,166 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:10:14,166 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:24:26,717 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:24:26,717 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:24:26,736 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:24:26,736 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:36:24,065 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:36:24,065 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:36:24,159 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:36:24,159 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:39:05,484 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:39:05,484 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:39:05,585 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:39:05,585 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:43:08,197 - main - ERROR - SQLクエリの処理中にエラーが発生しました: 'deleted_at'
+2024-05-05 19:43:08,197 - main - ERROR - SQLクエリの処理中にエラーが発生しました: 'deleted_at'
+2024-05-05 19:43:08,203 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:43:08,203 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:43:08,268 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:43:08,268 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:46:20,370 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 19:46:20,370 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 19:46:20,377 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:46:20,377 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:46:20,494 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:46:20,494 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:46:52,647 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:46:52,647 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:46:52,738 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:46:52,738 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:47:39,097 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'AS.deleted_at' in 'group statement'
+2024-05-05 19:47:39,097 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'AS.deleted_at' in 'group statement'
+2024-05-05 19:47:39,104 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:47:39,104 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:47:39,182 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:47:39,182 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:53:57,456 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 19:53:57,456 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GROUP BY 
+    o.company_id' at line 11
+2024-05-05 19:53:57,462 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:53:57,462 - main - INFO - データベース接続を閉じました。
+2024-05-05 19:53:57,476 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 19:53:57,476 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 20:03:13,606 - main - INFO - データベース接続を閉じました。
+2024-05-05 20:03:13,606 - main - INFO - データベース接続を閉じました。
+2024-05-05 20:03:13,650 - main - INFO - SSHトンネルを閉じました。
+2024-05-05 20:03:13,650 - main - INFO - SSHトンネルを閉じました。
