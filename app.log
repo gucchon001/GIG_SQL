@@ -1264,3 +1264,112 @@ PermissionError
 2024-05-01 17:57:56,918 - main - INFO - SSHトンネルを閉じました。
 2024-05-01 18:04:35,477 - main - INFO - データベース接続を閉じました。
 2024-05-01 18:04:35,588 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 16:35:06,127 - main - ERROR - 23_invoices.sql の読み込みに失敗しました。
+2024-05-02 16:36:15,265 - main - INFO - データベース接続を閉じました。
+2024-05-02 16:36:15,338 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 16:39:22,082 - main - INFO - データベース接続を閉じました。
+2024-05-02 16:39:22,086 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 16:44:47,650 - main - INFO - データベース接続を閉じました。
+2024-05-02 16:44:47,761 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 17:10:05,584 - main - INFO - データベース接続を閉じました。
+2024-05-02 17:10:05,643 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 18:28:24,240 - main - INFO - データベース接続を閉じました。
+2024-05-02 18:28:24,240 - main - INFO - データベース接続を閉じました。
+2024-05-02 18:28:24,327 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 18:28:24,327 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 18:33:48,623 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'AS.deleted_at' in 'where clause'
+2024-05-02 18:33:48,623 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'AS.deleted_at' in 'where clause'
+2024-05-02 18:34:44,177 - main - INFO - データベース接続を閉じました。
+2024-05-02 18:34:44,177 - main - INFO - データベース接続を閉じました。
+2024-05-02 18:34:44,262 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 18:34:44,262 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:48:27,722 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'JOIN.deleted_at' in 'where clause'
+2024-05-02 19:48:27,722 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'JOIN.deleted_at' in 'where clause'
+2024-05-02 19:49:23,516 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:49:23,516 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:49:23,602 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:49:23,602 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:49:27,319 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "eachSql_execute.py", line 45, in <module>
+    main.execute_sql_file(conn, target_file_info)
+AttributeError: module 'main' has no attribute 'execute_sql_file'
+
+2024-05-02 19:49:27,319 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "eachSql_execute.py", line 45, in <module>
+    main.execute_sql_file(conn, target_file_info)
+AttributeError: module 'main' has no attribute 'execute_sql_file'
+
+2024-05-02 19:49:27,324 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:49:27,324 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:49:27,400 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:49:27,400 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:52:36,081 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'JOIN.deleted_at' in 'where clause'
+2024-05-02 19:52:36,081 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'JOIN.deleted_at' in 'where clause'
+2024-05-02 19:53:31,601 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:53:31,601 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:53:31,666 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:53:31,666 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:53:35,698 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "execute_sql.py", line 45, in <module>
+    result = main.execute_sql_file(conn, target_file_info)
+AttributeError: module 'main' has no attribute 'execute_sql_file'
+
+2024-05-02 19:53:35,698 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "execute_sql.py", line 45, in <module>
+    result = main.execute_sql_file(conn, target_file_info)
+AttributeError: module 'main' has no attribute 'execute_sql_file'
+
+2024-05-02 19:53:35,705 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:53:35,705 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:53:35,791 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:53:35,791 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:54:46,128 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'JOIN.deleted_at' in 'where clause'
+2024-05-02 19:54:46,128 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'JOIN.deleted_at' in 'where clause'
+2024-05-02 19:55:42,376 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:55:42,376 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:55:42,389 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:55:42,389 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:55:48,997 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'JOIN.deleted_at' in 'where clause'
+2024-05-02 19:55:48,997 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'JOIN.deleted_at' in 'where clause'
+2024-05-02 19:55:49,005 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:55:49,005 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:55:49,105 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:55:49,105 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:56:44,329 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'JOIN.deleted_at' in 'where clause'
+2024-05-02 19:56:44,329 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1054 (42S22): Unknown column 'JOIN.deleted_at' in 'where clause'
+2024-05-02 19:57:35,805 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:57:35,805 - main - INFO - データベース接続を閉じました。
+2024-05-02 19:57:35,896 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 19:57:35,896 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 20:03:32,516 - main - INFO - データベース接続を閉じました。
+2024-05-02 20:03:32,516 - main - INFO - データベース接続を閉じました。
+2024-05-02 20:03:32,602 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 20:03:32,602 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 20:53:21,313 - main - INFO - データベース接続を閉じました。
+2024-05-02 20:53:21,313 - main - INFO - データベース接続を閉じました。
+2024-05-02 20:53:21,509 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 20:53:21,509 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 21:58:28,887 - main - ERROR - add_conditions_to_sql関数内でエラーが発生しました: 「FROM句」コメントが見つからないか、複数存在します
+2024-05-02 21:58:28,887 - main - ERROR - add_conditions_to_sql関数内でエラーが発生しました: 「FROM句」コメントが見つからないか、複数存在します
+2024-05-02 21:58:28,991 - main - ERROR - SQLクエリの処理中にエラーが発生しました: 「FROM句」コメントが見つからないか、複数存在します
+2024-05-02 21:58:28,991 - main - ERROR - SQLクエリの処理中にエラーが発生しました: 「FROM句」コメントが見つからないか、複数存在します
+2024-05-02 21:59:37,278 - main - INFO - データベース接続を閉じました。
+2024-05-02 21:59:37,278 - main - INFO - データベース接続を閉じました。
+2024-05-02 21:59:37,347 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 21:59:37,347 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 22:01:16,522 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT
+    i.id AS "請求管理ID",
+    cba.id AS "請求ID", 
+    cba.fm_co' at line 18
+2024-05-02 22:01:16,522 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT
+    i.id AS "請求管理ID",
+    cba.id AS "請求ID", 
+    cba.fm_co' at line 18
+2024-05-02 22:03:23,090 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: Unread result found
+2024-05-02 22:03:23,090 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: Unread result found
+2024-05-02 22:03:25,568 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: Unread result found
+2024-05-02 22:03:25,568 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: Unread result found
+2024-05-02 22:07:10,900 - main - INFO - データベース接続を閉じました。
+2024-05-02 22:07:10,900 - main - INFO - データベース接続を閉じました。
+2024-05-02 22:07:10,912 - main - INFO - SSHトンネルを閉じました。
+2024-05-02 22:07:10,912 - main - INFO - SSHトンネルを閉じました。

@@ -106,3 +106,39 @@
 2024-05-02 04:00:31,922 - googlesheet_export - DEBUG - CSVファイル 'foreignkeylist.csv': シート 'foreignkeylist' に対応します。
 2024-05-02 04:00:31,950 - googlesheet_export - INFO - foreignkeylist.csv から 110 行読み込まれました。
 2024-05-02 04:00:32,785 - googlesheet_export - INFO - foreignkeylist シートにデータが更新されました。
+2024-05-03 04:00:25,677 - googlesheet_export - DEBUG - 設定ファイルを読み込みます: config.ini
+2024-05-03 04:00:25,701 - googlesheet_export - DEBUG - CSVファイルの基本パス: \\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\data
+2024-05-03 04:00:25,704 - googlesheet_export - DEBUG - 認証情報のJSONキーファイルパス: \\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\boxwood-dynamo-384411-6dec80faabfc.json
+2024-05-03 04:00:25,707 - googlesheet_export - DEBUG - スプレッドシートID: 1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q
+2024-05-03 04:00:25,806 - googlesheet_export - INFO - Google スプレッドシートへの認証が完了しました。
+2024-05-03 04:00:31,492 - googlesheet_export - INFO - スプレッドシートを開きました: ADMIN_CSV_DLツール_v1.0
+2024-05-03 04:00:31,495 - googlesheet_export - DEBUG - CSVファイル 'dblist.csv': シート 'dblist' に対応します。
+2024-05-03 04:00:31,570 - googlesheet_export - INFO - dblist.csv から 1410 行読み込まれました。
+2024-05-03 04:00:33,403 - googlesheet_export - INFO - dblist シートにデータが更新されました。
+2024-05-03 04:00:33,412 - googlesheet_export - DEBUG - CSVファイル 'tablelist.csv': シート 'tablelist' に対応します。
+2024-05-03 04:00:33,441 - googlesheet_export - INFO - tablelist.csv から 94 行読み込まれました。
+2024-05-03 04:00:34,156 - googlesheet_export - INFO - tablelist シートにデータが更新されました。
+2024-05-03 04:00:34,163 - googlesheet_export - DEBUG - CSVファイル 'primarykeylist.csv': シート 'primarykeylist' に対応します。
+2024-05-03 04:00:34,196 - googlesheet_export - INFO - primarykeylist.csv から 91 行読み込まれました。
+2024-05-03 04:00:35,549 - googlesheet_export - INFO - primarykeylist シートにデータが更新されました。
+2024-05-03 04:00:35,555 - googlesheet_export - DEBUG - CSVファイル 'foreignkeylist.csv': シート 'foreignkeylist' に対応します。
+2024-05-03 04:00:35,586 - googlesheet_export - INFO - foreignkeylist.csv から 108 行読み込まれました。
+2024-05-03 04:00:36,222 - googlesheet_export - INFO - foreignkeylist シートにデータが更新されました。
+2024-05-04 04:00:25,433 - googlesheet_export - DEBUG - 設定ファイルを読み込みます: config.ini
+2024-05-04 04:00:25,458 - googlesheet_export - DEBUG - CSVファイルの基本パス: \\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\data
+2024-05-04 04:00:25,461 - googlesheet_export - DEBUG - 認証情報のJSONキーファイルパス: \\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\boxwood-dynamo-384411-6dec80faabfc.json
+2024-05-04 04:00:25,463 - googlesheet_export - DEBUG - スプレッドシートID: 1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q
+2024-05-04 04:00:25,563 - googlesheet_export - INFO - Google スプレッドシートへの認証が完了しました。
+2024-05-04 04:00:30,832 - googlesheet_export - INFO - スプレッドシートを開きました: ADMIN_CSV_DLツール_v1.0
+2024-05-04 04:00:30,837 - googlesheet_export - DEBUG - CSVファイル 'dblist.csv': シート 'dblist' に対応します。
+2024-05-04 04:00:30,892 - googlesheet_export - INFO - dblist.csv から 1410 行読み込まれました。
+2024-05-04 04:00:31,968 - googlesheet_export - INFO - dblist シートにデータが更新されました。
+2024-05-04 04:00:31,970 - googlesheet_export - DEBUG - CSVファイル 'tablelist.csv': シート 'tablelist' に対応します。
+2024-05-04 04:00:31,986 - googlesheet_export - INFO - tablelist.csv から 94 行読み込まれました。
+2024-05-04 04:00:32,706 - googlesheet_export - INFO - tablelist シートにデータが更新されました。
+2024-05-04 04:00:32,710 - googlesheet_export - DEBUG - CSVファイル 'primarykeylist.csv': シート 'primarykeylist' に対応します。
+2024-05-04 04:00:32,732 - googlesheet_export - INFO - primarykeylist.csv から 91 行読み込まれました。
+2024-05-04 04:00:34,010 - googlesheet_export - INFO - primarykeylist シートにデータが更新されました。
+2024-05-04 04:00:34,017 - googlesheet_export - DEBUG - CSVファイル 'foreignkeylist.csv': シート 'foreignkeylist' に対応します。
+2024-05-04 04:00:34,047 - googlesheet_export - INFO - foreignkeylist.csv から 108 行読み込まれました。
+2024-05-04 04:00:34,627 - googlesheet_export - INFO - foreignkeylist シートにデータが更新されました。

@@ -12,6 +12,9 @@ from tkinter import filedialog
 import tkinter as tk
 from tkinter import messagebox
 from decimal import Decimal
+from my_logging import setup_department_logger
+
+LOGGER = setup_department_logger('main')
 
 def load_sql_file_list_from_spreadsheet(spreadsheet_id, sheet_name, json_keyfile_path):
     """
@@ -122,6 +125,7 @@ def load_sql_from_file(file_path, google_folder_id, json_keyfile_path):
             return None
     except Exception as e:
         print(f"Error loading SQL file: {e}")
+        raise
         return None
 
 #csvファイルの保存（全件取得）
@@ -149,6 +153,7 @@ def csvfile_export(conn, sql_query, csv_file_path, save_path_id=None):
         print(f"結果が {final_csv_file_path} に保存されました。")
     except Exception as e:
         print(f"クエリ実行またはCSVファイル書き込み時にエラーが発生しました: {e}")
+        raise
     finally:
         cursor.close()
 
@@ -176,113 +181,97 @@ def extract_columns_mapping(sql_query):
 
 #元SQLファイル文に指定条件を挿入
 def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_exclusion, skip_deletion_exclusion=False):
-    # カラムのマッピングを抽出
-    columns_mapping = extract_columns_mapping(sql_query)
-    print("columns_mapping:", columns_mapping)
+    try:
+        columns_mapping = extract_columns_mapping(sql_query)
+        print("columns_mapping:", columns_mapping)
 
-    # 追加の条件を格納するリスト
-    additional_conditions = []
+        additional_conditions = []
 
-    # input_valuesから条件を生成
-    for db_item, values in input_values.items():
-        if db_item in columns_mapping and values:
-            column_name = columns_mapping[db_item]
+        for db_item, values in input_values.items():
+            if db_item in columns_mapping and values:
+                column_name = columns_mapping[db_item]
 
-            if input_fields_types[db_item] == 'Date' and isinstance(values, dict):
-                start_date, end_date = values.get('start_date'), values.get('end_date')
-                if start_date and end_date:
-                    # 日付形式を変換して条件を設定
-                    condition = f"{column_name} BETWEEN STR_TO_DATE('{start_date}', '%Y/%m/%d') AND STR_TO_DATE('{end_date}', '%Y/%m/%d')"
+                if input_fields_types[db_item] == 'Date' and isinstance(values, dict):
+                    start_date, end_date = values.get('start_date'), values.get('end_date')
+                    if start_date and end_date:
+                        condition = f"{column_name} BETWEEN STR_TO_DATE('{start_date}', '%Y/%m/%d') AND STR_TO_DATE('{end_date}', '%Y/%m/%d')"
+                        additional_conditions.append(condition)
+                elif input_fields_types[db_item] == 'FA' and values.strip():
+                    condition = f"{column_name} LIKE '%{values}%'"
                     additional_conditions.append(condition)
-            elif input_fields_types[db_item] == 'FA' and values.strip():
-                condition = f"{column_name} LIKE '%{values}%'"
-                additional_conditions.append(condition)
-            elif values:
-                if isinstance(values, list):
-                    placeholders = ', '.join([f"'{value}'" for value in values])
-                    condition = f"{column_name} IN ({placeholders})"
-                    additional_conditions.append(condition)
+                elif values:
+                    if isinstance(values, list):
+                        placeholders = ', '.join([f"'{value}'" for value in values])
+                        condition = f"{column_name} IN ({placeholders})"
+                        additional_conditions.append(condition)
+                    else:
+                        condition = f"{column_name} = '{values}'"
+                        additional_conditions.append(condition)
+
+        sql_parts = sql_query.split('FROM clause')
+        if len(sql_parts) != 2:
+            raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
+
+        from_clause_onward = sql_parts[1]
+        alias_match = re.search(r"FROM\s+[\w\.]+\s+(\w+)", from_clause_onward, re.IGNORECASE)
+        alias_name = alias_match.group(1) if alias_match else ''
+
+        deleted_at_column = f"{alias_name}.deleted_at" if alias_name else "deleted_at"
+
+        if not skip_deletion_exclusion:
+            deletion_exclusion = str(deletion_exclusion).upper()
+            if deletion_exclusion == 'TRUE':
+                additional_conditions.append(f"{deleted_at_column} IS NULL")
+            elif deletion_exclusion == 'FALSE':
+                pass
+            else:
+                raise ValueError("Invalid value for deletion_exclusion. It should be either True or False.")
+
+        if sql_query.strip().endswith(";"):
+            sql_query = sql_query.strip()[:-1]
+        else:
+            sql_query = sql_query.strip()
+
+        lines = sql_query.split('\n')
+
+        upper_lines = [line.upper() for line in lines if 'CASE WHEN' not in line.upper()]
+        upper_query = '\n'.join(upper_lines)
+
+        from_index = upper_query.find("FROM")
+
+        if from_index != -1:
+            before_from_lines = lines[:lines.index(next(line for line in lines if "FROM" in line.upper())) + 1]
+            after_from_lines = lines[lines.index(next(line for line in lines if "FROM" in line.upper())) + 1:]
+
+            where_index = upper_query.find("WHERE", from_index)
+
+            if where_index != -1:
+                before_where_lines = after_from_lines[:upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper()))]
+                after_where_lines = after_from_lines[upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper())):]
+
+                if additional_conditions:
+                    modified_after_from_lines = before_where_lines + [f"AND {' AND '.join(additional_conditions)}"] + after_where_lines
                 else:
-                    condition = f"{column_name} = '{values}'"
-                    additional_conditions.append(condition)
+                    modified_after_from_lines = before_where_lines + after_where_lines
+            else:
+                if additional_conditions:
+                    modified_after_from_lines = after_from_lines + [f"WHERE {' AND '.join(additional_conditions)}"]
+                else:
+                    modified_after_from_lines = after_from_lines
 
-    # SQL文を「FROM句」で分割
-    sql_parts = sql_query.split('FROM clause')
-    if len(sql_parts) != 2:
-        raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
+            modified_lines = before_from_lines + modified_after_from_lines
+            sql_query = '\n'.join(modified_lines)
 
-    # SQLクエリからテーブルのエイリアスを取得
-    from_clause_onward = sql_parts[1]
-    alias_match = re.search(r"FROM\s+[\w\.]+\s+(\w+)", from_clause_onward, re.IGNORECASE)
-    alias_name = alias_match.group(1) if alias_match else ''
-
-    # deleted_atカラムにエイリアスを付けて曖昧さを解消
-    deleted_at_column = f"{alias_name}.deleted_at" if alias_name else "deleted_at"
-
-    if not skip_deletion_exclusion:
-        # '削除R除外'列にチェック（TRUE）がある場合、deleted_atがNULLであるレコードのみを対象にする条件を追加
-        deletion_exclusion = str(deletion_exclusion).upper()
-        if deletion_exclusion == 'TRUE':
-            additional_conditions.append(f"{deleted_at_column} IS NULL")
-        elif deletion_exclusion == 'FALSE':
-            pass
         else:
-            raise ValueError("Invalid value for deletion_exclusion. It should be either True or False.")
+            raise ValueError("FROM句が見つかりませんでした")
 
-    # SQL文の最後にセミコロンがあるかチェック
-    if sql_query.strip().endswith(";"):
-        # セミコロンを一時的に取り除く
-        sql_query = sql_query.strip()[:-1]
-    else:
-        sql_query = sql_query.strip()
+        sql_query = sql_query.strip() + ";"
 
-    # SQLクエリを行ごとに分割
-    lines = sql_query.split('\n')
- 
-    # CASE WHEN句を含まない行だけを対象にWHERE句を検索
-    upper_lines = [line.upper() for line in lines if 'CASE WHEN' not in line.upper()]
-    upper_query = '\n'.join(upper_lines)
-
-    # FROM句の位置を見つける
-    from_index = upper_query.find("FROM")
- 
-    if from_index != -1:
-        # FROM句の前後を分割
-        before_from_lines = lines[:lines.index(next(line for line in lines if "FROM" in line.upper())) + 1]
-        after_from_lines = lines[lines.index(next(line for line in lines if "FROM" in line.upper())) + 1:]
-
-        # FROM句の後のWHERE句を見つける
-        where_index = upper_query.find("WHERE", from_index)
-
-        if where_index != -1:
-             # WHERE句が存在する場合
-             before_where_lines = after_from_lines[:upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper()))]
-             after_where_lines = after_from_lines[upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper())):]
-
-             if additional_conditions:
-                 modified_after_from_lines = before_where_lines + [f"AND {' AND '.join(additional_conditions)}"] + after_where_lines
-             else:
-                 modified_after_from_lines = before_where_lines + after_where_lines
-        else:
-             # WHERE句が存在しない場合
-             if additional_conditions:
-                 modified_after_from_lines = after_from_lines + [f"WHERE {' AND '.join(additional_conditions)}"]
-             else:
-                 modified_after_from_lines = after_from_lines
-
-             # 修正したクエリを結合
-             modified_lines = before_from_lines + modified_after_from_lines
-             sql_query = '\n'.join(modified_lines)
-
-    else:
-         # FROM句が見つからない場合、エラーを発生させる
-         raise ValueError("FROM句が見つかりませんでした")
-
-    # 元々セミコロンがあった場合は、再度追加する
-    sql_query = sql_query.strip() + ";"
-
-    print("Modified SQL Query:", sql_query)
-    return sql_query
+        print("Modified SQL Query:", sql_query)
+        return sql_query
+    except Exception as e:
+        LOGGER.error(f"add_conditions_to_sql関数内でエラーが発生しました: {e}")
+        raise
 
 #個別CSVエクスポート
 def csvfile_export_with_timestamp(conn, sql_query, sql_file_path, include_header):
@@ -352,6 +341,7 @@ def csvfile_export_with_timestamp(conn, sql_query, sql_file_path, include_header
 
     except Exception as e:
         print(f"クエリ実行またはCSVファイル書き込み時にエラーが発生しました: {e}")
+        raise  # エラーを呼び出し元に伝える
     finally:
         cursor.close()
         root.destroy()  # Tkインスタンスを破棄
@@ -388,106 +378,93 @@ def copy_to_clipboard(conn, sql_query, include_header):
 
     except Exception as e:
         print(f"クエリ実行時にエラーが発生しました: {e}")
+        raise  # エラーを呼び出し元に伝える
     finally:
         cursor.close()
         output.close()
         root.destroy()  # クリップボードの処理後にTkインスタンスを破棄
 
 def set_period_condition(period_condition, period_criteria, sql_query):
-    today = datetime.date.today()
-    yesterday = today - datetime.timedelta(days=1)
-    three_days_ago = today - datetime.timedelta(days=3)
+    try:
+        today = datetime.date.today()
+        yesterday = today - datetime.timedelta(days=1)
+        three_days_ago = today - datetime.timedelta(days=3)
 
-    # 取得基準を実際のカラム名に変換
-    if period_criteria == '登録日時':
-        column_name = 'created_at'
-    elif period_criteria == '更新日時':
-        column_name = 'updated_at'
-    else:
-        return sql_query
-
-    # SQL文を「FROM句」で分割
-    sql_parts = sql_query.split('FROM clause')
-    if len(sql_parts) != 2:
-        raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
-
-    # SQLクエリからテーブルのエイリアスを取得
-    from_clause_onward = sql_parts[1]
-    alias_match = re.search(r"FROM\s+[\w\.]+\s+(\w+)", from_clause_onward, re.IGNORECASE)
-    alias_name = alias_match.group(1) if alias_match else ''
-
-    # カラム名にエイリアスを付けて曖昧さを解消
-    column_name = f"{alias_name}.{column_name}" if alias_name else column_name
-
-    # 期間条件に応じてSQL文を生成
-    if period_condition == '当日':
-        condition = f"DATE({column_name}) = '{today}'"
-    elif period_condition == '前日':
-        condition = f"DATE({column_name}) = '{yesterday}'"
-    elif period_condition == '前日まで累積':
-        condition = f"DATE({column_name}) <= '{yesterday}'"
-    elif period_condition.endswith('～前日まで累積'):
-        start_date_str = period_condition.split('～')[0].strip()
-        start_date = datetime.datetime.strptime(start_date_str, '%Y年%m月%d日').date()
-        condition = f"DATE({column_name}) BETWEEN '{start_date}' AND '{yesterday}'"
-    elif period_condition.endswith('日前時点を1日分'):
-        days_ago = int(period_condition.split('日前')[0])
-        target_date = today - datetime.timedelta(days=days_ago)
-        condition = f"DATE({column_name}) = '{target_date}'"
-    else:
-        return sql_query
-
-    # SQL文の最後にセミコロンがあるかチェック
-    if sql_query.strip().endswith(";"):
-        # セミコロンを一時的に取り除く
-        sql_query = sql_query.strip()[:-1]
-    else:
-        sql_query = sql_query.strip()
-
-    # SQLクエリを行ごとに分割
-    lines = sql_query.split('\n')
-
-    # CASE WHEN句を含まない行だけを対象にWHERE句を検索
-    upper_lines = [line.upper() for line in lines if 'CASE WHEN' not in line.upper()]
-    upper_query = '\n'.join(upper_lines)
-
-    # FROM句の位置を見つける
-    from_index = upper_query.find("FROM")
-
-    if from_index != -1:
-        # FROM句の前後を分割
-        before_from_lines = lines[:lines.index(next(line for line in lines if "FROM" in line.upper())) + 1]
-        after_from_lines = lines[lines.index(next(line for line in lines if "FROM" in line.upper())) + 1:]
-
-        # FROM句の後のWHERE句を見つける
-        where_index = upper_query.find("WHERE", from_index)
-
-        if where_index != -1:
-            # WHERE句が存在する場合
-            before_where_lines = after_from_lines[:upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper()))]
-            after_where_lines = after_from_lines[upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper())):]
-
-            # ここで特定のカラム名の置換を行う必要はありません
-            modified_after_from_lines = before_where_lines + [f"AND {condition}"] + after_where_lines
+        if period_criteria == '登録日時':
+            column_name = 'created_at'
+        elif period_criteria == '更新日時':
+            column_name = 'updated_at'
         else:
-            # WHERE句が存在しない場合
-            modified_after_from_lines = after_from_lines + [f"WHERE {condition}"]
+            return sql_query
 
-        # 修正したクエリを結合
-        modified_lines = before_from_lines + modified_after_from_lines
-        sql_query = '\n'.join(modified_lines)
+        sql_parts = sql_query.split('FROM clause')
+        if len(sql_parts) != 2:
+            raise ValueError("「FROM句」コメントが見つからないか、複数存在します")
 
-    else:
-        # FROM句が見つからない場合、エラーを発生させる
-        raise ValueError("FROM句が見つかりませんでした")
+        from_clause_onward = sql_parts[1]
+        alias_match = re.search(r"FROM\s+[\w\.]+\s+(\w+)", from_clause_onward, re.IGNORECASE)
+        alias_name = alias_match.group(1) if alias_match else ''
 
-    # 元々セミコロンがあった場合は、再度追加する
-    sql_query = sql_query.strip() + ";"
+        column_name = f"{alias_name}.{column_name}" if alias_name else column_name
 
-    print('Modified SQL query:')
-    print(sql_query)
+        if period_condition == '当日':
+            condition = f"DATE({column_name}) = '{today}'"
+        elif period_condition == '前日':
+            condition = f"DATE({column_name}) = '{yesterday}'"
+        elif period_condition == '前日まで累積':
+            condition = f"DATE({column_name}) <= '{yesterday}'"
+        elif period_condition.endswith('～前日まで累積'):
+            start_date_str = period_condition.split('～')[0].strip()
+            start_date = datetime.datetime.strptime(start_date_str, '%Y年%m月%d日').date()
+            condition = f"DATE({column_name}) BETWEEN '{start_date}' AND '{yesterday}'"
+        elif period_condition.endswith('日前時点を1日分'):
+            days_ago = int(period_condition.split('日前')[0])
+            target_date = today - datetime.timedelta(days=days_ago)
+            condition = f"DATE({column_name}) = '{target_date}'"
+        else:
+            return sql_query
 
-    return sql_query
+        if sql_query.strip().endswith(";"):
+            sql_query = sql_query.strip()[:-1]
+        else:
+            sql_query = sql_query.strip()
+
+        lines = sql_query.split('\n')
+
+        upper_lines = [line.upper() for line in lines if 'CASE WHEN' not in line.upper()]
+        upper_query = '\n'.join(upper_lines)
+
+        from_index = upper_query.find("FROM")
+
+        if from_index != -1:
+            before_from_lines = lines[:lines.index(next(line for line in lines if "FROM" in line.upper())) + 1]
+            after_from_lines = lines[lines.index(next(line for line in lines if "FROM" in line.upper())) + 1:]
+
+            where_index = upper_query.find("WHERE", from_index)
+
+            if where_index != -1:
+                before_where_lines = after_from_lines[:upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper()))]
+                after_where_lines = after_from_lines[upper_lines.index(next(line for line in upper_lines if "WHERE" in line.upper())):]
+
+                modified_after_from_lines = before_where_lines + [f"AND {condition}"] + after_where_lines
+            else:
+                modified_after_from_lines = after_from_lines + [f"WHERE {condition}"]
+
+            modified_lines = before_from_lines + modified_after_from_lines
+            sql_query = '\n'.join(modified_lines)
+
+        else:
+            raise ValueError("FROM句が見つかりませんでした")
+
+        sql_query = sql_query.strip() + ";"
+
+        print('Modified SQL query:')
+        print(sql_query)
+
+        return sql_query
+    except Exception as e:
+        LOGGER.error(f"set_period_condition関数内でエラーが発生しました: {e}")
+        raise
 
 #スプシ貼り付け
 def get_column_letter(column_index):
@@ -548,6 +525,7 @@ def export_to_spreadsheet(conn, sql_query, save_path_id, sheet_name, json_keyfil
         print(f"Data has been transferred to {sheet_name} sheet in {save_path_id} with {paste_format} method.")
     except Exception as e:
         print(f"Error during query execution or spreadsheet writing: {e}")
+        raise
     finally:
         cursor.close()
 
