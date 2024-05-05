@@ -1,0 +1,69 @@
+開始列,教室グループID,教室グループ名,教室グループカナ名,紹介文,管理用メモ,代表教室ID,代表教室名,登録日時,更新日時,削除日時,終了列
+DUMMY,1,Brand 1,カナ,,,None,None,None,None,None,DUMMY
+DUMMY,2,Brand 2,カナ,,,None,None,None,None,None,DUMMY
+DUMMY,3,Brand 3,カナ,,,None,None,None,None,None,DUMMY
+DUMMY,4,Brand 4,カナ,,,None,None,None,None,None,DUMMY
+DUMMY,5,テスト１,テスト,テスト,Test,None,None,None,None,None,DUMMY
+DUMMY,6,テスト2,テスト,,,None,None,None,None,None,DUMMY
+DUMMY,7,テスト３,テスト,,,None,None,None,None,None,DUMMY
+DUMMY,8,テスト3,テスト,,,None,None,None,None,None,DUMMY
+DUMMY,9,テスト設定用,テスト,,,None,None,None,None,None,DUMMY
+DUMMY,10,テスト,テスト,,,None,None,None,None,None,DUMMY
+DUMMY,11,Brand 102,カナ,,,None,None,None,None,None,DUMMY
+DUMMY,12,GIG04  ワタシ ワタシワタシワタシワタシワタシワタシワタシワタシワタシワタシ ワタシワタシワタシワタシワタシワタシ GIG04  ワタシ ワタシワタシワタシワタシワタシワタシワタシワタシワタシワタシ ワタシワタシワタシワタシワタシワタシ,ワタシ,,,None,None,None,None,None,DUMMY
+DUMMY,13,Sテストグループ,エステストグループ,,,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,None,DUMMY
+DUMMY,14,トモテスト,トモテスト,紹介文,管理用メモ,None,None,None,None,None,DUMMY
+DUMMY,15,片岡契約登録テスト用,カタオカテスト,,,None,None,None,None,None,DUMMY
+DUMMY,16,片岡契約登録テスト用2,カタオカテストツー,,,None,None,None,None,None,DUMMY
+DUMMY,17,DatHM Brand,グループカナ,,,None,None,None,None,None,DUMMY
+DUMMY,18,TH brand 1 この塾ブランドの総合満足度,シシ,,,None,None,None,None,None,DUMMY
+DUMMY,19,TH brand 2,シシ,,,None,None,None,None,None,DUMMY
+DUMMY,20,テスト設定用,テスト,,,None,None,None,None,None,DUMMY
+DUMMY,21,Brand TH 2,シシ,,,None,None,None,None,None,DUMMY
+DUMMY,22,Brand TH 2,シシ,,,None,None,None,None,None,DUMMY
+DUMMY,23,ABCゼミ,エービーシーゼミ,ABCゼミです,管理用メモ,None,None,None,None,None,DUMMY
+DUMMY,24,早稲田アカデミー,ワセダアカデミー,"早稲田アカデミーでは、小学生から高校生を対象に集団指導と個別指導の2つの指導形態で授業が展開されています。集団指導では、1クラス20名程度の生徒に対して、生徒に質問しその答えを確認しながら授業を進めていくというコミュニケーションを重視した授業を行います。個別指導では、講師1人に対して生徒2人の指導形態となっており、1人に教えている間にもう一人に問題を解いてもらうというスタイルが基本となっています。また、学年や教科ごとに授業時間が異なるのも特徴です。
+  関連記事:<a href=""https://www.juku.st/info/entry/1957"">【2023年度版】早稲田アカデミーのバイトの評判、時給、仕事内容、面接など徹底解説!!</a>",,None,None,None,None,None,DUMMY
+DUMMY,25,東京個別指導学院,トウキョウコベツシドウガクイン,ああああああああ,,None,None,None,None,None,DUMMY
+DUMMY,26,テストブランド,テストブランド,,,None,None,None,None,None,DUMMY
+DUMMY,27,青嶋テスト,テスト,,,None,None,None,None,None,DUMMY
+DUMMY,28,大塚のテスト教室グループ,オオツカノテストキョウシツグループ,,,None,None,2000/02/08 00:00:00,2000/02/08 00:00:00,None,DUMMY
+DUMMY,29,さいとうテストグループ,サイトウテストグループ,,,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,None,DUMMY
+DUMMY,30,教室グループ名_brand_HoaNT,プカナ,仕事内容,管理用メモ,None,None,2000/02/11 00:00:00,2000/02/11 00:00:00,None,DUMMY
+DUMMY,31,HoaTT brand 1,ナハ,"仕事内容仕事内容仕事内容仕事内容
+仕事内容仕事内容仕事内容
+仕事内容仕事内容仕事内容仕事内容",,None,None,None,None,None,DUMMY
+DUMMY,32,さいとうテストグループ,サイトウテストグループ,,,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,None,DUMMY
+DUMMY,33,NC Brand,カナ,,,None,None,2000/02/07 00:00:00,2000/02/07 00:00:00,None,DUMMY
+DUMMY,34,NEW 青嶋 テストグループ,テストグループ,仕事内容 確認用のメモ,管理用メモ 確認用のメモ,None,None,None,None,None,DUMMY
+DUMMY,35,HuongDT Brand,グループカナ,Brand 35 教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グループの紹介テキスト。教室グル,,None,None,None,None,None,DUMMY
+DUMMY,36,【片岡】クライアント画面テスト1,カタオカ クライアントガメンテストイチ,,,None,None,None,None,None,DUMMY
+DUMMY,37,ITTO(佐久間テスト),イットー サクマテスト,,,None,None,None,None,None,DUMMY
+DUMMY,38,【片岡】クライアント画面テスト2,カタオカ クライアントガメンテストニ,,,None,None,None,None,None,DUMMY
+DUMMY,39,Brand_HoaNT_New,カナ,"仕事内容仕事内容仕事内容仕事内容仕事内容仕事内容仕事内容仕事内容仕事内容仕事内容仕事内容
+仕事内容仕事内容仕事内容仕事内容仕事内容仕事内容仕事内容仕事内容仕事内容
+Mo ta cong viec. yeu cau >3 nam kinh nghiem....",管理用メモ管理用メモ管理用メモ管理用メ<br>モ管理用メ<br>モ管理用メモ管理用メモ管理用メモ管理用メモ管理用メモ管理用メモ,None,None,None,None,None,DUMMY
+DUMMY,40,プレミアム_brand_HoaNT,プカナ,,,None,None,None,None,None,DUMMY
+DUMMY,41,親契約テストグループ,オヤケイヤクテストグループ,,,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,2000/01/24 00:00:00,DUMMY
+DUMMY,42,佐久間テスト,サクマテスト,,,None,None,None,None,None,DUMMY
+DUMMY,43,親契約テストグループ,オヤケイヤクテストグループ,,,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,None,DUMMY
+DUMMY,44,親契約テストグループ2,オヤケイヤクテストグループ,テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト,テキストテキストテキストテキストテキストテキストテキストテキスト,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,None,DUMMY
+DUMMY,45,brand_new 1,カナカナカナカナカナカナカナ,"仕事内容
+※400文字以下仕事内容
+※400文字以下仕事内容
+※400文字以下",,None,None,None,None,None,DUMMY
+DUMMY,46,教室グループ名,カナ,,,None,None,None,None,None,DUMMY
+DUMMY,47,新規 Aoshimaテスト用,テスト,0123456789012345678901234567890123456789,0123456789012345678901234567890123456789,None,None,None,None,None,DUMMY
+DUMMY,48,ライトプランテストグループ,ライトプランテストグループ,,,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,None,DUMMY
+DUMMY,49,テストコタケ,テストコタケ,,,None,None,2000/02/24 00:00:00,2000/02/24 00:00:00,None,DUMMY
+DUMMY,50,大坂4/12テスト,オオサカテスト,,,None,None,None,None,None,DUMMY
+DUMMY,51,片岡テスト用_ステーション2,カタオカテスト,,,None,None,None,None,None,DUMMY
+DUMMY,52,片岡テスト用_ステーション1,カタオカテスト,,,None,None,None,None,None,DUMMY
+DUMMY,53,片岡テスト用_キャリア1,カタオカテスト,,,None,None,None,None,None,DUMMY
+DUMMY,54,片岡テスト用_キャリア2,カタオカテスト,あああああああああああああああああああああああああああああああああああ,,None,None,None,None,None,DUMMY
+DUMMY,55,契約テストグループ,ケイヤクテスト,,,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,None,DUMMY
+DUMMY,56,スクールIE_GU_FC企業用,スクールアイイー,,GU_FC企業用,None,None,None,None,None,DUMMY
+DUMMY,57,更新テスト2,コウシンテスト,,,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,None,DUMMY
+DUMMY,58,761バッチ採用課金テストグループ,バッチ,,,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,None,DUMMY
+DUMMY,59,臨海セミナー,リンカイセミナー,"臨海セミナーでは、小学生から高校生に対して、1クラス10～15名での集団指導を行います。指導内容は学校の補習から受験対策まで様々ですが、学年や指導科目については自分で希望を提出することができます。生徒の集中力を切らさないようできるだけ話し続ける指導が求められ、学校のように黒板とチョークを用いて授業を行うのが臨海セミナーの授業の特徴です。また、校舎によっては個別指導を担当することもあるようです。  関連記事:<a href=""https://www.juku.st/info/entry/2682"">元臨海セミナーバイト講師が語る評判!学歴や時給、研修などを本音で回答</a>",,None,None,None,None,None,DUMMY
+DUMMY,60,初回無料契約テストグループ,ショカイケイヤク,,,None,None,2000/01/24 00:00:00,2000/01/24 00:00:00,None,DUMMY
