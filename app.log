@@ -1739,3 +1739,293 @@ GROUP BY
 2024-05-06 00:00:07,956 - main - INFO - データベース接続を閉じました。
 2024-05-06 00:00:08,046 - main - INFO - SSHトンネルを閉じました。
 2024-05-06 00:00:08,046 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:11:05,127 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1052 (23000): Column 'created_at' in where clause is ambiguous
+2024-05-06 10:11:05,127 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1052 (23000): Column 'created_at' in where clause is ambiguous
+2024-05-06 10:11:05,131 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:11:05,131 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:11:05,164 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:11:05,164 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:22:01,250 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:22:01,250 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:22:01,287 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:22:01,287 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:28:07,777 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:28:07,777 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:28:07,800 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:28:07,800 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:33:40,280 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:33:40,280 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:33:40,304 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:33:40,304 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:43:28,304 - main - ERROR - SOURCE_32_auto_offer_open.sql の読み込みに失敗しました。
+2024-05-06 10:43:28,304 - main - ERROR - SOURCE_32_auto_offer_open.sql の読み込みに失敗しました。
+2024-05-06 10:43:33,852 - main - ERROR - SOURCE_32_auto_offer_open.sql の読み込みに失敗しました。
+2024-05-06 10:43:33,852 - main - ERROR - SOURCE_32_auto_offer_open.sql の読み込みに失敗しました。
+2024-05-06 10:43:33,864 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:43:33,864 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:43:33,970 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:43:33,970 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:46:12,601 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:46:12,601 - main - INFO - データベース接続を閉じました。
+2024-05-06 10:46:12,671 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 10:46:12,671 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 11:00:54,322 - main - INFO - データベース接続を閉じました。
+2024-05-06 11:00:54,322 - main - INFO - データベース接続を閉じました。
+2024-05-06 11:00:54,375 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 11:00:54,375 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 11:14:36,744 - main - INFO - データベース接続を閉じました。
+2024-05-06 11:14:36,744 - main - INFO - データベース接続を閉じました。
+2024-05-06 11:14:36,829 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 11:14:36,829 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 11:29:51,982 - main - INFO - データベース接続を閉じました。
+2024-05-06 11:29:51,982 - main - INFO - データベース接続を閉じました。
+2024-05-06 11:29:52,083 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 11:29:52,083 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:04:33,871 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:04:33,871 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:04:33,940 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:04:33,940 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:05:02,406 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:05:02,406 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:05:02,465 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:05:02,465 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:05:19,528 - main - ERROR - SOURCE_21_FMcompany_upload.sql の読み込みに失敗しました。
+2024-05-06 15:05:19,528 - main - ERROR - SOURCE_21_FMcompany_upload.sql の読み込みに失敗しました。
+2024-05-06 15:05:19,540 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:05:19,540 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:05:19,566 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:05:19,566 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:06:16,362 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-06 15:06:16,362 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-06 15:06:16,373 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:06:16,373 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:06:16,403 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:06:16,403 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:10:33,870 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:10:33,870 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:10:33,944 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:10:33,944 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:21:07,216 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:21:07,216 - main - INFO - データベース接続を閉じました。
+2024-05-06 15:21:07,262 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 15:21:07,262 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 16:33:59,530 - main - INFO - データベース接続を閉じました。
+2024-05-06 16:33:59,530 - main - INFO - データベース接続を閉じました。
+2024-05-06 16:33:59,556 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 16:33:59,556 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 16:34:54,471 - main - INFO - データベース接続を閉じました。
+2024-05-06 16:34:54,471 - main - INFO - データベース接続を閉じました。
+2024-05-06 16:34:54,536 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 16:34:54,536 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 18:38:24,649 - main - INFO - データベース接続を閉じました。
+2024-05-06 18:38:24,649 - main - INFO - データベース接続を閉じました。
+2024-05-06 18:38:24,689 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 18:38:24,689 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 18:47:25,040 - main - INFO - データベース接続を閉じました。
+2024-05-06 18:47:25,040 - main - INFO - データベース接続を閉じました。
+2024-05-06 18:47:25,145 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 18:47:25,145 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 19:26:19,010 - main - ERROR - SOURCE_34_CSreport_saiyo_data.sql の読み込みに失敗しました。
+2024-05-06 19:26:19,010 - main - ERROR - SOURCE_34_CSreport_saiyo_data.sql の読み込みに失敗しました。
+2024-05-06 19:26:19,023 - main - INFO - データベース接続を閉じました。
+2024-05-06 19:26:19,023 - main - INFO - データベース接続を閉じました。
+2024-05-06 19:26:19,114 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 19:26:19,114 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 23:52:02,988 - main - INFO - データベース接続を閉じました。
+2024-05-06 23:52:02,988 - main - INFO - データベース接続を閉じました。
+2024-05-06 23:52:03,112 - main - INFO - SSHトンネルを閉じました。
+2024-05-06 23:52:03,112 - main - INFO - SSHトンネルを閉じました。
+2024-05-07 00:17:01,904 - main - INFO - データベース接続を閉じました。
+2024-05-07 00:17:01,904 - main - INFO - データベース接続を閉じました。
+2024-05-07 00:17:01,993 - main - INFO - SSHトンネルを閉じました。
+2024-05-07 00:17:01,993 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:20:12,159 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:20:12,159 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:20:14,777 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:20:14,777 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:20:17,679 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:20:17,679 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:20:20,201 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:20:20,201 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:20:22,710 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:20:22,710 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:20:22,799 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:20:22,799 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:25:21,135 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:25:21,135 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:25:23,829 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:25:23,829 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:25:26,676 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:25:26,676 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:25:29,158 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:25:29,158 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:25:32,031 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:25:32,031 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:25:32,081 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:25:32,081 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:34:03,178 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:34:03,178 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:34:05,986 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:34:05,986 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:34:08,615 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:34:08,615 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:34:11,389 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:34:11,389 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:34:13,984 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:34:13,984 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:34:14,056 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:34:14,056 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:46:41,336 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:46:41,336 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:46:44,038 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:46:44,038 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:46:46,805 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:46:46,805 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:46:49,315 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:46:49,315 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:46:51,704 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:46:51,704 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:46:51,723 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:46:51,723 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:49:26,054 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:49:26,054 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:49:28,753 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:49:28,753 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:49:31,448 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:49:31,448 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:49:33,946 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:49:33,946 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:49:45,255 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:49:45,255 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:49:45,353 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:49:45,353 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:50:17,446 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:50:17,446 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:50:19,765 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:50:19,765 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:50:22,332 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:50:22,332 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:50:25,041 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:50:25,041 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:50:33,363 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: Object of type datetime is not JSON serializable
+2024-05-08 20:50:33,363 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: Object of type datetime is not JSON serializable
+2024-05-08 20:50:33,380 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:50:33,380 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:50:33,450 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:50:33,450 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:51:31,547 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:51:31,547 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:51:34,218 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:51:34,218 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:51:36,777 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:51:36,777 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:51:39,436 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:51:39,436 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:51:47,649 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: Object of type datetime is not JSON serializable
+2024-05-08 20:51:47,649 - main - ERROR - スプレッドシートへのエクスポート中にエラーが発生しました: Object of type datetime is not JSON serializable
+2024-05-08 20:51:47,656 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:51:47,656 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:51:47,727 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:51:47,727 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:54:48,078 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:54:48,078 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:54:50,827 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:54:50,827 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:54:53,370 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:54:53,370 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:54:56,002 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:54:56,002 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 20:55:07,289 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:55:07,289 - main - INFO - データベース接続を閉じました。
+2024-05-08 20:55:07,315 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 20:55:07,315 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 21:00:39,763 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 21:00:39,763 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 21:01:03,753 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 21:01:03,753 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 21:01:06,297 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 21:01:06,297 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 21:01:08,809 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 21:01:08,809 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 21:01:11,334 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 21:01:11,334 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-08 21:01:33,650 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1066 (42000): Not unique table/alias: 'us'
+2024-05-08 21:01:33,650 - main - ERROR - CSVファイルのエクスポート中にエラーが発生しました: 1066 (42000): Not unique table/alias: 'us'
+2024-05-08 21:05:19,527 - main - INFO - データベース接続を閉じました。
+2024-05-08 21:05:19,527 - main - INFO - データベース接続を閉じました。
+2024-05-08 21:05:19,582 - main - INFO - SSHトンネルを閉じました。
+2024-05-08 21:05:19,582 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 09:39:17,516 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:39:17,516 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:39:19,891 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:39:19,891 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:39:22,278 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:39:22,278 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:39:24,700 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:39:24,700 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:43:31,362 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 47, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 536, in setup_test_environment
+    spreadsheet = gc.open_by_key(save_path_id)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 212, in open_by_key
+    raise ex
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 206, in open_by_key
+    spreadsheet = Spreadsheet(self, {"id": key})
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 37, in __init__
+    metadata = self.fetch_sheet_metadata()
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 245, in fetch_sheet_metadata
+    r = self.client.request("get", url, params=params)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}
+
+2024-05-09 09:43:31,362 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\main.py", line 47, in <module>
+    save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
+  File "\\nas\public\事務業務資料\100000管理部門\101000システム\事業部プログラム\講師求人部門\GIG塾STMYSQL\sourcecode\subcode_loader.py", line 536, in setup_test_environment
+    spreadsheet = gc.open_by_key(save_path_id)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 212, in open_by_key
+    raise ex
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 206, in open_by_key
+    spreadsheet = Spreadsheet(self, {"id": key})
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 37, in __init__
+    metadata = self.fetch_sheet_metadata()
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\spreadsheet.py", line 245, in fetch_sheet_metadata
+    r = self.client.request("get", url, params=params)
+  File "c:\Users\tmnk013\anaconda3\envs\myenv\lib\site-packages\gspread\client.py", line 93, in request
+    raise APIError(response)
+gspread.exceptions.APIError: {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}
+
+2024-05-09 09:43:32,043 - main - INFO - データベース接続を閉じました。
+2024-05-09 09:43:32,043 - main - INFO - データベース接続を閉じました。
+2024-05-09 09:43:32,103 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 09:43:32,103 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 09:48:15,883 - main - INFO - データベース接続を閉じました。
+2024-05-09 09:48:15,883 - main - INFO - データベース接続を閉じました。
+2024-05-09 09:48:15,903 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 09:48:15,903 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 09:48:54,610 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:48:54,610 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:48:56,995 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:48:56,995 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:48:59,447 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:48:59,447 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:49:01,848 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:49:01,848 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 09:53:02,177 - main - INFO - データベース接続を閉じました。
+2024-05-09 09:53:02,177 - main - INFO - データベース接続を閉じました。
+2024-05-09 09:53:02,235 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 09:53:02,235 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 10:38:51,498 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 10:38:51,498 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 10:38:53,881 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 10:38:53,881 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 10:38:56,235 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 10:38:56,235 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 10:38:58,754 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 10:38:58,754 - main - ERROR - SQLクエリの処理中にエラーが発生しました: can only concatenate str (not "NoneType") to str
+2024-05-09 10:42:44,025 - main - INFO - データベース接続を閉じました。
+2024-05-09 10:42:44,025 - main - INFO - データベース接続を閉じました。
+2024-05-09 10:42:44,117 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 10:42:44,117 - main - INFO - SSHトンネルを閉じました。

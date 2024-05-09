@@ -13,9 +13,22 @@ import tkinter as tk
 from tkinter import messagebox
 from decimal import Decimal
 from my_logging import setup_department_logger
+from tenacity import retry, stop_after_attempt, wait_fixed
 
 LOGGER = setup_department_logger('main')
 
+#リトライ処理
+def retry_on_exception(func):
+    @retry(stop=stop_after_attempt(2), wait=wait_fixed(60), before_sleep=before_sleep_log)
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+    return wrapper
+
+def before_sleep_log(retry_state):
+    LOGGER.warning(f"Retrying {retry_state.fn.__name__} after exception: {retry_state.outcome.exception()}")
+    print(f"Retrying {retry_state.fn.__name__} after exception: {retry_state.outcome.exception()}")
+
+@retry_on_exception
 def load_sql_file_list_from_spreadsheet(spreadsheet_id, sheet_name, json_keyfile_path):
     """
     指定されたGoogleスプレッドシートからSQLファイルのリストを読み込む関数
@@ -77,6 +90,7 @@ def load_sql_file_list_from_spreadsheet(spreadsheet_id, sheet_name, json_keyfile
 
     return sql_and_csv_files
 
+@retry_on_exception
 def load_sql_from_file(file_path, google_folder_id, json_keyfile_path):
     """
     指定されたファイルパスからGoogleドライブ上のSQLファイルを読み込み、その内容を返します。
@@ -299,11 +313,15 @@ def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_
                         condition = f"{column_name} = '{values}'"
                         additional_conditions.append(condition)
 
+        # カラム名からテーブルエイリアスを特定
+        table_alias = find_table_alias(sql_query)
+        print('table_alias:'+table_alias)
+
         # 削除除外条件の追加
         if not skip_deletion_exclusion:
             deletion_exclusion = str(deletion_exclusion).upper()
             if deletion_exclusion == 'TRUE':
-                additional_conditions.append("deleted_at IS NULL")
+                additional_conditions.append(table_alias+".deleted_at IS NULL")
 
         # SQLクエリの前処理
         sql_query = preprocess_sql_query(sql_query)
@@ -334,19 +352,8 @@ def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_
 
 def set_period_condition(period_condition, period_criteria, sql_query):
     try:
-        # 日付関連の計算
-        today = datetime.date.today()
-        yesterday = today - datetime.timedelta(days=1)
-        three_days_ago = today - datetime.timedelta(days=3)
-
         # 時間関連のカラム名を設定
-        if period_criteria == '登録日時':
-            column_name = 'created_at'
-        elif period_criteria == '更新日時':
-            column_name = 'updated_at'
-        else:
-            return sql_query
-
+        column_name = 'created_at' if period_criteria == '登録日時' else 'updated_at'
         print('Original SQL query:')
         print(sql_query)
 
@@ -356,12 +363,12 @@ def set_period_condition(period_condition, period_criteria, sql_query):
         # GROUP BY句の検出と除去
         sql_query, group_by_clause = detect_and_remove_group_by(sql_query)
 
-        if group_by_clause:
-            print("GROUP BY clause:")
-            print(group_by_clause)
+        # カラム名からテーブルエイリアスを特定
+        table_alias = find_table_alias(sql_query)
+        print('table_alias:'+table_alias)
 
         # 期間条件に基づくWHERE句の条件を生成
-        condition = generate_period_condition(period_condition, column_name)
+        condition = generate_period_condition(period_condition, column_name, table_alias)
         additional_conditions = [condition] if condition else []
 
         # WHERE句の存在チェックと追加
@@ -384,6 +391,29 @@ def set_period_condition(period_condition, period_criteria, sql_query):
     except Exception as e:
         print(f"An error occurred: {e}")
         raise
+
+#テーブルエイリアスを特定する関数
+import re
+
+def find_table_alias(sql_query):
+    # '-- FROM clause' コメント以降の部分を抽出
+    from_clause_index = sql_query.find('-- FROM clause')
+    if from_clause_index == -1:
+        return None  # コメントが見つからない場合はNoneを返す
+    
+    # FROM句以降のテキストを取得
+    sub_query = sql_query[from_clause_index + len('-- FROM clause'):]
+
+    # 実際のFROM句を探す。ASキーワードの存在にも対応。
+    from_match = re.search(r'\bFROM\b\s+(\w+)\s+(AS\s+)?(\w+)', sub_query, re.IGNORECASE)
+    if from_match:
+        # テーブル名
+        table_name = from_match.group(1)
+        # エイリアスが指定されている場合はそれを使用し、なければテーブル名をそのままエイリアスとして使用
+        alias = from_match.group(3) if from_match.group(3) else table_name
+        return alias
+    return None
+
 
 #SQLクエリの前処理を行う。セミコロンの削除とトリミングを含む。
 def preprocess_sql_query(sql_query):
@@ -414,25 +444,26 @@ def check_and_prepare_where_clause(sql_query, additional_conditions):
     else:
         return sql_query + " AND "
     
-def generate_period_condition(period_condition, column_name):
+def generate_period_condition(period_condition, column_name, table_alias):
     """期間条件に基づくWHERE句の条件を生成する。"""
     today = datetime.date.today()
     yesterday = today - datetime.timedelta(days=1)
 
+    date_column = f"{table_alias}.{column_name}" if table_alias else column_name
     if period_condition == '当日':
-        return f" DATE({column_name}) = '{today}'"
+        return f" DATE({date_column})  = '{today}'"
     elif period_condition == '前日':
-        return f" DATE({column_name}) = '{yesterday}'"
+        return f" DATE({date_column})  = '{yesterday}'"
     elif period_condition == '前日まで累積':
-        return f" DATE({column_name}) <= '{yesterday}'"
+        return f" DATE({date_column}) <= '{yesterday}'"
     elif '～前日まで累積' in period_condition:
         start_date_str = period_condition.split('～')[0].strip()
         start_date = datetime.datetime.strptime(start_date_str, '%Y年%m月%d日').date()
-        return f" DATE({column_name}) BETWEEN '{start_date}' AND '{yesterday}'"
+        return f" DATE({date_column}) BETWEEN '{start_date}' AND '{yesterday}'"
     elif '日前時点を1日分' in period_condition:
         days_ago = int(period_condition.split('日前')[0])
         target_date = today - datetime.timedelta(days=days_ago)
-        return f" DATE({column_name}) = '{target_date}'"
+        return f" DATE({date_column}) = '{target_date}'"
     else:
         return ""
 
@@ -446,6 +477,7 @@ def get_column_letter(column_index):
     return letter
 
 #スプシ貼り付け
+@retry_on_exception
 def export_to_spreadsheet(conn, sql_query, save_path_id, sheet_name, json_keyfile_path, paste_format, main_sheet_name):
     cursor = conn.cursor()
     try:
@@ -499,6 +531,7 @@ def export_to_spreadsheet(conn, sql_query, save_path_id, sheet_name, json_keyfil
         cursor.close()
 
 #テスト実行
+@retry_on_exception
 def setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path):
     if str(test_execution).lower() == 'true':
         if output_to_spreadsheet == 'CSV':

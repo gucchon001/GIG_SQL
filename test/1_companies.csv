@@ -1,0 +1,209 @@
+開始列,ID,企業コード,請求用アカウント,企業名,企業名カナ,初期プラン,電話番号,FAX番号,メールアドレス,郵便番号,都道府県,市区町村,その他住所,限定求人,Station口コミ表示,企業群,管理用メモ1,管理用メモ2,採用確認タイプ,採用確認一斉送信対象外フラグ,採用確認CSV利用可フラグ,条件付き教室PR利用可フラグ,パーソナルオファー月間可能人数,広告CSV出力フラグ,FC契約プランフラグ,オシゴトQ&A機能表示フラグ,一発応募,キャリアオプション上書きステータス,質問1,質問2,質問3,登録日時,更新日時,終了列
+DUMMY,1,A0000001,None,5674567,カナ,None,123456789012,None,testtt@gmail.com,0391543,青森県,三戸郡五戸町,竹原竹原竹原竹原竹原竹原,None,1,None,,,メール,None,0,None,None,1,None,1,あり,None,None,None,None,2023/09/11 13:06:50,2023/09/11 13:42:41,DUMMY
+DUMMY,2,A0000002,None,245234,カナカナカナカナ,None,123456789,None,stg@test.com,0608602,北海道,札幌市中央区,内橋,None,0,None,,,なし,None,0,None,None,1,None,0,あり,None,None,None,None,2023/09/11 13:34:21,2023/09/11 13:40:46,DUMMY
+DUMMY,3,A0000003,None,000000000000000000000000000000000000,カナカナカナカナカナ,None,123456789012345,None,testtt22222222222222222222222222@gmail.com,0391543,青森県,三戸郡五戸町,竹原竹原竹原竹原竹原竹原,None,0,None,"GIG_SQA22 氏名（フリガナ） ※JPG,PNG,GIF,BMP形式/最大5MBまで ※20文字以内 ※1000文字以内 GIG_SQA22 氏名（フリガナ） GIG_SQA22","GIG_SQA22 氏名（フリガナ） ※JPG,PNG,GIF,BMP形式/最大5MBまで ※20文字以内 ※1000文字以内 GIG_SQA22 氏名（フリガナ） GIG_SQA22",なし,None,0,None,None,0,None,0,なし,None,None,None,None,2023/09/11 13:45:05,2023/09/12 13:35:59,DUMMY
+DUMMY,4,A0000004,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:05:59,2023/09/26 16:03:39,DUMMY
+DUMMY,5,A0000005,None,test2,カナカナカナカナカナカナカナカナカナカナカナカナカナカナカナカナ,None,4567456,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,"管理メ
+モ1
+<script>
+alert('test');</script>
+<script>alert('test');</script>","管理メ
+モ1
+<script>alert('test');</script>
+<script>alert('test');</script>",メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/09/11 15:08:20,2023/09/26 16:36:02,DUMMY
+DUMMY,6,A0000006,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:48,2023/10/18 18:40:07,DUMMY
+DUMMY,7,A0000007,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:48,2023/10/23 16:21:58,DUMMY
+DUMMY,8,A0000008,None,Sony,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:49,2024/04/19 19:01:50,DUMMY
+DUMMY,9,A0000009,None,Uber,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,0,None,,,なし,None,0,None,None,0,None,1,なし,None,None,None,None,2023/09/11 15:12:49,2023/11/01 17:53:35,DUMMY
+DUMMY,10,A0000010,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:49,2023/09/25 22:45:47,DUMMY
+DUMMY,11,A0000011,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,df,aassdaaaaaaaaaaaa,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:49,2023/09/12 15:27:48,DUMMY
+DUMMY,12,A0000012,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:49,2023/09/25 22:45:23,DUMMY
+DUMMY,13,A0000013,None,Alibaba,カナ,None,123456789012345,None,test@gmail.com,0520033,大分県,速見郡日出町,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:49,2023/11/01 17:52:55,DUMMY
+DUMMY,14,A0000014,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:50,2023/09/25 22:45:58,DUMMY
+DUMMY,15,A0000015,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:50,2023/09/25 22:46:28,DUMMY
+DUMMY,16,A0000016,None,Tesla,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:50,2023/11/22 17:19:52,DUMMY
+DUMMY,17,A0000017,None,VinGroup,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:50,2023/11/01 17:52:21,DUMMY
+DUMMY,18,A0000018,None,Amazon,カナ,None,123456789012345,None,test@gmail.com,1860000,東京都,国立市,Tokyo,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:50,2023/11/01 17:57:58,DUMMY
+DUMMY,19,A0000019,None,Shopify,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:51,2023/11/01 17:51:38,DUMMY
+DUMMY,20,A0000020,None,Salesforce,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:51,2023/11/01 17:51:21,DUMMY
+DUMMY,21,A0000021,None,Atlassian,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:51,2023/11/01 17:50:57,DUMMY
+DUMMY,22,A0000022,None,Zoom Video Communications,カナ,None,123456789012345,None,test@gmail.com,1140000,東京都,北区,Tokyo,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:51,2023/11/01 17:57:24,DUMMY
+DUMMY,23,A0000023,None,Alphabet,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:51,2023/11/01 17:50:13,DUMMY
+DUMMY,24,A0000024,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:52,2023/09/25 22:45:40,DUMMY
+DUMMY,25,A0000025,None,Oracle Corporation,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:52,2023/11/01 17:49:50,DUMMY
+DUMMY,26,A0000026,None,Intel Corp,カナ,None,123456789012345,None,test@gmail.com,0520033,福井県,鯖江市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:52,2023/11/01 17:56:20,DUMMY
+DUMMY,27,A0000027,None,Dell Technologies,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:52,2023/11/01 17:48:45,DUMMY
+DUMMY,28,A0000028,None,Microsoft,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:52,2023/11/01 17:48:18,DUMMY
+DUMMY,29,A0000029,None,Meta Platforms,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:52,2023/11/01 17:48:32,DUMMY
+DUMMY,30,A0000030,None,Samsung Group,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:53,2023/11/01 17:48:03,DUMMY
+DUMMY,31,A0000031,None,Apple,カナ,None,123456789012345,None,test@gmail.com,0520033,神奈川県,足柄下郡湯河原町,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:53,2023/11/01 17:47:37,DUMMY
+DUMMY,32,A0000032,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:53,2023/09/11 15:19:46,DUMMY
+DUMMY,33,A0000033,None,5674567,カナ,None,123456789012345,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 15:12:53,2023/09/14 16:53:54,DUMMY
+DUMMY,34,A0000034,None,test,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,"test 
+test
+test","test
+test
+test",メール,None,0,None,None,1,None,1,あり,None,None,None,None,2023/09/11 15:49:26,2023/09/15 13:55:04,DUMMY
+DUMMY,36,A0000036,None,test,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,test,test,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 17:23:43,2023/09/25 17:40:31,DUMMY
+DUMMY,37,A0000037,None,test,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,test,test,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 17:23:43,2023/09/25 18:51:13,DUMMY
+DUMMY,38,A0000038,None,test,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,test,test,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 17:23:44,2023/10/03 17:27:00,DUMMY
+DUMMY,39,A0000039,None,企業 4,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,管理メモ1,管理メモ2,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 17:23:44,2023/11/01 17:42:13,DUMMY
+DUMMY,40,A0000040,None,test,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,test,test,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 17:23:44,2023/09/25 17:38:51,DUMMY
+DUMMY,41,A0000041,None,企業 3,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 17:23:45,2023/11/01 17:41:37,DUMMY
+DUMMY,42,A0000042,None,test,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,test,test,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 17:23:45,2023/09/25 17:39:13,DUMMY
+DUMMY,43,A0000043,None,企業 3,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,管理メモ1,管理メモ2,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 17:23:45,2023/11/01 17:40:51,DUMMY
+DUMMY,44,A0000044,None,企業 2,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 17:23:46,2023/11/01 17:40:26,DUMMY
+DUMMY,45,A0000045,None,企業 1,カナ,None,09812323,None,test@gmail.com,0648575,北海道,札幌市中央区,旭ケ丘,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 17:23:46,2023/11/01 17:39:26,DUMMY
+DUMMY,46,A0000046,None,HT,カナ,None,0818781999,None,Dat@gmail.com,5770058,大阪府,東大阪市,足代北,None,0,None,"項目	値
+企業名必須	
+HT
+企業名カナ必須",企業名カナ必須,なし,None,0,None,None,0,None,0,なし,None,None,None,None,2023/09/11 17:48:57,2023/09/15 13:55:10,DUMMY
+DUMMY,47,A0000047,None,企業 5,カナ,None,0818781999,None,Dat@gmail.com,5770058,大阪府,東大阪市,足代北,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:06:04,2023/11/01 17:45:11,DUMMY
+DUMMY,48,A0000048,None,Test①,テスト,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,1100001,東京都,台東区,谷中,None,1,None,Test① Test Tes Te T,Test① Test Tes Te T,メール,None,0,None,None,1,None,1,あり,None,None,None,None,2023/09/11 18:07:56,2023/09/11 18:09:42,DUMMY
+DUMMY,49,A0000049,None,HT,カナ,None,0818781999,None,Dat@gmail.com,5770058,大阪府,東大阪市,足代北,None,1,None,"qsdasas
+&agrave;dqwrf2wfevds
+?
+FWFVSDVSDQWR",Q?QWFVDCXVTHWRH,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:10:31,2023/09/12 13:35:42,DUMMY
+DUMMY,50,A0000050,None,カナ,カナ,None,,None,Dat@gmail.com,5770058,大阪府,東大阪市,足代北,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:12:53,2023/09/11 18:12:53,DUMMY
+DUMMY,51,A0000051,None,カナ,カナ,None,,None,Dat@gmail.com,5770058,大阪府,東大阪市,足代北,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:13:08,2023/09/11 18:13:08,DUMMY
+DUMMY,52,A0000052,None,カナ,カナ,None,,None,Dat@gmail.com,5770058,大阪府,東大阪市,足代北,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:13:22,2023/09/11 18:13:22,DUMMY
+DUMMY,53,A0000053,None,カナ,カナ,None,,None,Dat@gmail.com,5770058,大阪府,東大阪市,足代北,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:13:40,2023/09/11 18:13:40,DUMMY
+DUMMY,54,A0000054,None,Company,ナ,None,0818781999,None,Dat@gmail.com,5770057,大阪府,東大阪市,足代新町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:14:12,2023/11/01 17:44:35,DUMMY
+DUMMY,55,A0000055,None,Test②,テスト,None,0,None,i.aoshima@hybrid-technologies.co.jp,4020023,山梨県,都留市,大野,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:21:31,2023/09/11 18:36:03,DUMMY
+DUMMY,56,A0000056,None,5674567,カナ,None,4567456,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,0,None,"管理メモ1
+管理メモ1
+管理メモ1
+管理メモ1","管理メモ1
+管理メモ1
+管理メモ1
+管理メモ1",なし,None,0,None,None,0,None,0,なし,None,None,None,None,2023/09/11 18:33:10,2023/09/11 18:36:52,DUMMY
+DUMMY,57,A0000057,None,カナ,カナ,None,,None,Dat@gmail.com,5770058,大阪府,東大阪市,足代北,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:33:15,2023/09/11 18:36:42,DUMMY
+DUMMY,58,A0000058,None,5674567   bug/68263 - Fix change message validate space   bug/68263 - Fix change message validate space,カナカナカナカナカナ,None,4567456,None,testtt22222222222222222222222222@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,0,None,None,0,None,1,なし,None,None,None,None,2023/09/11 18:34:56,2023/09/12 13:35:30,DUMMY
+DUMMY,59,A0000059,None,000000000000000000000000000000000000,カナ,None,4567456,None,testtt22222222222222222222222222@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/09/11 18:36:09,2023/09/11 18:36:31,DUMMY
+DUMMY,60,A0000060,None,Test③,テスト,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,1000001,東京都,千代田区,千代田,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:38:09,2023/09/11 18:38:09,DUMMY
+DUMMY,61,A0000061,None,Test④,テスト,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,1100001,東京都,台東区,谷中,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:41:08,2023/09/11 18:41:08,DUMMY
+DUMMY,62,A0000062,None,Test⑤,テスト,None,,None,i.aoshima@hybrid-technologies.co.jp,1100001,東京都,台東区,谷中,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:42:40,2023/09/11 18:42:40,DUMMY
+DUMMY,63,A0000063,None,Test⑥,テスト,None,,None,i.aoshima@hybrid-technologies.co.jp,1100001,東京都,台東区,谷中,None,0,None,,,なし,None,1,None,None,0,None,0,あり,None,None,None,None,2023/09/11 18:43:44,2023/09/11 18:43:44,DUMMY
+DUMMY,64,A0000064,None,5674567,カナ,None,4567456,None,test@gmail.com,0520033,北海道,伊達市,西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町西浜町,None,0,None,,,なし,None,0,None,None,0,None,0,なし,None,None,None,None,2023/09/11 18:45:14,2023/09/21 19:00:32,DUMMY
+DUMMY,65,A0000065,None,https://ja.wikipedia.org/wiki/A,ウィキ,None,,None,i.aoshima@hybrid-technologies.co.jp,1100001,東京都,台東区,谷中,None,1,None,https://ja.wikipedia.org/wiki/A,https://ja.wikipedia.org/wiki/A,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/11 18:48:31,2023/09/12 13:41:01,DUMMY
+DUMMY,66,A0000066,FM001FM001,DatHM Company,カナ,None,,None,dungnk@hybrid-technologies.com.vn,5770057,大阪府,東大阪市,足代新町,None,1,None,管理,メモ,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/09/11 18:51:18,2024/03/20 11:10:33,DUMMY
+DUMMY,67,A0000067,None,Test000001,カナ,None,4567456,None,test@gmail.com,0391543,青森県,三戸郡五戸町,竹原竹原竹原竹原竹原竹原,None,0,None,"管理メモ1
+管理メモ1
+管理メモ1
+管理メモ1","管理メモ1
+管理メモ1
+管理メモ1
+管理メモ1",なし,None,0,None,None,0,None,0,あり,None,None,None,None,2023/09/13 11:23:59,2023/09/15 13:55:15,DUMMY
+DUMMY,68,A0000068,None,トモテスト,トモテスト,None,00000000000,None,tomonokai1@test.com,1500002,東京都,渋谷区,渋谷1-1-1,None,1,None,aaaaaaaaaaaa,iiiiiiiiiiiiiii,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/09/15 19:19:29,2023/09/15 19:21:01,DUMMY
+DUMMY,69,A0000069,None,テスト,テスト,None,,None,ishikawa_hana@giginc.co.jp,5300004,大阪府,大阪市都島区,堂島アクシスビル4階 SYNTH,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/21 14:18:56,2023/09/21 14:18:56,DUMMY
+DUMMY,70,A0000070,None,テスト,テスト,None,,None,ishikawaa_hana@giginc.co.jp,5300004,大阪府,大阪市都島区,堂島アクシスビル4階 SYNTH,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/21 14:46:20,2023/09/21 17:21:03,DUMMY
+DUMMY,71,A0000071,None,テスト,テストテスト,None,,None,ishikawaaa_hana@giginc.co.jp,1000006,東京都,千代田区,有楽町ITOCiA(イトシア) オフィスタワー18F,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/21 14:55:24,2023/09/21 15:12:35,DUMMY
+DUMMY,72,A0000072,None,Test 設定用 青,テスト,None,,None,i.aoshima@hybrid-technologies.co.jp,1000000,東京都,千代田区,千代田,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/22 18:44:06,2024/01/10 11:00:34,DUMMY
+DUMMY,73,A0000073,None,テスト,テスト,None,,None,ishikawaaaaaa_hana@giginc.co.jp,5300004,大阪府,大阪市都島区,堂島アクシスビル4階 SYNTH,None,1,None,わたしのなまえわ (name) です,,メール,None,0,None,None,1,None,0,なし,None,None,None,None,2023/09/22 19:18:57,2023/09/26 16:03:10,DUMMY
+DUMMY,74,A0000074,None,HYDRID TECHNOLOGIES,カナ,None,0123456789,None,thieuhoa@gmail.com,0411111,福井県,大飯郡おおい町,Tokyo,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/09/25 17:30:03,2023/09/25 17:30:13,DUMMY
+DUMMY,75,A0000075,None,トモテスト,トモテスト,None,000000000000000,None,tomonokai1@test.com,1500002,東京都,渋谷区,渋谷,None,1,None,test,test,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/09/26 16:02:29,2023/10/03 15:34:31,DUMMY
+DUMMY,76,A0000076,None,テスト,テスト,None,,None,ishikawa_hana@giginc.co.jp,5300004,大阪府,大阪市都島区,堂島アクシスビル4階 SYNTH,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/10/03 15:36:55,2023/10/03 15:36:55,DUMMY
+DUMMY,77,A0000077,None,Sテスト企業,エステストキギョウ,None,,None,test@test.com,1070062,東京都,港区,南青山1-1-1,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/10/04 13:47:43,2023/10/04 13:47:43,DUMMY
+DUMMY,78,A0000078,None,片岡テスト_グループ無し契約登録テスト用,カタオカテスト,None,,None,test1234@gmail.com,1500002,東京都,渋谷区,渋谷,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/10/06 16:24:15,2023/10/20 12:00:29,DUMMY
+DUMMY,79,A0000079,None,"""Hybrid Technologies Company""",カナ,None,,None,yen@gmail.com,0411111,北海道,亀田郡七飯町,本町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/10/19 16:54:35,2023/10/19 16:55:36,DUMMY
+DUMMY,80,A0000080,None,テスト,テスト,None,,None,ishikawa_hana@giginc.co.jp,5300004,大阪府,大阪市福島区,堂島アクシスビル4階 SYNTH,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/10/20 12:02:35,2023/10/20 12:04:16,DUMMY
+DUMMY,81,A0000081,None,企業コード(企業番号<b>alert('test');/<b>,カナカナカナカナカナカナカナカナカナカナカナカナカナカナカナカナ,None,123456789012,None,hoant@hybrid-technologies.com.vn,0391543,青森県,三戸郡五戸町,竹原竹原竹原竹原竹原竹原,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/10/23 18:50:33,2023/10/25 11:10:31,DUMMY
+DUMMY,82,A0000082,None,企業コード(企業番号)<b>企業コード(企業番号/<b>,カナカナカナカナカナカナカナカナカナカナカナカナカナカナカナカナ,None,123456789012,None,nguyenhoa.vnit@gmail.com,0391543,岩手県,遠野市,竹原竹原竹原竹原竹原竹原,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/10/23 18:56:00,2023/10/25 11:10:26,DUMMY
+DUMMY,83,A0000083,None,TH company,ハナ,None,0123456789,None,dungnk@hybrid-technologies.com.vn,0411111,北海道,亀田郡七飯町,本町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/10/26 11:01:32,2023/12/21 19:58:10,DUMMY
+DUMMY,84,A0000084,None,株式会社GIG,カブシキガイシャギグ,None,,None,ejiri_yusuke+aaa.com@giginc.co.jp,1030007,東京都,中央区,日本橋浜町浜町1-11-8 ザパークレックス日本橋浜町4階,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2023/11/01 11:03:41,2023/11/16 17:34:14,DUMMY
+DUMMY,85,A0000085,K0004,東京個別指導学院,トウキョウコベツシドウガクイン,None,,None,aaaaa@gmail.com,1630525,東京都,新宿区,西新宿一丁目26番2号 新宿野村ビル25階,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/11/15 20:31:26,2023/12/01 20:34:46,DUMMY
+DUMMY,86,A0000086,K0000,早稲田アカデミー,ワセダアカデミー,None,000000000,None,aaaaa@gmail.com,1770034,東京都,練馬区,富士見台,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/11/16 11:20:55,2023/11/16 11:20:55,DUMMY
+DUMMY,87,A0000087,None,ああああああ,アアアアアアアアア,None,,None,jukust_moronaga@hm8.aitai.ne.jp,1520035,東京都,目黒区,自由が丘,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/11/17 17:10:00,2023/11/17 17:10:00,DUMMY
+DUMMY,88,A0000088,None,Aoshima Test①,テスト,None,,None,i.aoshima@hybrid-technologies.co.jp,1100001,東京都,台東区,谷中,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/11/17 18:22:07,2023/11/17 18:22:07,DUMMY
+DUMMY,89,A0000089,None,Aoshima Test②,テスト,None,,None,i.aoshima@hybrid-technologies.co.jp,4020023,山梨県,都留市,大野,None,0,None,テスト,,なし,None,0,None,None,0,None,1,あり,None,None,None,None,2023/11/17 18:23:27,2023/11/20 18:12:27,DUMMY
+DUMMY,90,A0000090,None,テスト クライアント@@$$$%%%,テスト クライアント,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,1100001,東京都,台東区,谷中,None,1,None,!@#$123QWEasdあいうえおアイウエオ青嶋,!@#$123QWEasdあいうえおアイウエオ青嶋,メール,None,0,None,None,1,None,1,あり,None,None,None,None,2023/11/20 17:25:30,2023/11/20 17:25:30,DUMMY
+DUMMY,91,A0000091,None,ズエンテスト企業,ズエンテストキギョウ,None,,None,test.duyenct37@gmail.com,1340083,東京都,江戸川区,中葛西,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/11/20 20:26:10,2023/11/20 20:26:10,DUMMY
+DUMMY,92,A0000092,None,HoaTT Company,カナ,None,,None,hoatt@gmail.com,0411111,北海道,亀田郡七飯町,本町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/11/22 16:39:58,2023/12/07 16:44:55,DUMMY
+DUMMY,93,A0000093,None,青嶋テスト,テスト,None,,None,i.aoshima@hybrid-technologies.co.jp,1100001,東京都,台東区,谷中,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/11/27 12:04:44,2023/11/27 12:04:44,DUMMY
+DUMMY,94,A0000094,None,青嶋テスト2番目,アオシマ,None,,None,i.aoshima@hybrid-technologies.co.jp,1100001,東京都,台東区,谷中,None,1,None,管理メモ,管理メモ,メール,None,0,None,None,1,None,1,あり,None,None,None,None,2023/11/27 18:27:09,2023/11/27 18:27:09,DUMMY
+DUMMY,95,A0000095,1111123,大塚のテスト企業,オオツカノテストキギョウ,None,,None,otsuka_haruki@giginc.co.jp,1000005,東京都,千代田区,丸の内1,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/12/01 16:49:23,2023/12/01 16:49:23,DUMMY
+DUMMY,95,A0000095,1234321,大塚のテスト企業,オオツカノテストキギョウ,None,,None,otsuka_haruki@giginc.co.jp,1000005,東京都,千代田区,丸の内1,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/12/01 16:49:23,2023/12/01 16:49:23,DUMMY
+DUMMY,95,A0000095,1212345,大塚のテスト企業,オオツカノテストキギョウ,None,,None,otsuka_haruki@giginc.co.jp,1000005,東京都,千代田区,丸の内1,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/12/01 16:49:23,2023/12/01 16:49:23,DUMMY
+DUMMY,96,A0000096,None,【フェーズ3】新規企業登録テスト@片岡,フェーズスリー シンキキギョウトウロクテストアットマークカタオカ,None,,None,t-kataoka@tomonokai-corp.com,1500002,東京都,渋谷区,渋谷2-12-24 東建・長井ビル 5階,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/12/06 11:26:44,2023/12/06 12:02:51,DUMMY
+DUMMY,97,A0000097,None,【フェーズ3】新規企業登録テスト@片岡,フェーズスリー シンキキギョウトウロクテストアットマークカタオカ,None,0357662764,None,t-kataoka@tomonokai-corp.com,1500002,東京都,渋谷区,渋谷,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/12/06 12:04:41,2023/12/06 12:04:41,DUMMY
+DUMMY,98,A0000098,None,【フェーズ3】新規企業登録テスト@片岡2,フェーズスリー シンキキギョウトウロクテストアットマークカタオカツー,None,,None,t-kataoka@tomonokai-corp.com,1500002,東京都,渋谷区,渋谷,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/12/06 12:25:37,2023/12/06 12:25:37,DUMMY
+DUMMY,99,A0000099,None,さいとうテスト企業,サイトウテストキギョウ,None,,None,saito_isamu+client1@giginc.co.jp,1820004,東京都,調布市,入間町,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2023/12/14 12:35:05,2023/12/26 12:09:11,DUMMY
+DUMMY,100,A0000100,None,Hoa company <br>,カナ,None,123456789012,None,Hoantcompany@gmail.com,0391543,青森県,弘前市,竹原竹原竹原竹原竹原竹原,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/12/15 16:05:49,2024/01/04 12:36:07,DUMMY
+DUMMY,101,A0000101,FM12345678,HoaNT companyy,カナ,None,0123456789,None,hoant@hybrid-technologies.com.vn,0411111,北海道,札幌市北区,本町,None,1,None,管理メモ1,管理メモ2,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2023/12/21 10:38:10,2023/12/26 15:22:26,DUMMY
+DUMMY,102,A0000102,q,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,ss,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,aa,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,qqq,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,fff,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,sss,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,aasss,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,2233,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,11,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,DDDW,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,ffff,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,12,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,FM00012,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,1234567,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,102,A0000102,ssssss,さいとう企業テスト,サイトウキギョウテスト,None,,None,saito_isamu+client1@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2023/12/28 17:05:54,2023/12/28 17:05:54,DUMMY
+DUMMY,103,A0000103,None,NC Company,ノチカチ,None,0123456789,None,ngocchien.1711@gmail.com,1000000,東京都,千代田区,HN,None,1,None,"勤務時間:補足説明勤務時間:補足説明勤務時間:補足説明勤務時間:補足説明勤務時間:補足説明勤務時間:補足説明勤務時間:補足説明勤務時間
+:補足説明勤務時間:補足説明勤務時間:補足説明勤務時間:補足説",,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/01/02 13:25:33,2024/01/05 15:55:23,DUMMY
+DUMMY,104,A0000104,k,NEW 青嶋 テスト,アオシマ,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,2020022,東京都,西東京市,柳沢,None,1,None,管理メモ1確認用メモ,管理メモ2確認用メモ,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2024/01/22 18:51:58,2024/01/22 18:53:35,DUMMY
+DUMMY,104,A0000104,9213,NEW 青嶋 テスト,アオシマ,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,2020022,東京都,西東京市,柳沢,None,1,None,管理メモ1確認用メモ,管理メモ2確認用メモ,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2024/01/22 18:51:58,2024/01/22 18:53:35,DUMMY
+DUMMY,104,A0000104,sahuagaidn,NEW 青嶋 テスト,アオシマ,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,2020022,東京都,西東京市,柳沢,None,1,None,管理メモ1確認用メモ,管理メモ2確認用メモ,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2024/01/22 18:51:58,2024/01/22 18:53:35,DUMMY
+DUMMY,104,A0000104,9213sa,NEW 青嶋 テスト,アオシマ,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,2020022,東京都,西東京市,柳沢,None,1,None,管理メモ1確認用メモ,管理メモ2確認用メモ,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2024/01/22 18:51:58,2024/01/22 18:53:35,DUMMY
+DUMMY,104,A0000104,shiro,NEW 青嶋 テスト,アオシマ,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,2020022,東京都,西東京市,柳沢,None,1,None,管理メモ1確認用メモ,管理メモ2確認用メモ,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2024/01/22 18:51:58,2024/01/22 18:53:35,DUMMY
+DUMMY,104,A0000104,sah,NEW 青嶋 テスト,アオシマ,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,2020022,東京都,西東京市,柳沢,None,1,None,管理メモ1確認用メモ,管理メモ2確認用メモ,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2024/01/22 18:51:58,2024/01/22 18:53:35,DUMMY
+DUMMY,105,A0000105,acb12,HongNTK_企業,カナカナ,None,,None,hongntk@hybrid-technologies.vn,1340084,東京都,江戸川区,東葛西,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/01/25 13:20:00,2024/01/25 13:20:00,DUMMY
+DUMMY,106,A0000106,FM106COM01,HuongDT Company,カナハナ,None,,None,huongdt1@gmail.com,1960000,東京都,昭島市,中央,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/01/26 10:54:56,2024/01/26 10:54:56,DUMMY
+DUMMY,106,A0000106,FM106COM02,HuongDT Company,カナハナ,None,,None,huongdt1@gmail.com,1960000,東京都,昭島市,中央,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/01/26 10:54:56,2024/01/26 10:54:56,DUMMY
+DUMMY,107,A0000107,None,【片岡】クライアント画面テスト1,カタオカ クライアントガメンテストイチ,None,,None,t-kataoka@tomonokai-corp.com,1500002,東京都,渋谷区,渋谷2-12-24 東建・長井ビル 5階,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2024/02/06 11:58:24,2024/02/06 11:58:24,DUMMY
+DUMMY,108,A0000108,K0001,鈴木テスト企業1,アア,None,,None,s-suzuki@tomonokai-corp.com,1500002,東京都,渋谷区,渋谷,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2024/02/06 17:49:38,2024/02/07 16:56:46,DUMMY
+DUMMY,109,A0000109,K0002,鈴木テスト企業2,イイ,None,,None,s-suzuki@tomonokai-corp.com,1500002,東京都,渋谷区,渋谷,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2024/02/06 17:51:42,2024/02/06 17:51:42,DUMMY
+DUMMY,109,A0000109,1,鈴木テスト企業2,イイ,None,,None,s-suzuki@tomonokai-corp.com,1500002,東京都,渋谷区,渋谷,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2024/02/06 17:51:42,2024/02/06 17:51:42,DUMMY
+DUMMY,110,A0000110,K0542,スクールIE(佐久間テスト),スクールアイイー サクマテスト,None,0535715050,None,m-sakuma@tomonokai-corp.com,1040032,東京都,中央区,八丁堀2-24-2 八丁堀第一生命ビル 9階,None,1,None,K0542,株式会社エークラス教育社,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/02/07 14:05:13,2024/02/07 14:06:54,DUMMY
+DUMMY,110,A0000110,1235,スクールIE(佐久間テスト),スクールアイイー サクマテスト,None,0535715050,None,m-sakuma@tomonokai-corp.com,1040032,東京都,中央区,八丁堀2-24-2 八丁堀第一生命ビル 9階,None,1,None,K0542,株式会社エークラス教育社,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/02/07 14:05:13,2024/02/07 14:06:54,DUMMY
+DUMMY,111,A0000111,a,テストカンパニー,テストカンパニー,None,,None,test1234@test.com,1138654,東京都,文京区,本郷,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/02/08 12:20:35,2024/02/22 11:52:02,DUMMY
+DUMMY,112,A0000112,0001,企業名_HoaNTcompany,カナカナカナカナカナカナカナカナカナカナカナカナカナカ,None,88888888888,None,hoant+3@hybrid-technologies.com.vn,1340083,東京都,江戸川区,中葛西,None,1,None,"管理メモ1
+管理メモ1
+管理メモ1管理メモ1管理メモ1管理メモ1管理メモ1管理メモ1","管理メモ2管理メモ2管理メモ2管理メモ2
+管理メモ2管理メモ2管理メモ2管理メモ2
+管理メモ2管理メモ2管理メモ2管理メモ2
+管理メモ2管理メモ2管理メモ2管理メモ2",メール,None,0,None,None,1,None,1,あり,None,None,None,None,2024/02/27 15:39:24,2024/02/27 15:39:24,DUMMY
+DUMMY,112,A0000112,11111,企業名_HoaNTcompany,カナカナカナカナカナカナカナカナカナカナカナカナカナカ,None,88888888888,None,hoant+3@hybrid-technologies.com.vn,1340083,東京都,江戸川区,中葛西,None,1,None,"管理メモ1
+管理メモ1
+管理メモ1管理メモ1管理メモ1管理メモ1管理メモ1管理メモ1","管理メモ2管理メモ2管理メモ2管理メモ2
+管理メモ2管理メモ2管理メモ2管理メモ2
+管理メモ2管理メモ2管理メモ2管理メモ2
+管理メモ2管理メモ2管理メモ2管理メモ2",メール,None,0,None,None,1,None,1,あり,None,None,None,None,2024/02/27 15:39:24,2024/02/27 15:39:24,DUMMY
+DUMMY,112,A0000112,0008,企業名_HoaNTcompany,カナカナカナカナカナカナカナカナカナカナカナカナカナカ,None,88888888888,None,hoant+3@hybrid-technologies.com.vn,1340083,東京都,江戸川区,中葛西,None,1,None,"管理メモ1
+管理メモ1
+管理メモ1管理メモ1管理メモ1管理メモ1管理メモ1管理メモ1","管理メモ2管理メモ2管理メモ2管理メモ2
+管理メモ2管理メモ2管理メモ2管理メモ2
+管理メモ2管理メモ2管理メモ2管理メモ2
+管理メモ2管理メモ2管理メモ2管理メモ2",メール,None,0,None,None,1,None,1,あり,None,None,None,None,2024/02/27 15:39:24,2024/02/27 15:39:24,DUMMY
+DUMMY,113,A0000113,88888,HongNTK_new_company_企業,カナカナ,None,,None,hongntk+1@hybrid-technologies.vn,1340084,東京都,江戸川区,東葛西,None,1,None,,,メール,None,1,None,None,0,None,1,あり,None,None,None,None,2024/02/28 17:16:18,2024/02/28 17:16:18,DUMMY
+DUMMY,114,A0000114,abc24342,company new11,カナカナカナカナカナ,None,4567456,None,abc@gmail.com,1340084,東京都,江戸川区,東葛西,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/02/29 15:07:31,2024/02/29 15:07:31,DUMMY
+DUMMY,115,A0000115,12212,親契約テスト企業,オヤケイヤクキギョウテスト,None,,None,saito_isamu+admin_test_001@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2024/03/06 16:20:28,2024/03/06 16:20:28,DUMMY
+DUMMY,115,A0000115,1452364,親契約テスト企業,オヤケイヤクキギョウテスト,None,,None,saito_isamu+admin_test_001@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2024/03/06 16:20:28,2024/03/06 16:20:28,DUMMY
+DUMMY,115,A0000115,asderty,親契約テスト企業,オヤケイヤクキギョウテスト,None,,None,saito_isamu+admin_test_001@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2024/03/06 16:20:28,2024/03/06 16:20:28,DUMMY
+DUMMY,115,A0000115,qw12354,親契約テスト企業,オヤケイヤクキギョウテスト,None,,None,saito_isamu+admin_test_001@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2024/03/06 16:20:28,2024/03/06 16:20:28,DUMMY
+DUMMY,116,A0000116,FM12345677,企業名企業名,カナカナカナカナカナ,None,4567456,None,abc@gmail.com,0391543,青森県,西津軽郡鰺ヶ沢町,以降の住所以降の住所,None,1,None,管理メモ1,管理メモ2,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/03/07 10:52:32,2024/03/07 10:52:32,DUMMY
+DUMMY,117,A0000117,K0987,佐久間テスト,サクマテスト,None,,None,m-sakuma@tomonokai-corp.com,1520035,東京都,目黒区,自由が丘,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/03/08 12:41:48,2024/03/08 12:41:48,DUMMY
+DUMMY,118,A0000118,1111122,親契約テスト企業2,オヤケイヤクキギョウテスト,None,,None,saito_isamu+admin_test_001@giginc.co.jp,1840001,東京都,小金井市,関野町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/03/12 13:42:08,2024/03/12 13:42:08,DUMMY
+DUMMY,119,A0000119,123456,Test A14,カナカナカナカナ,None,,None,abc@a.com,0391543,青森県,弘前市,竹原竹原竹原竹原竹原竹原,None,1,None,"管理メモ1
+管理メモ1
+管理メモ1",,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/04/01 17:53:36,2024/04/01 17:53:36,DUMMY
+DUMMY,119,A0000119,35345346,Test A14,カナカナカナカナ,None,,None,abc@a.com,0391543,青森県,弘前市,竹原竹原竹原竹原竹原竹原,None,1,None,"管理メモ1
+管理メモ1
+管理メモ1",,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/04/01 17:53:36,2024/04/01 17:53:36,DUMMY
+DUMMY,120,A0000120,None,テスト株式会社,テスト,None,,None,kotake_jin@giginc.co.jp,1030004,東京都,中央区,東日本橋,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/04/02 17:57:20,2024/04/02 17:57:20,DUMMY
+DUMMY,121,A0000121,00004,企業名1,カナ,None,123456789012,None,test@gmail.com,0391543,青森県,弘前市,竹原竹原竹原竹原竹原竹原,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/04/02 19:26:01,2024/04/02 19:26:01,DUMMY
+DUMMY,122,A0000122,1111111111,テストKOTA株式会社,テスト,None,08011112222,None,kotake_jin+company@giginc.co.jp,1030004,東京都,中央区,東日本橋,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/04/03 16:41:50,2024/04/03 16:41:50,DUMMY
+DUMMY,123,A0000123,None,新規 Aoshimaテスト用,テスト,None,0000000000,None,i.aoshima@hybrid-technologies.co.jp,1100001,東京都,台東区,谷中,None,1,None,,,メール,None,1,None,None,1,None,1,あり,None,None,None,None,2024/04/03 18:33:17,2024/04/09 15:59:20,DUMMY
+DUMMY,124,A0000124,K3456,佐久間テスト2,サクマテスト,None,,None,m-sakuma@tomonokai-corp.com,1500002,東京都,渋谷区,渋谷(次のビルを除く),None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/04/11 13:10:55,2024/04/11 13:10:55,DUMMY
+DUMMY,125,A0000125,None,大坂4/12テスト,オオサカテスト,None,,None,arbeit.yosaka@gmail.com,1500002,東京都,渋谷区,渋谷2-12-24 東建・長井ビル5階,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/04/12 18:12:41,2024/04/12 18:12:41,DUMMY
+DUMMY,126,A0000126,K5678,佐久間契約プランテスト,カブシキガイシャフォトンサンスウクラブ,None,,None,jukust_moronaga@hm8.aitai.ne.jp,1520035,東京都,目黒区,自由が丘,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/04/16 13:54:20,2024/04/16 13:54:20,DUMMY
+DUMMY,127,A0000127,K9999,片岡_契約更新確認,カタオカ,None,,None,t-kataoka@tomonokai-corp.com,1500002,東京都,渋谷区,渋谷(次のビルを除く),None,1,None,,,メール,None,1,None,None,1,None,1,なし,None,None,None,None,2024/04/16 17:27:03,2024/04/16 17:35:02,DUMMY
+DUMMY,128,A0000128,None,株式会社臨海,カブシキガイシャ リンカイ,None,000000000,None,aaaaa@gmail.com,2210056,神奈川県,横浜市神奈川区,金港町,None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/04/24 15:34:00,2024/04/24 15:34:00,DUMMY
+DUMMY,129,A0000129,K7890,サクマテスト,サクマテスト,None,,None,m-sakuma@tomonokai-corp.com,1500002,東京都,渋谷区,渋谷(次のビルを除く),None,1,None,,,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/04/25 19:10:34,2024/04/25 19:10:34,DUMMY
+DUMMY,130,A0000130,K2821174,大坂テスト,オオサカテスト,None,,None,arbeit.yosaka@gmail.com,1800003,東京都,武蔵野市,吉祥寺南町,None,1,None,K◯◯◯◯,株式会社◯◯◯,メール,None,0,None,None,1,None,1,なし,None,None,None,None,2024/05/08 14:35:55,2024/05/08 14:35:55,DUMMY
