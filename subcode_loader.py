@@ -2,7 +2,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 from googleapiclient.discovery import build
 from google.oauth2 import service_account
-import csv
+import pandas as pd
 import datetime
 import os
 import re
@@ -124,49 +124,38 @@ def load_sql_from_file(file_path, google_folder_id, json_keyfile_path):
 
 #csvファイルの保存（全件取得）
 def csvfile_export(conn, sql_query, csv_file_path, save_path_id=None):
-    cursor = conn.cursor()
     try:
-        cursor.execute(sql_query)
-        fetchall = cursor.fetchall()
-
+        df = pd.read_sql(sql_query, conn)
+        
+        # Decimalオブジェクトを文字列に変換
+        df = df.applymap(lambda x: str(x) if isinstance(x, Decimal) else x)
+        
         # '保存先PATH/ID'がある場合はそこに保存、そうでない場合は指定されたパスに保存
         final_csv_file_path = save_path_id if save_path_id else csv_file_path
-
-        with open(final_csv_file_path, 'w', newline='', encoding='cp932', errors='replace') as csv_file:
-            writer = csv.writer(csv_file)
-            writer.writerow([i[0] for i in cursor.description])  # カラムヘッダーを書き込み
-            for row in fetchall:
-                modified_row = [
-                    str(cell).replace('\ufe0f', '【unicode文字】')
-                            .replace('\u0111', '【unicode文字】')
-                            .replace('\u20e3', '【unicode文字】')
-                    if cell is not None else ''
-                    for cell in row
-                ]
-                writer.writerow(modified_row)
-
+        
+        df.to_csv(final_csv_file_path, index=False, encoding='cp932', errors='replace')
+        
         print(f"結果が {final_csv_file_path} に保存されました。")
     except Exception as e:
         print(f"クエリ実行またはCSVファイル書き込み時にエラーが発生しました: {e}")
         raise
-    finally:
-        cursor.close()
 
 #個別CSVエクスポート
 def csvfile_export_with_timestamp(conn, sql_query, sql_file_path, include_header):
     root = tk.Tk()
     root.withdraw()  # Tkのルートウィンドウを表示しない
 
-    cursor = conn.cursor()
     try:
-        cursor.execute(sql_query)
-        fetchall = cursor.fetchall()
+        df = pd.read_sql(sql_query, conn)
+
+        # Decimalオブジェクトを文字列に変換
+        df = df.applymap(lambda x: str(x) if isinstance(x, Decimal) else x)
 
         # レコードの件数を取得
-        record_count = len(fetchall)
+        record_count = len(df)
 
         # 推定ファイルサイズを計算
-        estimated_size = sum(len(str(cell)) for row in fetchall for cell in row)
+        estimated_size = df.memory_usage(deep=True).sum()
         estimated_size_mb = estimated_size / (1024 * 1024)  # バイト数をメガバイトに変換
         estimated_size_kb = estimated_size / 1024  # バイト数をキロバイトに変換
 
@@ -198,17 +187,7 @@ def csvfile_export_with_timestamp(conn, sql_query, sql_file_path, include_header
             file_path = filedialog.asksaveasfilename(defaultextension=".csv", initialfile=suggested_filename, filetypes=[("CSV files", "*.csv")])
 
             if file_path:
-                with open(file_path, 'w', newline='', encoding='cp932', errors='replace') as csv_file:
-                    writer = csv.writer(csv_file)
-                    if include_header:
-                        writer.writerow([i[0] for i in cursor.description])  # カラムヘッダーを条件に応じて書き込み
-                    for row in fetchall:
-                        modified_row = [str(cell).replace('\ufe0f', '【unicode文字】')
-                                                .replace('\u0111', '【unicode文字】')
-                                                .replace('\u20e3', '【unicode文字】')
-                                        if cell is not None else ''
-                                        for cell in row]
-                        writer.writerow(modified_row)
+                df.to_csv(file_path, index=False, header=include_header, encoding='cp932', errors='replace')
                 print(f"結果が {file_path} に保存されました。")
             else:
                 print("ファイル保存がキャンセルされました。")
@@ -219,45 +198,29 @@ def csvfile_export_with_timestamp(conn, sql_query, sql_file_path, include_header
         print(f"クエリ実行またはCSVファイル書き込み時にエラーが発生しました: {e}")
         raise  # エラーを呼び出し元に伝える
     finally:
-        cursor.close()
         root.destroy()  # Tkインスタンスを破棄
 
 #クリップボードにコピー
 def copy_to_clipboard(conn, sql_query, include_header):
-    cursor = conn.cursor()
     try:
-        cursor.execute(sql_query)
-        fetchall = cursor.fetchall()
-
+        df = pd.read_sql(sql_query, conn)
+        
         # レコードの件数を取得
-        record_count = len(fetchall)
-
-        # StringIOを使用してメモリ上にCSV（タブ区切り）データを作成
-        output = io.StringIO()
-        writer = csv.writer(output, delimiter='\t', lineterminator='\n', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-
-        if include_header:
-            headers = [i[0] for i in cursor.description]
-            writer.writerow(headers)
-
-        for row in fetchall:
-            writer.writerow(row)
-
-        clipboard_content = output.getvalue()
+        record_count = len(df)
+        
+        clipboard_content = df.to_csv(sep='\t', index=False, header=include_header, encoding='utf-8')
+        
         root = tk.Tk()
         root.withdraw()  # ウィンドウを表示せずに処理
         root.clipboard_clear()  # クリップボードをクリア
         root.clipboard_append(clipboard_content)  # クリップボードにデータを追加
-
+        
         print(f"クリップボードに{record_count}件のレコードがコピーされました。")
         messagebox.showinfo("クリップボードコピー", f"クリップボードに{record_count}件のレコードがコピーされました。")
-
     except Exception as e:
         print(f"クエリ実行時にエラーが発生しました: {e}")
-        raise  # エラーを呼び出し元に伝える
+        raise
     finally:
-        cursor.close()
-        output.close()
         root.destroy()  # クリップボードの処理後にTkインスタンスを破棄
 
 # 複数のパターンにマッチする正規表現を定義

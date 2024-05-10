@@ -151,7 +151,6 @@ def get_input_values():
     print(f"Final return values: {values}")
     return values
 
-
 #csvファイルダウンロードの実行
 def on_csv_execute():
     global input_fields_types

@@ -108,6 +108,7 @@ else:
 print("\n処理結果一覧:")
 for result in results:
     print(result)
+    LOGGER.info(result)
 
 # 個別実行
 def execute_sql_file(conn, file_info):
