@@ -21,7 +21,7 @@ exe = EXE(
     [],
     exclude_binaries=True,
     name='main',
-    debug=False,
+    debug=True,  # デバッグを有効にする
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,

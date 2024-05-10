@@ -106,3 +106,48 @@ gspread.exceptions.WorksheetNotFound: 応募
 
 2024-05-09 03:00:15,718 - main - INFO - データベース接続を閉じました。
 2024-05-09 03:00:15,736 - main - INFO - SSHトンネルを閉じました。
+2024-05-10 03:00:16,172 - main - ERROR - dblist_export.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,201 - main - ERROR - tablelist_export.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,206 - main - ERROR - primary_key_export.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,212 - main - ERROR - foreign_key_export.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,219 - main - ERROR - 1_companies.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,225 - main - ERROR - 2_client_users_admin.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,231 - main - ERROR - 3_brands.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,237 - main - ERROR - 4-5_contracts.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,243 - main - ERROR - 6_classrooms.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,249 - main - ERROR - 10_hurries.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,255 - main - ERROR - 11_custom_offer_histories.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,260 - main - ERROR - 14_candidate_users.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,284 - main - ERROR - 15_job_candidate_fact.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,290 - main - ERROR - 16_saiyo.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,298 - main - ERROR - 23_invoices.sql の読み込みに失敗しました。
+2024-05-10 03:00:16,305 - main - ERROR - SOURCE_2_jobapply.sql の読み込みに失敗しました。
+2024-05-10 03:00:17,876 - main - ERROR - 処理中にエラーが発生しました: Traceback (most recent call last):
+  File "gspread\spreadsheet.py", line 343, in worksheet
+  File "gspread\utils.py", line 140, in finditem
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "subcode_loader.py", line 528, in setup_test_environment
+  File "gspread\spreadsheet.py", line 349, in worksheet
+gspread.exceptions.WorksheetNotFound: 応募_test
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "gspread\spreadsheet.py", line 343, in worksheet
+  File "gspread\utils.py", line 140, in finditem
+StopIteration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "main.py", line 50, in <module>
+  File "subcode_loader.py", line 530, in setup_test_environment
+  File "gspread\spreadsheet.py", line 349, in worksheet
+gspread.exceptions.WorksheetNotFound: 応募
+
+2024-05-10 03:00:18,295 - main - INFO - データベース接続を閉じました。
+2024-05-10 03:00:18,382 - main - INFO - SSHトンネルを閉じました。

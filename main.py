@@ -38,7 +38,7 @@ if tunnel:
         if conn:
             for file_info in sql_and_csv_files:
                 try:
-                    sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution = file_info
+                    sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution, category = file_info
                 except ValueError as e:
                     LOGGER.error(f"file_infoのアンパック中にエラーが発生しました: {file_info}")
                     results.append(f"{file_info}: 失敗 (file_infoのアンパック中にエラー)")
@@ -50,8 +50,11 @@ if tunnel:
                 if sql_query:
                     try:
                         input_values, input_fields_types = {}, {}
-                        sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
-                        sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types, deletion_exclusion)
+                        sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query, category)
+                        if category != 'マスタ':
+                            sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types, deletion_exclusion)
+                        else:
+                            sql_query_with_conditions = sql_query_with_period_condition
 
                         if output_to_spreadsheet == 'CSV':
                             if save_path_id and save_path_id.strip():
@@ -108,7 +111,7 @@ for result in results:
 
 # 個別実行
 def execute_sql_file(conn, file_info):
-    sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution = file_info
+    sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution, category = file_info
 
     save_path_id, csv_file_name = setup_test_environment(test_execution, output_to_spreadsheet, save_path_id, csv_file_name, spreadsheet_id, json_keyfile_path)
 
@@ -116,8 +119,11 @@ def execute_sql_file(conn, file_info):
     if sql_query:
         try:
             input_values, input_fields_types = {}, {}
-            sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query)
-            sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types, deletion_exclusion)
+            sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query, category)
+            if category != 'マスタ':
+                sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types, deletion_exclusion)
+            else:
+                sql_query_with_conditions = sql_query_with_period_condition
 
             if output_to_spreadsheet == 'CSV':
                 if save_path_id and save_path_id.strip():

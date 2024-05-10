@@ -2029,3 +2029,17 @@ gspread.exceptions.APIError: {'code': 500, 'message': 'Internal error encountere
 2024-05-09 10:42:44,025 - main - INFO - データベース接続を閉じました。
 2024-05-09 10:42:44,117 - main - INFO - SSHトンネルを閉じました。
 2024-05-09 10:42:44,117 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 10:54:13,107 - main - ERROR - SQLクエリの処理中にエラーが発生しました: set_period_condition() missing 1 required positional argument: 'category'
+2024-05-09 10:54:13,107 - main - ERROR - SQLクエリの処理中にエラーが発生しました: set_period_condition() missing 1 required positional argument: 'category'
+2024-05-09 10:54:15,514 - main - ERROR - SQLクエリの処理中にエラーが発生しました: set_period_condition() missing 1 required positional argument: 'category'
+2024-05-09 10:54:15,514 - main - ERROR - SQLクエリの処理中にエラーが発生しました: set_period_condition() missing 1 required positional argument: 'category'
+2024-05-09 10:54:18,168 - main - ERROR - SQLクエリの処理中にエラーが発生しました: set_period_condition() missing 1 required positional argument: 'category'
+2024-05-09 10:54:18,168 - main - ERROR - SQLクエリの処理中にエラーが発生しました: set_period_condition() missing 1 required positional argument: 'category'
+2024-05-09 11:33:39,790 - main - INFO - データベース接続を閉じました。
+2024-05-09 11:33:39,790 - main - INFO - データベース接続を閉じました。
+2024-05-09 11:33:39,871 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 11:33:39,871 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 11:58:35,442 - main - INFO - データベース接続を閉じました。
+2024-05-09 11:58:35,442 - main - INFO - データベース接続を閉じました。
+2024-05-09 11:58:35,482 - main - INFO - SSHトンネルを閉じました。
+2024-05-09 11:58:35,482 - main - INFO - SSHトンネルを閉じました。

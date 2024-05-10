@@ -48,8 +48,9 @@ def load_sql_file_list_from_spreadsheet(spreadsheet_id, sheet_name, json_keyfile
     SPREADSHEET_COLUMN = '出力先'
     SAVE_PATH_COLUMN = '保存先PATH/ID'
     DELETION_EXCLUSION_COLUMN = '削除R除外'
-    PASTE_FORMAT_COLUMN = 'スプシ貼り付け形式' 
-    TEST_COLUMN = 'テスト' 
+    PASTE_FORMAT_COLUMN = 'スプシ貼り付け形式'
+    TEST_COLUMN = 'テスト'
+    CATEGORY_COLUMN = 'カテゴリ'
 
     credentials = ServiceAccountCredentials.from_json_keyfile_name(json_keyfile_path, SCOPES)
     gc = gspread.authorize(credentials)
@@ -67,8 +68,9 @@ def load_sql_file_list_from_spreadsheet(spreadsheet_id, sheet_name, json_keyfile
             save_path_id = record[SAVE_PATH_COLUMN]
             output_to_spreadsheet = record[SPREADSHEET_COLUMN]
             deletion_exclusion = record[DELETION_EXCLUSION_COLUMN]
-            paste_format = record[PASTE_FORMAT_COLUMN] 
-            test_execution = record[TEST_COLUMN] 
+            paste_format = record[PASTE_FORMAT_COLUMN]
+            test_execution = record[TEST_COLUMN]
+            category = record[CATEGORY_COLUMN]
 
             if filename_format:
                 now = datetime.datetime.now()
@@ -86,8 +88,7 @@ def load_sql_file_list_from_spreadsheet(spreadsheet_id, sheet_name, json_keyfile
                         break
                 else:
                     csv_file_name = filename_format + '.csv'
-            sql_and_csv_files.append((sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution))
-
+            sql_and_csv_files.append((sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution, category))
     return sql_and_csv_files
 
 @retry_on_exception
@@ -137,8 +138,9 @@ def csvfile_export(conn, sql_query, csv_file_path, save_path_id=None):
             for row in fetchall:
                 modified_row = [
                     str(cell).replace('\ufe0f', '【unicode文字】')
-                              .replace('\u0111', '【unicode文字】')
-                              .replace('\u20e3', '【unicode文字】')
+                            .replace('\u0111', '【unicode文字】')
+                            .replace('\u20e3', '【unicode文字】')
+                    if cell is not None else ''
                     for cell in row
                 ]
                 writer.writerow(modified_row)
@@ -201,14 +203,11 @@ def csvfile_export_with_timestamp(conn, sql_query, sql_file_path, include_header
                     if include_header:
                         writer.writerow([i[0] for i in cursor.description])  # カラムヘッダーを条件に応じて書き込み
                     for row in fetchall:
-                        # Unicode文字を【unicode文字】に置換
-                        modified_row = [
-                            str(cell)
-                            .replace('\ufe0f', '【unicode文字】')
-                            .replace('\u0111', '【unicode文字】')
-                            .replace('\u20e3', '【unicode文字】')
-                            for cell in row
-                        ]
+                        modified_row = [str(cell).replace('\ufe0f', '【unicode文字】')
+                                                .replace('\u0111', '【unicode文字】')
+                                                .replace('\u20e3', '【unicode文字】')
+                                        if cell is not None else ''
+                                        for cell in row]
                         writer.writerow(modified_row)
                 print(f"結果が {file_path} に保存されました。")
             else:
@@ -350,7 +349,7 @@ def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_
         LOGGER.error(f"add_conditions_to_sql関数内でエラーが発生しました: {e}")
         raise
 
-def set_period_condition(period_condition, period_criteria, sql_query):
+def set_period_condition(period_condition, period_criteria, sql_query, category):
     try:
         # 時間関連のカラム名を設定
         column_name = 'created_at' if period_criteria == '登録日時' else 'updated_at'
@@ -360,27 +359,30 @@ def set_period_condition(period_condition, period_criteria, sql_query):
         # SQLクエリの前処理
         sql_query = preprocess_sql_query(sql_query)
 
-        # GROUP BY句の検出と除去
-        sql_query, group_by_clause = detect_and_remove_group_by(sql_query)
+        if category != 'マスタ':
+            # GROUP BY句の検出と除去
+            sql_query, group_by_clause = detect_and_remove_group_by(sql_query)
 
-        # カラム名からテーブルエイリアスを特定
-        table_alias = find_table_alias(sql_query)
-        print('table_alias:'+table_alias)
+            # カラム名からテーブルエイリアスを特定
+            table_alias = find_table_alias(sql_query)
+            print('table_alias:'+table_alias)
 
-        # 期間条件に基づくWHERE句の条件を生成
-        condition = generate_period_condition(period_condition, column_name, table_alias)
-        additional_conditions = [condition] if condition else []
+            # 期間条件に基づくWHERE句の条件を生成
+            condition = generate_period_condition(period_condition, column_name, table_alias)
+            additional_conditions = [condition] if condition else []
 
-        # WHERE句の存在チェックと追加
-        sql_query = check_and_prepare_where_clause(sql_query, additional_conditions)
+            # WHERE句の存在チェックと追加
+            sql_query = check_and_prepare_where_clause(sql_query, additional_conditions)
 
-        # 期間条件を追加
-        if condition:
-            sql_query += condition
+            # 期間条件を追加
+            if condition:
+                sql_query += condition
 
-        # GROUP BY句を再追加
-        if group_by_clause:
-            sql_query += "\n" + group_by_clause
+            # GROUP BY句を再追加
+            if group_by_clause:
+                sql_query += "\n" + group_by_clause
+            else:
+                sql_query += ";"
         else:
             sql_query += ";"
 
@@ -487,7 +489,7 @@ def export_to_spreadsheet(conn, sql_query, save_path_id, sheet_name, json_keyfil
         # Decimalオブジェクトを文字列に変換
         converted_data = []
         for row in fetchall:
-            converted_row = [str(cell) if isinstance(cell, Decimal) else cell for cell in row]
+            converted_row = [str(cell) if isinstance(cell, Decimal) else cell if cell is not None else '' for cell in row]
             converted_data.append(converted_row)
 
         scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
