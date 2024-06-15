@@ -1,0 +1,16 @@
+test
+build
+dist
+myenv
+_pycahe_
+*.ini
+*.json
+*.log
+*.exe
+*.bat
+*.spec
+*.pyc
+*.pem
+*.csv
+*.xlsx
+*.xls

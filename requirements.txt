@@ -1,0 +1,14 @@
+configparser
+sshtunnel
+mysql-connector-python
+oauth2client
+gspread
+google-api-python-client
+google-auth
+requests
+beautifulsoup4
+pandas
+pytz
+openpyxl
+tenacity
+tkcalendar
