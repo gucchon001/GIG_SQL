@@ -12,3 +12,4 @@ pytz
 openpyxl
 tenacity
 tkcalendar
+streamlit
