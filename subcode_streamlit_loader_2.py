@@ -9,6 +9,9 @@ from my_logging import setup_department_logger
 
 LOGGER = setup_department_logger('main')
 
+# グローバル変数 df を宣言
+df = None
+
 # Google Sheets APIへの認証処理を共通化
 def get_google_sheets_client():
     config_file = 'config.ini'
@@ -173,11 +176,11 @@ def initialize_session_state():
     if 'df' not in st.session_state:
         st.session_state['df'] = None
     if 'limit' not in st.session_state:
-        st.session_state['limit'] = 20
+        st.session_state['limit'] = 100
     if 'total_records' not in st.session_state:
         st.session_state['total_records'] = 0
     if 'selected_rows' not in st.session_state:
-        st.session_state['selected_rows'] = 20
+        st.session_state['selected_rows'] = 100
     if 'input_fields' not in st.session_state:
         st.session_state['input_fields'] = []
     if 'input_fields_types' not in st.session_state:
@@ -208,28 +211,38 @@ def truncate_text(text, max_length=35):
 
 # Parquetファイルを読み込み、条件に基づいてフィルタリングする関数
 def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types):
+    LOGGER.info("Entering load_and_filter_parquet function.")
     try:
         df = pd.read_parquet(parquet_file_path)
+        LOGGER.info(f"Parquet file loaded successfully: {parquet_file_path}, DataFrame shape: {df.shape}")
         
         # フィルタリングロジックをここに追加する
         for field, value in input_fields.items():
             if input_fields_types[field] == 'FA' and value:
+                LOGGER.info(f"Filtering FA field: {field} with value: {value}")
                 df = df[df[field].str.contains(value, na=False)]
             elif input_fields_types[field] == 'プルダウン' and value != '-':
+                LOGGER.info(f"Filtering プルダウン field: {field} with value: {value}")
                 df = df[df[field] == value]
             elif input_fields_types[field] == 'ラジオボタン' and value:
+                LOGGER.info(f"Filtering ラジオボタン field: {field} with value: {value}")
                 df = df[df[field] == value]
-            elif input_fields_types[field] == 'チェックボックス':
+            elif input_fields_types[field] == 'チェックボックス' and isinstance(value, dict):
                 for subfield, subvalue in value.items():
                     if subvalue:
+                        LOGGER.info(f"Filtering チェックボックス field: {field} with subfield: {subfield} and value: {subvalue}")
                         df = df[df[field] == subfield]
-            elif input_fields_types[field] == 'Date' and value:
-                start_date = value['start_date']
-                end_date = value['end_date']
-                df = df[(df[field] >= start_date) & (df[field] <= end_date)]
+            elif input_fields_types[field] == 'Date' and isinstance(value, dict):
+                start_date = value.get('start_date')
+                end_date = value.get('end_date')
+                if start_date and end_date:
+                    LOGGER.info(f"Filtering Date field: {field} with start date: {start_date} and end date: {end_date}")
+                    df = df[(df[field] >= start_date) & (df[field] <= end_date)]
                 
+        LOGGER.info(f"DataFrame after filtering, shape: {df.shape}")
         return df
     except Exception as e:
+        LOGGER.error(f"Error during loading and filtering Parquet file: {parquet_file_path}, Error: {e}")
         st.error(f"データフィルタリング中にエラーが発生しました: {e}")
         return pd.DataFrame()  # 空のデータフレームを返す
 
@@ -247,14 +260,19 @@ def on_sql_file_change(sql_files_dict):
 
         if os.path.exists(parquet_file_path):
             df = pd.read_parquet(parquet_file_path)
+            df = df.sort_index(ascending=False)  # インデックスの降順で並べ替え
             st.session_state['df'] = df
             st.session_state['total_records'] = len(df)
             LOGGER.info(f"Loaded Parquet File: {parquet_file_path}")
+            LOGGER.info(f"df after on_sql_file_change: {df.head()}")
         else:
             st.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
             LOGGER.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
     except Exception as e:
         LOGGER.error(f"Error in on_sql_file_change: {e}")
+
+def calculate_offset(page_number, page_size):
+    return (page_number - 1) * page_size
 
 # 行数の変更時の処理
 def on_limit_change():
@@ -263,20 +281,37 @@ def on_limit_change():
     st.session_state['selected_rows'] = st.session_state['limit']
     df = st.session_state['df']
     if df is not None:
-        st.session_state['df'] = load_and_prepare_data(df, st.session_state['selected_rows'])
+        page_number = st.session_state.get('current_page', 1)  # 現在のページ番号を取得（デフォルトは1）
+        st.session_state['df_view'] = load_and_prepare_data(df, page_number, st.session_state['selected_rows'])
     LOGGER.info(f"Selected rows set to: {st.session_state['selected_rows']}")
 
 # データフレームを制限して準備する関数
-def load_and_prepare_data(df, selected_rows):
+def load_and_prepare_data(df, page_number, page_size):
     LOGGER.info("Entering load_and_prepare_data function.")
-    df.index = range(1, len(df) + 1)  # インデックスをリセット
-    LOGGER.info(f"DataFrame index adjusted: {df.index}")
+    if df is None:
+        LOGGER.error("DataFrame is None inside load_and_prepare_data.")
+        return pd.DataFrame()  # 空のDataFrameを返す
+    offset = calculate_offset(page_number, page_size)
+    limited_df = df.iloc[offset:offset+page_size]  # オフセットを考慮して行数を制限
+    LOGGER.info(f"Limiting DataFrame to {page_size} rows with offset {offset}.")
+    LOGGER.info(f"Limited DataFrame: {limited_df.head()}")
+    return limited_df
 
-    limited_df = df.head(selected_rows)  # 行数を制限
-    LOGGER.info(f"Limiting DataFrame to {selected_rows} rows.")
-    LOGGER.info(f"Limited DataFrame: {limited_df}")
+# ページネーションの設定
+if 'limit' in st.session_state:
+    page_size = st.session_state['limit']
+else:
+    page_size = 100  # デフォルト値を設定
+current_page = st.number_input('Current Page', min_value=1, value=1, step=1)
 
-    return limited_df  # 行数を制限したデータフレームを返す
+# データフレームの行数を制限して取得
+df = load_and_prepare_data(df, current_page, page_size)  # オフセットとページサイズを考慮してデータを準備
+styled_df = apply_styles(df)
+
+# テーブルの高さを行数に応じて動的に設定
+table_height = min(600, 24 * page_size)  # 1行あたり約24pxの高さを確保
+st.dataframe(styled_df, height=table_height, use_container_width=True)
+LOGGER.info(f"Table displayed with limit: {page_size} and offset: {calculate_offset(current_page, page_size)}")
 
 # 検索ボタンがクリックされた場合の処理
 def on_search_click():
@@ -284,13 +319,19 @@ def on_search_click():
     input_fields_types = st.session_state['input_fields_types']
     sql_file_name = get_sql_file_name(st.session_state['selected_display_name'])
     parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
+    LOGGER.info(f"Search button clicked, input values: {input_values}")
+    LOGGER.info(f"Input fields types: {input_fields_types}")
+    LOGGER.info(f"SQL file name: {sql_file_name}")
+    LOGGER.info(f"Parquet file path: {parquet_file_path}")
 
     if os.path.exists(parquet_file_path):
         df = load_and_filter_parquet(parquet_file_path, input_values, input_fields_types)
         st.session_state['df'] = df
         st.session_state['total_records'] = len(df)
+        LOGGER.info(f"DataFrame filtered, total rows: {len(df)}")
     else:
         st.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
+        LOGGER.error(f"Parquet file not found: {parquet_file_path}")
 
 # Parquetファイルを読み込み、条件に基づいてフィルタリングする関数
 def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types):

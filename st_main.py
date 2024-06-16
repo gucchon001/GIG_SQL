@@ -3,11 +3,10 @@ import threading
 import time
 import traceback
 from config_loader import load_config
-from my_logging import setup_department_logger
 import pandas as pd
+from my_logging import setup_department_logger
 
-# ロガーの設定
-logger = setup_department_logger('main')
+LOGGER = setup_department_logger('main')
 
 # グローバル変数
 last_activity_time = time.time()
@@ -21,7 +20,7 @@ def manage_connections():
     while True:
         current_time = time.time()
         if current_time - last_activity_time > 1800:  # 30分
-            logger.info("接続は正常です。")
+            LOGGER.info("接続は正常です。")
         time.sleep(60)
 
 # 背景で接続を管理するスレッドを開始
@@ -51,9 +50,9 @@ def load_and_prepare_data(parquet_file_name, input_fields, input_fields_types):
             return df
         else:
             error_message = f"Parquetファイル {parquet_file_name} の読み込みに失敗しました。"
-            logger.error(error_message)
+            LOGGER.error(error_message)
             return None
     except Exception as e:
         error_message = f"Parquetファイルの読み込み中にエラーが発生しました: {e}\n{traceback.format_exc()}"
-        logger.error(error_message)
+        LOGGER.error(error_message)
         return None

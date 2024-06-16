@@ -1,11 +1,12 @@
 import os
 import pandas as pd
+import streamlit as st
 from config_loader import load_config
 from my_logging import setup_department_logger
 from ssh_connection import create_ssh_tunnel
 from database_connection import create_database_connection
 from subcode_streamlit_loader_2 import load_sql_list_from_spreadsheet
-from db_utils import execute_sql_query
+from db_utils import execute_sql_query, get_connection
 
 # 設定ファイルの読み込み
 config_file = 'config.ini'
@@ -19,26 +20,6 @@ output_dir = os.path.join(os.getcwd(), 'data_Parquet')
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
-# データベース接続を取得する関数
-def get_connection():
-    ssh_config['db_host'] = db_config['host']
-    ssh_config['db_port'] = db_config['port']
-    ssh_config['local_port'] = local_port
-
-    # SSHトンネルを確立
-    tunnel = create_ssh_tunnel(ssh_config)
-    if tunnel:
-        # データベースに接続
-        conn = create_database_connection(db_config, tunnel.local_bind_port)
-        if conn:
-            logger.info("データベース接続完了")
-            return conn
-        else:
-            logger.error("データベース接続に失敗しました。")
-            return None
-    else:
-        logger.error("SSHトンネルの開設に失敗しました。")
-        return None
 # SQLファイルリストの取得
 sql_files_dict = load_sql_list_from_spreadsheet()
 
@@ -51,10 +32,17 @@ def save_to_parquet(df, output_path):
         logger.error(f"Parquet保存中にエラーが発生しました: {e}")
 
 if __name__ == "__main__":
+    st.title("SQL Query Execution and Parquet Export")
+    
     for display_name, sql_file_name in sql_files_dict.items():
         df = execute_sql_query(sql_file_name, config_file)
         if df is not None:
+            st.write(f"Results for {display_name}")
+            st.dataframe(df)  # データフレームを表示
+            
             # SQLファイル名から拡張子を.parquetに変更
             base_name = os.path.splitext(sql_file_name)[0]
             output_file_path = os.path.join(output_dir, f"{base_name}.parquet")
             save_to_parquet(df, output_file_path)
+        else:
+            st.error(f"Failed to load data for {display_name}")
