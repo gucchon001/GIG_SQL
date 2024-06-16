@@ -2,6 +2,7 @@ test
 build
 dist
 myenv
+data_Parquet
 _pycahe_
 *.ini
 *.json
@@ -14,3 +15,4 @@ _pycahe_
 *.csv
 *.xlsx
 *.xls
+*.parquet

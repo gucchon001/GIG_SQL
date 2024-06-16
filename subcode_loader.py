@@ -17,7 +17,6 @@ from decimal import Decimal
 from my_logging import setup_department_logger
 from tenacity import retry, stop_after_attempt, wait_fixed
 import shutil
-import csv
 import logging
 import traceback
 from io import StringIO
