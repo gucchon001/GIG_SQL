@@ -7,6 +7,17 @@ import configparser
 from datetime import date,datetime
 from my_logging import setup_department_logger
 
+# CSSファイルを読み込む関数
+def load_css(file_name):
+    try:
+        with open(file_name, 'r', encoding='utf-8') as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.error(f"CSSファイル '{file_name}' が見つかりませんでした。")
+
+# CSSファイルを読み込む
+load_css("styles.css")
+
 LOGGER = setup_department_logger('main')
 
 # グローバル変数 df を宣言
@@ -107,7 +118,7 @@ def get_filtered_data_from_sheet(sheet):
     except Exception as e:
         return []
 
-# 動的な入力フィールドを作成する関数
+# 動的な入力フィールドを作成する関数内のチェックボックス部分
 def create_dynamic_input_fields(data):
     input_fields = {}
     input_fields_types = {}
@@ -140,17 +151,21 @@ def create_dynamic_input_fields(data):
 
             elif item['input_type'] == 'ラジオボタン':
                 options = [option[1] for option in item['options'] if len(option) > 1]
-                radio_index = st.radio(label_text, range(len(options)), format_func=lambda i: options[i], index=None, key=f"radio_{item['db_item']}")
+                radio_key = f"radio_{item['db_item']}"
+                clear_key = f"clear_radio_{item['db_item']}"
+
+                if st.session_state.get(clear_key, False):
+                    st.session_state[radio_key] = None
+                    st.session_state[clear_key] = False
+
+                st.text(label_text)  # フリーワードのタイトルと同じサイズと文字タイプに統一
+                radio_index = st.radio("", range(len(options)), format_func=lambda i: options[i], index=st.session_state.get(radio_key, None), key=radio_key)
                 input_fields[item['db_item']] = options[radio_index] if radio_index is not None else None
                 input_fields_types[item['db_item']] = 'ラジオボタン'
                 options_dict[item['db_item']] = item['options']
 
-                clear_radio = st.checkbox("選択肢を外す", key=f"clear_radio_{item['db_item']}")
-                if clear_radio:
-                    input_fields[item['db_item']] = None
-                    st.radio(label_text, range(len(options)), format_func=lambda i: options[i], index=None, key=f"radio_{item['db_item']}")
-
             elif item['input_type'] == 'チェックボックス':
+                st.text(label_text)  # フリーワードのタイトルと同じサイズと文字タイプに統一
                 checkbox_values = {}
                 for option in item['options']:
                     if len(option) > 1:
@@ -169,6 +184,7 @@ def create_dynamic_input_fields(data):
     st.session_state['options_dict'] = options_dict
 
     return input_fields, input_fields_types, options_dict
+
 
 # セッションステートを初期化する関数
 def initialize_session_state():
@@ -192,7 +208,7 @@ def initialize_session_state():
 # スタイルを適用する関数
 def apply_styles(df):
     df.columns = [truncate_text(col, 20) for col in df.columns]  # ヘッダ行は20文字まで
-    df = df.applymap(lambda x: truncate_text(x, 35) if isinstance(x, str) else x)  # データ行は35文字まで
+    df = df.applymap(lambda x: truncate_text(x, 1000) if isinstance(x, str) else x)  # データ行は35文字まで
 
     def highlight_header(s):
         return ['background-color: lightgrey' for _ in s]
@@ -221,18 +237,18 @@ def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types)
         for field, value in input_fields.items():
             if input_fields_types[field] == 'FA' and value:
                 LOGGER.info(f"Filtering FA field: {field} with value: {value}")
-                df = df[df[field].str.contains(value, na=False)]
+                df = df[df[field].astype(str).str.contains(value, na=False)]
             elif input_fields_types[field] == 'プルダウン' and value != '-':
                 LOGGER.info(f"Filtering プルダウン field: {field} with value: {value}")
-                df = df[df[field] == value]
+                df = df[df[field].astype(str) == value]
             elif input_fields_types[field] == 'ラジオボタン' and value:
                 LOGGER.info(f"Filtering ラジオボタン field: {field} with value: {value}")
-                df = df[df[field] == value]
+                df = df[df[field].astype(str) == value]
             elif input_fields_types[field] == 'チェックボックス' and isinstance(value, dict):
                 for subfield, subvalue in value.items():
                     if subvalue:
                         LOGGER.info(f"Filtering チェックボックス field: {field} with subfield: {subfield} and value: {subvalue}")
-                        df = df[df[field] == subfield]
+                        df = df[df[field].astype(str) == subfield]
             elif input_fields_types[field] == 'Datetime' and isinstance(value, dict):
                 start_datetime = value.get('start_datetime')
                 end_datetime = value.get('end_datetime')
@@ -289,7 +305,7 @@ def on_limit_change():
     if df is not None:
         page_number = st.session_state.get('current_page', 1)  # 現在のページ番号を取得（デフォルトは1）
         st.session_state['df_view'] = load_and_prepare_data(df, page_number, st.session_state['selected_rows'])
-    LOGGER.info(f"Selected rows set to: {st.session_state['selected_rows']}")
+    LOGGER.info(f"on_limit_change_current_page?Selected rows set to: {st.session_state['selected_rows']}")
 
 # データフレームを制限して準備する関数
 def load_and_prepare_data(df, page_number, page_size):
@@ -302,22 +318,6 @@ def load_and_prepare_data(df, page_number, page_size):
     LOGGER.info(f"Limiting DataFrame to {page_size} rows with offset {offset}.")
     LOGGER.info(f"Limited DataFrame: {limited_df.head()}")
     return limited_df
-
-# ページネーションの設定
-if 'limit' in st.session_state:
-    page_size = st.session_state['limit']
-else:
-    page_size = 100  # デフォルト値を設定
-current_page = st.number_input('Current Page', min_value=1, value=1, step=1)
-
-# データフレームの行数を制限して取得
-df = load_and_prepare_data(df, current_page, page_size)  # オフセットとページサイズを考慮してデータを準備
-styled_df = apply_styles(df)
-
-# テーブルの高さを行数に応じて動的に設定
-table_height = min(600, 24 * page_size)  # 1行あたり約24pxの高さを確保
-st.dataframe(styled_df, height=table_height, use_container_width=True)
-LOGGER.info(f"Table displayed with limit: {page_size} and offset: {calculate_offset(current_page, page_size)}")
 
 # 検索ボタンがクリックされた場合の処理
 def on_search_click():

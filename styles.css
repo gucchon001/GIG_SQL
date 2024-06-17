@@ -1,0 +1,11 @@
+/* styles.css */
+.stCheckbox > div {
+    display: flex;
+    flex-wrap: wrap;
+}
+.stCheckbox > div > label {
+    flex: 1 1 45%;
+    max-width: 45%;
+    margin-right: 10px;
+    font-size: 16px;  /* 選択肢のフォントサイズを16pxに変更 */
+}

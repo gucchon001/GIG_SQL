@@ -19,15 +19,47 @@ LOGGER = setup_department_logger('main')
 # セッションステートを初期化
 initialize_session_state()
 
-# サイドバーにタイトルとアイコンを追加
-icon_url = "https://drive.google.com/uc?export=view&id=1OAKwU-kOLRw-dFFRa8WwR_wp2WGJ26Hy"
-sidebar_header = f"""
-<div style="display: flex; align-items: center;">
-    <img src="{icon_url}" width="30" height="30" style="margin-right: 10px;">
-    <h3 style="margin: 0; padding: 0;">塾ステ CSVダウンロードツール<br>ストミンくん β版</h3>
+# サイドバーのタイトルを小さくするためのCSSスタイル
+sidebar_header = """
+<style>
+.sidebar .markdown-text-container h3 {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    text-align: left;
+}
+</style>
+<div style="display: flex; align-items: flex-start;">
+    <h3>塾ステ CSVダウンロードツール<br>ストミンくん β版</h3>
 </div>
 """
 st.sidebar.markdown(sidebar_header, unsafe_allow_html=True)
+
+# ダークモード対応のCSS
+dark_mode_css = """
+<style>
+body {
+    background-color: #333;
+    color: #fff;
+}
+table {
+    background-color: #444;
+    color: #fff;
+}
+thead th {
+    background-color: #555;
+    color: #fff;
+}
+tbody tr:nth-child(even) {
+    background-color: #555;
+}
+tbody tr:nth-child(odd) {
+    background-color: #666;
+}
+</style>
+"""
+st.markdown(dark_mode_css, unsafe_allow_html=True)
 
 # サイドバーにSQLファイルリストを表示
 sql_files_dict = load_sql_list_from_spreadsheet()
@@ -73,9 +105,12 @@ if data:
                         LOGGER.info(f"Parquetファイルパス: {parquet_file_path}")
                         df = load_and_filter_parquet(parquet_file_path, input_values, input_fields_types)
                         if df is not None:
-                            LOGGER.info(f"DataFrame after filtering: {df.head()}")
-                            st.session_state['df'] = df
-                            st.session_state['total_records'] = len(df)
+                            if df.empty:
+                                st.warning("絞込条件に合致するデータがありません。")
+                            else:
+                                LOGGER.info(f"DataFrame after filtering: {df.head()}")
+                                st.session_state['df'] = df
+                                st.session_state['total_records'] = len(df)
                         else:
                             LOGGER.error(f"DataFrame is None after loading and filtering: {parquet_file_path}")
                             st.error(f"データの読み込みまたはフィルタリングに失敗しました: {parquet_file_path}")
@@ -85,30 +120,11 @@ if data:
 else:
     st.error("指定されている項目がありません")
 
-rows_options = [100, 200, 500, 1000]
-
-# 初期フィルタリングとテーブル表示
-if "df" not in st.session_state:
-    input_values = st.session_state['input_fields']
-    input_fields_types = st.session_state['input_fields_types']
-    parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
-
-    if os.path.exists(parquet_file_path):
-        LOGGER.info(f"Parquetファイルパス: {parquet_file_path}")
-        df = load_and_filter_parquet(parquet_file_path, input_values, input_fields_types)
-        if df is not None:
-            LOGGER.info(f"DataFrame after filtering: {df.head()}")
-            st.session_state['df'] = df
-            st.session_state['total_records'] = len(df)
-        else:
-            LOGGER.error(f"DataFrame is None after loading and filtering: {parquet_file_path}")
-            st.error(f"データの読み込みまたはフィルタリングに失敗しました: {parquet_file_path}")
-    else:
-        st.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
-        LOGGER.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
-
+# データフレームの取得とページネーションの設定は、絞込検索の後に配置します
 df = st.session_state.get('df', None)  # ここで df を st.session_state から取得
-if df is not None:
+if df is not None and not df.empty:
+    rows_options = [100, 200, 500]
+
     LOGGER.info(f"DataFrame loaded, total rows: {len(df)}")
 
     # ページネーションの設定
@@ -150,4 +166,4 @@ if df is not None:
     else:
         LOGGER.warning("DataFrame is None before calling load_and_prepare_data. Cannot display the table.")
 else:
-    LOGGER.warning("DataFrame is None. Cannot display the table.")
+    LOGGER.warning("DataFrame is None or empty. Cannot display the table.")
