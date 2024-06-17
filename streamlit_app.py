@@ -99,11 +99,12 @@ if data:
                 if submit_button:
                     input_values = st.session_state['input_fields']
                     input_fields_types = st.session_state['input_fields_types']
+                    options_dict = st.session_state['options_dict']
                     parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
 
                     if os.path.exists(parquet_file_path):
                         LOGGER.info(f"Parquetファイルパス: {parquet_file_path}")
-                        df = load_and_filter_parquet(parquet_file_path, input_values, input_fields_types)
+                        df = load_and_filter_parquet(parquet_file_path, input_values, input_fields_types, options_dict)
                         if df is not None:
                             if df.empty:
                                 st.warning("絞込条件に合致するデータがありません。")

@@ -23,27 +23,6 @@ from io import StringIO
 
 LOGGER = setup_department_logger('main')
 
-# ロガーの設定
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)  # ログレベルをDEBUGに設定
-
-# コンソールハンドラの作成
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.DEBUG)
-
-# ファイルハンドラの作成
-file_handler = logging.FileHandler('app.log')
-file_handler.setLevel(logging.DEBUG)
-
-# フォーマッタの作成
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-console_handler.setFormatter(formatter)
-file_handler.setFormatter(formatter)
-
-# ハンドラをロガーに追加
-logger.addHandler(console_handler)
-logger.addHandler(file_handler)
-
 #Googleの認証処理
 def authenticate_google_api(json_keyfile_path, scopes):
     credentials = ServiceAccountCredentials.from_json_keyfile_name(json_keyfile_path, scopes)
@@ -142,14 +121,14 @@ def load_sql_from_file(file_path, google_folder_id, json_keyfile_path):
         credentials = ServiceAccountCredentials.from_json_keyfile_name(json_keyfile_path, SCOPES)
         service = build('drive', 'v3', credentials=credentials)
 
-        logger.info(f"GoogleドライブのフォルダID: {google_folder_id}")
-        logger.info(f"SQLファイル名: {file_path}")
+        LOGGER.info(f"GoogleドライブのフォルダID: {google_folder_id}")
+        LOGGER.info(f"SQLファイル名: {file_path}")
 
         query = f"'{google_folder_id}' in parents and name = '{file_path}'"
         file_list_results = service.files().list(q=query, fields="files(id)", supportsAllDrives=True, includeItemsFromAllDrives=True).execute()
         files = file_list_results.get('files', [])
 
-        logger.info(f"ファイルリスト結果: {files}")
+        LOGGER.info(f"ファイルリスト結果: {files}")
 
         if files:
             file_id = files[0]['id']
@@ -159,12 +138,12 @@ def load_sql_from_file(file_path, google_folder_id, json_keyfile_path):
             return sql_query
         else:
             error_message = f"ファイルが見つかりません: {file_path}"
-            logger.error(error_message)
+            LOGGER.error(error_message)
             return None
     except Exception as e:
         error_message = f"SQLファイルの読み込み中にエラーが発生しました: {e}"
-        logger.error(error_message)
-        logger.error(traceback.format_exc())
+        LOGGER.error(error_message)
+        LOGGER.error(traceback.format_exc())
         return None
 
 # CSVファイルに保存する処理
@@ -233,7 +212,7 @@ def csvfile_export(conn, sql_query, csv_file_path, main_table_name, category, js
 
         data_types = get_data_types(worksheet) if sheet_name else {}
         df = pd.read_sql(sql_query, conn)
-        df = apply_data_types_to_df(df, data_types)
+        df = apply_data_types_to_df(df, data_types,LOGGER)
         df = df.applymap(lambda x: str(int(x)) if isinstance(x, (float, Decimal)) and x.is_integer() else str(x) if not pd.isna(x) else '')
 
         try:
@@ -251,169 +230,6 @@ def csvfile_export(conn, sql_query, csv_file_path, main_table_name, category, js
         if os.path.exists(csv_file_path):
             os.remove(csv_file_path)
         raise
-
-#streamlit
-def csvfile_export_with_streamlit(conn, sql_query, sql_file_name, include_header, chunk_size, batch_size, delay, max_workers):
-    logger.info(f"csvfile_export_with_streamlit関数の開始: SQLファイル名={sql_file_name}")
-    try:
-        df = pd.read_sql(sql_query, conn)
-        logger.info(f"SQLクエリの実行が完了しました: SQLファイル名={sql_file_name}")
-
-        # CSVデータのエクスポート処理
-        csv_data = df.to_csv(index=False, header=include_header, encoding='cp932')
-        logger.info(f"CSVデータのエクスポートが完了しました: SQLファイル名={sql_file_name}")
-
-        return csv_data
-    except Exception as e:
-        logger.error(f"csvfile_export_with_streamlit関数でエラーが発生しました: {e}")
-        raise
-
-#streamlitのクリップボード機能
-def copy_to_clipboard_streamlit(conn, sql_query_with_conditions, include_header):
-    try:
-        df = pd.read_sql(sql_query_with_conditions, conn)
-        df.to_clipboard(index=False, header=include_header)
-    except Exception as e:
-        raise e
-
-#個別CSVエクスポート
-def csvfile_export_with_timestamp(conn, sql_query, sql_file_path, main_table_name, json_keyfile_path, include_header, chunk_size=None, batch_size=None, delay=None, max_workers=None):
-    root = tk.Tk()
-    root.withdraw()  # Tkのルートウィンドウを表示しない
-    try:
-        df = pd.read_sql(sql_query, conn)
-
-        print("SQLクエリ実行後のデータ型:")
-        print(df.dtypes)
-
-        # Decimalオブジェクトを文字列に変換
-        df = df.applymap(lambda x: str(x) if isinstance(x, Decimal) else x)
-
-        # レコードの件数を取得
-        record_count = len(df)
-
-        # 推定ファイルサイズを計算
-        estimated_size = df.memory_usage(deep=True).sum()
-        estimated_size_mb = estimated_size / (1024 * 1024)  # バイト数をメガバイトに変換
-        estimated_size_kb = estimated_size / 1024  # バイト数をキロバイトに変換
-
-        # 推定ダウンロード時間を計算（仮定：平均ダウンロード速度を1MB/sとする）
-        estimated_time = estimated_size_mb
-
-        # ファイルサイズと推定ダウンロード時間のメッセージを作成
-        if estimated_size_mb >= 1:
-            size_message = f"推定ファイルサイズ: {estimated_size_mb:.2f} MB"
-        else:
-            size_message = f"推定ファイルサイズ: {estimated_size_kb:.2f} KB"
-
-        if estimated_time < 1:
-            time_message = f"推定ダウンロード時間: {max(0.001, estimated_time):.3f}秒"
-        elif estimated_time < 60:
-            time_message = f"推定ダウンロード時間: {estimated_time:.0f}秒"
-        else:
-            minutes, seconds = divmod(estimated_time, 60)
-            time_message = f"推定ダウンロード時間: {minutes:.0f}分{seconds:.0f}秒"
-
-        # 確認ポップアップを表示
-        confirm = messagebox.askyesno("CSVファイル保存", f"抽出レコード数は{record_count}件です。\n{size_message}\n{time_message}\nこのままcsvファイルに保存をしますか？")
-
-        if confirm:
-            # ファイル保存ダイアログを開く
-            current_time_str = datetime.now().strftime('%Y%m%d%H%M%S')
-            sql_name = os.path.splitext(os.path.basename(sql_file_path))[0]
-            suggested_filename = f"{current_time_str}_{sql_name}.csv"
-            file_path = filedialog.asksaveasfilename(defaultextension=".csv", initialfile=suggested_filename, filetypes=[("CSV files", "*.csv")])
-
-            if file_path:
-                if chunk_size is None or len(df) <= chunk_size:
-                    try:
-                        df.fillna('').to_csv(file_path, index=False, header=include_header, encoding='cp932', errors='replace')
-                        print(f"結果が {file_path} に保存されました。")
-                    except Exception as e:
-                        print(f"CSVファイル書き込み時にエラーが発生しました: {e}")
-                        raise
-                else:
-                    print("データフレームをチャンクに分割して保存します。")
-                    # チャンク保存用のフォルダを作成
-                    chunk_dir = os.path.join(os.path.dirname(file_path), 'chunk')
-                    os.makedirs(chunk_dir, exist_ok=True)
-                    chunk_file_paths = []
-                    chunks = pd.read_csv(io.StringIO(df.to_csv(index=False, encoding='cp932')), chunksize=chunk_size, header=None)
-                    for i, chunk in enumerate(chunks):
-                        chunk_file_path = os.path.join(chunk_dir, f"{os.path.basename(file_path)[:-4]}_chunk_{i}.csv")
-                        print(f"チャンク{i}を保存します。ファイルパス: {chunk_file_path}")
-                        try:
-                            chunk.fillna('').to_csv(chunk_file_path, index=False, encoding='cp932', errors='replace', header=include_header if i == 0 else False)
-                            chunk_file_paths.append(chunk_file_path)
-                            print(f"結果の一部が {chunk_file_path} に保存されました。")
-                            if delay:
-                                print(f"{delay}秒待機します。")
-                                time.sleep(delay)
-                        except Exception as e:
-                            print(f"チャンクファイル書き込み時にエラーが発生しました: {e}")
-                            raise
-                            print(f"チャンクファイル書き込み時にエラーが発生しました: {e}")
-                            raise
-
-                    print("チャンクファイルを結合します。")
-                    # チャンクファイルを結合して最終的なファイルに保存
-                    combine_chunk_files(chunk_file_paths, file_path)
-
-                    # チャンクファイルを削除
-                    print("チャンクファイルを削除します。")
-                    shutil.rmtree(chunk_dir)
-                    print(f"チャンクフォルダ {chunk_dir} が削除されました。")
-
-                #write_to_log_sheet(os.path.basename(file_path), None, main_table_name, '個別CSVダウンロード', record_count, json_keyfile_path, file_path)  # ログシートに書き込む
-            else:
-                print("ファイル保存がキャンセルされました。")
-        else:
-            print("csvファイルの保存がキャンセルされました。")
-
-    except Exception as e:
-        print(f"クエリ実行またはCSVファイル書き込み時にエラーが発生しました: {e}")
-        raise  # エラーを呼び出し元に伝える
-    finally:
-        root.destroy()  # Tkインスタンスを破棄
-
-#クリップボードにコピー
-def copy_to_clipboard(conn, sql_query, include_header):
-    try:
-        df = pd.read_sql(sql_query, conn)
-        
-        # レコードの件数を取得
-        record_count = len(df)
-        
-        if record_count > 10:
-            root = tk.Tk()
-            root.withdraw()  # ウィンドウを表示せずに処理
-
-            confirm = messagebox.askyesno(
-                "クリップボードコピーの上限",
-                f"クリップボードでのコピー上限は1000件です。\n{record_count}件のうち、上位1000件のみクリップボードにコピーをしますがよろしいですか？"
-            )
-
-            if not confirm:
-                print("クリップボードへのコピーがキャンセルされました。")
-                root.destroy()
-                return
-            
-            df = df.head(1000)  # 上位1000件のみ取得
-
-        clipboard_content = df.to_csv(sep='\t', index=False, header=include_header, encoding='utf-8')
-        
-        root = tk.Tk()
-        root.withdraw()  # ウィンドウを表示せずに処理
-        root.clipboard_clear()  # クリップボードをクリア
-        root.clipboard_append(clipboard_content)  # クリップボードにデータを追加
-        
-        print(f"クリップボードに{len(df)}件のレコードがコピーされました。")
-        messagebox.showinfo("クリップボードコピー", f"クリップボードに{len(df)}件のレコードがコピーされました。")
-    except Exception as e:
-        print(f"クエリ実行時にエラーが発生しました: {e}")
-        raise
-    finally:
-        root.destroy()  # クリップボードの処理後にTkインスタンスを破棄
 
 # 複数のパターンにマッチする正規表現を定義
 def extract_columns_mapping(sql_query):
@@ -455,30 +271,30 @@ def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_
                         else:
                             condition = f"{column_name} BETWEEN STR_TO_DATE('{start_date}', '%Y/%m/%d') AND STR_TO_DATE('{end_date}', '%Y/%m/%d')"
                         additional_conditions.append(condition)
-                        logger.debug(f"日付条件: {condition}")
+                        LOGGER.debug(f"日付条件: {condition}")
                 elif input_fields_types[db_item] == 'FA' and values.strip():
                     condition = f"{column_name} LIKE '%{values}%'"
                     additional_conditions.append(condition)
-                    logger.debug(f"FA条件: {condition}")
+                    LOGGER.debug(f"FA条件: {condition}")
                 elif input_fields_types[db_item] == 'JSON' and isinstance(values, dict):
                     for path, value in values.items():
                         condition = f"JSON_CONTAINS({column_name}, '\"{value}\"', '$.{path}')"
                         additional_conditions.append(condition)
-                        logger.debug(f"JSON条件 (dict): {condition}")
+                        LOGGER.debug(f"JSON条件 (dict): {condition}")
                 elif input_fields_types[db_item] == 'JSON' and isinstance(values, str):
                     condition = f"JSON_CONTAINS({column_name}, '\"{values}\"', '$')"
                     additional_conditions.append(condition)
-                    logger.debug(f"JSON条件 (str): {condition}")
+                    LOGGER.debug(f"JSON条件 (str): {condition}")
                 elif values:
                     if isinstance(values, list):
                         placeholders = ', '.join([f"'{value}'" for value in values])
                         condition = f"{column_name} IN ({placeholders})"
                         additional_conditions.append(condition)
-                        logger.debug(f"IN条件: {condition}")
+                        LOGGER.debug(f"IN条件: {condition}")
                     else:
                         condition = f"{column_name} = '{values}'"
                         additional_conditions.append(condition)
-                        logger.debug(f"等価条件: {condition}")
+                        LOGGER.debug(f"等価条件: {condition}")
 
         # カラム名からテーブルエイリアスを特定
         table_alias = find_table_alias(sql_query)
@@ -488,7 +304,7 @@ def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_
             deletion_exclusion = str(deletion_exclusion).upper()
             if deletion_exclusion == 'TRUE':
                 additional_conditions.append(table_alias + ".deleted_at IS NULL")
-                logger.debug("削除除外条件が追加されました")
+                LOGGER.debug("削除除外条件が追加されました")
 
         # SQLクエリの前処理
         sql_query = preprocess_sql_query(sql_query)
@@ -506,7 +322,7 @@ def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_
             sql_query += ";"
         return sql_query
     except Exception as e:
-        logger.error(f"add_conditions_to_sql関数内でエラーが発生しました: {e}")
+        LOGGER.error(f"add_conditions_to_sql関数内でエラーが発生しました: {e}")
         raise
 
 def set_period_condition(period_condition, period_criteria, sql_query, category):
@@ -818,7 +634,7 @@ def write_to_log_sheet(csv_file_name_column, sheet_name, main_table_name, catego
     except gspread.exceptions.APIError as e:
         print(f"ログシートへの書き込み中にエラーが発生しました: {e}")
 
-#DB項目のデータ型を強制指定
+# DB項目のデータ型を強制指定
 def get_data_types(worksheet):
     headers = worksheet.row_values(1)
     data_types = {}
@@ -845,8 +661,18 @@ def get_data_types(worksheet):
     
     return data_types
 
-#型変換をする処理
-def apply_data_types_to_df(df, data_types):
+# データをParquetに保存する前にフォーマットを統一する
+def format_dates(df, data_types):
+    for column, data_type in data_types.items():
+        if column in df.columns:
+            if data_type == 'date':
+                df[column] = pd.to_datetime(df[column], errors='raise').dt.strftime('%Y/%m/%d')
+            elif data_type == 'datetime':
+                df[column] = pd.to_datetime(df[column], errors='raise').dt.strftime('%Y/%m/%d %H:%M:%S')
+    return df
+
+# データ型を適用する関数（フォーマット済み）
+def apply_data_types_to_df(df, data_types, LOGGER):
     converted_columns = []  # 型変換を行った列名を格納するリスト
     for column, data_type in data_types.items():
         if column in df.columns:
@@ -857,17 +683,22 @@ def apply_data_types_to_df(df, data_types):
                 elif data_type == 'int':
                     df[column] = pd.to_numeric(df[column], errors='raise').astype('Int64')
                     converted_columns.append(column)  # 型変換を行った列名を追加
+                elif data_type == 'date':
+                    df[column] = df[column].astype(str)  # date型は文字列に変換済み
+                    converted_columns.append(column)  # 型変換を行った列名を追加
                 elif data_type == 'datetime':
-                    df[column] = pd.to_datetime(df[column], errors='raise').dt.strftime('%Y-%m-%d %H:%M:%S')
+                    df[column] = df[column].astype(str)  # datetime型は文字列に変換済み
                     converted_columns.append(column)  # 型変換を行った列名を追加
             except ValueError as e:
+                LOGGER.error(f"Error converting column '{column}' to type '{data_type}': {e}")
                 raise ValueError(f"Error converting column '{column}' to type '{data_type}': {e}")
             except Exception as e:
+                LOGGER.error(f"Unexpected error processing column '{column}': {e}")
                 raise Exception(f"Unexpected error processing column '{column}': {e}")
     
     if converted_columns:
-        print(f"以下の列の型変換を行いました: {', '.join(converted_columns)}")
+        LOGGER.info(f"以下の列の型変換を行いました: {', '.join(converted_columns)}")
     else:
-        print("型変換は行われませんでした。")
+        LOGGER.info("型変換は行われませんでした。")
     
     return df

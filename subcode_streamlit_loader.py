@@ -6,6 +6,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 import configparser
 from datetime import date,datetime
 from my_logging import setup_department_logger
+import re
 
 # CSSファイルを読み込む関数
 def load_css(file_name):
@@ -169,22 +170,30 @@ def create_dynamic_input_fields(data):
                 checkbox_values = {}
                 for option in item['options']:
                     if len(option) > 1:
-                        checkbox_values[option[0]] = st.checkbox(option[1], key=f"checkbox_{item['db_item']}_{option[0]}")
+                        checkbox_values[option[1]] = st.checkbox(option[1], key=f"checkbox_{item['db_item']}_{option[0]}")  # ラベルをキーとして使用
                 input_fields[item['db_item']] = checkbox_values
                 input_fields_types[item['db_item']] = 'チェックボックス'
+                options_dict[item['db_item']] = item['options']  # オプションを保存
 
             elif item['input_type'] == 'Date':
-                start_datetime = st.date_input(f"開始日時", value=datetime.now(), key=f"start_datetime_{item['db_item']}")
-                end_datetime = st.date_input(f"終了日時", value=datetime.now(), key=f"end_datetime_{item['db_item']}")
+                start_date = st.date_input(f"{label_text} 開始日", key=f"start_date_{item['db_item']}")
+                end_date = st.date_input(f"{label_text} 終了日", key=f"end_date_{item['db_item']}")
+                input_fields[item['db_item']] = {'start_date': start_date, 'end_date': end_date}
+                input_fields_types[item['db_item']] = 'date'
+
+            elif item['input_type'] == 'Datetime':
+                start_datetime = st.date_input(f"{label_text} 開始日時", value=datetime.now(), key=f"start_datetime_{item['db_item']}")
+                end_datetime = st.date_input(f"{label_text} 終了日時", value=datetime.now(), key=f"end_datetime_{item['db_item']}")
                 input_fields[item['db_item']] = {'start_datetime': start_datetime, 'end_datetime': end_datetime}
-                input_fields_types[item['db_item']] = 'Datetime'
+                input_fields_types[item['db_item']] = 'datetime'
 
     st.session_state['input_fields'] = input_fields
     st.session_state['input_fields_types'] = input_fields_types
     st.session_state['options_dict'] = options_dict
 
-    return input_fields, input_fields_types, options_dict
+    LOGGER.info(f"Options dict after setting input fields: {options_dict}")  # ロギング追加
 
+    return input_fields, input_fields_types, options_dict
 
 # セッションステートを初期化する関数
 def initialize_session_state():
@@ -226,47 +235,60 @@ def truncate_text(text, max_length=35):
         return str(text)[:max_length] + "..."
     return text
 
-# Parquetファイルを読み込み、条件に基づいてフィルタリングする関数
-def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types):
-    LOGGER.info("Entering load_and_filter_parquet function.")
+def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types, options_dict):
     try:
         df = pd.read_parquet(parquet_file_path)
-        LOGGER.info(f"Parquet file loaded successfully: {parquet_file_path}, DataFrame shape: {df.shape}")
-        
-        # フィルタリングロジックをここに追加する
+        LOGGER.info(f"Initial DataFrame loaded, total rows: {len(df)}")
+
         for field, value in input_fields.items():
+            LOGGER.info(f"Filtering field: {field}, Value: {value}, Type: {input_fields_types[field]}")
             if input_fields_types[field] == 'FA' and value:
-                LOGGER.info(f"Filtering FA field: {field} with value: {value}")
-                df = df[df[field].astype(str).str.contains(value, na=False)]
+                df = df[df[field].str.contains(value, na=False)]
+                LOGGER.info(f"After filtering FA field {field}, total rows: {len(df)}")
             elif input_fields_types[field] == 'プルダウン' and value != '-':
-                LOGGER.info(f"Filtering プルダウン field: {field} with value: {value}")
-                df = df[df[field].astype(str) == value]
+                df = df[df[field] == value]
+                LOGGER.info(f"After filtering プルダウン field {field}, total rows: {len(df)}")
             elif input_fields_types[field] == 'ラジオボタン' and value:
-                LOGGER.info(f"Filtering ラジオボタン field: {field} with value: {value}")
-                df = df[df[field].astype(str) == value]
-            elif input_fields_types[field] == 'チェックボックス' and isinstance(value, dict):
-                for subfield, subvalue in value.items():
-                    if subvalue:
-                        LOGGER.info(f"Filtering チェックボックス field: {field} with subfield: {subfield} and value: {subvalue}")
-                        df = df[df[field].astype(str) == subfield]
-            elif input_fields_types[field] == 'Datetime' and isinstance(value, dict):
-                start_datetime = value.get('start_datetime')
-                end_datetime = value.get('end_datetime')
+                df = df[df[field] == value]
+                LOGGER.info(f"After filtering ラジオボタン field {field}, total rows: {len(df)}")
+            elif input_fields_types[field] == 'チェックボックス':
+                selected_labels = [label for label, selected in value.items() if selected]
+                LOGGER.info(f"Selected labels for {field}: {selected_labels}")
+                if selected_labels:
+                    df[field] = df[field].astype(str)  # Convert to string
+                    df = df[df[field].isin(selected_labels)]
+                    LOGGER.info(f"After filtering チェックボックス field {field}, total rows: {len(df)}")
+            elif input_fields_types[field] == 'date' and value:
+                start_date = value['start_date']
+                end_date = value['end_date']
+                LOGGER.info(f"Start date: {start_date}, End date: {end_date}")
+                df[field] = pd.to_datetime(df[field], format='%Y/%m/%d %H:%M:%S', errors='coerce').dt.strftime('%Y-%m-%d')
+                if start_date and end_date:
+                    df = df[(df[field] >= start_date.strftime('%Y-%m-%d')) & (df[field] <= end_date.strftime('%Y-%m-%d'))]
+                elif start_date:
+                    df = df[df[field] >= start_date.strftime('%Y-%m-%d')]
+                elif end_date:
+                    df = df[df[field] <= end_date.strftime('%Y-%m-%d')]
+                LOGGER.info(f"After filtering date field {field}, total rows: {len(df)}")
+            elif input_fields_types[field] == 'datetime' and value:
+                start_datetime = value['start_datetime']
+                end_datetime = value['end_datetime']
+                LOGGER.info(f"Start datetime: {start_datetime}, End datetime: {end_datetime}")
+                df[field] = pd.to_datetime(df[field], format='%Y/%m/%d %H:%M:%S', errors='coerce').dt.strftime('%Y-%m-%d')
                 if start_datetime and end_datetime:
-                    LOGGER.info(f"Filtering Datetime field: {field} with start datetime: {start_datetime} and end datetime: {end_datetime}")
-                    df = df[(df[field] >= pd.to_datetime(start_datetime)) & (df[field] <= pd.to_datetime(end_datetime))]
+                    df = df[(df[field] >= start_datetime.strftime('%Y-%m-%d')) & (df[field] <= end_datetime.strftime('%Y-%m-%d'))]
                 elif start_datetime:
-                    LOGGER.info(f"Filtering Datetime field: {field} with start datetime: {start_datetime}")
-                    df = df[df[field] >= pd.to_datetime(start_datetime)]
+                    df = df[df[field] >= start_datetime.strftime('%Y-%m-%d')]
                 elif end_datetime:
-                    LOGGER.info(f"Filtering Datetime field: {field} with end datetime: {end_datetime}")
-                    df = df[df[field] <= pd.to_datetime(end_datetime)]
-        LOGGER.info(f"DataFrame after filtering, shape: {df.shape}")
+                    df = df[df[field] <= end_datetime.strftime('%Y-%m-%d')]
+                LOGGER.info(f"After filtering datetime field {field}, total rows: {len(df)}")
+
+        LOGGER.info(f"DataFrame loaded, total rows: {len(df)}")
         return df
     except Exception as e:
-        LOGGER.error(f"Error during loading and filtering Parquet file: {parquet_file_path}, Error: {e}")
         st.error(f"データフィルタリング中にエラーが発生しました: {e}")
-        return pd.DataFrame()  # 空のデータフレームを返す
+        LOGGER.error(f"load_and_filter_parquet: {e}")
+        return pd.DataFrame()
 
 # Parquetファイルの選択時の処理
 def on_sql_file_change(sql_files_dict):
@@ -338,29 +360,3 @@ def on_search_click():
     else:
         st.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
         LOGGER.error(f"Parquet file not found: {parquet_file_path}")
-
-# Parquetファイルを読み込み、条件に基づいてフィルタリングする関数
-def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types):
-    try:
-        df = pd.read_parquet(parquet_file_path)
-
-        for field, value in input_fields.items():
-            if input_fields_types[field] == 'FA' and value:
-                df = df[df[field].str.contains(value, na=False)]
-            elif input_fields_types[field] == 'プルダウン' and value != '-':
-                df = df[df[field] == value]
-            elif input_fields_types[field] == 'ラジオボタン' and value:
-                df = df[df[field] == value]
-            elif input_fields_types[field] == 'チェックボックス':
-                for subfield, subvalue in value.items():
-                    if subvalue:
-                        df = df[df[field] == subfield]
-            elif input_fields_types[field] == 'Date' and value:
-                start_date = value['start_date']
-                end_date = value['end_date']
-                df = df[(df[field] >= start_date) & (df[field] <= end_date)]
-
-        return df
-    except Exception as e:
-        st.error(f"データフィルタリング中にエラーが発生しました: {e}")
-        return pd.DataFrame()
