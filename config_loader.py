@@ -31,8 +31,9 @@ def load_config(config_file):
     # 追加の設定値の読み込み
     additional_config = {
         'spreadsheet_id': config['Spreadsheet']['spreadsheet_id'],
-        'main_sheet': config['Spreadsheet']['main_sheet'],  # 追加
-        'rawdata_sheet': config['Spreadsheet']['rawdata_sheet'],  # 追加
+        'main_sheet': config['Spreadsheet']['main_sheet'], 
+        'rawdata_sheet': config['Spreadsheet']['rawdata_sheet'], 
+        'eachdata_sheet': config['Spreadsheet']['eachdata_sheet'], 
         'json_keyfile_path': config['Credentials']['json_keyfile_path'],
         'csv_base_path': config['Paths']['csv_base_path'],
         'google_folder_id': config['GoogleDrive']['google_folder_id'],
@@ -40,7 +41,7 @@ def load_config(config_file):
         'batch_size': int(config['Tuning']['batch_size']),
         'delay': float(config['Tuning']['delay']),
         'max_workers': int(config['Tuning']['max_workers']),
-        'config_file': config_file,  # 設定ファイルのパスを追加
+        'config_file': config_file, 
     }
 
     return ssh_config, db_config, local_port, additional_config

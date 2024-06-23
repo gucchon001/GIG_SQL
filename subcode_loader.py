@@ -661,16 +661,6 @@ def get_data_types(worksheet):
     
     return data_types
 
-# データをParquetに保存する前にフォーマットを統一する
-def format_dates(df, data_types):
-    for column, data_type in data_types.items():
-        if column in df.columns:
-            if data_type == 'date':
-                df[column] = pd.to_datetime(df[column], errors='raise').dt.strftime('%Y/%m/%d')
-            elif data_type == 'datetime':
-                df[column] = pd.to_datetime(df[column], errors='raise').dt.strftime('%Y/%m/%d %H:%M:%S')
-    return df
-
 # データ型を適用する関数（フォーマット済み）
 def apply_data_types_to_df(df, data_types, LOGGER):
     converted_columns = []  # 型変換を行った列名を格納するリスト
@@ -682,6 +672,9 @@ def apply_data_types_to_df(df, data_types, LOGGER):
                     converted_columns.append(column)  # 型変換を行った列名を追加
                 elif data_type == 'int':
                     df[column] = pd.to_numeric(df[column], errors='raise').astype('Int64')
+                    converted_columns.append(column)  # 型変換を行った列名を追加
+                elif data_type == 'float':
+                    df[column] = pd.to_numeric(df[column], errors='raise').astype(float)
                     converted_columns.append(column)  # 型変換を行った列名を追加
                 elif data_type == 'date':
                     df[column] = df[column].astype(str)  # date型は文字列に変換済み
@@ -702,3 +695,22 @@ def apply_data_types_to_df(df, data_types, LOGGER):
         LOGGER.info("型変換は行われませんでした。")
     
     return df
+
+#スプシに基づき編集するSQL
+def execute_sql_query_with_conditions(sql_file_name, config, period_condition, period_criteria, deletion_exclusion, category, main_table_name):
+    sql_query = load_sql_from_file(sql_file_name, config['google_folder_id'], config['json_keyfile_path'])
+    if sql_query:
+        try:
+            input_values, input_fields_types = {}, {}
+            sql_query_with_period_condition = set_period_condition(period_condition, period_criteria, sql_query, category)
+            if category != 'マスタ':
+                sql_query_with_conditions = add_conditions_to_sql(sql_query_with_period_condition, input_values, input_fields_types, deletion_exclusion)
+            else:
+                sql_query_with_conditions = sql_query_with_period_condition
+            return sql_query_with_conditions
+        except Exception as e:
+            LOGGER.error(f"SQLクエリの処理中にエラーが発生しました: {e}")
+            return None
+    else:
+        LOGGER.warning(f"{sql_file_name} の読み込みに失敗しました。代わりに 'SELECT *' を実行します。")
+        return f"SELECT * -- FROM clause\nFROM {main_table_name}"

@@ -10,14 +10,19 @@ from subcode_streamlit_loader import (
     load_sql_list_from_spreadsheet, create_dynamic_input_fields,
     initialize_session_state, on_limit_change, load_and_filter_parquet,
     load_and_prepare_data, get_sql_file_name, load_sheet_from_spreadsheet,
-    get_filtered_data_from_sheet, on_sql_file_change, apply_styles, calculate_offset
+    get_filtered_data_from_sheet, on_sql_file_change, apply_styles, calculate_offset,get_parquet_file_last_modified
 )
+from datetime import datetime
 
 # ロガーの設定
 LOGGER = setup_department_logger('main')
 
 # セッションステートを初期化
 initialize_session_state()
+
+# 外部CSSファイルの読み込み
+with open('styles.css', encoding='utf-8') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 # サイドバーのタイトルを小さくするためのCSSスタイル
 sidebar_header = """
@@ -36,33 +41,17 @@ sidebar_header = """
 """
 st.sidebar.markdown(sidebar_header, unsafe_allow_html=True)
 
-# ダークモード対応のCSS
-dark_mode_css = """
-<style>
-body {
-    background-color: #333;
-    color: #fff;
-}
-table {
-    background-color: #444;
-    color: #fff;
-}
-thead th {
-    background-color: #555;
-    color: #fff;
-}
-tbody tr:nth-child(even) {
-    background-color: #555;
-}
-tbody tr:nth-child(odd) {
-    background-color: #666;
-}
-</style>
-"""
-st.markdown(dark_mode_css, unsafe_allow_html=True)
+# サイドバーに再読み込みボタンを追加
+if st.sidebar.button("リスト再読み込み"):
+    load_sql_list_from_spreadsheet.clear()  # キャッシュをクリア
+    st.session_state['sql_files_dict'] = load_sql_list_from_spreadsheet()
+    st.experimental_rerun()
 
 # サイドバーにSQLファイルリストを表示
-sql_files_dict = load_sql_list_from_spreadsheet()
+if 'sql_files_dict' not in st.session_state:
+    st.session_state['sql_files_dict'] = load_sql_list_from_spreadsheet()
+
+sql_files_dict = st.session_state['sql_files_dict']
 sql_file_display_names = list(sql_files_dict.keys())
 
 # セッションステートに選択されたファイルを設定
@@ -71,17 +60,28 @@ if "selected_display_name" not in st.session_state:
     on_sql_file_change(sql_files_dict)  # 初期選択時のフィルタリングを実行
 
 # Parquetファイル選択のラジオボタン
-selected_display_name = st.sidebar.radio("", sql_file_display_names, key="selected_display_name", on_change=lambda: on_sql_file_change(sql_files_dict))
-LOGGER.info(f"Selected display name: {selected_display_name}")
+selected_display_name = st.sidebar.radio("テーブル選択", sql_file_display_names, key="selected_display_name", on_change=lambda: on_sql_file_change(sql_files_dict))
+
+# 他のテーブルを選択した場合にページネーションをリセット
+if "selected_display_name" not in st.session_state or st.session_state.selected_display_name != selected_display_name:
+    st.session_state.selected_display_name = selected_display_name
+    st.session_state.current_page = 1
+    on_sql_file_change(sql_files_dict)
 
 # 絞込検索とテーブル表示を初期化
 sql_file_name = get_sql_file_name(selected_display_name)
-LOGGER.info(f"SQL file name: {sql_file_name}")
 sheet = load_sheet_from_spreadsheet(sql_file_name)
 data = get_filtered_data_from_sheet(sheet)
-LOGGER.info(f"Filtered data: {data}")
+
+parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
+LOGGER.info(f"Parquet file path: {parquet_file_path}")
+last_modified = get_parquet_file_last_modified(parquet_file_path)
 
 if data:
+    col1, col2 = st.columns([8, 2])
+    with col2:
+        st.markdown("最終データ取得日時：" + last_modified)
+    
     with st.expander("絞込検索"):
         with st.form(key='filter_form'):
             input_fields, input_fields_types, options_dict = create_dynamic_input_fields(data)
@@ -93,78 +93,91 @@ if data:
             st.session_state['input_fields_types'] = input_fields_types
             st.session_state['options_dict'] = options_dict
 
-            col1, col2, col3 = st.columns([9, 1, 1])
-            with col3:
+            cols = st.columns([9, 1])  # カラムを追加してボタンを右寄せ
+            with cols[0]:
+                st.empty()  # 空のウィジェットでスペースを確保
+            with cols[1]:
                 submit_button = st.form_submit_button(label='絞込')
-                if submit_button:
-                    input_values = st.session_state['input_fields']
-                    input_fields_types = st.session_state['input_fields_types']
-                    options_dict = st.session_state['options_dict']
-                    parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
 
-                    if os.path.exists(parquet_file_path):
-                        LOGGER.info(f"Parquetファイルパス: {parquet_file_path}")
-                        df = load_and_filter_parquet(parquet_file_path, input_values, input_fields_types, options_dict)
-                        if df is not None:
-                            if df.empty:
-                                st.warning("絞込条件に合致するデータがありません。")
-                            else:
-                                LOGGER.info(f"DataFrame after filtering: {df.head()}")
-                                st.session_state['df'] = df
-                                st.session_state['total_records'] = len(df)
-                        else:
-                            LOGGER.error(f"DataFrame is None after loading and filtering: {parquet_file_path}")
-                            st.error(f"データの読み込みまたはフィルタリングに失敗しました: {parquet_file_path}")
-                    else:
-                        st.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
-                        LOGGER.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
-else:
-    st.error("指定されている項目がありません")
+    if submit_button:
+        input_values = st.session_state['input_fields']
+        input_fields_types = st.session_state['input_fields_types']
+        options_dict = st.session_state['options_dict']
+        parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
 
-# データフレームの取得とページネーションの設定は、絞込検索の後に配置します
-df = st.session_state.get('df', None)  # ここで df を st.session_state から取得
-if df is not None and not df.empty:
-    rows_options = [100, 200, 500]
+        if os.path.exists(parquet_file_path):
+            df = load_and_filter_parquet(parquet_file_path, input_values, input_fields_types, options_dict)
+            if df is not None:
+                if df.empty:
+                    st.error("絞込条件に合致するデータがありません。")
+                else:
+                    st.session_state['df'] = df
+                    st.session_state['total_records'] = len(df)
+                    st.session_state.current_page = 1  # ページネーションをリセット
+            else:
+                st.error(f"データの読み込みまたはフィルタリングに失敗しました: {parquet_file_path}")
+        else:
+            st.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
 
-    LOGGER.info(f"DataFrame loaded, total rows: {len(df)}")
+    rows_options = [20, 50, 100, 200, 500, 1000, 2000, 5000]
 
-    # ページネーションの設定
-    if 'limit' in st.session_state:
+    # データフレームの取得
+    df = st.session_state.get('df', None)
+    if df is not None and not df.empty:
+
+        # セッションステートにページネーション情報を初期化
+        if 'limit' not in st.session_state:
+            st.session_state['limit'] = 100  # デフォルト値を設定
+        if 'current_page' not in st.session_state:
+            st.session_state['current_page'] = 1
+
         page_size = st.session_state['limit']
-    else:
-        page_size = 100  # デフォルト値を設定
-    LOGGER.info(f"Page size: {page_size}")
+        total_pages = (len(df) + page_size - 1) // page_size
 
-    current_page = st.number_input('Current Page', min_value=1, value=1, step=1, key="current_page")
-    LOGGER.info(f"Current page: {current_page}")
+        # 件数表示と行数の切り替え
+        cols_pagination_top = st.columns([2, 7, 1])
+        with cols_pagination_top[0]:
+            start_index = (st.session_state.current_page - 1) * page_size + 1
+            end_index = min(st.session_state.current_page * page_size, len(df))
+            end_index = min(end_index, len(df))  # 絞り込み結果が少ない場合の処理
+            st.write(f"{start_index:,} - {end_index:,} / {len(df):,} 件")
+        with cols_pagination_top[2]:
+            clean_df = df.dropna(how='all').reset_index(drop=True)
+            now = datetime.now().strftime("%Y-%m-%d-%H%M%S")
+            csv_data = clean_df.to_csv(index=False).encode('cp932', errors='ignore')
+            st.download_button(
+                label="CSV DL",
+                data=csv_data,
+                file_name=f'{now}_export.csv',
+                mime='text/csv'
+            )
+            limit = st.selectbox("", rows_options, index=rows_options.index(st.session_state['limit']), key="rows_selectbox", on_change=on_limit_change)
+            st.session_state['limit'] = limit  # 選択された行数をセッションステートに保存
+        with cols_pagination_top[1]:
+            st.empty()
 
-    cols_rows = st.columns([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
-    with cols_rows[8]:
-        limit = st.selectbox("行数", rows_options, index=rows_options.index(st.session_state['limit']), key="rows_selectbox_top", on_change=on_limit_change)
-        st.session_state['limit'] = limit  # 選択された行数をセッションステートに保存
-
-    with cols_rows[9]:
-        total_records = st.session_state['total_records']
-        st.write(f"{page_size} / {total_records}")
-        LOGGER.info(f"Total records: {total_records}, Page size: {page_size}")
-
-    # データフレームの行数を制限して取得
-    if df is not None:
-        LOGGER.info(f"df is not None before calling load_and_prepare_data")
-        df_view = load_and_prepare_data(df, current_page, page_size)  # オフセットとページサイズを考慮してデータを準備
-        if df_view is not None and not df_view.empty:
-            LOGGER.info(f"DataFrame view loaded, total rows: {len(df_view)}")
-
+        # データフレームの行数を制限して取得
+        start_index = (st.session_state.current_page - 1) * page_size
+        end_index = start_index + page_size
+        df_view = df.iloc[start_index:end_index]
+        if not df_view.empty:
             # スタイルを適用
             styled_df = apply_styles(df_view)
+            st.dataframe(styled_df, use_container_width=True, height=700)
 
-            # テーブルの高さを行数に応じて動的に設定
-            table_height = min(600, 24 * page_size)  # 1行あたり約24pxの高さを確保
-            st.dataframe(styled_df, height=table_height, use_container_width=True)
-            LOGGER.info(f"Table displayed with limit: {page_size} and offset: {calculate_offset(current_page, page_size)}")
+            # ページネーションボタンをテーブルの真下に配置
+            cols_pagination_buttons = st.columns([7, 1, 1])
+            with cols_pagination_buttons[1]:
+                if st.session_state.current_page > 1:
+                    if st.button("◀ ◀ 前へ", key="prev_button"):
+                        st.session_state.current_page -= 1
+            with cols_pagination_buttons[2]:
+                if st.session_state.current_page < total_pages:
+                    if st.button("次へ ▶ ▶", key="next_button"):
+                        st.session_state.current_page += 1
         else:
-            LOGGER.warning("DataFrame view is None or empty after calling load_and_prepare_data. Cannot display the table.")
+            st.warning("DataFrame view is empty.")
     else:
-        LOGGER.warning("DataFrame is None before calling load_and_prepare_data. Cannot display the table.")
+        st.warning("DataFrame is None or empty. Cannot display the table.")
 else:
-    LOGGER.warning("DataFrame is None or empty. Cannot display the table.")
+    st.error("指定されている項目がありません")

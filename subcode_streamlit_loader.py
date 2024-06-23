@@ -4,9 +4,9 @@ import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import configparser
-from datetime import date,datetime
+from datetime import date, datetime
 from my_logging import setup_department_logger
-import re
+import traceback
 
 # CSSファイルを読み込む関数
 def load_css(file_name):
@@ -24,6 +24,23 @@ LOGGER = setup_department_logger('main')
 # グローバル変数 df を宣言
 df = None
 
+# データをParquetに保存する前にフォーマットを統一する
+def format_dates(df, data_types):
+    for column, data_type in data_types.items():
+        if column in df.columns:
+            try:
+                if data_type == 'date':
+                    df[column] = pd.to_datetime(df[column], errors='coerce').dt.strftime('%Y/%m/%d')
+                elif data_type == 'datetime':
+                    df[column] = pd.to_datetime(df[column], errors='coerce').dt.strftime('%Y/%m/%d %H:%M:%S')
+            except pd.errors.OutOfBoundsDatetime as e:
+                LOGGER.error(f"OutOfBoundsDatetimeエラーが発生しました: {e} (列: {column})")
+                df[column] = pd.NaT  # エラー発生時にはNaTに変換
+            except Exception as e:
+                LOGGER.error(f"日付フォーマット中にエラーが発生しました: {e} (列: {column})")
+                df[column] = pd.NaT  # その他のエラー発生時にもNaTに変換
+    return df
+
 # Google Sheets APIへの認証処理を共通化
 def get_google_sheets_client():
     config_file = 'config.ini'
@@ -38,14 +55,14 @@ def get_google_sheets_client():
     return client
 
 # SQLファイルリストをスプレッドシートから読み込む関数
-@st.cache_data(ttl=3600)
+@st.cache_resource(ttl=3600)
 def load_sql_list_from_spreadsheet():
     config = configparser.ConfigParser()
     config.read('config.ini', encoding='utf-8')
 
     spreadsheet_id = config['Spreadsheet']['spreadsheet_id']
-    sheet_name = config['Spreadsheet']['main_sheet']
-
+    sheet_name = config['Spreadsheet']['eachdata_sheet']
+    
     client = get_google_sheets_client()
 
     sheet = client.open_by_key(spreadsheet_id).worksheet(sheet_name)
@@ -145,7 +162,7 @@ def create_dynamic_input_fields(data):
                 input_fields_types[item['db_item']] = 'FA'
 
             elif item['input_type'] == 'プルダウン':
-                options = ['-'] + [option[1] for option in item['options'] if len(option) > 1]
+                options = ['-'] + list(set([option[1] for option in item['options'] if len(option) > 1]))
                 input_fields[item['db_item']] = st.selectbox(label_text, options, key=f"input_{item['db_item']}")
                 input_fields_types[item['db_item']] = 'プルダウン'
                 options_dict[item['db_item']] = item['options']
@@ -176,22 +193,20 @@ def create_dynamic_input_fields(data):
                 options_dict[item['db_item']] = item['options']  # オプションを保存
 
             elif item['input_type'] == 'Date':
-                start_date = st.date_input(f"{label_text} 開始日", key=f"start_date_{item['db_item']}")
-                end_date = st.date_input(f"{label_text} 終了日", key=f"end_date_{item['db_item']}")
+                start_date = st.date_input(f"{label_text} 開始日", key=f"start_date_{item['db_item']}", value=None)
+                end_date = st.date_input(f"{label_text} 終了日", key=f"end_date_{item['db_item']}", value=None)
                 input_fields[item['db_item']] = {'start_date': start_date, 'end_date': end_date}
                 input_fields_types[item['db_item']] = 'date'
 
             elif item['input_type'] == 'Datetime':
-                start_datetime = st.date_input(f"{label_text} 開始日時", value=datetime.now(), key=f"start_datetime_{item['db_item']}")
-                end_datetime = st.date_input(f"{label_text} 終了日時", value=datetime.now(), key=f"end_datetime_{item['db_item']}")
+                start_datetime = st.date_input(f"{label_text} 開始日時", key=f"start_datetime_{item['db_item']}", value=None)
+                end_datetime = st.date_input(f"{label_text} 終了日時", key=f"end_datetime_{item['db_item']}", value=None)
                 input_fields[item['db_item']] = {'start_datetime': start_datetime, 'end_datetime': end_datetime}
                 input_fields_types[item['db_item']] = 'datetime'
 
     st.session_state['input_fields'] = input_fields
     st.session_state['input_fields_types'] = input_fields_types
     st.session_state['options_dict'] = options_dict
-
-    LOGGER.info(f"Options dict after setting input fields: {options_dict}")  # ロギング追加
 
     return input_fields, input_fields_types, options_dict
 
@@ -202,11 +217,11 @@ def initialize_session_state():
     if 'df' not in st.session_state:
         st.session_state['df'] = None
     if 'limit' not in st.session_state:
-        st.session_state['limit'] = 100
+        st.session_state['limit'] = 20
     if 'total_records' not in st.session_state:
         st.session_state['total_records'] = 0
     if 'selected_rows' not in st.session_state:
-        st.session_state['selected_rows'] = 100
+        st.session_state['selected_rows'] = 20
     if 'input_fields' not in st.session_state:
         st.session_state['input_fields'] = []
     if 'input_fields_types' not in st.session_state:
@@ -216,9 +231,6 @@ def initialize_session_state():
 
 # スタイルを適用する関数
 def apply_styles(df):
-    df.columns = [truncate_text(col, 20) for col in df.columns]  # ヘッダ行は20文字まで
-    df = df.applymap(lambda x: truncate_text(x, 1000) if isinstance(x, str) else x)  # データ行は35文字まで
-
     def highlight_header(s):
         return ['background-color: lightgrey' for _ in s]
 
@@ -238,57 +250,71 @@ def truncate_text(text, max_length=35):
 def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types, options_dict):
     try:
         df = pd.read_parquet(parquet_file_path)
-        LOGGER.info(f"Initial DataFrame loaded, total rows: {len(df)}")
+        # None または nan 値を各列のデータ型に応じた値に置換
+        for column in df.columns:
+            if df[column].dtype == 'object':
+                df[column] = df[column].fillna('')
+            elif df[column].dtype == 'Int64':
+                df[column] = df[column].fillna(0)  # Int64型の列はNaNを0に置換
+            else:
+                df[column] = df[column].fillna(df[column].dtype.na_value)  # その他の型はデフォルトのNaN値に置換
+
+        # DataFrameのデータ型をロギング
+        LOGGER.info(f"DataFrame dtypes: {df.dtypes}")
 
         for field, value in input_fields.items():
-            LOGGER.info(f"Filtering field: {field}, Value: {value}, Type: {input_fields_types[field]}")
+            LOGGER.info(f"Filter condition for {field}: {value}")  # フィルター条件をロギング
+
             if input_fields_types[field] == 'FA' and value:
-                df = df[df[field].str.contains(value, na=False)]
-                LOGGER.info(f"After filtering FA field {field}, total rows: {len(df)}")
+                if df[field].dtype == 'Int64':
+                    try:
+                        df = df[df[field] == int(value)]
+                    except ValueError:
+                        pass  # 無効な値の場合はフィルタリングをスキップ
+                else:
+                    df = df[df[field].astype(str).str.contains(value, na=False)]
             elif input_fields_types[field] == 'プルダウン' and value != '-':
                 df = df[df[field] == value]
-                LOGGER.info(f"After filtering プルダウン field {field}, total rows: {len(df)}")
             elif input_fields_types[field] == 'ラジオボタン' and value:
                 df = df[df[field] == value]
-                LOGGER.info(f"After filtering ラジオボタン field {field}, total rows: {len(df)}")
             elif input_fields_types[field] == 'チェックボックス':
                 selected_labels = [label for label, selected in value.items() if selected]
-                LOGGER.info(f"Selected labels for {field}: {selected_labels}")
                 if selected_labels:
-                    df[field] = df[field].astype(str)  # Convert to string
+                    df[field] = df[field].astype(str)  # 文字列に変換
                     df = df[df[field].isin(selected_labels)]
-                    LOGGER.info(f"After filtering チェックボックス field {field}, total rows: {len(df)}")
-            elif input_fields_types[field] == 'date' and value:
-                start_date = value['start_date']
-                end_date = value['end_date']
-                LOGGER.info(f"Start date: {start_date}, End date: {end_date}")
-                df[field] = pd.to_datetime(df[field], format='%Y/%m/%d %H:%M:%S', errors='coerce').dt.strftime('%Y-%m-%d')
-                if start_date and end_date:
-                    df = df[(df[field] >= start_date.strftime('%Y-%m-%d')) & (df[field] <= end_date.strftime('%Y-%m-%d'))]
-                elif start_date:
-                    df = df[df[field] >= start_date.strftime('%Y-%m-%d')]
-                elif end_date:
-                    df = df[df[field] <= end_date.strftime('%Y-%m-%d')]
-                LOGGER.info(f"After filtering date field {field}, total rows: {len(df)}")
-            elif input_fields_types[field] == 'datetime' and value:
-                start_datetime = value['start_datetime']
-                end_datetime = value['end_datetime']
-                LOGGER.info(f"Start datetime: {start_datetime}, End datetime: {end_datetime}")
-                df[field] = pd.to_datetime(df[field], format='%Y/%m/%d %H:%M:%S', errors='coerce').dt.strftime('%Y-%m-%d')
-                if start_datetime and end_datetime:
-                    df = df[(df[field] >= start_datetime.strftime('%Y-%m-%d')) & (df[field] <= end_datetime.strftime('%Y-%m-%d'))]
-                elif start_datetime:
-                    df = df[df[field] >= start_datetime.strftime('%Y-%m-%d')]
-                elif end_datetime:
-                    df = df[df[field] <= end_datetime.strftime('%Y-%m-%d')]
-                LOGGER.info(f"After filtering datetime field {field}, total rows: {len(df)}")
+            elif input_fields_types[field] == 'date':
+                default_start_date = '2010-01-01'
+                default_end_date = '2100-12-31'
+                start_date = value['start_date'] if value['start_date'] else default_start_date
+                end_date = value['end_date'] if value['end_date'] else default_end_date
+                LOGGER.info(f"Date range filter for {field}: Start date: {start_date}, End date: {end_date}")  # ロギング追加
+                LOGGER.info(f"Data type of {field} before conversion: {df[field].dtype}")  # ロギング追加
+                df[field] = pd.to_datetime(df[field], format='%Y/%m/%d %H:%M:%S', errors='coerce').dt.date
+                LOGGER.info(f"Data type of {field} after conversion: {df[field].dtype}")  # ロギング追加
+                start_date = pd.to_datetime(start_date).date()
+                end_date = pd.to_datetime(end_date).date()
+                df = df[(df[field] >= start_date) & (df[field] <= end_date)]
+            elif input_fields_types[field] == 'datetime':
+                default_start_datetime = '2010-01-01 00:00:00'
+                default_end_datetime = '2100-12-31 23:59:59'
+                start_datetime = value['start_datetime'] if value['start_datetime'] else default_start_datetime
+                end_datetime = value['end_datetime'] if value['end_datetime'] else default_end_datetime
+                LOGGER.info(f"Datetime range filter for {field}: Start datetime: {start_datetime}, End datetime: {end_datetime}")  # ロギング追加
+                LOGGER.info(f"Data type of {field} before conversion: {df[field].dtype}")  # ロギング追加
+                df[field] = pd.to_datetime(df[field], format='%Y/%m/%d %H:%M:%S', errors='coerce')
+                LOGGER.info(f"Data type of {field} after conversion: {df[field].dtype}")  # ロギング追加
+                start_datetime = pd.to_datetime(start_datetime)
+                end_datetime = pd.to_datetime(end_datetime)
+                df = df[(df[field] >= start_datetime) & (df[field] <= end_datetime)]
 
-        LOGGER.info(f"DataFrame loaded, total rows: {len(df)}")
-        return df
+        if df.empty:
+            return pd.DataFrame()
+        else:
+            return df
     except Exception as e:
-        st.error(f"データフィルタリング中にエラーが発生しました: {e}")
-        LOGGER.error(f"load_and_filter_parquet: {e}")
-        return pd.DataFrame()
+        LOGGER.error(f"データフィルタリング中にエラーが発生しました: {e}")
+        LOGGER.error(traceback.format_exc())
+        return None
 
 # Parquetファイルの選択時の処理
 def on_sql_file_change(sql_files_dict):
@@ -298,47 +324,33 @@ def on_sql_file_change(sql_files_dict):
         sql_file_name = get_sql_file_name(selected_display_name)
         parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
 
-        LOGGER.info(f"Selected Display Name: {selected_display_name}")
-        LOGGER.info(f"SQL File Name: {sql_file_name}")
-        LOGGER.info(f"Parquet File Path: {parquet_file_path}")
-
         if os.path.exists(parquet_file_path):
             df = pd.read_parquet(parquet_file_path)
             df = df.sort_index(ascending=False)  # インデックスの降順で並べ替え
             st.session_state['df'] = df
             st.session_state['total_records'] = len(df)
-            LOGGER.info(f"Loaded Parquet File: {parquet_file_path}")
-            LOGGER.info(f"df after on_sql_file_change: {df.head()}")
         else:
             st.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
-            LOGGER.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
     except Exception as e:
-        LOGGER.error(f"Error in on_sql_file_change: {e}")
+        st.error(f"Error in on_sql_file_change: {e}")
 
 def calculate_offset(page_number, page_size):
     return (page_number - 1) * page_size
 
-# 行数の変更時の処理
 def on_limit_change():
-    LOGGER.info(f"Limit changed to: {st.session_state['rows_selectbox_top']}")
-    st.session_state['limit'] = st.session_state['rows_selectbox_top']
+    st.session_state['limit'] = st.session_state['rows_selectbox']
     st.session_state['selected_rows'] = st.session_state['limit']
     df = st.session_state['df']
     if df is not None:
         page_number = st.session_state.get('current_page', 1)  # 現在のページ番号を取得（デフォルトは1）
         st.session_state['df_view'] = load_and_prepare_data(df, page_number, st.session_state['selected_rows'])
-    LOGGER.info(f"on_limit_change_current_page?Selected rows set to: {st.session_state['selected_rows']}")
 
 # データフレームを制限して準備する関数
 def load_and_prepare_data(df, page_number, page_size):
-    LOGGER.info("Entering load_and_prepare_data function.")
     if df is None:
-        LOGGER.error("DataFrame is None inside load_and_prepare_data.")
         return pd.DataFrame()  # 空のDataFrameを返す
     offset = calculate_offset(page_number, page_size)
-    limited_df = df.sort_index(ascending=False).iloc[offset:offset+page_size]  # インデックスの降順で並べ替えてからオフセットを考慮して行数を制限
-    LOGGER.info(f"Limiting DataFrame to {page_size} rows with offset {offset}.")
-    LOGGER.info(f"Limited DataFrame: {limited_df.head()}")
+    limited_df = df.sort_index(ascending=False).iloc[offset:offset + page_size]  # インデックスの降順で並べ替えてからオフセットを考慮して行数を制限
     return limited_df
 
 # 検索ボタンがクリックされた場合の処理
@@ -347,16 +359,26 @@ def on_search_click():
     input_fields_types = st.session_state['input_fields_types']
     sql_file_name = get_sql_file_name(st.session_state['selected_display_name'])
     parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
-    LOGGER.info(f"Search button clicked, input values: {input_values}")
-    LOGGER.info(f"Input fields types: {input_fields_types}")
-    LOGGER.info(f"SQL file name: {sql_file_name}")
-    LOGGER.info(f"Parquet file path: {parquet_file_path}")
 
     if os.path.exists(parquet_file_path):
         df = load_and_filter_parquet(parquet_file_path, input_values, input_fields_types)
-        st.session_state['df'] = df
-        st.session_state['total_records'] = len(df)
-        LOGGER.info(f"DataFrame filtered, total rows: {len(df)}")
+        if df is None:
+            st.error("該当の検索結果はありませんでした。")
+        elif df.empty:
+            st.error("該当の検索結果はありませんでした。")
+        else:
+            st.session_state['df'] = df
+            st.session_state['total_records'] = len(df)
     else:
-        st.error(f"Parquetファイルが見つかりません: {parquet_file_path}")
-        LOGGER.error(f"Parquet file not found: {parquet_file_path}")
+        st.error(f"データの読み込みまたはフィルタリングに失敗しました: {parquet_file_path}")
+
+def get_parquet_file_last_modified(parquet_file_path):
+    if os.path.exists(parquet_file_path):
+        last_modified_timestamp = os.path.getmtime(parquet_file_path)
+        last_modified_datetime = datetime.fromtimestamp(last_modified_timestamp)
+        last_modified_str = last_modified_datetime.strftime("%Y-%m-%d %H:%M:%S")
+        LOGGER.info(f"Parquet file {parquet_file_path} last modified: {last_modified_str}")
+        return last_modified_str
+    else:
+        LOGGER.warning(f"Parquet file {parquet_file_path} does not exist")
+        return None
