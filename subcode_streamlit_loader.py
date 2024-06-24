@@ -310,7 +310,7 @@ def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types,
         if df.empty:
             return pd.DataFrame()
         else:
-            return df
+            return df.sort_index(ascending=False)  # フィルタリング後に降順に並べ替え
     except Exception as e:
         LOGGER.error(f"データフィルタリング中にエラーが発生しました: {e}")
         LOGGER.error(traceback.format_exc())

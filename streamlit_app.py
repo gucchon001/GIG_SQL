@@ -78,7 +78,7 @@ LOGGER.info(f"Parquet file path: {parquet_file_path}")
 last_modified = get_parquet_file_last_modified(parquet_file_path)
 
 if data:
-    col1, col2 = st.columns([8, 2])
+    col1, col2 = st.columns([10, 3])
     with col2:
         st.markdown("最終データ取得日時：" + last_modified)
     
@@ -144,7 +144,28 @@ if data:
         with cols_pagination_top[2]:
             clean_df = df.dropna(how='all').reset_index(drop=True)
             now = datetime.now().strftime("%Y-%m-%d-%H%M%S")
-            csv_data = clean_df.to_csv(index=False).encode('cp932', errors='ignore')
+
+            # NaN、None、'nan'、'None'を空文字列に置換する関数
+            def replace_null_values(val):
+                if pd.isna(val) or val is None or val == 'nan' or val == 'None':
+                    return ''
+                return val
+
+            # CSVダウンロード用にデータを処理
+            csv_df = clean_df.sort_index(ascending=True)
+            csv_df = csv_df.applymap(replace_null_values)
+
+            # 数値型の列で空文字列になっているセルを0に置換
+            numeric_columns = csv_df.select_dtypes(include=['int64', 'float64']).columns
+            for col in numeric_columns:
+                csv_df[col] = csv_df[col].replace('', 0)
+
+            # オブジェクト型の列で '#######' を空文字列に置換
+            object_columns = csv_df.select_dtypes(include=['object']).columns
+            for col in object_columns:
+                csv_df[col] = csv_df[col].replace('#######', '')
+
+            csv_data = csv_df.to_csv(index=False).encode('cp932', errors='ignore')
             st.download_button(
                 label="CSV DL",
                 data=csv_data,
