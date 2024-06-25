@@ -12,6 +12,7 @@ from subcode_streamlit_loader import (
     load_and_prepare_data, get_sql_file_name, load_sheet_from_spreadsheet,
     get_filtered_data_from_sheet, on_sql_file_change, apply_styles, calculate_offset,get_parquet_file_last_modified
 )
+from subcode_loader import apply_data_types_to_df
 from datetime import datetime
 
 # ロガーの設定
@@ -155,10 +156,21 @@ if data:
             csv_df = clean_df.sort_index(ascending=True)
             csv_df = csv_df.applymap(replace_null_values)
 
-            # 数値型の列で空文字列になっているセルを0に置換
-            numeric_columns = csv_df.select_dtypes(include=['int64', 'float64']).columns
-            for col in numeric_columns:
+            # Int64型と指定されたカラムで、空文字列を0に置換
+            int64_columns = [col for col, dtype in st.session_state['input_fields_types'].items() if dtype == 'int' and col in csv_df.columns]
+            for col in int64_columns:
                 csv_df[col] = csv_df[col].replace('', 0)
+
+            # データ型を適用
+            csv_df = apply_data_types_to_df(csv_df, st.session_state['input_fields_types'], LOGGER)
+
+            # float64型のカラムで、残っている空文字列を0に置換
+            float64_columns = [col for col, dtype in st.session_state['input_fields_types'].items() if dtype == 'float' and col in csv_df.columns]
+            for col in float64_columns:
+                csv_df[col] = csv_df[col].replace('', 0)
+
+            # すべての値を適切な文字列表現に変換
+            csv_df = csv_df.applymap(lambda x: str(int(x)) if isinstance(x, (float, int)) and float(x).is_integer() else str(x))
 
             # オブジェクト型の列で '#######' を空文字列に置換
             object_columns = csv_df.select_dtypes(include=['object']).columns

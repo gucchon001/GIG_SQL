@@ -7,6 +7,7 @@ import configparser
 from datetime import date, datetime
 from my_logging import setup_department_logger
 import traceback
+import numpy as np
 
 # CSSファイルを読み込む関数
 def load_css(file_name):
@@ -199,9 +200,9 @@ def create_dynamic_input_fields(data):
                 input_fields_types[item['db_item']] = 'date'
 
             elif item['input_type'] == 'Datetime':
-                start_datetime = st.date_input(f"{label_text} 開始日時", key=f"start_datetime_{item['db_item']}", value=None)
-                end_datetime = st.date_input(f"{label_text} 終了日時", key=f"end_datetime_{item['db_item']}", value=None)
-                input_fields[item['db_item']] = {'start_datetime': start_datetime, 'end_datetime': end_datetime}
+                start_date = st.date_input(f"{label_text} 開始日", key=f"start_datetime_{item['db_item']}", value=None)
+                end_date = st.date_input(f"{label_text} 終了日", key=f"end_datetime_{item['db_item']}", value=None)
+                input_fields[item['db_item']] = {'start_date': start_date, 'end_date': end_date}
                 input_fields_types[item['db_item']] = 'datetime'
 
     st.session_state['input_fields'] = input_fields
@@ -256,8 +257,10 @@ def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types,
                 df[column] = df[column].fillna('')
             elif df[column].dtype == 'Int64':
                 df[column] = df[column].fillna(0)  # Int64型の列はNaNを0に置換
+            elif df[column].dtype == 'float64':
+                df[column] = df[column].fillna(np.nan)  # float64型の列はNaNをnp.nanに置換
             else:
-                df[column] = df[column].fillna(df[column].dtype.na_value)  # その他の型はデフォルトのNaN値に置換
+                df[column] = df[column].fillna(pd.NA)  # その他の型はpd.NAに置換
 
         # DataFrameのデータ型をロギング
         LOGGER.info(f"DataFrame dtypes: {df.dtypes}")
@@ -282,30 +285,32 @@ def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types,
                 if selected_labels:
                     df[field] = df[field].astype(str)  # 文字列に変換
                     df = df[df[field].isin(selected_labels)]
-            elif input_fields_types[field] == 'date':
+            elif input_fields_types[field] == 'date' or input_fields_types[field] == 'datetime':
                 default_start_date = '2010-01-01'
                 default_end_date = '2100-12-31'
                 start_date = value['start_date'] if value['start_date'] else default_start_date
                 end_date = value['end_date'] if value['end_date'] else default_end_date
-                LOGGER.info(f"Date range filter for {field}: Start date: {start_date}, End date: {end_date}")  # ロギング追加
-                LOGGER.info(f"Data type of {field} before conversion: {df[field].dtype}")  # ロギング追加
-                df[field] = pd.to_datetime(df[field], format='%Y/%m/%d %H:%M:%S', errors='coerce').dt.date
-                LOGGER.info(f"Data type of {field} after conversion: {df[field].dtype}")  # ロギング追加
-                start_date = pd.to_datetime(start_date).date()
-                end_date = pd.to_datetime(end_date).date()
-                df = df[(df[field] >= start_date) & (df[field] <= end_date)]
-            elif input_fields_types[field] == 'datetime':
-                default_start_datetime = '2010-01-01 00:00:00'
-                default_end_datetime = '2100-12-31 23:59:59'
-                start_datetime = value['start_datetime'] if value['start_datetime'] else default_start_datetime
-                end_datetime = value['end_datetime'] if value['end_datetime'] else default_end_datetime
-                LOGGER.info(f"Datetime range filter for {field}: Start datetime: {start_datetime}, End datetime: {end_datetime}")  # ロギング追加
-                LOGGER.info(f"Data type of {field} before conversion: {df[field].dtype}")  # ロギング追加
-                df[field] = pd.to_datetime(df[field], format='%Y/%m/%d %H:%M:%S', errors='coerce')
-                LOGGER.info(f"Data type of {field} after conversion: {df[field].dtype}")  # ロギング追加
-                start_datetime = pd.to_datetime(start_datetime)
-                end_datetime = pd.to_datetime(end_datetime)
-                df = df[(df[field] >= start_datetime) & (df[field] <= end_datetime)]
+                LOGGER.info(f"Date/Datetime range filter for {field}: Start date: {start_date}, End date: {end_date}")
+                LOGGER.info(f"Data type of {field} before conversion: {df[field].dtype}")
+                
+                # データフレーム内の日付列をdatetime型に変換
+                df[field] = pd.to_datetime(df[field], errors='coerce')
+                LOGGER.info(f"Data type of {field} after conversion: {df[field].dtype}")
+                
+                # 入力された日付をdatetime型に変換
+                start_datetime = pd.to_datetime(start_date).floor('D')
+                end_datetime = pd.to_datetime(end_date).ceil('D') - pd.Timedelta(seconds=1)
+                
+                LOGGER.info(f"Converted start_datetime: {start_datetime}, end_datetime: {end_datetime}")
+                
+                try:
+                    df = df[(df[field] >= start_datetime) & (df[field] <= end_datetime)]
+                except Exception as e:
+                    LOGGER.error(f"フィルタリング中にエラーが発生しました: {e}")
+                    LOGGER.error(f"Field: {field}, dtype: {df[field].dtype}")
+                    LOGGER.error(f"Start datetime: {start_datetime}, End datetime: {end_datetime}")
+                    LOGGER.error(f"Sample data: {df[field].head()}")
+                    raise
 
         if df.empty:
             return pd.DataFrame()

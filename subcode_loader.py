@@ -212,23 +212,51 @@ def csvfile_export(conn, sql_query, csv_file_path, main_table_name, category, js
 
         data_types = get_data_types(worksheet) if sheet_name else {}
         df = pd.read_sql(sql_query, conn)
-        df = apply_data_types_to_df(df, data_types,LOGGER)
+
+        # NaN、None、'nan'、'None'を空文字列に置換
+        df = df.fillna('').replace({'None': '', 'nan': ''})
+
+        # Int64型のカラムで空文字列を0に置換
+        int64_columns = [col for col, dtype in data_types.items() if dtype == 'int' and col in df.columns]
+        for col in int64_columns:
+            df[col] = df[col].replace('', 0)
+
+        # データ型を適用
+        df = apply_data_types_to_df(df, data_types, LOGGER)
+
+        # 数値型の列で空文字列になっているセルを0に置換（Int64型以外の数値型カラム用）
+        numeric_columns = df.select_dtypes(include=['float64']).columns
+        for col in numeric_columns:
+            df[col] = df[col].replace('', 0)
+
+        # データフレームの各要素を文字列に変換
         df = df.applymap(lambda x: str(int(x)) if isinstance(x, (float, Decimal)) and x.is_integer() else str(x) if not pd.isna(x) else '')
 
+        # 一時ファイルパスを作成
+        temp_file_path = csv_file_path + '.temp'
+
         try:
-            record_count = process_dataframe_in_chunks(df, chunk_size, csv_file_path, delay=delay)
+            record_count = process_dataframe_in_chunks(df, chunk_size, temp_file_path, delay=delay)
+            
+            # 処理が成功したら、一時ファイルを正式なファイルに置き換え
+            if os.path.exists(csv_file_path):
+                os.remove(csv_file_path)
+            os.rename(temp_file_path, csv_file_path)
+
+            write_to_log_sheet(csv_file_name_column, sheet_name, main_table_name, category, record_count, json_keyfile_path, "成功", None, csv_file_path)
         except Exception as e:
             LOGGER.error(f"CSVファイル書き込み時にエラーが発生しました: {e}")
             write_to_log_sheet(csv_file_name_column, sheet_name, main_table_name, category, 0, json_keyfile_path, "失敗", str(e), csv_file_path)
+            
+            # エラーが発生した場合、一時ファイルを削除
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
+            
             raise
-        
-        write_to_log_sheet(csv_file_name_column, sheet_name, main_table_name, category, record_count, json_keyfile_path, "成功", None, csv_file_path)
 
     except Exception as e:
         LOGGER.error(f"クエリ実行またはCSVファイル書き込み時にエラーが発生しました: {e}")
         write_to_log_sheet(csv_file_name_column, sheet_name, main_table_name, category, 0, json_keyfile_path, "失敗", str(e), csv_file_path)
-        if os.path.exists(csv_file_path):
-            os.remove(csv_file_path)
         raise
 
 # 複数のパターンにマッチする正規表現を定義
@@ -434,7 +462,7 @@ def check_and_prepare_where_clause(sql_query, additional_conditions):
     # 元のクエリのFROM句までの部分と、修正後のサブクエリを結合
     final_query = sql_query[:from_clause_index + len('-- FROM clause\n')] + "\n" + modified_sub_query
     return final_query
-    
+
 def generate_period_condition(period_condition, column_name, table_alias):
     """期間条件に基づくWHERE句の条件を生成する。"""
     today = datetime.now().date()
@@ -442,9 +470,9 @@ def generate_period_condition(period_condition, column_name, table_alias):
 
     date_column = f"{table_alias}.{column_name}" if table_alias else column_name
     if period_condition == '当日':
-        return f" DATE({date_column})  = '{today}'"
+        return f" DATE({date_column}) = '{today}'"
     elif period_condition == '前日':
-        return f" DATE({date_column})  = '{yesterday}'"
+        return f" DATE({date_column}) = '{yesterday}'"
     elif period_condition == '前日まで累積':
         return f" DATE({date_column}) <= '{yesterday}'"
     elif period_condition == '当日まで累積':
@@ -457,15 +485,26 @@ def generate_period_condition(period_condition, column_name, table_alias):
         start_date_str = period_condition.split('～')[0].strip()
         start_date = datetime.strptime(start_date_str, '%Y年%m月%d日').date()
         return f" DATE({date_column}) BETWEEN '{start_date}' AND '{today}'"
-    elif '～' in period_condition and 'まで累積' not in period_condition:
-        start_date_str, end_date_str = period_condition.split('～')
-        start_date = datetime.strptime(start_date_str.strip(), '%Y年%m月%d日').date()
-        end_date = datetime.strptime(end_date_str.strip(), '%Y年%m月%d日').date()
-        return f" DATE({date_column}) BETWEEN '{start_date}' AND '{end_date}'"
+    elif '～' in period_condition:
+        parts = period_condition.split('～')
+        if len(parts) == 3 and parts[2].strip() == 'までの期間':
+            start_date_str, end_date_str = parts[0:2]
+            start_date = datetime.strptime(start_date_str.strip(), '%Y年%m月%d日').date()
+            end_date = datetime.strptime(end_date_str.strip(), '%Y年%m月%d日').date()
+            return f" DATE({date_column}) BETWEEN '{start_date}' AND '{end_date}'"
+        elif 'まで累積' not in period_condition:
+            start_date_str, end_date_str = parts
+            start_date = datetime.strptime(start_date_str.strip(), '%Y年%m月%d日').date()
+            end_date = datetime.strptime(end_date_str.strip(), '%Y年%m月%d日').date()
+            return f" DATE({date_column}) BETWEEN '{start_date}' AND '{end_date}'"
     elif '日前時点を1日分' in period_condition:
         days_ago = int(period_condition.split('日前')[0])
         target_date = today - timedelta(days=days_ago)
         return f" DATE({date_column}) = '{target_date}'"
+    elif '年' in period_condition and '月' in period_condition and '日' in period_condition:
+        # 特定の日付（YYYY年MM月DD日）の場合
+        specific_date = datetime.strptime(period_condition.strip(), '%Y年%m月%d日').date()
+        return f" DATE({date_column}) = '{specific_date}'"
     else:
         return ""
 
