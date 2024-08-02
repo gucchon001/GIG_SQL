@@ -1,22 +1,22 @@
 # GIG_SQL
 更新日：2024/08/02
 1. 夜間バッチ処理
-・1日1回（夜間）にCSVファイルの生成・スプレッドシートへの書き込みを行う
-・トモノカイ共有PC（Windows10 Home）のタスクスケジューラで、run.bat を起動し、main.pyを実行
-・ADMIN_CSV_DLツール_v1.0 - 実行対象ファイル：実行シート（https://docs.google.com/spreadsheets/d/1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q/edit?pli=1&gid=2146321019#gid=2146321019 ）の”実行対象”列にチェックがついている”SQLファイル名”にあるSQLを呼び出す
-・H列～P列の条件を、SQL文に修正を加える
-・修正を加えたSQL文を実行し、GIG_DBにSSHトンネルからアクセスしてデータを抽出し、CSV or スプシに保存
-・関連ファイル
-　main.py　実行ファイル
-　common_exe_functions.py　メインコード
-　ssh_connection.py　SSHの接続
-　database_connection.py　MYSQLの接続
-　subcode_loader.py　サブコード（SQLの修正やCSV処理等）
-　※main_test.py 手動実行用（実行シートのテスト実行列にチェックがついているファイルを実行 / デバッグ・エラー時の手動実行で利用）
-・ログ
-　https://docs.google.com/spreadsheets/d/1iqDqeGXAovNQfnuuOi2xLzJIrmXOE1FKOgrSLgG0SOw/edit?gid=0#gid=0
+   ・1日1回（夜間）にCSVファイルの生成・スプレッドシートへの書き込みを行う
+   ・トモノカイ共有PC（Windows10 Home）のタスクスケジューラで、run.bat を起動し、main.pyを実行
+   ・ADMIN_CSV_DLツール_v1.0 - 実行対象ファイル：実行シート（https://docs.google.com/spreadsheets/d/1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q/edit?pli=1&gid=2146321019#gid=2146321019 ）の”実行対象”列にチェックがついている”SQLファイル名”にあるSQLを呼び出す
+   ・H列～P列の条件を、SQL文に修正を加える
+   ・修正を加えたSQL文を実行し、GIG_DBにSSHトンネルからアクセスしてデータを抽出し、CSV or スプシに保存
+   ・関連ファイル
+   main.py　実行ファイル
+   common_exe_functions.py　メインコード
+   ssh_connection.py　SSHの接続
+   database_connection.py　MYSQLの接続
+   subcode_loader.py　サブコード（SQLの修正やCSV処理等）
+   ※main_test.py 手動実行用（実行シートのテスト実行列にチェックがついているファイルを実行 / デバッグ・エラー時の手動実行で利用）
+   ・ログ
+   https://docs.google.com/spreadsheets/d/1iqDqeGXAovNQfnuuOi2xLzJIrmXOE1FKOgrSLgG0SOw/edit?gid=0#gid=0
 
-2. CSVダウンロードツール　ストミンくん
+3. CSVダウンロードツール　ストミンくん
 ・PythonWEBアプリ フレームワーク'Streamlit'を使って、トモノカイローカルネットワーク内で、各テーブルのCSVダウンロードを絞込して行う
 ・トモノカイ共有PC（Windows10 Home）で、streamiltを常時立ち上げる
 ・30分に1回、Parquetファイルの生成をして、それをstreamlitで呼び出してWebブラウザ上で表示（パフォーマンスの問題でSQLを毎回実行するのではなく、ローカルファイルを呼び出している）
