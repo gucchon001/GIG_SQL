@@ -13,6 +13,8 @@
 　database_connection.py　MYSQLの接続
 　subcode_loader.py　サブコード（SQLの修正やCSV処理等）
 　※main_test.py 手動実行用（実行シートのテスト実行列にチェックがついているファイルを実行 / デバッグ・エラー時の手動実行で利用）
+・ログ
+　https://docs.google.com/spreadsheets/d/1iqDqeGXAovNQfnuuOi2xLzJIrmXOE1FKOgrSLgG0SOw/edit?gid=0#gid=0
 
 2. CSVダウンロードツール　ストミンくん
 ・PythonWEBアプリ フレームワーク'Streamlit'を使って、トモノカイローカルネットワーク内で、各テーブルのCSVダウンロードを絞込して行う
