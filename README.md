@@ -3,7 +3,7 @@
 1. 夜間バッチ処理
 ・1日1回（夜間）にCSVファイルの生成・スプレッドシートへの書き込みを行う
 ・トモノカイ共有PC（Windows10 Home）のタスクスケジューラで、run.bat を起動し、main.pyを実行
-・ADMIN_CSV_DLツール_v1.0 - 実行対象ファイル：実行シート（https://docs.google.com/spreadsheets/d/1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q/edit?pli=1&gid=2146321019#gid=2146321019）の”実行対象”列にチェックがついている”SQLファイル名”にあるSQLを呼び出す
+・ADMIN_CSV_DLツール_v1.0 - 実行対象ファイル：実行シート（https://docs.google.com/spreadsheets/d/1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q/edit?pli=1&gid=2146321019#gid=2146321019 ）の”実行対象”列にチェックがついている”SQLファイル名”にあるSQLを呼び出す
 ・H列～P列の条件を、SQL文に修正を加える
 ・修正を加えたSQL文を実行し、GIG_DBにSSHトンネルからアクセスしてデータを抽出し、CSV or スプシに保存
 ・関連ファイル
@@ -19,7 +19,7 @@
 ・トモノカイ共有PC（Windows10 Home）で、streamiltを常時立ち上げる
 ・30分に1回、Parquetファイルの生成をして、それをstreamlitで呼び出してWebブラウザ上で表示（パフォーマンスの問題でSQLを毎回実行するのではなく、ローカルファイルを呼び出している）
 　※ADMIN_CSV_DLツール_v1.0 にあるシート名の各シートがテーブルとなっていて、そこで型指定を行っている
-・ADMIN_CSV_DLツール_v1.0 - 実行対象ファイル：個別実行シート（https://docs.google.com/spreadsheets/d/1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q/edit?pli=1&gid=261132441#gid=261132441）の”個別リスト”列にチェックがついている”SQLファイル名”にあるSQLを呼び出す
+・ADMIN_CSV_DLツール_v1.0 - 実行対象ファイル：個別実行シート（https://docs.google.com/spreadsheets/d/1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q/edit?pli=1&gid=261132441#gid=261132441 ）の”個別リスト”列にチェックがついている”SQLファイル名”にあるSQLを呼び出す
 ・H列～J列の条件を、SQL文に修正を加える
 ・Webブラウザ上で呼び出されたファイル名がサイドバーに表示され、各テーブルごとに画面切り替えを行い、テーブル表示・絞込・CSVダウンロードを行える
 ・ADMIN_CSV_DLツール_v1.0 にあるシート名の各シートのB列にチェックを入れると絞込検索のフィールドが表示され、C列：入力方式／D列：選択項目の表示を行う
