@@ -3,6 +3,7 @@
 1. 夜間バッチ処理
    ・1日1回（夜間）にCSVファイルの生成・スプレッドシートへの書き込みを行う
    ・トモノカイ共有PC（Windows10 Home）のタスクスケジューラで、run.bat を起動し、main.pyを実行
+
    ・ADMIN_CSV_DLツール_v1.0 - 実行対象ファイル：実行シート（https://docs.google.com/spreadsheets/d/1HqdbZ5owG2YIOP8M5kc7DOjk34BneEFYkXsJWreJU7Q/edit?pli=1&gid=2146321019#gid=2146321019 ）の”実行対象”列にチェックがついている”SQLファイル名”にあるSQLを呼び出す
    ・H列～P列の条件を、SQL文に修正を加える
    ・修正を加えたSQL文を実行し、GIG_DBにSSHトンネルからアクセスしてデータを抽出し、CSV or スプシに保存
