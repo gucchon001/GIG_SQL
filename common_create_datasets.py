@@ -36,11 +36,22 @@ def main(sheet_name, execution_column, config_file):
 
     sql_files_list = load_sql_file_list_from_spreadsheet(spreadsheet_id, sheet_name, json_keyfile_path, execution_column=execution_column)
 
-    # データをParquet形式で保存する関数
     def save_to_parquet(df, output_path):
         try:
-            df.to_parquet(output_path, engine='pyarrow', index=False)
-            LOGGER.info(f"データをParquet形式で保存しました: {output_path}")
+            # インデックスをリセットする前に、現在のインデックスを列として保存
+            if df.index.name is None:
+                df['original_index'] = df.index
+            else:
+                df[df.index.name] = df.index
+
+            # インデックスをリセットし、降順でソート
+            df_sorted = df.reset_index(drop=True).sort_values('original_index', ascending=False)
+            
+            # 'original_index'列を削除
+            df_sorted = df_sorted.drop('original_index', axis=1)
+            
+            df_sorted.to_parquet(output_path, engine='pyarrow', index=False)
+            LOGGER.info(f"データをParquet形式で降順で保存しました: {output_path}")
         except Exception as e:
             LOGGER.error(f"Parquet保存中にエラーが発生しました: {e}")
 

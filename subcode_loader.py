@@ -1,25 +1,18 @@
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 from googleapiclient.discovery import build
-from google.oauth2 import service_account
 import pandas as pd
-from datetime import datetime, timedelta, date
+from datetime import datetime, timedelta
 from openpyxl.utils import get_column_letter
 import os
 import re
 import io
 import time
-import tkinter as tk
-from tkinter import filedialog
-import tkinter as tk
-from tkinter import messagebox
 from decimal import Decimal
 from my_logging import setup_department_logger
-from tenacity import retry, stop_after_attempt, wait_fixed
+from tenacity import retry, stop_after_attempt, wait_exponential, before_sleep_log
 import shutil
-import logging
 import traceback
-from io import StringIO
 
 LOGGER = setup_department_logger('main')
 
@@ -30,7 +23,11 @@ def authenticate_google_api(json_keyfile_path, scopes):
 
 #リトライ処理
 def retry_on_exception(func):
-    @retry(stop=stop_after_attempt(2), wait=wait_fixed(60), before_sleep=before_sleep_log)
+    @retry(
+        stop=stop_after_attempt(3),
+        wait=wait_exponential(multiplier=60, min=60, max=300),
+        before_sleep=before_sleep_log
+    )
     def wrapper(*args, **kwargs):
         return func(*args, **kwargs)
     return wrapper
@@ -284,6 +281,9 @@ def extract_columns_mapping(sql_query):
 #元SQLファイル文に指定条件を挿入
 def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_exclusion, skip_deletion_exclusion=False):
     try:
+        # サブクエリを検出して置換
+        sql_query, subqueries = detect_and_replace_subqueries(sql_query)
+
         columns_mapping = extract_columns_mapping(sql_query)
         additional_conditions = []
 
@@ -348,6 +348,8 @@ def add_conditions_to_sql(sql_query, input_values, input_fields_types, deletion_
             sql_query += "\n" + group_by_clause
         else:
             sql_query += ";"
+        # サブクエリを元に戻す
+        sql_query = restore_subqueries(sql_query, subqueries)
         return sql_query
     except Exception as e:
         LOGGER.error(f"add_conditions_to_sql関数内でエラーが発生しました: {e}")
@@ -431,10 +433,25 @@ def detect_and_remove_group_by(sql_query):
         return sql_query, group_by_clause
     return sql_query, ""
 
+#サブクエリを検出
+def detect_and_replace_subqueries(sql_query):
+    subquery_pattern = r'-- subquery start(.*?)-- subquery end'
+    subqueries = re.findall(subquery_pattern, sql_query, re.DOTALL)
+    for i, subquery in enumerate(subqueries):
+        placeholder = f'__SUBQUERY_PLACEHOLDER_{i}__'
+        sql_query = sql_query.replace(f'-- subquery start{subquery}-- subquery end', placeholder)
+    return sql_query, subqueries
+
+#元に戻す
+def restore_subqueries(sql_query, subqueries):
+    for i, subquery in enumerate(subqueries):
+        placeholder = f'__SUBQUERY_PLACEHOLDER_{i}__'
+        sql_query = sql_query.replace(placeholder, f'-- subquery start{subquery}-- subquery end')
+    return sql_query
+
 #SQLクエリにWHERE句があるか確認し、適切な形で返す。
 def check_and_prepare_where_clause(sql_query, additional_conditions):
     """WHERE句の存在を確認し、必要に応じてANDを追加する。追加条件が存在しない場合は何も追加しない。 """
-
     if not additional_conditions:
         return sql_query  # 条件がなければそのまま返す
 
@@ -446,9 +463,19 @@ def check_and_prepare_where_clause(sql_query, additional_conditions):
     # FROM句の後の部分を取得
     sub_query = sql_query[from_clause_index + len('-- FROM clause\n'):].strip()
 
+    # サブクエリを一時的に置換
+    subquery_pattern = r'-- subquery start(.*?)-- subquery end'
+    subqueries = re.findall(subquery_pattern, sub_query, re.DOTALL)
+    for i, subquery in enumerate(subqueries):
+        placeholder = f'__SUBQUERY_PLACEHOLDER_{i}__'
+        sub_query = sub_query.replace(f'-- subquery start{subquery}-- subquery end', placeholder)
+
     # WHERE句があるかどうかをチェック
-    upper_sub_query = sub_query.upper()
-    where_index = upper_sub_query.find("WHERE")
+    where_index = -1
+    for match in re.finditer(r'\bWHERE\b', sub_query, re.IGNORECASE):
+        if not re.search(r'__SUBQUERY_PLACEHOLDER_\d+__', sub_query[:match.start()]):
+            where_index = match.start()
+            break
 
     if where_index == -1:
         # WHERE句がない場合、WHERE句を追加
@@ -458,6 +485,11 @@ def check_and_prepare_where_clause(sql_query, additional_conditions):
         where_clause = sub_query[:where_index + len("WHERE")]
         remaining_query = sub_query[where_index + len("WHERE"):].strip()
         modified_sub_query = where_clause + " " + remaining_query + " AND " + " AND ".join(additional_conditions)
+
+    # サブクエリを元に戻す
+    for i, subquery in enumerate(subqueries):
+        placeholder = f'__SUBQUERY_PLACEHOLDER_{i}__'
+        modified_sub_query = modified_sub_query.replace(placeholder, f'-- subquery start{subquery}-- subquery end')
 
     # 元のクエリのFROM句までの部分と、修正後のサブクエリを結合
     final_query = sql_query[:from_clause_index + len('-- FROM clause\n')] + "\n" + modified_sub_query
@@ -701,13 +733,13 @@ def get_data_types(worksheet):
     return data_types
 
 # データ型を適用する関数（フォーマット済み）
-def apply_data_types_to_df(df, data_types, LOGGER):
+def apply_data_types_to_df(df, data_types, LOGGER, encoding='utf-8'):
     converted_columns = []  # 型変換を行った列名を格納するリスト
     for column, data_type in data_types.items():
         if column in df.columns:
             try:
                 if data_type == 'txt':
-                    df[column] = df[column].astype(str)
+                    df[column] = df[column].apply(lambda x: x.encode(encoding).decode(encoding) if isinstance(x, str) else x)
                     converted_columns.append(column)  # 型変換を行った列名を追加
                 elif data_type == 'int':
                     df[column] = pd.to_numeric(df[column], errors='raise').astype('Int64')

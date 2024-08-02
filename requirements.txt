@@ -13,3 +13,4 @@ openpyxl
 tenacity
 tkcalendar
 streamlit
+streamlit-extras

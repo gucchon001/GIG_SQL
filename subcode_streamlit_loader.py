@@ -4,7 +4,7 @@ import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import configparser
-from datetime import date, datetime
+from datetime import datetime
 from my_logging import setup_department_logger
 import traceback
 import numpy as np
@@ -218,29 +218,21 @@ def initialize_session_state():
     if 'df' not in st.session_state:
         st.session_state['df'] = None
     if 'limit' not in st.session_state:
-        st.session_state['limit'] = 20
+        st.session_state['limit'] = 20  # デフォルト値を50に変更
     if 'total_records' not in st.session_state:
         st.session_state['total_records'] = 0
     if 'selected_rows' not in st.session_state:
-        st.session_state['selected_rows'] = 20
+        st.session_state['selected_rows'] = 20  # デフォルト値を50に変更
     if 'input_fields' not in st.session_state:
         st.session_state['input_fields'] = []
     if 'input_fields_types' not in st.session_state:
         st.session_state['input_fields_types'] = []
     if 'options_dict' not in st.session_state:
         st.session_state['options_dict'] = {}
-
-# スタイルを適用する関数
-def apply_styles(df):
-    def highlight_header(s):
-        return ['background-color: lightgrey' for _ in s]
-
-    def white_background(val):
-        return 'background-color: white'
-
-    styled_df = df.style.apply(highlight_header, axis=0).applymap(white_background, subset=pd.IndexSlice[:, :])
-
-    return styled_df
+    if 'current_page' not in st.session_state:
+        st.session_state['current_page'] = 1
+    if 'last_selected_table' not in st.session_state:
+        st.session_state['last_selected_table'] = None
 
 # テキストを省略表示する関数
 def truncate_text(text, max_length=35):
@@ -252,6 +244,7 @@ def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types,
     try:
         df = pd.read_parquet(parquet_file_path)
         # None または nan 値を各列のデータ型に応じた値に置換
+        LOGGER.info(f"Loaded DataFrame: {df}")
         for column in df.columns:
             if df[column].dtype == 'object':
                 df[column] = df[column].fillna('')
@@ -286,32 +279,29 @@ def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types,
                     df[field] = df[field].astype(str)  # 文字列に変換
                     df = df[df[field].isin(selected_labels)]
             elif input_fields_types[field] == 'date' or input_fields_types[field] == 'datetime':
-                default_start_date = '2010-01-01'
-                default_end_date = '2100-12-31'
-                start_date = value['start_date'] if value['start_date'] else default_start_date
-                end_date = value['end_date'] if value['end_date'] else default_end_date
-                LOGGER.info(f"Date/Datetime range filter for {field}: Start date: {start_date}, End date: {end_date}")
+                start_date = value['start_date']
+                end_date = value['end_date']
+                
                 LOGGER.info(f"Data type of {field} before conversion: {df[field].dtype}")
                 
-                # データフレーム内の日付列をdatetime型に変換
                 df[field] = pd.to_datetime(df[field], errors='coerce')
                 LOGGER.info(f"Data type of {field} after conversion: {df[field].dtype}")
                 
-                # 入力された日付をdatetime型に変換
-                start_datetime = pd.to_datetime(start_date).floor('D')
-                end_datetime = pd.to_datetime(end_date).ceil('D') - pd.Timedelta(seconds=1)
-                
-                LOGGER.info(f"Converted start_datetime: {start_datetime}, end_datetime: {end_datetime}")
-                
-                try:
+                if start_date and end_date:
+                    start_datetime = pd.to_datetime(start_date).floor('D')
+                    end_datetime = pd.to_datetime(end_date).replace(hour=23, minute=59, second=59, microsecond=999999)
+                    LOGGER.info(f"Filtering {field} from {start_datetime} to {end_datetime}")
                     df = df[(df[field] >= start_datetime) & (df[field] <= end_datetime)]
-                except Exception as e:
-                    LOGGER.error(f"フィルタリング中にエラーが発生しました: {e}")
-                    LOGGER.error(f"Field: {field}, dtype: {df[field].dtype}")
-                    LOGGER.error(f"Start datetime: {start_datetime}, End datetime: {end_datetime}")
-                    LOGGER.error(f"Sample data: {df[field].head()}")
-                    raise
-
+                elif start_date:
+                    start_datetime = pd.to_datetime(start_date).floor('D')
+                    LOGGER.info(f"Filtering {field} from {start_datetime}")
+                    df = df[df[field] >= start_datetime]
+                elif end_date:
+                    end_datetime = pd.to_datetime(end_date).replace(hour=23, minute=59, second=59, microsecond=999999)
+                    LOGGER.info(f"Filtering {field} to {end_datetime}")
+                    df = df[df[field] <= end_datetime]
+                
+                LOGGER.info(f"Filtered DataFrame shape after {field} filtering: {df.shape}")
         if df.empty:
             return pd.DataFrame()
         else:

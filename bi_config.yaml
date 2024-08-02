@@ -1,0 +1,21 @@
+dashboard:
+  title: "データ分析ダッシュボード"
+  date_column: "応募日"
+  measures:
+    - "応募数"
+    - "採用数"
+    - "採用率"
+  group_column:
+    name: "開始列"
+    display_name: "サイト種別"
+  table_name: "応募者数分析"
+  data_source:
+    file_path: "data_Parquet/15_job_candidate_fact.parquet"
+    date_columns: 
+      - "応募日"
+  period_options:
+    - "時間別"
+    - "日別"
+    - "週別"
+    - "月別"
+  default_period: "日別"

@@ -6,6 +6,8 @@ from subcode_loader import load_sql_file_list_from_spreadsheet, load_sql_from_fi
 from my_logging import setup_department_logger
 import slack_notify
 import os
+from datetime import datetime, timedelta,time
+import time
 
 LOGGER = setup_department_logger('main')
 
@@ -69,6 +71,10 @@ def process_sql_and_csv_files(sql_and_csv_files, conn, config):
             LOGGER.error(f"出力処理中にエラーが発生しました: {e}")
             result = f"★失敗★　{sql_file_name}: 出力処理中にエラー"
         results.append(result)
+
+        # 各反復後にスリープを追加
+        time.sleep(config.get('sleep_time', 5))  # デフォルトは5秒
+
     return results
 
 def main(sheet_name, execution_column, config_file):
