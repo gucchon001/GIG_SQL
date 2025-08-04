@@ -562,8 +562,21 @@ def set_period_condition(period_condition, period_criteria, sql_query, category)
                 table_alias = 'ua'
                 LOGGER.warning("user_applicationsテーブルのエイリアスが検出できないため、'ua'を使用します")
             LOGGER.info(f"最終提出日時の期間条件で使用するエイリアス: '{table_alias}'")
+        elif period_criteria == '提出期限':
+            LOGGER.info("期間基準: 提出期限 - submission_deadlineを使用")
+            column_name = 'submission_deadline'
+            # 提出期限も応募テーブル(user_applications)のuaエイリアスを使用
+            LOGGER.info("user_applicationsテーブルのエイリアス検索開始")
+            table_alias = find_submission_table_alias(sql_query)
+            if not table_alias:
+                # user_applicationsテーブルが見つからない場合は強制的に'ua'を使用
+                table_alias = 'ua'
+                LOGGER.warning("user_applicationsテーブルのエイリアスが検出できないため、'ua'を使用します")
+            LOGGER.info(f"提出期限の期間条件で使用するエイリアス: '{table_alias}'")
         else:
             LOGGER.error(f"不正な期間基準が指定されました: '{period_criteria}'")
+            LOGGER.error(f"対応している期間基準: 申込日, 削除日, 最終ログイン, 
+            , 提出期限")
             raise ValueError(f"不正な期間条件が指定されました: {period_criteria}")
 
         # 期間条件の生成と適用
