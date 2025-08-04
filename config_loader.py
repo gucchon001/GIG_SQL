@@ -9,6 +9,7 @@ def load_config(config_file):
     """
     config = configparser.ConfigParser()
     config.read(config_file, encoding='utf-8')
+    
     # SSH接続設定の読み込み
     ssh_config = {
         'host': config['SSH']['host'],
@@ -27,4 +28,20 @@ def load_config(config_file):
 
     local_port = 3306  # ローカルポートの設定（固定値または設定ファイルから読み込む）
 
-    return ssh_config, db_config, local_port
+    # 追加の設定値の読み込み
+    additional_config = {
+        'spreadsheet_id': config['Spreadsheet']['spreadsheet_id'],
+        'main_sheet': config['Spreadsheet']['main_sheet'], 
+        'rawdata_sheet': config['Spreadsheet']['rawdata_sheet'], 
+        'eachdata_sheet': config['Spreadsheet']['eachdata_sheet'], 
+        'json_keyfile_path': config['Credentials']['json_keyfile_path'],
+        'csv_base_path': config['Paths']['csv_base_path'],
+        'google_folder_id': config['GoogleDrive']['google_folder_id'],
+        'chunk_size': int(config['Tuning']['chunk_size']),
+        'batch_size': int(config['Tuning']['batch_size']),
+        'delay': float(config['Tuning']['delay']),
+        'max_workers': int(config['Tuning']['max_workers']),
+        'config_file': config_file, 
+    }
+
+    return ssh_config, db_config, local_port, additional_config
