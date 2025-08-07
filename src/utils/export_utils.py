@@ -169,7 +169,7 @@ def csvfile_export(conn, sql_query: str, csv_file_path: str, main_table_name: st
             # 一時ファイルを最終ファイルに移動
             shutil.move(temp_file_path, csv_file_path)
         else:
-            df.to_csv(csv_file_path, index=False, encoding='utf-8')
+            df.to_csv(csv_file_path, index=False, encoding='cp932', errors='replace')
         
         logger.info(f"CSVエクスポート完了: {csv_file_path}, レコード数: {record_count}")
         return record_count

@@ -14,10 +14,14 @@ import configparser
 import threading
 from csv_download import csv_download  # 関数名を変更
 from subcode_streamlit_loader import load_sql_list_from_spreadsheet
-from my_logging import setup_department_logger
-
-# ロガーの設定
-LOGGER = setup_department_logger('main')
+try:
+    # 新構造のログ管理を優先使用
+    from src.core.logging.logger import get_logger
+    LOGGER = get_logger('main')
+except ImportError:
+    # フォールバック：旧構造
+    from my_logging import setup_department_logger
+    LOGGER = setup_department_logger('main')
 
 # サイドバーのタイトルを小さくするためのCSSスタイル
 sidebar_header = """
@@ -107,10 +111,16 @@ if selected_parent == "CSVダウンロード":
             st.session_state.batch_status = "実行中"
             st.session_state.batch_output = ""
             
-            # config.ini を読み込む
-            config = configparser.ConfigParser()
-            config.read('config.ini', encoding='utf-8')
-            batch_file_path = config['batch_exe']['create_datasets']
+            # 新構造の設定管理を使用
+            try:
+                from src.core.config.settings import AppConfig
+                app_config = AppConfig.from_config_file('config.ini')
+                batch_file_path = app_config.batch.create_datasets
+            except ImportError:
+                # フォールバック：旧構造
+                config = configparser.ConfigParser()
+                config.read('config.ini', encoding='utf-8')
+                batch_file_path = config['batch_exe']['create_datasets']
             
             # バッチファイルの存在確認
             if not subprocess.os.path.exists(batch_file_path):
@@ -137,10 +147,16 @@ if selected_parent == "CSVダウンロード":
                 st.session_state.batch_status = "実行中"
                 st.session_state.batch_output = ""
                 
-                # config.ini を読み込む
-                config = configparser.ConfigParser()
-                config.read('config.ini', encoding='utf-8')
-                batch_file_path = config['batch_exe']['create_datasets_individual']
+                # 新構造の設定管理を使用
+                try:
+                    from src.core.config.settings import AppConfig
+                    app_config = AppConfig.from_config_file('config.ini')
+                    batch_file_path = app_config.batch.create_datasets_individual
+                except ImportError:
+                    # フォールバック：旧構造
+                    config = configparser.ConfigParser()
+                    config.read('config.ini', encoding='utf-8')
+                    batch_file_path = config['batch_exe']['create_datasets_individual']
                 
                 # バッチファイルの存在確認
                 if not subprocess.os.path.exists(batch_file_path):

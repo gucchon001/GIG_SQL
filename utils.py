@@ -2,15 +2,12 @@ import streamlit as st
 import os
 import pandas as pd
 from io import StringIO
-import pandas as pd
 from subcode_loader import apply_data_types_to_df
 import concurrent.futures
 import dask.dataframe as dd
 import numpy as np
 from functools import partial
 from datetime import datetime
-import pandas as pd
-import concurrent.futures
 import pyarrow.parquet as pq
 from subcode_streamlit_loader import (
     on_limit_change, load_and_filter_parquet,
@@ -18,9 +15,14 @@ from subcode_streamlit_loader import (
     get_filtered_data_from_sheet
 )
 
-from my_logging import setup_department_logger
-
-LOGGER = setup_department_logger('utils')
+try:
+    # 新構造のログ管理を優先使用
+    from src.core.logging.logger import get_logger
+    LOGGER = get_logger('utils')
+except ImportError:
+    # フォールバック：旧構造
+    from my_logging import setup_department_logger
+    LOGGER = setup_department_logger('utils')
 
 # テキストを指定の長さに切り詰める関数
 def truncate_text(text, max_length=35):

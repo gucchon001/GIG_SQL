@@ -9,14 +9,21 @@ import re
 import io
 import time
 from decimal import Decimal
-from my_logging import setup_department_logger
+try:
+    # 新構造のログ管理を優先使用
+    from src.core.logging.logger import get_logger
+    LOGGER = get_logger('main')
+except ImportError:
+    # フォールバック：旧構造
+    from my_logging import setup_department_logger
+    # LOGGER は上記のtryブロックで設定済み
 from tenacity import retry, stop_after_attempt, wait_exponential, before_sleep_log
 import shutil
 import traceback
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-LOGGER = setup_department_logger('main')
+# LOGGER は上記のtryブロックで設定済み
 
 # ログ動作確認用メッセージ
 print("=" * 80)

@@ -2,11 +2,15 @@
 設定管理機能
 
 アプリケーション全体の設定を管理するモジュール
+設定の分離：
+- settings.ini: 一般設定（非秘匿）
+- secrets.env: 秘匿情報（パスワード、APIキー等）
 """
 from dataclasses import dataclass
 from typing import Dict, Optional
 import configparser
 import os
+from dotenv import load_dotenv
 
 
 @dataclass
@@ -58,6 +62,28 @@ class TuningConfig:
 
 
 @dataclass
+class SlackConfig:
+    """Slack通知設定"""
+    webhook_url: str
+    bot_name: str
+    user_id: str
+    icon_emoji: str
+
+
+@dataclass
+class BatchConfig:
+    """バッチ実行設定"""
+    create_datasets: str
+    create_datasets_individual: str
+
+
+@dataclass
+class CSVConfig:
+    """CSV処理設定"""
+    csv_file_paths: str
+
+
+@dataclass
 class LoggingConfig:
     """ログ設定"""
     level: str = "DEBUG"
@@ -75,21 +101,44 @@ class AppConfig:
     paths: PathsConfig
     tuning: TuningConfig
     logging: LoggingConfig
+    slack: SlackConfig
+    batch: BatchConfig
+    csv: CSVConfig
     
     @classmethod
     def from_config_file(cls, config_file: str = "config.ini") -> 'AppConfig':
         """
         設定ファイルからアプリケーション設定を読み込み
+        優先順位: 1) 新構造 2) 旧構造（後方互換性）
+        """
+        # 新構造での設定読み込みを試行
+        new_config_path = "config/settings.ini"
+        secrets_path = "config/secrets.env"
         
-        Args:
-            config_file: 設定ファイルのパス
-            
-        Returns:
-            AppConfig: アプリケーション設定オブジェクト
-            
-        Raises:
-            FileNotFoundError: 設定ファイルが見つからない場合
-            configparser.Error: 設定ファイル読み込みエラー
+        if os.path.exists(new_config_path) and os.path.exists(secrets_path):
+            return cls._load_from_new_structure(new_config_path, secrets_path)
+        else:
+            # フォールバック: 旧構造
+            return cls._load_from_legacy_structure(config_file)
+    
+    @classmethod
+    def _load_from_new_structure(cls, settings_file: str, secrets_file: str) -> 'AppConfig':
+        """
+        新構造から設定を読み込み（settings.ini + secrets.env）
+        """
+        # 秘匿情報を環境変数に読み込み
+        load_dotenv(secrets_file)
+        
+        # 一般設定を読み込み
+        config = configparser.ConfigParser()
+        config.read(settings_file, encoding='utf-8')
+        
+        return cls._parse_config(config, is_new_structure=True)
+    
+    @classmethod
+    def _load_from_legacy_structure(cls, config_file: str) -> 'AppConfig':
+        """
+        旧構造（単一config.ini）から設定を読み込み
         """
         if not os.path.exists(config_file):
             raise FileNotFoundError(f"設定ファイルが見つかりません: {config_file}")
@@ -97,26 +146,49 @@ class AppConfig:
         config = configparser.ConfigParser()
         config.read(config_file, encoding='utf-8')
         
+        return cls._parse_config(config, is_new_structure=False)
+    
+    @classmethod
+    def _parse_config(cls, config: configparser.ConfigParser, is_new_structure: bool = True) -> 'AppConfig':
+        """
+        設定を解析してAppConfigオブジェクトを作成
+        """
+        
         # SSH設定
+        if is_new_structure:
+            ssh_key_path = os.getenv('SSH_KEY_PATH', '')
+        else:
+            ssh_key_path = config['SSH']['ssh_key_path']
+            
         ssh_config = SSHConfig(
             host=config['SSH']['host'],
             user=config['SSH']['user'],
-            ssh_key_path=config['SSH']['ssh_key_path'],
-            local_port=3306  # 固定値または設定ファイルから読み込み
+            ssh_key_path=ssh_key_path,
+            local_port=3306
         )
         
         # データベース設定
+        if is_new_structure:
+            mysql_password = os.getenv('MYSQL_PASSWORD', '')
+        else:
+            mysql_password = config['MySQL']['password']
+            
         db_config = DatabaseConfig(
             host=config['MySQL']['host'],
             port=int(config['MySQL']['port']),
             user=config['MySQL']['user'],
-            password=config['MySQL']['password'],
+            password=mysql_password,
             database=config['MySQL']['database']
         )
         
         # Google API設定
+        if is_new_structure:
+            credentials_file = os.getenv('GOOGLE_CREDENTIALS_PATH', '')
+        else:
+            credentials_file = config['Credentials']['json_keyfile_path']
+            
         google_config = GoogleAPIConfig(
-            credentials_file=config['Credentials']['json_keyfile_path'],
+            credentials_file=credentials_file,
             spreadsheet_id=config['Spreadsheet']['spreadsheet_id'],
             drive_folder_id=config['GoogleDrive']['google_folder_id'],
             main_sheet=config['Spreadsheet']['main_sheet'],
@@ -125,9 +197,14 @@ class AppConfig:
         )
         
         # パス設定
+        if is_new_structure:
+            config_file_path = "config/settings.ini"
+        else:
+            config_file_path = "config.ini"
+            
         paths_config = PathsConfig(
             csv_base_path=config['Paths']['csv_base_path'],
-            config_file=config_file
+            config_file=config_file_path
         )
         
         # パフォーマンス調整設定
@@ -144,6 +221,30 @@ class AppConfig:
             logfile=config.get('logging', 'logfile', fallback='app.log')
         )
         
+        # Slack設定
+        if is_new_structure:
+            webhook_url = os.getenv('SLACK_WEBHOOK_URL', '')
+        else:
+            webhook_url = config.get('Slack', 'SLACK_WEBHOOK_URL', fallback='')
+            
+        slack_config = SlackConfig(
+            webhook_url=webhook_url,
+            bot_name=config.get('Slack', 'BOT_NAME', fallback='CSVダウンロードツール'),
+            user_id=config.get('Slack', 'USER_ID', fallback=''),
+            icon_emoji=config.get('Slack', 'ICON_EMOJI', fallback=':ラップトップ:')
+        )
+        
+        # バッチ設定
+        batch_config = BatchConfig(
+            create_datasets=config.get('batch_exe', 'create_datasets', fallback=''),
+            create_datasets_individual=config.get('batch_exe', 'create_datasets_individual', fallback='')
+        )
+        
+        # CSV設定
+        csv_config = CSVConfig(
+            csv_file_paths=config.get('CSV', 'csv_file_paths', fallback='')
+        )
+        
         return cls(
             environment=os.getenv('APP_ENV', 'development'),
             debug=os.getenv('DEBUG', 'False').lower() == 'true',
@@ -152,7 +253,10 @@ class AppConfig:
             google_api=google_config,
             paths=paths_config,
             tuning=tuning_config,
-            logging=logging_config
+            logging=logging_config,
+            slack=slack_config,
+            batch=batch_config,
+            csv=csv_config
         )
 
 
@@ -196,6 +300,16 @@ def load_config(config_file: str = "config.ini") -> tuple:
         'delay': app_config.tuning.delay,
         'max_workers': app_config.tuning.max_workers,
         'config_file': config_file,
+        # Slack設定
+        'slack_webhook_url': app_config.slack.webhook_url,
+        'slack_bot_name': app_config.slack.bot_name,
+        'slack_user_id': app_config.slack.user_id,
+        'slack_icon_emoji': app_config.slack.icon_emoji,
+        # バッチ設定
+        'create_datasets': app_config.batch.create_datasets,
+        'create_datasets_individual': app_config.batch.create_datasets_individual,
+        # CSV設定
+        'csv_file_paths': app_config.csv.csv_file_paths,
     }
     
     return ssh_config, db_config, app_config.ssh.local_port, additional_config

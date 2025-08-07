@@ -2,18 +2,19 @@ import streamlit as st
 from src.core.logging.logger import get_logger
 from src.streamlit_system.ui.session_manager import initialize_session_state
 
-# 新構造への移行中（一時的に残す関数）
-from legacy_backup.subcode_streamlit_loader import get_sql_file_name
-
-# 新構造のモジュールを使用
+# === 新構造モジュール ===
 from src.utils.data_processing import get_parquet_file_last_modified, load_parquet_file
 from src.streamlit_system.ui.display_utils import display_data
-# setup_uiは旧構造を使用
-from utils import setup_ui as old_setup_ui
 
-# 旧構造の関数（後で新構造に移行予定）
-from utils import load_data, handle_filter_submission, load_and_initialize_data
-from subcode_streamlit_loader import load_sheet_from_spreadsheet, get_filtered_data_from_sheet, load_and_filter_parquet, create_dynamic_input_fields
+# === 旧構造モジュール（段階的移行中） ===
+from legacy_backup.subcode_streamlit_loader import get_sql_file_name
+from utils import setup_ui as old_setup_ui, load_data, handle_filter_submission, load_and_initialize_data
+from subcode_streamlit_loader import (
+    load_sheet_from_spreadsheet, 
+    get_filtered_data_from_sheet, 
+    load_and_filter_parquet, 
+    create_dynamic_input_fields
+)
 
 # ロガーの設定
 logger = get_logger(__name__)
@@ -34,11 +35,17 @@ def csv_download(selected_display_name):
         with open('styles.css', encoding='utf-8') as f:
             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
         
-        # config.iniのcsv_base_pathを使用
-        import configparser
-        config = configparser.ConfigParser()
-        config.read('config.ini', encoding='utf-8')
-        csv_base_path = config['Paths']['csv_base_path']
+        # 新構造の設定管理を使用
+        try:
+            from src.core.config.settings import AppConfig
+            app_config = AppConfig.from_config_file('config.ini')
+            csv_base_path = app_config.paths.csv_base_path
+        except ImportError:
+            # フォールバック：旧構造
+            import configparser
+            config = configparser.ConfigParser()
+            config.read('config.ini', encoding='utf-8')
+            csv_base_path = config['Paths']['csv_base_path']
         parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
         last_modified = get_parquet_file_last_modified(parquet_file_path)
         

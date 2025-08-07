@@ -22,11 +22,16 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import configparser
 from datetime import datetime
-from my_logging import setup_department_logger
+try:
+    # 新構造のログ管理を優先使用
+    from src.core.logging.logger import get_logger
+    LOGGER = get_logger('main')
+except ImportError:
+    # フォールバック：旧構造
+    from my_logging import setup_department_logger
+    LOGGER = setup_department_logger('main')
 import traceback
 import numpy as np
-
-LOGGER = setup_department_logger('main')
 
 # CSSファイルを読み込む関数
 def load_css(file_name):

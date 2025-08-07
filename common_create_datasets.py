@@ -3,7 +3,14 @@
 import os
 import pandas as pd
 from config_loader import load_config
-from my_logging import setup_department_logger
+try:
+    # 新構造のログ管理を優先使用
+    from src.core.logging.logger import get_logger
+    LOGGER = get_logger('main')
+except ImportError:
+    # フォールバック：旧構造
+    from my_logging import setup_department_logger
+    # LOGGER は上記のtryブロックで設定済み
 from subcode_loader import (
     load_sql_file_list_from_spreadsheet, 
     get_data_types, 
@@ -18,7 +25,7 @@ def main(sheet_name, execution_column, config_file, selected_table=None):
     ssh_config, db_config, local_port, additional_config = load_config(config_file)
 
     # ロガーの設定
-    LOGGER = setup_department_logger('main')
+    # LOGGER は上記のtryブロックで設定済み
 
     # config.iniのcsv_base_pathをそのまま使用
     output_dir = additional_config['csv_base_path']

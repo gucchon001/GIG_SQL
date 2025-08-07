@@ -68,6 +68,7 @@ class LoggerManager:
     def _load_log_config(self, config_file: str) -> dict:
         """
         ログ設定を読み込み
+        新構造（config/settings.ini + config/secrets.env）を優先使用
         
         Args:
             config_file: 設定ファイルパス
@@ -75,14 +76,25 @@ class LoggerManager:
         Returns:
             dict: ログ設定辞書
         """
-        base_dir = os.path.dirname(os.path.abspath(__file__))
+        try:
+            # 新構造の設定管理を使用
+            try:
+                from ..config.settings import AppConfig
+                app_config = AppConfig.from_config_file(config_file)
+                print(f"新構造設定からログ設定を読み込みました: level={app_config.logging.level}, logfile={app_config.logging.logfile}")
+                return {
+                    'level': app_config.logging.level,
+                    'logfile': app_config.logging.logfile,
+                    'max_bytes': 10000000,
+                    'backup_count': 10
+                }
+            except ImportError:
+                print("新構造設定が見つかりません。旧構造にフォールバック。")
+        except Exception as e:
+            print(f"新構造設定読み込みエラー: {e}. 旧構造にフォールバック。")
         
-        if getattr(sys, 'frozen', False):
-            # PyInstallerでビルドされた場合
-            base_path = sys._MEIPASS
-        else:
-            # 通常のPython環境で実行された場合
-            base_path = os.path.abspath(".")
+        # フォールバック：旧構造での設定読み込み
+        base_dir = os.path.dirname(os.path.abspath(__file__))
         
         # 設定ファイルのパスを決定
         if not os.path.isabs(config_file):
@@ -92,16 +104,18 @@ class LoggerManager:
             config = configparser.ConfigParser()
             config.read(config_file, encoding='utf-8')
             
+            print(f"旧構造設定ファイル '{config_file}' からログ設定を読み込みました")
             return {
-                'level': config.get('logging', 'level', fallback='INFO'),
+                'level': config.get('logging', 'level', fallback='DEBUG'),
                 'logfile': config.get('logging', 'logfile', fallback='app.log'),
                 'max_bytes': config.getint('logging', 'max_bytes', fallback=10000000),
                 'backup_count': config.getint('logging', 'backup_count', fallback=10)
             }
         else:
-            # config.iniが見つからない場合のデフォルト設定
+            # 設定ファイルが見つからない場合のデフォルト設定
+            print(f"設定ファイルが見つかりません: {config_file}. デフォルト設定を使用します。")
             return {
-                'level': 'INFO',
+                'level': 'DEBUG',
                 'logfile': 'app.log',
                 'max_bytes': 10000000,
                 'backup_count': 10

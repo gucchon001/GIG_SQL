@@ -75,6 +75,15 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
         st.info("データがありません")
         return
     
+    # 件数表示を追加
+    total_rows = len(df)
+    current_page = st.session_state.get('current_page', 1)
+    start_index = (current_page - 1) * page_size + 1
+    end_index = min(current_page * page_size, total_rows)
+    
+    # 件数表示
+    st.markdown(f"**{start_index:,} - {end_index:,} / {total_rows:,} 件**")
+    
     # 行数選択UI
     display_row_selector()
     
@@ -217,13 +226,13 @@ def display_csv_download_button(df: pd.DataFrame, input_fields_types: dict) -> N
         from src.utils.data_processing import prepare_csv_data
         csv_df = prepare_csv_data(df, input_fields_types)
         
-        # CSV文字列に変換
-        csv_string = csv_df.to_csv(index=False, encoding='utf-8')
+        # CSV文字列に変換（Shift-JIS対応）
+        csv_string = csv_df.to_csv(index=False)
         
-        # ダウンロードボタン
+        # ダウンロードボタン（Shift-JISエンコーディング）
         st.download_button(
             label="📥 CSVダウンロード",
-            data=csv_string.encode('utf-8'),
+            data=csv_string.encode('cp932', errors='replace'),
             file_name=f"data_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.csv",
             mime="text/csv",
             key="csv_download"

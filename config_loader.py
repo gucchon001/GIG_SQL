@@ -1,12 +1,77 @@
+"""
+設定読み込みモジュール（後方互換性）
+
+新構造（src.core.config.settings）をベースにしつつ、
+旧インターフェースとの互換性を保持
+"""
 import configparser
+import sys
+import os
+
+# プロジェクトルートをパスに追加
+sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
+
+try:
+    # 新構造の設定管理を優先使用
+    from src.core.config.settings import AppConfig
+    USE_NEW_CONFIG = True
+except ImportError:
+    # フォールバック：旧構造のみ使用
+    USE_NEW_CONFIG = False
+    print("Warning: 新構造の設定管理が見つかりません。旧構造を使用します。")
 
 def load_config(config_file):
     """
     指定された設定ファイルから設定を読み込み、設定値を含む辞書を返します。
+    
+    新構造がある場合はそちらを優先使用し、フォールバックとして旧構造を使用。
 
     :param config_file: 設定ファイルのパス
     :return: 設定値を含む辞書
     """
+    if USE_NEW_CONFIG:
+        try:
+            # 新構造の設定管理を使用
+            app_config = AppConfig.from_config_file(config_file)
+            
+            # 旧インターフェースに合わせて変換
+            ssh_config = {
+                'host': app_config.ssh.host,
+                'user': app_config.ssh.user,
+                'ssh_key_path': app_config.ssh.ssh_key_path,
+            }
+
+            db_config = {
+                'host': app_config.database.host,
+                'port': app_config.database.port,
+                'user': app_config.database.user,
+                'password': app_config.database.password,
+                'database': app_config.database.database,
+            }
+
+            local_port = app_config.ssh.local_port
+
+            additional_config = {
+                'spreadsheet_id': app_config.google_api.spreadsheet_id,
+                'main_sheet': app_config.google_api.main_sheet, 
+                'rawdata_sheet': app_config.google_api.rawdata_sheet, 
+                'eachdata_sheet': app_config.google_api.eachdata_sheet, 
+                'json_keyfile_path': app_config.google_api.credentials_file,
+                'csv_base_path': app_config.paths.csv_base_path,
+                'google_folder_id': app_config.google_api.drive_folder_id,
+                'chunk_size': app_config.tuning.chunk_size,
+                'batch_size': app_config.tuning.batch_size,
+                'delay': app_config.tuning.delay,
+                'max_workers': app_config.tuning.max_workers,
+                'config_file': config_file, 
+            }
+
+            return ssh_config, db_config, local_port, additional_config
+            
+        except Exception as e:
+            print(f"新構造設定読み込みエラー: {e}. 旧構造にフォールバック。")
+    
+    # フォールバック：旧構造での設定読み込み
     config = configparser.ConfigParser()
     config.read(config_file, encoding='utf-8')
     

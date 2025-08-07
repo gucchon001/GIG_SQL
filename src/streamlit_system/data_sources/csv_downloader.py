@@ -49,7 +49,7 @@ class CSVDownloader:
             if data is not None and not data.empty:
                 # CSVに変換
                 csv_buffer = io.StringIO()
-                data.to_csv(csv_buffer, index=False, encoding='utf-8-sig')
+                data.to_csv(csv_buffer, index=False, encoding='cp932', errors='replace')
                 csv_data = csv_buffer.getvalue()
                 
                 self.logger.info(f"CSV生成完了: {sql_file}, {len(data)} 行")
@@ -92,7 +92,8 @@ class CSVDownloader:
                         csv_buffer,
                         index=False,
                         header=first_chunk,
-                        encoding='utf-8-sig'
+                        encoding='cp932',
+                        errors='replace'
                     )
                     first_chunk = False
                     total_rows += len(chunk)

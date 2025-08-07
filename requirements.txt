@@ -12,3 +12,4 @@ openpyxl
 tenacity
 streamlit
 dask
+python-dotenv
