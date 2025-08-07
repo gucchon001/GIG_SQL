@@ -40,7 +40,7 @@ def apply_styles(df, selected_rows=100):
     def white_background(val):
         return 'background-color: white'
     
-    styled_df = df.head(selected_rows).style.apply(highlight_header, axis=0).applymap(white_background, subset=pd.IndexSlice[:, :])
+    styled_df = df.head(selected_rows).style.apply(highlight_header, axis=0).map(white_background, subset=pd.IndexSlice[:, :])
     
     return styled_df
 
@@ -60,7 +60,7 @@ def replace_null_values(val):
 # CSVダウンロード用にデータを処理する関数
 def prepare_csv_data(df, input_fields_types, logger):
     # NaN、None、'nan'、'None'を空文字列に置換
-    csv_df = df.applymap(replace_null_values)
+    csv_df = df.map(replace_null_values)
 
     # Int64型と指定されたカラムで、空文字列を0に置換
     int64_columns = [col for col, dtype in input_fields_types.items() if dtype == 'int' and col in csv_df.columns]
@@ -76,7 +76,7 @@ def prepare_csv_data(df, input_fields_types, logger):
         csv_df[col] = csv_df[col].replace('', 0)
 
     # すべての値を適切な文字列表現に変換
-    csv_df = csv_df.applymap(lambda x: str(int(x)) if isinstance(x, (float, int)) and float(x).is_integer() else str(x))
+    csv_df = csv_df.map(lambda x: str(int(x)) if isinstance(x, (float, int)) and float(x).is_integer() else str(x))
 
     # オブジェクト型の列で '#######' を空文字列に置換
     object_columns = csv_df.select_dtypes(include=['object']).columns
@@ -93,7 +93,7 @@ def get_parquet_file_last_modified(file_path):
     return "ファイルが見つかりません"
 
     # すべての値を適切な文字列表現に変換
-    csv_df = csv_df.applymap(lambda x: str(int(x)) if isinstance(x, (float, int)) and float(x).is_integer() else str(x))
+    csv_df = csv_df.map(lambda x: str(int(x)) if isinstance(x, (float, int)) and float(x).is_integer() else str(x))
 
     # オブジェクト型の列で '#######' を空文字列に置換
     object_columns = csv_df.select_dtypes(include=['object']).columns

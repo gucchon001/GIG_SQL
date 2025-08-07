@@ -20,8 +20,8 @@ def main(sheet_name, execution_column, config_file, selected_table=None):
     # ロガーの設定
     LOGGER = setup_department_logger('main')
 
-    # カレントディレクトリを基準にしたディレクトリパスを作成
-    output_dir = os.path.join(os.getcwd(), 'data_Parquet')
+    # config.iniのcsv_base_pathをそのまま使用
+    output_dir = additional_config['csv_base_path']
     if not os.path.exists(output_dir):
         try:
             os.makedirs(output_dir)

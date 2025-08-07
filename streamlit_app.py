@@ -4,7 +4,8 @@ import streamlit as st
 st.set_page_config(
     page_title="塾ステ CSVダウンロードツール ストミンくん β版",
     page_icon=":bar_chart:",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
 # 他のインポートは `st.set_page_config()` の後に配置
@@ -44,7 +45,7 @@ if 'batch_status' not in st.session_state:
     st.session_state.batch_output = ""
 
 # 親階層の選択肢
-parent_options = ["CSVダウンロード", "ダッシュボード（開発中）"]
+parent_options = ["CSVダウンロード"]
 selected_parent = st.sidebar.radio("メインメニュー", parent_options, index=0, key="parent_radio")
 
 # バッチファイル実行関数
@@ -161,9 +162,24 @@ if selected_parent == "CSVダウンロード":
     # 親階層の選択肢の後に子階層のラジオボタンを配置
     # SQLファイル一覧の取得
     if 'sql_files_dict' not in st.session_state:
-        st.session_state['sql_files_dict'] = load_sql_list_from_spreadsheet()
+        try:
+            st.session_state['sql_files_dict'] = load_sql_list_from_spreadsheet()
+            LOGGER.info("SQLファイル一覧を正常に読み込みました。")
+        except Exception as e:
+            LOGGER.error(f"SQLファイル一覧の読み込みに失敗しました: {e}")
+            st.session_state['sql_files_dict'] = {}
+            st.error("SQLファイル一覧の読み込みに失敗しました")
+            st.error("「リスト再読み込み」ボタンを試してください")
+            st.error(f"エラー詳細: {e}")
+    
     sql_files_dict = st.session_state['sql_files_dict']
-    sql_file_display_names = list(sql_files_dict.keys())
+    
+    if not sql_files_dict:
+        LOGGER.warning("SQLファイル辞書が空です。")
+        st.warning("SQLファイル一覧が空です。「リスト再読み込み」ボタンを試してください。")
+        sql_file_display_names = []
+    else:
+        sql_file_display_names = list(sql_files_dict.keys())
 
     # 子階層の選択肢
     child_options = sql_file_display_names if sql_file_display_names else ["サンプル1", "サンプル2"]
@@ -187,13 +203,38 @@ if selected_parent == "CSVダウンロード":
     if st.sidebar.button("リスト再読み込み"):
         try:
             # キャッシュをクリア
-            load_sql_list_from_spreadsheet.clear()
+            if hasattr(load_sql_list_from_spreadsheet, 'clear'):
+                load_sql_list_from_spreadsheet.clear()
+            # セッションステートからも削除
+            if 'sql_files_dict' in st.session_state:
+                del st.session_state['sql_files_dict']
             st.session_state['sql_files_dict'] = load_sql_list_from_spreadsheet()
-            st.experimental_rerun()
+            st.rerun()
         except Exception as e:
             st.sidebar.error("リストの再読み込み中にエラーが発生しました。")
             st.sidebar.write(f"エラー詳細: {e}")
             LOGGER.error(f"リスト再読み込み中にエラーが発生しました: {e}")
+
+    # フィルタキャッシュクリアボタンを追加
+    if st.sidebar.button("フィルタ設定リセット"):
+        try:
+            # すべてのキャッシュをクリア
+            from subcode_streamlit_loader import load_sheet_from_spreadsheet
+            if hasattr(load_sheet_from_spreadsheet, 'clear'):
+                load_sheet_from_spreadsheet.clear()
+            if hasattr(load_sql_list_from_spreadsheet, 'clear'):
+                load_sql_list_from_spreadsheet.clear()
+            # フィルタ関連のセッションステートをクリア
+            keys_to_clear = ['input_fields', 'input_fields_types', 'options_dict', 'last_selected_table']
+            for key in keys_to_clear:
+                if key in st.session_state:
+                    del st.session_state[key]
+            st.sidebar.success("フィルタ設定をリセットしました。")
+            st.rerun()
+        except Exception as e:
+            st.sidebar.error("フィルタ設定のリセット中にエラーが発生しました。")
+            st.sidebar.write(f"エラー詳細: {e}")
+            LOGGER.error(f"フィルタ設定リセット中にエラーが発生しました: {e}")
 
     # 選択に応じてCSVファイルを表示
     try:
@@ -204,12 +245,4 @@ if selected_parent == "CSVダウンロード":
         st.error(f"CSVダウンロード中にエラーが発生しました: {e}")
         LOGGER.error(f"CSVダウンロード中にエラーが発生しました: {e}")
 
-else:  # ダッシュボードが選択された場合
-    try:
-        LOGGER.info("Calling dashboard function")
-        from bi_main import main as run_dashboard
-        run_dashboard()
-        LOGGER.info("Dashboard function call completed")
-    except Exception as e:
-        st.error(f"ダッシュボード表示中にエラーが発生しました: {e}")
-        LOGGER.error(f"ダッシュボード表示中にエラーが発生しました: {e}")
+# ダッシュボード機能は削除されました

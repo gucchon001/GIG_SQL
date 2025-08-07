@@ -287,7 +287,7 @@ def csvfile_export(conn, sql_query, csv_file_path, main_table_name, category, js
             df[col] = df[col].replace('', 0)
 
         # データフレームの各要素を文字列に変換
-        df = df.applymap(lambda x: str(int(x)) if isinstance(x, (float, Decimal)) and x.is_integer() else str(x) if not pd.isna(x) else '')
+        df = df.map(lambda x: str(int(x)) if isinstance(x, (float, Decimal)) and x.is_integer() else str(x) if not pd.isna(x) else '')
 
         # 一時ファイルパスを作成
         temp_file_path = csv_file_path + '.temp'
@@ -575,8 +575,7 @@ def set_period_condition(period_condition, period_criteria, sql_query, category)
             LOGGER.info(f"提出期限の期間条件で使用するエイリアス: '{table_alias}'")
         else:
             LOGGER.error(f"不正な期間基準が指定されました: '{period_criteria}'")
-            LOGGER.error(f"対応している期間基準: 申込日, 削除日, 最終ログイン, 
-            , 提出期限")
+            LOGGER.error(f"対応している期間基準: 申込日, 削除日, 最終ログイン, 提出期限")
             raise ValueError(f"不正な期間条件が指定されました: {period_criteria}")
 
         # 期間条件の生成と適用

@@ -1,6 +1,23 @@
 import os
 import pandas as pd
-import streamlit as st
+# Streamlitインポートを条件付きに変更（メモリエラー回避）
+try:
+    import streamlit as st
+    ST_AVAILABLE = True
+except (MemoryError, ImportError) as e:
+    ST_AVAILABLE = False
+    print(f"Streamlit読み込みスキップ: {e}")
+    
+    # st.cache_resourceの代替クラス
+    class MockCache:
+        def __call__(self, func):
+            return func
+    
+    # Streamlitモジュールのモック
+    class MockStreamlit:
+        cache_resource = MockCache()
+    
+    st = MockStreamlit()
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import configparser
@@ -15,11 +32,13 @@ LOGGER = setup_department_logger('main')
 def load_css(file_name):
     try:
         with open(file_name, 'r', encoding='utf-8') as f:
-            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+            if ST_AVAILABLE:
+                st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
         LOGGER.info(f"CSSファイル '{file_name}' を正常に読み込みました。")
     except FileNotFoundError:
         LOGGER.error(f"CSSファイル '{file_name}' が見つかりませんでした。")
-        st.error(f"CSSファイル '{file_name}' が見つかりませんでした。")
+        if ST_AVAILABLE:
+            st.error(f"CSSファイル '{file_name}' が見つかりませんでした。")
 
 # CSSファイルを読み込む
 load_css("styles.css")
@@ -59,8 +78,14 @@ def get_google_sheets_client():
     return client
 
 # SQLファイルリストをスプレッドシートから読み込む関数
-@st.cache_resource(ttl=3600)
+@st.cache_resource(ttl=300)  # 5分に短縮してキャッシュ問題を軽減
 def load_sql_list_from_spreadsheet():
+    """
+    Google スプレッドシートからSQLファイル一覧を読み込む
+    
+    Returns:
+        dict: {CSVファイル呼称: SQLファイル名} の辞書
+    """
     config = configparser.ConfigParser()
     config.read('config.ini', encoding='utf-8')
 
@@ -70,21 +95,34 @@ def load_sql_list_from_spreadsheet():
     client = get_google_sheets_client()
 
     try:
-        sheet = client.open_by_key(spreadsheet_id).worksheet(sheet_name)
+        LOGGER.debug(f"スプレッドシート '{spreadsheet_id}' に接続中...")
+        spreadsheet = client.open_by_key(spreadsheet_id)
+        LOGGER.debug(f"シート '{sheet_name}' を開いています...")
+        sheet = spreadsheet.worksheet(sheet_name)
+        LOGGER.debug("データを取得中...")
         data = sheet.get_all_values()
         LOGGER.info(f"スプレッドシート '{spreadsheet_id}' のシート '{sheet_name}' からデータを正常に取得しました。")
-    except gspread.exceptions.WorksheetNotFound:
-        LOGGER.error(f"シート '{sheet_name}' がスプレッドシート '{spreadsheet_id}' に存在しません。")
-        st.error(f"シート '{sheet_name}' がスプレッドシート '{spreadsheet_id}' に存在しません。")
+    except gspread.exceptions.WorksheetNotFound as e:
+        LOGGER.error(f"シート '{sheet_name}' がスプレッドシート '{spreadsheet_id}' に存在しません: {e}")
+        if ST_AVAILABLE:
+            st.error(f"シート '{sheet_name}' がスプレッドシート '{spreadsheet_id}' に存在しません。")
+        return {}
+    except gspread.exceptions.APIError as e:
+        LOGGER.error(f"Google Sheets API エラーが発生しました: {e}")
+        if ST_AVAILABLE:
+            st.error(f"Google Sheets API エラーが発生しました: {e}")
         return {}
     except Exception as e:
         LOGGER.error(f"スプレッドシートからデータを取得中にエラーが発生しました: {e}")
-        st.error(f"スプレッドシートからデータを取得中にエラーが発生しました: {e}")
+        LOGGER.debug(f"エラーの詳細: {type(e).__name__}: {str(e)}")
+        if ST_AVAILABLE:
+            st.error(f"スプレッドシートからデータを取得中にエラーが発生しました: {e}")
         return {}
 
     if not data:
         LOGGER.warning(f"スプレッドシート '{spreadsheet_id}' のシート '{sheet_name}' は空です。")
-        st.warning(f"スプレッドシート '{spreadsheet_id}' のシート '{sheet_name}' は空です。")
+        if ST_AVAILABLE:
+            st.warning(f"スプレッドシート '{spreadsheet_id}' のシート '{sheet_name}' は空です。")
         return {}
 
     header = data[0]
@@ -94,7 +132,8 @@ def load_sql_list_from_spreadsheet():
         csv_file_name_index = header.index('CSVファイル呼称')
     except ValueError as e:
         LOGGER.error(f"必要なヘッダがスプレッドシートに存在しません: {e}")
-        st.error(f"必要なヘッダがスプレッドシートに存在しません: {e}")
+        if ST_AVAILABLE:
+            st.error(f"必要なヘッダがスプレッドシートに存在しません: {e}")
         return {}
 
     records = {
