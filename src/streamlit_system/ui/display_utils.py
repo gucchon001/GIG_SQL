@@ -99,12 +99,9 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     start_index = (current_page - 1) * page_size + 1
     end_index = min(current_page * page_size, total_rows)
     
-    # 件数表示とパフォーマンス情報
-    col1, col2 = st.columns([3, 1])
-    with col1:
-        st.markdown(f"**{start_index:,} - {end_index:,} / {total_rows:,} 件**")
-    with col2:
-        # データサイズ表示
+    # データサイズ表示（右上に配置）
+    col_data1, col_data2 = st.columns([3, 1])
+    with col_data2:
         data_size = df.memory_usage(deep=True).sum() / 1024 / 1024  # MB
         st.caption(f"📊 {data_size:.1f}MB")
     
@@ -114,10 +111,13 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     # テーブル更新ボタンとCSVダウンロードボタン
     display_table_action_buttons(df, input_fields_types)
     
-    # ページネーション（CSVボタンとテーブルの間に配置）
+    # 件数表示とページネーション（同じ行に配置）
     total_pages = (len(df) + page_size - 1) // page_size
     if total_pages > 1:
-        display_pagination_buttons(total_pages)
+        display_pagination_with_count(total_pages, start_index, end_index, total_rows)
+    else:
+        # ページネーションがない場合は件数のみ表示
+        st.markdown(f"**{start_index:,} - {end_index:,} / {total_rows:,} 件**")
     
     # データ準備
     df_view = get_paginated_df(df, page_size)
@@ -230,6 +230,52 @@ def display_styled_df(df: pd.DataFrame) -> None:
         styled_df = apply_styles(df, len(df))
         st.dataframe(styled_df, use_container_width=True, height=350)
         logger.debug("通常スタイル表示を適用")
+
+
+def display_pagination_with_count(total_pages: int, start_index: int, end_index: int, total_rows: int) -> None:
+    """
+    件数表示とページネーションボタンを同じ行に表示
+    
+    Args:
+        total_pages (int): 総ページ数
+        start_index (int): 開始インデックス
+        end_index (int): 終了インデックス
+        total_rows (int): 総行数
+    """
+    current_page = st.session_state.get('current_page', 1)
+    
+    # 件数表示とページネーションを同じ行に配置
+    col1, col2, col3, col4, col5, col6, col7 = st.columns([2, 1, 1, 2, 1, 1, 1])
+    
+    with col1:
+        # 件数表示（一番左）
+        st.markdown(f"**{start_index:,} - {end_index:,} / {total_rows:,} 件**")
+    
+    with col2:
+        if st.button("⏪ 最初", disabled=(current_page == 1), key="first_page"):
+            st.session_state['current_page'] = 1
+            st.rerun()
+    
+    with col3:
+        if st.button("◀ 前へ", disabled=(current_page == 1), key="prev_page"):
+            st.session_state['current_page'] = current_page - 1
+            st.rerun()
+    
+    with col4:
+        # ページ表示（中央）
+        st.markdown(f"<div style='text-align: center; margin: 0; padding: 0;'>"
+                   f"<strong>{current_page} / {total_pages}</strong></div>", 
+                   unsafe_allow_html=True)
+    
+    with col5:
+        if st.button("次へ ▶", disabled=(current_page == total_pages), key="next_page"):
+            st.session_state['current_page'] = current_page + 1
+            st.rerun()
+    
+    with col6:
+        if st.button("最後 ⏩", disabled=(current_page == total_pages), key="last_page"):
+            st.session_state['current_page'] = total_pages
+            st.rerun()
 
 
 def display_pagination_buttons(total_pages: int) -> None:
