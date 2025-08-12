@@ -63,7 +63,9 @@ def load_and_filter_parquet(parquet_file_path: str, input_fields: Dict[str, Any]
     try:
         # Parquetファイル読み込み
         df = pd.read_parquet(parquet_file_path)
-        logger.info(f"Parquetファイル読み込み完了: {len(df)}件")
+        # インデックスの降順で並べ替え（最新データを上位表示）
+        df = df.sort_index(ascending=False)
+        logger.info(f"Parquetファイル読み込み完了: {len(df)}件（降順ソート済み）")
         
         # フィルタリング条件を適用
         filtered_df = apply_filters(df, input_fields, input_fields_types)
@@ -378,11 +380,15 @@ def load_parquet_file(file_path: str, num_rows: Optional[int] = None) -> Optiona
             import pyarrow.parquet as pq
             table = pq.read_table(file_path)
             df = table.to_pandas()
+            # インデックスの降順で並べ替えてから指定行数を取得
+            df = df.sort_index(ascending=False)
             df = df.head(num_rows)
         else:
             df = pd.read_parquet(file_path)
+            # インデックスの降順で並べ替え（最新データを上位表示）
+            df = df.sort_index(ascending=False)
         
-        logger.info(f"Parquetファイル読み込み完了: {df.shape}")
+        logger.info(f"Parquetファイル読み込み完了: {df.shape}（降順ソート済み）")
         return df
         
     except Exception as e:
