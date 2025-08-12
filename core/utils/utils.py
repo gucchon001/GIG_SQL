@@ -231,14 +231,8 @@ def load_and_initialize_data(sql_file_name, num_rows=None):
             config.read('config/settings.ini', encoding='utf-8')
             csv_base_path = config['Paths']['csv_base_path']
         
-        # 実行環境によってパスを調整
-        import os
-        if os.path.exists('data_Parquet'):
-            # 開発環境：ローカルのdata_Parquetディレクトリを使用
-            parquet_file_path = f"data_Parquet/{sql_file_name}.parquet"
-        else:
-            # 本番環境：設定ファイルのパスを使用
-            parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
+        # 常に設定ファイルのパスを使用
+        parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
         
         LOGGER.info(f"Parquetファイルパス (utils.py): {parquet_file_path}")
         if os.path.exists(parquet_file_path):

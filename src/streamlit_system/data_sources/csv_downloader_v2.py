@@ -46,7 +46,19 @@ def load_data(sql_file_name: str) -> Optional[dict]:
         Optional[dict]: データ辞書
     """
     try:
-        parquet_file_path = f"data_Parquet/{sql_file_name}.parquet"
+        # 設定ファイルからパスを取得
+        try:
+            from src.core.config.settings import AppConfig
+            app_config = AppConfig.from_config_file('config/settings.ini')
+            csv_base_path = app_config.paths.csv_base_path
+        except ImportError:
+            # フォールバック：旧構造
+            import configparser
+            config = configparser.ConfigParser()
+            config.read('config/settings.ini', encoding='utf-8')
+            csv_base_path = config['Paths']['csv_base_path']
+        
+        parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
         
         # Parquetファイルの存在確認
         import os
@@ -114,7 +126,19 @@ def load_and_initialize_data(sql_file_name: str, num_rows: Optional[int] = None)
         Optional[pd.DataFrame]: 読み込み済みDataFrame
     """
     try:
-        parquet_file_path = f"data_Parquet/{sql_file_name}.parquet"
+        # 設定ファイルからパスを取得
+        try:
+            from src.core.config.settings import AppConfig
+            app_config = AppConfig.from_config_file('config/settings.ini')
+            csv_base_path = app_config.paths.csv_base_path
+        except ImportError:
+            # フォールバック：旧構造
+            import configparser
+            config = configparser.ConfigParser()
+            config.read('config/settings.ini', encoding='utf-8')
+            csv_base_path = config['Paths']['csv_base_path']
+        
+        parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
         
         # Parquetファイル読み込み
         df = load_parquet_file(parquet_file_path, num_rows)
