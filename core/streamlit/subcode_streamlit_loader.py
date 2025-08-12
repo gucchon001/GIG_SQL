@@ -177,37 +177,58 @@ def get_sql_file_name(selected_option):
         LOGGER.warning(f"選択されたオプション '{selected_option}' に対応するSQLファイルが見つかりません。")
         return None
 
-# スプレッドシートからデータを読み込む処理を共通化
-def load_sheet_from_spreadsheet(sheet_name):
+# スプレッドシートからデータを読み込む処理を共通化（キャッシュ付き）
+@st.cache_data(ttl=600, show_spinner=False)  # 10分間キャッシュ
+def load_sheet_data_cached(sheet_name, spreadsheet_id):
+    """スプレッドシートデータをキャッシュ付きで取得"""
     client = get_google_sheets_client()
-
-    config_file = 'config/settings.ini'
-    config = configparser.ConfigParser()
-    config.read(config_file, encoding='utf-8')
-
-    spreadsheet_id = config['Spreadsheet']['spreadsheet_id']
     try:
         sheet = client.open_by_key(spreadsheet_id).worksheet(sheet_name)
+        data = sheet.get_all_values()
         LOGGER.info(f"スプレッドシート '{spreadsheet_id}' のシート '{sheet_name}' を正常にロードしました。")
-        return sheet
+        return data
     except gspread.exceptions.WorksheetNotFound:
         LOGGER.error(f"シート '{sheet_name}' がスプレッドシート '{spreadsheet_id}' に存在しません。")
-        st.error(f"シート '{sheet_name}' がスプレッドシート '{spreadsheet_id}' に存在しません。")
+        if ST_AVAILABLE:
+            st.error(f"シート '{sheet_name}' がスプレッドシート '{spreadsheet_id}' に存在しません。")
         return None
     except gspread.exceptions.APIError as e:
         error_message = str(e)
         if "429" in error_message and "Quota exceeded" in error_message:
             LOGGER.warning(f"Google Sheets API制限に達しました: {e}")
-            st.warning("⚠️ Google Sheets APIの制限に達しました。5-10分後に再試行してください。")
-            st.info("💡 **対処方法**:\n- ページを再読み込みする前に5分待つ\n- 他のタブでスプレッドシートを開いている場合は閉じる")
+            if ST_AVAILABLE:
+                st.warning("⏰ Google Sheets APIの利用制限に達しました。しばらく待ってから再度お試しください。")
         else:
-            LOGGER.error(f"Google Sheets API エラーが発生しました: {e}")
-            st.error(f"Google Sheets API エラーが発生しました: {e}")
+            LOGGER.error(f"Google Sheets APIエラー: {e}")
+            if ST_AVAILABLE:
+                st.error(f"Google Sheets APIエラー: {e}")
         return None
-    except Exception as e:
-        LOGGER.error(f"スプレッドシート '{spreadsheet_id}' のシート '{sheet_name}' をロード中にエラーが発生しました: {e}")
-        st.error(f"スプレッドシート '{spreadsheet_id}' のシート '{sheet_name}' をロード中にエラーが発生しました: {e}")
+
+def load_sheet_from_spreadsheet(sheet_name):
+    config_file = 'config/settings.ini'
+    config = configparser.ConfigParser()
+    config.read(config_file, encoding='utf-8')
+    spreadsheet_id = config['Spreadsheet']['spreadsheet_id']
+    
+    # キャッシュ付きデータ取得
+    data = load_sheet_data_cached(sheet_name, spreadsheet_id)
+    if data is None:
         return None
+    
+    # データをシートオブジェクト風に変換
+    class MockSheet:
+        def __init__(self, data):
+            self.data = data
+        
+        def get_all_values(self):
+            return self.data
+        
+        def row_values(self, row_num):
+            if row_num <= len(self.data):
+                return self.data[row_num - 1]
+            return []
+    
+    return MockSheet(data)
 
 # 選択シートの条件を取得する関数
 def get_filtered_data_from_sheet(sheet):
