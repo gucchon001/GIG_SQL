@@ -114,17 +114,18 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     # テーブル更新ボタンとCSVダウンロードボタン
     display_table_action_buttons(df, input_fields_types)
     
+    # ページネーション（CSVボタンとテーブルの間に配置）
+    total_pages = (len(df) + page_size - 1) // page_size
+    if total_pages > 1:
+        st.markdown("<br>", unsafe_allow_html=True)  # 少しの余白
+        display_pagination_buttons(total_pages)
+        st.markdown("<br>", unsafe_allow_html=True)  # テーブルとの間隔
+    
     # データ準備
     df_view = get_paginated_df(df, page_size)
     
     # スタイル適用して表示
     display_styled_df(df_view)
-    
-    # ページネーション（テーブルの下に適切な間隔で配置）
-    total_pages = (len(df) + page_size - 1) // page_size
-    if total_pages > 1:
-        st.markdown("<br><br>", unsafe_allow_html=True)  # 十分な余白
-        display_pagination_buttons(total_pages)
     
     # パフォーマンス測定
     end_time = time.time()
