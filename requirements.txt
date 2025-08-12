@@ -1,5 +1,8 @@
 configparser
-sshtunnel
+# SSH接続ライブラリ（互換性考慮）
+paramiko>=2.12.0,<3.0.0
+sshtunnel>=0.4.0
+# 代替案: tunnel-cli>=0.2.0
 mysql-connector-python
 oauth2client
 gspread
