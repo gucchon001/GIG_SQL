@@ -47,7 +47,7 @@ sidebar_header = """
 }
 </style>
 <div style="display: flex; align-items: flex-start;">
-    <h3>塾ステ CSVダウンロードツール<br>ストミンくん β版</h3>
+    <h3>塾ステ CSVダウンロードツール<br>ストミンくん v2.0</h3>
 </div>
 """
 st.sidebar.markdown(sidebar_header, unsafe_allow_html=True)

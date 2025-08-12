@@ -100,7 +100,7 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     end_index = min(current_page * page_size, total_rows)
     
     # データサイズと表示時間を右上に配置
-    col_data1, col_data2, col_data3 = st.columns([2, 1, 1])
+    col_data1, col_data2, col_data3 = st.columns([8, 1, 1])
     with col_data2:
         data_size = df.memory_usage(deep=True).sum() / 1024 / 1024  # MB
         st.caption(f"📊 {data_size:.1f}MB")

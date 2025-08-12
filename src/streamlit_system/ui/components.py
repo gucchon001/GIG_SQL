@@ -79,14 +79,14 @@ class StreamlitUI:
         """サイドバーをレンダリング"""
         sidebar_header = """
         <div style="display: flex; align-items: flex-start;">
-            <h3>塾ステ CSVダウンロードツール<br>ストミンくん β版</h3>
+            <h3>塾ステ CSVダウンロードツール<br>ストミンくん v2.0</h3>
         </div>
         """
         st.sidebar.markdown(sidebar_header, unsafe_allow_html=True)
         
         # バージョン情報
-        st.sidebar.markdown("---")
-        st.sidebar.markdown("**Version:** 1.0.0")
+        st.sidebar.markdown("---")F
+        st.sidebar.markdown("**Version:** 2.0.0")
         st.sidebar.markdown("**Status:** β版")
     
     def render_main_title(self, title: str, subtitle: Optional[str] = None) -> None:
