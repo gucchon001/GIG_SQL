@@ -2,51 +2,77 @@
 
 ## 概要
 
-塾ステ CSVダウンロードツール「ストミンくん」は、教育関連企業のデータ分析基盤として2つの異なる目的を持つシステムで構成されています。
+塾ステ CSVダウンロードツール「ストミンくん」は、教育関連企業のデータ分析基盤として、Streamlit Webアプリケーションを中心とした統合システムです。
 
 ## システム全体構成
 
 ```mermaid
 graph TB
-    subgraph "定期バッチシステム"
-        A1[main.py]
-        A2[main_test.py] 
-        A3[main_rawdata.py]
-        A4[common_exe_functions.py]
-        A5[実行シート]
-        A6[CSV Files 外部保存]
-        A7[Google Spreadsheet]
+    subgraph "🌐 プレゼンテーション層"
+        UI[streamlit_app.py<br/>統合Webインターフェース]
+        UI_COMP[src/streamlit_system/<br/>UIコンポーネント]
     end
 
-    subgraph "ストミン データソース"
-        B1[run_create_datesets.py]
-        B2[common_create_datasets.py]
-        B3[個別実行シート]
-        B4[data_Parquet/]
-        B5[streamlit_app.py]
+    subgraph "⚡ オーケストレーション層"
+        PS_BATCH[scripts/powershell/<br/>create_datasets.ps1]
+        PS_INDIV[scripts/powershell/<br/>select_and_update_table.ps1]
+        PY_BATCH[scripts/python/<br/>run_create_datesets.py]
+        PY_INDIV[scripts/python/<br/>run_create_datasets_individual.py]
     end
 
-    subgraph "共通基盤"
-        C1[MySQL RDS AWS]
-        C2[Google Drive SQLファイル]
-        C3[subcode_loader.py]
-        C4[config.ini]
-        C5[SSH Tunnel]
+    subgraph "🔧 ビジネスロジック層"
+        CORE_NEW[core/data/<br/>common_create_datasets.py]
+        STREAM_CORE[core/streamlit/<br/>subcode_streamlit_loader.py]
+        SRC_CORE[src/core/<br/>統合ライブラリ]
     end
 
-    A1 --> A4 --> A5
-    A4 --> A6
-    A4 --> A7
-    B1 --> B2 --> B3
-    B2 --> B4 --> B5
+    subgraph "⚙️ 設定・認証層"
+        SETTINGS[config/settings.ini<br/>アプリケーション設定]
+        SECRETS[config/secrets.env<br/>秘匿情報管理]
+        CONFIG_LOAD[core/config/<br/>config_loader.py]
+        SRC_CONFIG[src/core/config/<br/>settings.py]
+    end
+
+    subgraph "💾 データアクセス層"
+        DB_CONN[src/core/database/<br/>connection.py + ssh_tunnel.py]
+        GOOGLE_API[src/core/google_api/<br/>API接続ライブラリ]
+        DATA_PROC[src/utils/<br/>データ処理ユーティリティ]
+    end
+
+    subgraph "🗄️ 外部システム"
+        MYSQL[(MySQL RDS<br/>データベース)]
+        SHEETS[(Google Spreadsheet<br/>動的設定管理)]
+        NAS[(NAS Storage<br/>\\nas\public\...\data_Parquet)]
+    end
+
+    %% フロー
+    UI --> PS_BATCH
+    UI --> PS_INDIV
+    PS_BATCH --> PY_BATCH
+    PS_INDIV --> PY_INDIV
+    PY_BATCH --> CORE_NEW
+    PY_INDIV --> CORE_NEW
     
-    A4 --> C3
-    B2 --> C3
-    C3 --> C1
-    C3 --> C2
-    C4 --> A4
-    C4 --> B2
-    C5 --> C1
+    UI --> STREAM_CORE
+    CORE_NEW --> SRC_CORE
+    STREAM_CORE --> SRC_CORE
+    
+    SRC_CORE --> CONFIG_LOAD
+    CONFIG_LOAD --> SETTINGS
+    CONFIG_LOAD --> SECRETS
+    SRC_CORE --> SRC_CONFIG
+    SRC_CONFIG --> SETTINGS
+    SRC_CONFIG --> SECRETS
+    
+    SRC_CORE --> DB_CONN
+    SRC_CORE --> GOOGLE_API
+    SRC_CORE --> DATA_PROC
+    
+    DB_CONN --> MYSQL
+    GOOGLE_API --> SHEETS
+    DATA_PROC --> NAS
+    
+    UI_COMP --> UI
 ```
 
 ## 1. 定期バッチシステム

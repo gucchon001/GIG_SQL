@@ -5,13 +5,15 @@
 ### 開発環境
 - **場所**: ローカル開発マシン
 - **Python**: 3.9+
-- **仮想環境**: `venv`（`C:\dev\GIG塾STMYSQL\sourcecode\venv`）
-- **データベース**: AWS RDS（読み取り専用接続）
+- **仮想環境**: `venv`（`C:\dev\GIG塾STMYSQL\sourcecode_dev\venv`）
+- **WebUI**: Streamlit（ポート8501）
+- **データベース**: AWS RDS（SSH Tunnel経由）
 
 ### 本番環境
-- **実行方式**: 定期バッチ + オンデマンド実行
-- **スケジューラー**: Windows タスクスケジューラー / PowerShell
-- **データ保存**: ローカルファイルシステム + Google Drive
+- **実行方式**: Streamlit Webアプリ + PowerShellバッチ
+- **UI**: Webブラウザアクセス（バックグラウンド実行）
+- **データ保存**: NAS Storage（Parquet形式）
+- **認証**: 統一された`secrets.env`管理
 
 ## インストール・セットアップ
 
@@ -24,7 +26,7 @@
 ### 2. リポジトリクローン
 ```bash
 git clone <repository-url>
-cd GIG塾STMYSQL/sourcecode
+cd GIG塾STMYSQL/sourcecode_dev
 ```
 
 ### 3. 仮想環境セットアップ
@@ -40,52 +42,95 @@ pip install -r requirements.txt
 ```
 
 ### 4. 設定ファイル配置
+
+#### 📁 基本設定（`config/settings.ini`）
 ```ini
-# config.ini の設定例
 [SSH]
 host = ec2-xxx.amazonaws.com
 user = jump
-ssh_key_path = path\to\private-key.pem
 
 [MySQL]
 host = rds-cluster.amazonaws.com
 port = 3306
 user = viewer
-password = your-password
 database = your-database
-
-[Credentials]
-json_keyfile_path = path\to\service-account.json
 
 [Spreadsheet]
 spreadsheet_id = your-spreadsheet-id
 main_sheet = 実行シート
-rawdata_sheet = rawdata実行シート
 eachdata_sheet = 個別実行シート
+
+[Paths]
+csv_base_path = \\nas\public\...\data_Parquet
+
+[batch_exe]
+create_datasets = scripts\powershell\create_datasets.ps1
+create_datasets_individual = scripts\powershell\update_table.ps1
 ```
 
-### 5. Google認証設定
-1. Google Cloud Console でサービスアカウント作成
-2. Drive API, Sheets API の有効化
-3. サービスアカウントキー（JSON）をダウンロード
-4. `json_keyfile_path` にファイルパスを設定
+#### 🔐 秘匿情報（`config/secrets.env`）
+```env
+# SSH認証
+SSH_KEY_PATH=config/your-private-key.pem
+
+# データベース認証
+MYSQL_PASSWORD=your-secure-password
+
+# Google API認証
+JSON_KEYFILE_PATH=config/your-service-account.json
+
+# Slack通知（オプション）
+SLACK_WEBHOOK_URL=https://hooks.slack.com/services/...
+```
+
+### 5. 認証ファイル配置
+```bash
+# 📁 config/ディレクトリ内に配置
+config/
+├── settings.ini          # ✅ 基本設定
+├── secrets.env           # 🔐 秘匿情報
+├── your-private-key.pem  # 🔑 SSH認証
+└── your-service-account.json  # 🔑 Google API認証
+```
 
 ## 実行方法
 
-### 定期バッチシステム
+### 🎨 Streamlit Webアプリケーション（推奨）
 
-#### PowerShell実行（推奨）
+#### アプリケーション起動
 ```powershell
-# 本番バッチ実行
-.\run.ps1
+# 仮想環境アクティベート
+.\venv\Scripts\Activate.ps1
 
-# テストバッチ実行  
-.\run_test.ps1
+# Streamlit起動
+streamlit run streamlit_app.py
+
+# ブラウザで http://localhost:8501 にアクセス
+```
+
+#### UI操作
+1. **全件更新**: 「全件更新」ボタンクリック → バックグラウンド実行
+2. **個別更新**: テーブル選択 → 「データ更新（個別）」ボタンクリック
+3. **完了通知**: 処理完了時に自動ポップアップ表示
+
+### 🔄 PowerShellバッチ実行（直接）
+
+#### 全件更新
+```powershell
+.\scripts\powershell\create_datasets.ps1
+```
+
+#### 個別テーブル更新
+```powershell
+.\scripts\powershell\select_and_update_table.ps1
+
+# または特定テーブル指定
+.\scripts\powershell\update_individual_table.ps1 -TableName "companies"
 ```
 
 #### 直接Python実行
 ```bash
-# 本番データ処理
+# 全件処理
 python main.py
 
 # テストデータ処理

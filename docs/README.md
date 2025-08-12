@@ -15,60 +15,76 @@
 
 ## 🎯 プロジェクト概要
 
-**塾ステ CSVダウンロードツール「ストミンくん」**は、教育関連企業のデータ分析基盤として、以下の2つの異なる目的を持つシステムで構成されています。
+**塾ステ CSVダウンロードツール「ストミンくん」**は、教育関連企業のデータ分析基盤として、以下の機能を提供する統合システムです。
 
-### 🔄 1. 定期バッチシステム
-- **目的**: BIツール・レポート生成用の元データ作成
-- **実行**: 定期自動実行
-- **出力**: CSV形式（外部保存先）
-- **データソース**: 実行シート・rawdataシート
+### 🎨 **Streamlit Webアプリケーション**
+- **UI**: 直感的なWebインターフェース
+- **機能**: 全件更新・個別テーブル更新
+- **出力**: Parquet形式（NAS保存）
+- **監視**: バックグラウンド実行＋完了通知
 
-### 🎨 2. ストミン データソースシステム  
-- **目的**: Streamlit WebUI用のデータソース生成
-- **実行**: オンデマンド実行
-- **出力**: Parquet形式（ローカル保存）
-- **データソース**: 個別実行シート
+### 🔄 **バッチ処理システム**
+- **全件更新**: 全テーブルの一括処理
+- **個別更新**: 指定テーブルのみ処理
+- **データソース**: Google Spreadsheet（動的設定）
+- **認証**: 統一された`secrets.env`管理
 
 ## 🏗️ システム構成図
 
 ```mermaid
 graph TB
-    subgraph "定期バッチシステム"
-        A1[main.py]
-        A2[common_exe_functions.py]
-        A3[CSV Files]
+    subgraph "🎨 Streamlit Webアプリ"
+        UI[streamlit_app.py<br/>Webインターフェース]
+        PS1[create_datasets.ps1<br/>全件更新]
+        PS2[select_and_update_table.ps1<br/>個別更新]
     end
 
-    subgraph "ストミン データソース"
-        B1[run_create_datesets.py]
-        B2[common_create_datasets.py]
-        B3[Parquet Files]
-        B4[streamlit_app.py]
+    subgraph "🔄 Pythonバッチ処理"
+        PY1[run_create_datesets.py<br/>全件処理エントリ]
+        PY2[run_create_datasets_individual.py<br/>個別処理エントリ]
+        CORE[common_create_datasets.py<br/>共通処理ロジック]
     end
 
-    subgraph "共通基盤"
-        C1[MySQL RDS]
-        C2[Google Drive]
-        C3[subcode_loader.py]
+    subgraph "⚙️ 設定・認証統一"
+        CONF[config/settings.ini<br/>アプリ設定]
+        SEC[config/secrets.env<br/>秘匿情報]
+        PEM[config/*.pem<br/>SSH認証]
+        JSON[config/*.json<br/>Google API認証]
     end
 
-    A1 --> A2 --> A3
-    B1 --> B2 --> B3 --> B4
-    A2 --> C3
-    B2 --> C3
-    C3 --> C1
-    C3 --> C2
+    subgraph "💾 データソース"
+        MYSQL[MySQL RDS<br/>データベース]
+        SHEETS[Google Spreadsheet<br/>動的設定]
+        NAS[NAS Storage<br/>Parquetファイル出力]
+    end
+
+    UI --> PS1
+    UI --> PS2
+    PS1 --> PY1
+    PS2 --> PY2
+    PY1 --> CORE
+    PY2 --> CORE
+    
+    CORE --> MYSQL
+    CORE --> SHEETS
+    CORE --> NAS
+    
+    CORE -.-> CONF
+    CORE -.-> SEC
+    CORE -.-> PEM
+    CORE -.-> JSON
 ```
 
 ## 📊 技術スタック
 
 - **言語**: Python 3.9+
-- **データベース**: MySQL（AWS RDS）
-- **WebUI**: Streamlit
-- **データ形式**: CSV, Parquet
-- **外部サービス**: Google Drive API, Google Sheets API
-- **インフラ**: AWS（RDS）
-- **実行環境**: PowerShell, Windows
+- **WebUI**: Streamlit（シングルページアプリ）
+- **データ形式**: Parquet（メイン）、CSV（互換）
+- **設定管理**: `settings.ini` + `secrets.env`
+- **外部サービス**: Google Sheets API（動的設定）
+- **データベース**: MySQL（AWS RDS + SSH Tunnel）
+- **実行環境**: PowerShell + Python
+- **文字エンコーディング**: UTF-8統一
 
 ## 🚀 クイックスタート
 
@@ -76,7 +92,7 @@ graph TB
 ```bash
 # リポジトリクローン
 git clone <repository-url>
-cd GIG塾STMYSQL/sourcecode
+cd GIG塾STMYSQL/sourcecode_dev
 
 # 仮想環境作成・アクティベート
 python -m venv venv
@@ -86,31 +102,38 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-### 2. 設定ファイル作成
-```ini
-# config.ini
+### 2. 設定ファイル配置
+```bash
+# 📁 config/settings.ini（基本設定）
 [SSH]
 host = your-ssh-host
 user = your-user
-ssh_key_path = path/to/key.pem
 
-[MySQL]
+[MySQL] 
 host = your-db-host
+port = 3306
 user = your-db-user
-password = your-password
 database = your-database
 
-[Credentials]
-json_keyfile_path = path/to/google-service-account.json
+[Spreadsheet]
+spreadsheet_id = your-spreadsheet-id
+main_sheet = 実行シート
+eachdata_sheet = 個別実行シート
+
+# 🔐 config/secrets.env（秘匿情報）
+SSH_KEY_PATH=config/your-key.pem
+MYSQL_PASSWORD=your-password
+JSON_KEYFILE_PATH=config/your-service-account.json
 ```
 
 ### 3. 実行
 ```bash
-# 定期バッチ実行
-.\run.ps1
+# 🎨 Streamlit Webアプリ起動
+streamlit run streamlit_app.py
 
-# ストミン データソース生成
-python run_create_datesets.py
+# 🔄 PowerShellバッチ実行
+.\scripts\powershell\create_datasets.ps1            # 全件更新
+.\scripts\powershell\select_and_update_table.ps1   # 個別更新
 
 # WebUI起動
 streamlit run streamlit_app.py
