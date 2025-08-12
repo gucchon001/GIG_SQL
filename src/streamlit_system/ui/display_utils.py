@@ -108,8 +108,11 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     # 行数選択UI
     display_row_selector()
     
-    # テーブル更新ボタンとCSVダウンロードボタン
-    display_table_action_buttons(df, input_fields_types)
+    # データ準備（先に実行してページングデータを取得）
+    df_view = get_paginated_df(df, page_size)
+    
+    # テーブル更新ボタンとCSVダウンロードボタン（ページングデータを渡す）
+    display_table_action_buttons(df_view, input_fields_types)
     
     # 件数表示とページネーション（同じ行に配置）
     total_pages = (len(df) + page_size - 1) // page_size
@@ -118,9 +121,6 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     else:
         # ページネーションがない場合は件数のみ表示
         st.markdown(f"**{start_index:,} - {end_index:,} / {total_rows:,} 件**")
-    
-    # データ準備
-    df_view = get_paginated_df(df, page_size)
     
     # スタイル適用して表示
     display_styled_df(df_view)
@@ -344,14 +344,21 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
         return
     
     # 右寄せで2つのボタンを配置（コピーとCSVダウンロード）
-    col1, col2, col3 = st.columns([3, 1, 1])
+    col1, col2, col3 = st.columns([7, 1, 1])
     
     with col2:
         # クリップボードコピーボタン
         if st.button("📋 コピー", help="表示中のテーブルデータをクリップボードにコピーします"):
             try:
+                # デバッグ情報
+                logger.info(f"コピー対象DataFrame shape: {df.shape}")
+                logger.info(f"DataFrame columns: {list(df.columns)}")
+                
                 # 現在表示中のDataFrameをTSV形式に変換
                 csv_data = df.to_csv(index=False, sep='\t')
+                
+                # デバッグ: コピーされるデータの先頭部分をログに出力
+                logger.info(f"コピーデータ先頭200文字: {csv_data[:200]}")
                 
                 # JavaScriptでクリップボードにコピー
                 copy_script = f"""
@@ -361,6 +368,7 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
                         const text = `{csv_data.replace('`', '\\`').replace('\n', '\\n').replace('\r', '\\r')}`;
                         await navigator.clipboard.writeText(text);
                         console.log('テーブルデータクリップボードコピー成功');
+                        console.log('コピーデータ先頭:', text.substring(0, 100));
                     }} catch (err) {{
                         console.error('クリップボードコピー失敗:', err);
                         // フォールバック: テキストエリアを使用
@@ -377,7 +385,7 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
                 </script>
                 """
                 st.markdown(copy_script, unsafe_allow_html=True)
-                st.toast("📋 テーブルデータをクリップボードにコピーしました！", icon="✅")
+                st.toast(f"📋 {len(df)}行のテーブルデータをコピーしました！", icon="✅")
                 logger.info(f"テーブルデータクリップボードコピー実行: {len(df)}行のデータ")
                 
             except Exception as e:
@@ -410,7 +418,7 @@ def display_csv_download_button(df: pd.DataFrame, input_fields_types: dict) -> N
         
         # ダウンロードボタン（Shift-JISエンコーディング）
         st.download_button(
-            label="📥 CSVダウンロード",
+            label="📥 ダウンロード",
             data=csv_string.encode('cp932', errors='replace'),
             file_name=f"data_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.csv",
             mime="text/csv",
