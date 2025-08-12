@@ -223,6 +223,20 @@ def load_sheet_from_spreadsheet(sheet_name):
         def get_all_values(self):
             return self.data
         
+        def get_all_records(self):
+            """データをレコード形式で返す"""
+            if not self.data or len(self.data) < 2:
+                return []
+            
+            headers = self.data[0]
+            records = []
+            for row in self.data[1:]:
+                # 行の長さをヘッダーに合わせる
+                padded_row = row + [''] * (len(headers) - len(row))
+                record = dict(zip(headers, padded_row))
+                records.append(record)
+            return records
+        
         def row_values(self, row_num):
             if row_num <= len(self.data):
                 return self.data[row_num - 1]
