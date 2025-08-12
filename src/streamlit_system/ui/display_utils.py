@@ -234,7 +234,7 @@ def display_styled_df(df: pd.DataFrame) -> None:
 
 def display_pagination_with_count(total_pages: int, start_index: int, end_index: int, total_rows: int) -> None:
     """
-    件数表示とページネーションボタンを同じ行に表示
+    件数表示、ページネーションボタン、更新ボタンを同じ行に表示
     
     Args:
         total_pages (int): 総ページ数
@@ -244,8 +244,8 @@ def display_pagination_with_count(total_pages: int, start_index: int, end_index:
     """
     current_page = st.session_state.get('current_page', 1)
     
-    # 件数表示とページネーションを同じ行に配置
-    col1, col2, col3, col4, col5, col6, col7 = st.columns([2, 1, 1, 2, 1, 1, 1])
+    # 件数表示、ページネーション、更新ボタンを同じ行に配置
+    col1, col2, col3, col4, col5, col6, col7, col8 = st.columns([2, 1, 1, 2, 1, 1, 0.5, 1])
     
     with col1:
         # 件数表示（一番左）
@@ -275,6 +275,21 @@ def display_pagination_with_count(total_pages: int, start_index: int, end_index:
     with col6:
         if st.button("最後 ⏩", disabled=(current_page == total_pages), key="last_page"):
             st.session_state['current_page'] = total_pages
+            st.rerun()
+    
+    with col8:
+        # 更新ボタン（右寄せ）
+        if st.button("🔄 更新", help="最新のデータを取得して表示を更新します", key="refresh_data"):
+            # セッション状態をクリアして再読み込みを促す
+            if 'df' in st.session_state:
+                del st.session_state['df']
+            if 'df_view' in st.session_state:
+                del st.session_state['df_view']
+            if 'input_fields_types' in st.session_state:
+                del st.session_state['input_fields_types']
+            # キャッシュクリア
+            st.cache_data.clear()
+            logger.info("テーブル更新ボタンが押されました - セッション状態とキャッシュをクリア")
             st.rerun()
 
 
@@ -319,7 +334,7 @@ def display_pagination_buttons(total_pages: int) -> None:
 
 def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> None:
     """
-    テーブル操作ボタン（更新・クリップボード・CSVダウンロード）を表示
+    テーブル操作ボタン（クリップボード・CSVダウンロード）を表示
     
     Args:
         df (pd.DataFrame): 対象DataFrame
@@ -328,28 +343,14 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
     if df.empty:
         return
     
-    # 右寄せで3つのボタンを配置
-    col1, col2, col3, col4 = st.columns([2, 1, 1, 1])
+    # 右寄せで2つのボタンを配置（コピーとCSVダウンロード）
+    col1, col2, col3 = st.columns([3, 1, 1])
     
     with col2:
-        if st.button("🔄 更新", help="最新のデータを取得して表示を更新します"):
-            # セッション状態をクリアして再読み込みを促す
-            if 'df' in st.session_state:
-                del st.session_state['df']
-            if 'df_view' in st.session_state:
-                del st.session_state['df_view']
-            if 'input_fields_types' in st.session_state:
-                del st.session_state['input_fields_types']
-            # キャッシュクリア
-            st.cache_data.clear()
-            logger.info("テーブル更新ボタンが押されました - セッション状態とキャッシュをクリア")
-            st.rerun()
-    
-    with col3:
         # クリップボードコピーボタン
-        if st.button("📋 コピー", help="表示中のデータをクリップボードにコピーします"):
+        if st.button("📋 コピー", help="表示中のテーブルデータをクリップボードにコピーします"):
             try:
-                # DataFrameをTSV形式（Excelで貼り付けやすい）に変換
+                # 現在表示中のDataFrameをTSV形式に変換
                 csv_data = df.to_csv(index=False, sep='\t')
                 
                 # JavaScriptでクリップボードにコピー
@@ -359,13 +360,7 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
                     try {{
                         const text = `{csv_data.replace('`', '\\`').replace('\n', '\\n').replace('\r', '\\r')}`;
                         await navigator.clipboard.writeText(text);
-                        console.log('クリップボードコピー成功');
-                        
-                        // Streamlitに成功を通知
-                        window.parent.postMessage({{
-                            type: 'streamlit:setComponentValue',
-                            value: 'clipboard_success'
-                        }}, '*');
+                        console.log('テーブルデータクリップボードコピー成功');
                     }} catch (err) {{
                         console.error('クリップボードコピー失敗:', err);
                         // フォールバック: テキストエリアを使用
@@ -382,14 +377,14 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
                 </script>
                 """
                 st.markdown(copy_script, unsafe_allow_html=True)
-                st.toast("📋 データをクリップボードにコピーしました！", icon="✅")
-                logger.info(f"クリップボードコピー実行: {len(df)}行のデータ")
+                st.toast("📋 テーブルデータをクリップボードにコピーしました！", icon="✅")
+                logger.info(f"テーブルデータクリップボードコピー実行: {len(df)}行のデータ")
                 
             except Exception as e:
                 st.error(f"クリップボードへのコピーに失敗しました: {str(e)}")
                 logger.error(f"クリップボードコピーエラー: {str(e)}")
     
-    with col4:
+    with col3:
         # CSVダウンロードボタン
         display_csv_download_button(df, input_fields_types)
 
