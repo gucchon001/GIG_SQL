@@ -138,6 +138,10 @@ def apply_filters(df: pd.DataFrame, input_fields: Dict[str, Any],
                 logger.debug(f"選択フィルタ適用: {field_name} = {selected_options}")
     
     logger.info(f"フィルタリング完了: {filter_count}個の条件を適用")
+    # フィルタリング後に降順ソート（legacy版と同じ動作）
+    if not filtered_df.empty:
+        filtered_df = filtered_df.sort_index(ascending=False)
+        logger.debug("フィルタリング後に降順ソートを適用")
     return filtered_df
 
 

@@ -140,6 +140,11 @@ def get_paginated_df(df: pd.DataFrame, page_size: int) -> pd.DataFrame:
     Returns:
         pd.DataFrame: ページネーション済みDataFrame
     """
+    # 確実に降順ソートを適用（legacy版と同じ動作）
+    if not df.empty:
+        df = df.sort_index(ascending=False)
+        logger.debug("ページネーション前に降順ソートを適用")
+    
     current_page = st.session_state.get('current_page', 1)
     start_index = (current_page - 1) * page_size
     end_index = start_index + page_size
@@ -149,8 +154,7 @@ def get_paginated_df(df: pd.DataFrame, page_size: int) -> pd.DataFrame:
     result_df = df.iloc[start_index:end_index]
     
     logger.info(f"get_paginated_df result shape: {result_df.shape}")
-    logger.info(f"get_paginated_df: start_index={start_index}, end_index={end_index}")
-    logger.info(f"get_paginated_df: Returning DataFrame shape: {result_df.shape}")
+    logger.info(f"get_paginated_df: 降順ソート後のページネーション完了")
     
     return result_df
 
