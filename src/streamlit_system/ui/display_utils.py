@@ -366,12 +366,13 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
                 # デバッグ: コピーされるデータの先頭部分をログに出力
                 logger.info(f"コピーデータ先頭200文字: {csv_data[:200]}")
                 
-                # JavaScriptでクリップボードにコピー
+                # JavaScriptでクリップボードにコピー（f-string内バックスラッシュ回避）
+                escaped_csv_data = csv_data.replace('`', '\\`').replace('\n', '\\n').replace('\r', '\\r')
                 copy_script = f"""
                 <script>
                 async function copyToClipboard() {{
                     try {{
-                        const text = `{csv_data.replace('`', '\\`').replace('\n', '\\n').replace('\r', '\\r')}`;
+                        const text = `{escaped_csv_data}`;
                         await navigator.clipboard.writeText(text);
                         console.log('テーブルデータクリップボードコピー成功');
                         console.log('コピーデータ先頭:', text.substring(0, 100));
