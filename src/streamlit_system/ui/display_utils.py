@@ -319,7 +319,7 @@ def display_pagination_buttons(total_pages: int) -> None:
 
 def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> None:
     """
-    テーブル操作ボタン（更新・CSVダウンロード）を表示
+    テーブル操作ボタン（更新・クリップボード・CSVダウンロード）を表示
     
     Args:
         df (pd.DataFrame): 対象DataFrame
@@ -328,8 +328,8 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
     if df.empty:
         return
     
-    # 右寄せで2つのボタンを配置
-    col1, col2, col3 = st.columns([3, 1, 1])
+    # 右寄せで3つのボタンを配置
+    col1, col2, col3, col4 = st.columns([2, 1, 1, 1])
     
     with col2:
         if st.button("🔄 更新", help="最新のデータを取得して表示を更新します"):
@@ -346,6 +346,50 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
             st.rerun()
     
     with col3:
+        # クリップボードコピーボタン
+        if st.button("📋 コピー", help="表示中のデータをクリップボードにコピーします"):
+            try:
+                # DataFrameをTSV形式（Excelで貼り付けやすい）に変換
+                csv_data = df.to_csv(index=False, sep='\t')
+                
+                # JavaScriptでクリップボードにコピー
+                copy_script = f"""
+                <script>
+                async function copyToClipboard() {{
+                    try {{
+                        const text = `{csv_data.replace('`', '\\`').replace('\n', '\\n').replace('\r', '\\r')}`;
+                        await navigator.clipboard.writeText(text);
+                        console.log('クリップボードコピー成功');
+                        
+                        // Streamlitに成功を通知
+                        window.parent.postMessage({{
+                            type: 'streamlit:setComponentValue',
+                            value: 'clipboard_success'
+                        }}, '*');
+                    }} catch (err) {{
+                        console.error('クリップボードコピー失敗:', err);
+                        // フォールバック: テキストエリアを使用
+                        const textArea = document.createElement('textarea');
+                        textArea.value = text;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        console.log('フォールバック方式でコピー完了');
+                    }}
+                }}
+                copyToClipboard();
+                </script>
+                """
+                st.markdown(copy_script, unsafe_allow_html=True)
+                st.toast("📋 データをクリップボードにコピーしました！", icon="✅")
+                logger.info(f"クリップボードコピー実行: {len(df)}行のデータ")
+                
+            except Exception as e:
+                st.error(f"クリップボードへのコピーに失敗しました: {str(e)}")
+                logger.error(f"クリップボードコピーエラー: {str(e)}")
+    
+    with col4:
         # CSVダウンロードボタン
         display_csv_download_button(df, input_fields_types)
 
