@@ -99,11 +99,14 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     start_index = (current_page - 1) * page_size + 1
     end_index = min(current_page * page_size, total_rows)
     
-    # データサイズ表示（右上に配置）
-    col_data1, col_data2 = st.columns([3, 1])
+    # データサイズと表示時間を右上に配置
+    col_data1, col_data2, col_data3 = st.columns([2, 1, 1])
     with col_data2:
         data_size = df.memory_usage(deep=True).sum() / 1024 / 1024  # MB
         st.caption(f"📊 {data_size:.1f}MB")
+    with col_data3:
+        # 表示時間プレースホルダー（後で更新）
+        time_placeholder = st.empty()
     
     # 行数選択UI
     display_row_selector()
@@ -129,9 +132,12 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     end_time = time.time()
     render_time = end_time - start_time
     
-    # パフォーマンス情報を表示
-    if render_time > 1.0:  # 1秒以上の場合は表示
-        st.caption(f"⏱️ 表示時間: {render_time:.2f}秒")
+    # 表示時間を右上のプレースホルダーに更新
+    with time_placeholder:
+        if render_time > 0.1:  # 0.1秒以上の場合は表示
+            st.caption(f"⏱️ {render_time:.2f}秒")
+        else:
+            st.caption(f"⏱️ <0.1秒")
     
     logger.info(f"データ表示完了: Full DataFrame shape: {df.shape}, Page size: {page_size}, Render time: {render_time:.3f}s")
 
@@ -344,7 +350,7 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
         return
     
     # 右寄せで2つのボタンを配置（コピーとCSVダウンロード）
-    col1, col2, col3 = st.columns([7, 1, 1])
+    col1, col2, col3 = st.columns([8, 1, 1.5])
     
     with col2:
         # クリップボードコピーボタン
