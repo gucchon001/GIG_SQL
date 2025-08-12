@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 from src.core.logging.logger import get_logger
 from src.streamlit_system.ui.session_manager import initialize_session_state
 
@@ -37,6 +38,8 @@ def csv_download(selected_display_name):
         
         # ローカルのParquetファイルパスを使用（Streamlit表示用）
         parquet_file_path = f"data_Parquet/{sql_file_name}.parquet"
+        logger.info(f"Parquetファイルパス: {parquet_file_path}")
+        logger.info(f"Parquetファイル存在確認: {os.path.exists(parquet_file_path)}")
         last_modified = get_parquet_file_last_modified(parquet_file_path)
         
         if not data:
@@ -56,18 +59,23 @@ def csv_download(selected_display_name):
             submit_button = create_filter_form(data)
         
         if submit_button:
+            logger.info("フィルター送信ボタンが押されました")
             df = handle_filter_submission(parquet_file_path)
+            logger.info(f"handle_filter_submission結果: {df.shape if df is not None and not df.empty else 'None/Empty'}")
             # フィルター適用時もページネーションをリセット
             st.session_state['limit'] = 50
             st.session_state['current_page'] = 1
         else:
+            logger.info("データ初期読み込み処理を開始")
             df = load_and_initialize_data(sql_file_name)
+            logger.info(f"load_and_initialize_data結果: {df.shape if df is not None and not df.empty else 'None/Empty'}")
         
         if df is not None and not df.empty:
             page_size = st.session_state.get('limit', 50)
             logger.info(f"csv_download: Calling display_data with page_size={page_size}")
             display_data(df, page_size, st.session_state['input_fields_types'])
         else:
+            logger.warning(f"DataFrame表示不可: df={df}")
             st.warning("DataFrame is None or empty. Cannot display the table.")
     
     except Exception as e:
