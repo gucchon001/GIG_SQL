@@ -81,14 +81,27 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     start_index = (current_page - 1) * page_size + 1
     end_index = min(current_page * page_size, total_rows)
     
-    # 件数表示
-    st.markdown(f"**{start_index:,} - {end_index:,} / {total_rows:,} 件**")
+    # 件数表示と更新ボタン
+    col1, col2, col3 = st.columns([2, 1, 2])
+    with col1:
+        st.markdown(f"**{start_index:,} - {end_index:,} / {total_rows:,} 件**")
+    with col2:
+        if st.button("🔄 更新", key="top_refresh", help="最新のデータを取得して表示を更新"):
+            # セッション状態をクリアして再読み込みを促す
+            if 'df' in st.session_state:
+                del st.session_state['df']
+            if 'df_view' in st.session_state:
+                del st.session_state['df_view']
+            # キャッシュクリア
+            st.cache_data.clear()
+            logger.info("トップ更新ボタンが押されました - セッション状態とキャッシュをクリア")
+            st.rerun()
     
     # 行数選択UI
     display_row_selector()
     
-    # CSVダウンロードボタン（表示件数の後に配置）
-    display_csv_download_button(df, input_fields_types)
+    # テーブル更新ボタンとCSVダウンロードボタン
+    display_table_action_buttons(df, input_fields_types)
     
     # データ準備
     df_view = get_paginated_df(df, page_size)
@@ -208,6 +221,38 @@ def display_pagination_buttons(total_pages: int) -> None:
         if st.button("最後", disabled=(current_page == total_pages)):
             st.session_state['current_page'] = total_pages
             st.rerun()
+
+
+def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> None:
+    """
+    テーブル操作ボタン（更新・CSVダウンロード）を表示
+    
+    Args:
+        df (pd.DataFrame): 対象DataFrame
+        input_fields_types (dict): フィールドタイプ辞書
+    """
+    if df.empty:
+        return
+    
+    col1, col2, col3 = st.columns([1, 1, 3])
+    
+    with col1:
+        if st.button("🔄 テーブル更新", help="最新のデータを取得して表示を更新します"):
+            # セッション状態をクリアして再読み込みを促す
+            if 'df' in st.session_state:
+                del st.session_state['df']
+            if 'df_view' in st.session_state:
+                del st.session_state['df_view']
+            if 'input_fields_types' in st.session_state:
+                del st.session_state['input_fields_types']
+            # キャッシュクリア
+            st.cache_data.clear()
+            logger.info("テーブル更新ボタンが押されました - セッション状態とキャッシュをクリア")
+            st.rerun()
+    
+    with col2:
+        # CSVダウンロードボタン
+        display_csv_download_button(df, input_fields_types)
 
 
 def display_csv_download_button(df: pd.DataFrame, input_fields_types: dict) -> None:
