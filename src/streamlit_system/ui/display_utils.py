@@ -117,9 +117,7 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     # ページネーション（CSVボタンとテーブルの間に配置）
     total_pages = (len(df) + page_size - 1) // page_size
     if total_pages > 1:
-        st.markdown("<br>", unsafe_allow_html=True)  # 少しの余白
         display_pagination_buttons(total_pages)
-        st.markdown("<br>", unsafe_allow_html=True)  # テーブルとの間隔
     
     # データ準備
     df_view = get_paginated_df(df, page_size)
@@ -236,14 +234,14 @@ def display_styled_df(df: pd.DataFrame) -> None:
 
 def display_pagination_buttons(total_pages: int) -> None:
     """
-    ページネーションボタンを表示（クリーンスタイル）
+    ページネーションボタンを表示（コンパクト版）
     
     Args:
         total_pages (int): 総ページ数
     """
     current_page = st.session_state.get('current_page', 1)
     
-    # ページネーションボタンを中央揃え（シンプル版）
+    # ページネーションボタンを中央揃え（余白なし）
     col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 1, 1, 2, 1, 1, 1])
     
     with col2:
@@ -257,8 +255,8 @@ def display_pagination_buttons(total_pages: int) -> None:
             st.rerun()
     
     with col4:
-        # シンプルな中央表示（背景なし）
-        st.markdown(f"<div style='text-align: center; padding: 4px;'>"
+        # コンパクトな中央表示（余白最小）
+        st.markdown(f"<div style='text-align: center; margin: 0; padding: 0;'>"
                    f"<strong>{current_page} / {total_pages}</strong></div>", 
                    unsafe_allow_html=True)
     
