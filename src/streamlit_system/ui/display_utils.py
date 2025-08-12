@@ -81,21 +81,8 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     start_index = (current_page - 1) * page_size + 1
     end_index = min(current_page * page_size, total_rows)
     
-    # 件数表示と更新ボタン
-    col1, col2, col3 = st.columns([2, 1, 2])
-    with col1:
-        st.markdown(f"**{start_index:,} - {end_index:,} / {total_rows:,} 件**")
-    with col2:
-        if st.button("🔄 更新", key="top_refresh", help="最新のデータを取得して表示を更新"):
-            # セッション状態をクリアして再読み込みを促す
-            if 'df' in st.session_state:
-                del st.session_state['df']
-            if 'df_view' in st.session_state:
-                del st.session_state['df_view']
-            # キャッシュクリア
-            st.cache_data.clear()
-            logger.info("トップ更新ボタンが押されました - セッション状態とキャッシュをクリア")
-            st.rerun()
+    # 件数表示
+    st.markdown(f"**{start_index:,} - {end_index:,} / {total_rows:,} 件**")
     
     # 行数選択UI
     display_row_selector()
@@ -234,10 +221,11 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
     if df.empty:
         return
     
-    col1, col2, col3 = st.columns([1, 1, 3])
+    # 右寄せで2つのボタンを配置
+    col1, col2, col3 = st.columns([3, 1, 1])
     
-    with col1:
-        if st.button("🔄 テーブル更新", help="最新のデータを取得して表示を更新します"):
+    with col2:
+        if st.button("🔄 更新", help="最新のデータを取得して表示を更新します"):
             # セッション状態をクリアして再読み込みを促す
             if 'df' in st.session_state:
                 del st.session_state['df']
@@ -250,7 +238,7 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
             logger.info("テーブル更新ボタンが押されました - セッション状態とキャッシュをクリア")
             st.rerun()
     
-    with col2:
+    with col3:
         # CSVダウンロードボタン
         display_csv_download_button(df, input_fields_types)
 
