@@ -35,18 +35,8 @@ def csv_download(selected_display_name):
         with open('styles.css', encoding='utf-8') as f:
             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
         
-        # 新構造の設定管理を使用
-        try:
-            from src.core.config.settings import AppConfig
-            app_config = AppConfig.from_config_file('config/settings.ini')
-            csv_base_path = app_config.paths.csv_base_path
-        except ImportError:
-            # フォールバック：旧構造
-            import configparser
-            config = configparser.ConfigParser()
-            config.read('config/settings.ini', encoding='utf-8')
-            csv_base_path = config['Paths']['csv_base_path']
-        parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
+        # ローカルのParquetファイルパスを使用（Streamlit表示用）
+        parquet_file_path = f"data_Parquet/{sql_file_name}.parquet"
         last_modified = get_parquet_file_last_modified(parquet_file_path)
         
         if not data:

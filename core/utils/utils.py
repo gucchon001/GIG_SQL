@@ -219,7 +219,7 @@ def display_pagination_buttons(total_pages):
 # SQLファイル名に基づいてデータを読み込み、初期化する関数
 def load_and_initialize_data(sql_file_name, num_rows=None):
     try:
-        parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
+        parquet_file_path = f"data_Parquet/{sql_file_name}.parquet"
         if os.path.exists(parquet_file_path):
             df, total_rows = load_parquet_file(parquet_file_path, num_rows)
             if df is not None:

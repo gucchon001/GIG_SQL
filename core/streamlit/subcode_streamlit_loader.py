@@ -453,7 +453,7 @@ def on_sql_file_change(sql_files_dict):
 
         st.session_state['selected_sql_file'] = sql_files_dict.get(selected_display_name)
         sql_file_name = get_sql_file_name(selected_display_name)
-        parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
+        parquet_file_path = f"data_Parquet/{sql_file_name}.parquet"
 
         if os.path.exists(parquet_file_path):
             df = pd.read_parquet(parquet_file_path)
@@ -506,7 +506,7 @@ def on_search_click():
         LOGGER.error(f"選択されたオプション '{selected_display_name}' に対応するSQLファイルが見つかりません。")
         return
 
-    parquet_file_path = f"data_parquet/{sql_file_name}.parquet"
+            parquet_file_path = f"data_Parquet/{sql_file_name}.parquet"
 
     if os.path.exists(parquet_file_path):
         df = load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types, st.session_state.get('options_dict', {}))
