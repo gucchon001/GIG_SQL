@@ -22,7 +22,7 @@ class LoggerManager:
             cls._instance = super(LoggerManager, cls).__new__(cls)
         return cls._instance
     
-    def get_logger(self, name: str, config_file: str = "config.ini") -> logging.Logger:
+    def get_logger(self, name: str, config_file: str = "config/settings.ini") -> logging.Logger:
         """
         名前付きロガーを取得
         
@@ -137,12 +137,27 @@ class LoggerManager:
             '%(asctime)s - %(name)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s'
         )
         
+        # ロガー名に基づいてログファイル名を決定
+        logger_name = logger.name.lower()
+        if logger_name == 'streamlit':
+            log_file = 'logs/streamlit.log'
+        elif logger_name == 'datasets':
+            log_file = 'logs/datasets.log'
+        elif logger_name == 'main':
+            log_file = 'logs/main.log'
+        else:
+            log_file = log_config['logfile']  # デフォルトファイル
+        
+        # logsディレクトリを作成（存在しない場合）
+        os.makedirs('logs', exist_ok=True)
+        
         # ファイルハンドラ（ローテーション対応）
         file_handler = RotatingFileHandler(
-            log_config['logfile'],
+            log_file,
             maxBytes=log_config['max_bytes'],
             backupCount=log_config['backup_count'],
-            encoding='utf-8'
+            encoding='utf-8',
+            errors='replace'  # エンコーディングエラーを安全に処理
         )
         file_handler.setLevel(level)
         file_handler.setFormatter(formatter)
@@ -178,7 +193,7 @@ class LoggerManager:
 _logger_manager = LoggerManager()
 
 
-def get_logger(name: str, config_file: str = "config.ini") -> logging.Logger:
+def get_logger(name: str, config_file: str = "config/settings.ini") -> logging.Logger:
     """
     名前付きロガーを取得
     

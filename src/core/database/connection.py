@@ -2,6 +2,7 @@
 データベース接続管理
 
 MySQL接続とコネクションプールの管理を提供
+旧構造との互換性も提供
 """
 import mysql.connector
 import traceback
@@ -140,6 +141,39 @@ class DatabaseConnection:
                 self.logger.debug("データベース接続を閉じました")
             except Exception as e:
                 self.logger.error(f"接続クローズエラー: {e}")
+
+
+# 設定管理連携
+def create_database_connection_from_config(config_file: str = "config/settings.ini") -> Optional[mysql.connector.MySQLConnection]:
+    """
+    設定ファイルからデータベース接続を作成
+    新構造の設定管理を使用
+    
+    Args:
+        config_file: 設定ファイルのパス
+        
+    Returns:
+        MySQLConnection: データベース接続オブジェクト（失敗時はNone）
+    """
+    try:
+        from ..config.settings import AppConfig
+        app_config = AppConfig.from_config_file(config_file)
+        
+        db_config = {
+            'user': app_config.database.user,
+            'password': app_config.database.password,
+            'database': app_config.database.database,
+            'host': app_config.database.host,
+            'port': app_config.database.port
+        }
+        
+        db_conn = DatabaseConnection(db_config, app_config.ssh.local_port)
+        return db_conn.create_connection()
+        
+    except Exception as e:
+        logger = get_logger(__name__)
+        logger.error(f"設定ファイルからのDB接続作成エラー: {e}")
+        return None
 
 
 # 後方互換性のための関数

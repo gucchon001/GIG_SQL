@@ -106,7 +106,7 @@ class AppConfig:
     csv: CSVConfig
     
     @classmethod
-    def from_config_file(cls, config_file: str = "config.ini") -> 'AppConfig':
+    def from_config_file(cls, config_file: str = "config/settings.ini") -> 'AppConfig':
         """
         設定ファイルからアプリケーション設定を読み込み
         優先順位: 1) 新構造 2) 旧構造（後方互換性）
@@ -153,6 +153,9 @@ class AppConfig:
         """
         設定を解析してAppConfigオブジェクトを作成
         """
+        # 環境変数を読み込み（secrets.env）
+        secrets_path = os.path.join(os.getcwd(), 'config', 'secrets.env')
+        load_dotenv(secrets_path)
         
         # SSH設定
         if is_new_structure:
@@ -183,16 +186,16 @@ class AppConfig:
         
         # Google API設定
         if is_new_structure:
-            credentials_file = os.getenv('GOOGLE_CREDENTIALS_PATH', '')
+            credentials_file = os.getenv('JSON_KEYFILE_PATH', '')
         else:
-            credentials_file = config['Credentials']['json_keyfile_path']
+            credentials_file = os.getenv('JSON_KEYFILE_PATH', config.get('Credentials', {}).get('json_keyfile_path', ''))
             
         google_config = GoogleAPIConfig(
             credentials_file=credentials_file,
             spreadsheet_id=config['Spreadsheet']['spreadsheet_id'],
             drive_folder_id=config['GoogleDrive']['google_folder_id'],
             main_sheet=config['Spreadsheet']['main_sheet'],
-            rawdata_sheet=config['Spreadsheet']['rawdata_sheet'],
+            rawdata_sheet=config['Spreadsheet'].get('rawdata_sheet', 'rawdataシート'),
             eachdata_sheet=config['Spreadsheet']['eachdata_sheet']
         )
         
@@ -200,7 +203,7 @@ class AppConfig:
         if is_new_structure:
             config_file_path = "config/settings.ini"
         else:
-            config_file_path = "config.ini"
+            config_file_path = "config/settings.ini"
             
         paths_config = PathsConfig(
             csv_base_path=config['Paths']['csv_base_path'],
@@ -260,7 +263,7 @@ class AppConfig:
         )
 
 
-def load_config(config_file: str = "config.ini") -> tuple:
+def load_config(config_file: str = "config/settings.ini") -> tuple:
     """
     旧式の設定読み込み関数（後方互換性のため）
     

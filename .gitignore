@@ -22,4 +22,4 @@ config/secrets.env
 config/secrets.*.env
 
 # 旧設定ファイル（後方互換性のため一時的に許可）
-# config.ini は段階的移行後に除外予定
+# config.ini は削除済み（config/settings.iniに移行完了）

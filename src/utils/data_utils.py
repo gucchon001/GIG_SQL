@@ -294,5 +294,5 @@ def get_data_types(worksheet) -> Dict[str, str]:
     from src.core.google_api.sheets_client import GoogleSheetsClient
     
     # 一時的な実装（将来的にはより良い方法で実装）
-    client = GoogleSheetsClient("config.ini")  # 設定から取得するように改善予定
+    client = GoogleSheetsClient("config/settings.ini")  # 設定から取得するように改善予定
     return client.get_data_types_from_sheet(worksheet)
