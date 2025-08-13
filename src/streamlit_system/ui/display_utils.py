@@ -114,8 +114,8 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
     # データ準備（先に実行してページングデータを取得）
     df_view = get_paginated_df(df, page_size)
     
-    # テーブル更新ボタンとCSVダウンロードボタン（ページングデータを渡す）
-    display_table_action_buttons(df_view, input_fields_types)
+    # テーブル更新ボタンとCSVダウンロードボタン（全データを渡す）
+    display_table_action_buttons(df_view, input_fields_types, df)
     
     # 件数表示とページネーション（同じ行に配置）
     total_pages = (len(df) + page_size - 1) // page_size
@@ -143,39 +143,39 @@ def display_data(df: pd.DataFrame, page_size: int, input_fields_types: dict) -> 
 
 
 def display_row_selector() -> None:
-    """行数選択UIを表示（インテリジェント最適化）"""
+    """行数選択UIを表示（固定オプション）"""
     col1, col2 = st.columns([3, 1])
     
     with col2:
-        # データ量に応じた行数オプション
-        total_records = st.session_state.get('total_records', 0)
-        if total_records > 10000:
-            rows_options = [50, 100, 200, 500]
-            recommended = 100
-        elif total_records > 1000:
-            rows_options = [20, 50, 100, 200]
-            recommended = 50
-        else:
-            rows_options = [10, 20, 50, 100]
-            recommended = 20
-            
-        current_limit = st.session_state.get('limit', recommended)
+        # 固定の行数オプション（すべて選択可能）
+        rows_options = [10, 20, 50, 100, 200, 500, 1000, 2000, 5000]
+        current_limit = st.session_state.get('limit', 50)
         
         # デフォルト値のインデックスを取得
         try:
             default_index = rows_options.index(current_limit)
         except ValueError:
-            default_index = 1  # 推奨値
+            # 現在の値がオプションにない場合は50を選択
+            default_index = rows_options.index(50)
+            st.session_state['limit'] = 50
+        
+        # on_changeコールバックを使用して、検索条件を保持
+        def on_limit_change():
+            """表示件数変更時のコールバック（検索条件を保持）"""
+            new_limit = st.session_state['limit_selector']
+            if new_limit != st.session_state.get('limit'):
+                st.session_state['limit'] = new_limit
+                # ページを1にリセット（検索条件は保持）
+                st.session_state['current_page'] = 1
+                logger.info(f"表示件数を{new_limit}に変更、ページを1にリセット")
         
         limit = st.selectbox(
-            "表示件数", rows_options,
+            "表示件数", 
+            rows_options,
             index=default_index,
-            key="limit_selector"
+            key="limit_selector",
+            on_change=on_limit_change
         )
-        
-        if limit != st.session_state.get('limit', 50):
-            st.session_state['limit'] = limit
-            st.rerun()
 
 
 def get_paginated_df(df: pd.DataFrame, page_size: int) -> pd.DataFrame:
@@ -240,7 +240,7 @@ def display_styled_df(df: pd.DataFrame) -> None:
 
 def display_pagination_with_count(total_pages: int, start_index: int, end_index: int, total_rows: int) -> None:
     """
-    件数表示、ページネーションボタン、更新ボタンを同じ行に表示
+    件数表示とページネーションボタンを表示
     
     Args:
         total_pages (int): 総ページ数
@@ -250,21 +250,23 @@ def display_pagination_with_count(total_pages: int, start_index: int, end_index:
     """
     current_page = st.session_state.get('current_page', 1)
     
-    # 件数表示、ページネーション、更新ボタンを同じ行に配置
-    col1, col2, col3, col4, col5, col6, col7, col8 = st.columns([2, 1, 1, 2, 1, 1, 0.5, 1])
+    # 件数表示とページネーションを分離（更新ボタンは別の場所へ移動）
+    col1, col2, col3, col4, col5, col6 = st.columns([2, 1, 1, 2, 1, 1])
     
     with col1:
         # 件数表示（一番左）
         st.markdown(f"**{start_index:,} - {end_index:,} / {total_rows:,} 件**")
     
     with col2:
-        if st.button("⏪ 最初", disabled=(current_page == 1), key="first_page"):
+        if st.button("⏪ 最初", disabled=(current_page == 1), key="first_page_btn"):
             st.session_state['current_page'] = 1
+            logger.info("ページネーション: 最初のページに移動")
             st.rerun()
     
     with col3:
-        if st.button("◀ 前へ", disabled=(current_page == 1), key="prev_page"):
+        if st.button("◀ 前へ", disabled=(current_page == 1), key="prev_page_btn"):
             st.session_state['current_page'] = current_page - 1
+            logger.info(f"ページネーション: ページ{current_page-1}に移動")
             st.rerun()
     
     with col4:
@@ -274,28 +276,15 @@ def display_pagination_with_count(total_pages: int, start_index: int, end_index:
                    unsafe_allow_html=True)
     
     with col5:
-        if st.button("次へ ▶", disabled=(current_page == total_pages), key="next_page"):
+        if st.button("次へ ▶", disabled=(current_page == total_pages), key="next_page_btn"):
             st.session_state['current_page'] = current_page + 1
+            logger.info(f"ページネーション: ページ{current_page+1}に移動")
             st.rerun()
     
     with col6:
-        if st.button("最後 ⏩", disabled=(current_page == total_pages), key="last_page"):
+        if st.button("最後 ⏩", disabled=(current_page == total_pages), key="last_page_btn"):
             st.session_state['current_page'] = total_pages
-            st.rerun()
-    
-    with col8:
-        # 更新ボタン（右寄せ）
-        if st.button("🔄 更新", help="最新のデータを取得して表示を更新します", key="refresh_data"):
-            # セッション状態をクリアして再読み込みを促す
-            if 'df' in st.session_state:
-                del st.session_state['df']
-            if 'df_view' in st.session_state:
-                del st.session_state['df_view']
-            if 'input_fields_types' in st.session_state:
-                del st.session_state['input_fields_types']
-            # キャッシュクリア
-            st.cache_data.clear()
-            logger.info("テーブル更新ボタンが押されました - セッション状態とキャッシュをクリア")
+            logger.info(f"ページネーション: 最後のページ{total_pages}に移動")
             st.rerun()
 
 
@@ -312,13 +301,15 @@ def display_pagination_buttons(total_pages: int) -> None:
     col1, col2, col3, col4, col5, col6, col7 = st.columns([1, 1, 1, 2, 1, 1, 1])
     
     with col2:
-        if st.button("⏪ 最初", disabled=(current_page == 1), key="first_page"):
+        if st.button("⏪ 最初", disabled=(current_page == 1), key="first_page_compact"):
             st.session_state['current_page'] = 1
+            logger.info("ページネーション(コンパクト): 最初のページに移動")
             st.rerun()
     
     with col3:
-        if st.button("◀ 前へ", disabled=(current_page == 1), key="prev_page"):
+        if st.button("◀ 前へ", disabled=(current_page == 1), key="prev_page_compact"):
             st.session_state['current_page'] = current_page - 1
+            logger.info(f"ページネーション(コンパクト): ページ{current_page-1}に移動")
             st.rerun()
     
     with col4:
@@ -328,40 +319,46 @@ def display_pagination_buttons(total_pages: int) -> None:
                    unsafe_allow_html=True)
     
     with col5:
-        if st.button("次へ ▶", disabled=(current_page == total_pages), key="next_page"):
+        if st.button("次へ ▶", disabled=(current_page == total_pages), key="next_page_compact"):
             st.session_state['current_page'] = current_page + 1
+            logger.info(f"ページネーション(コンパクト): ページ{current_page+1}に移動")
             st.rerun()
     
     with col6:
-        if st.button("最後 ⏩", disabled=(current_page == total_pages), key="last_page"):
+        if st.button("最後 ⏩", disabled=(current_page == total_pages), key="last_page_compact"):
             st.session_state['current_page'] = total_pages
+            logger.info(f"ページネーション(コンパクト): 最後のページ{total_pages}に移動")
             st.rerun()
 
 
-def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> None:
+def display_table_action_buttons(df_view: pd.DataFrame, input_fields_types: dict, full_df: pd.DataFrame = None) -> None:
     """
     テーブル操作ボタン（クリップボード・CSVダウンロード）を表示
     
     Args:
-        df (pd.DataFrame): 対象DataFrame
+        df_view (pd.DataFrame): 表示用DataFrame（ページネーション済み）
         input_fields_types (dict): フィールドタイプ辞書
+        full_df (pd.DataFrame): 全データ（CSVダウンロード用）
     """
-    if df.empty:
+    if df_view.empty:
         return
     
-    # 右寄せで2つのボタンを配置（コピーとCSVダウンロード）
-    col1, col2, col3 = st.columns([8, 1, 1.5])
+    # CSVダウンロード用のDataFrameを決定（全データ優先）
+    download_df = full_df if full_df is not None and not full_df.empty else df_view
+    
+    # 右寄せで3つのボタンを配置（コピー、ダウンロード、更新）
+    col1, col2, col3, col4 = st.columns([7, 1, 1.5, 1])
     
     with col2:
-        # クリップボードコピーボタン
-        if st.button("📋 コピー", help="表示中のテーブルデータをクリップボードにコピーします"):
+        # クリップボードコピーボタン（表示中のデータのみ）
+        if st.button("📋 コピー", help="表示中のテーブルデータをクリップボードにコピーします", key="copy_to_clipboard"):
             try:
                 # デバッグ情報
-                logger.info(f"コピー対象DataFrame shape: {df.shape}")
-                logger.info(f"DataFrame columns: {list(df.columns)}")
+                logger.info(f"コピー対象DataFrame shape: {df_view.shape}")
+                logger.info(f"DataFrame columns: {list(df_view.columns)}")
                 
                 # 現在表示中のDataFrameをTSV形式に変換
-                csv_data = df.to_csv(index=False, sep='\t')
+                csv_data = df_view.to_csv(index=False, sep='\t')
                 
                 # デバッグ: コピーされるデータの先頭部分をログに出力
                 logger.info(f"コピーデータ先頭200文字: {csv_data[:200]}")
@@ -392,16 +389,43 @@ def display_table_action_buttons(df: pd.DataFrame, input_fields_types: dict) -> 
                 </script>
                 """
                 st.markdown(copy_script, unsafe_allow_html=True)
-                st.toast(f"📋 {len(df)}行のテーブルデータをコピーしました！", icon="✅")
-                logger.info(f"テーブルデータクリップボードコピー実行: {len(df)}行のデータ")
+                st.toast(f"📋 {len(df_view)}行のテーブルデータをコピーしました！", icon="✅")
+                logger.info(f"テーブルデータクリップボードコピー実行: {len(df_view)}行のデータ")
                 
             except Exception as e:
                 st.error(f"クリップボードへのコピーに失敗しました: {str(e)}")
                 logger.error(f"クリップボードコピーエラー: {str(e)}")
     
     with col3:
-        # CSVダウンロードボタン
-        display_csv_download_button(df, input_fields_types)
+        # CSVダウンロードボタン（全データ）
+        display_csv_download_button(download_df, input_fields_types)
+    
+    with col4:
+        # 更新ボタン（絞り込み条件を保持）
+        if st.button("🔄", help="最新のデータを取得して表示を更新します", key="refresh_data_separated"):
+            # 絞り込み条件を保存
+            preserved_input_fields = st.session_state.get('input_fields', {}).copy()
+            preserved_input_fields_types = st.session_state.get('input_fields_types', {}).copy()
+            preserved_options_dict = st.session_state.get('options_dict', {}).copy()
+            preserved_limit = st.session_state.get('limit', 50)
+            
+            # データ関連のセッション状態のみクリア
+            if 'df' in st.session_state:
+                del st.session_state['df']
+            if 'df_view' in st.session_state:
+                del st.session_state['df_view']
+            
+            # 絞り込み条件を復元
+            st.session_state['input_fields'] = preserved_input_fields
+            st.session_state['input_fields_types'] = preserved_input_fields_types
+            st.session_state['options_dict'] = preserved_options_dict
+            st.session_state['limit'] = preserved_limit
+            st.session_state['current_page'] = 1  # ページのみリセット
+            
+            # キャッシュクリア
+            st.cache_data.clear()
+            logger.info("テーブル更新ボタンが押されました - データのみクリア、絞り込み条件は保持")
+            st.rerun()
 
 
 def display_csv_download_button(df: pd.DataFrame, input_fields_types: dict) -> None:
@@ -429,7 +453,7 @@ def display_csv_download_button(df: pd.DataFrame, input_fields_types: dict) -> N
             data=csv_string.encode('cp932', errors='replace'),
             file_name=f"data_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}.csv",
             mime="text/csv",
-            key="csv_download"
+            key=f"csv_download_{pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')}"
         )
         
         logger.info("CSVダウンロードボタン表示完了")

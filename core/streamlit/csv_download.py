@@ -62,8 +62,9 @@ def csv_download(selected_display_name):
         
         # ページ表示が変更されたかどうかを確認
         if 'last_selected_table' not in st.session_state or st.session_state['last_selected_table'] != selected_display_name:
-            # ページネーションをデフォルトにリセット
-            st.session_state['limit'] = 50
+            # テーブル変更時のみページネーションをリセット（表示件数は保持）
+            if 'limit' not in st.session_state:
+                st.session_state['limit'] = 50  # 初回のみデフォルト設定
             st.session_state['current_page'] = 1
             st.session_state['last_selected_table'] = selected_display_name
         
@@ -74,8 +75,7 @@ def csv_download(selected_display_name):
             logger.info("フィルター送信ボタンが押されました")
             df = handle_filter_submission(parquet_file_path)
             logger.info(f"handle_filter_submission結果: {df.shape if df is not None and not df.empty else 'None/Empty'}")
-            # フィルター適用時もページネーションをリセット
-            st.session_state['limit'] = 50
+            # フィルター適用時はページのみリセット（表示件数は保持）
             st.session_state['current_page'] = 1
         else:
             logger.info("データ初期読み込み処理を開始")

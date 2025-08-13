@@ -126,7 +126,7 @@ def handle_filter_submission(parquet_file_path):
     if df is not None and not df.empty:
         st.session_state['df'] = df
         st.session_state['total_records'] = len(df)
-        st.session_state['current_page'] = 1
+        st.session_state['current_page'] = 1  # ページのみリセット（表示件数は保持）
         return df
     else:
         st.error("絞込条件に合致するデータがありません。")

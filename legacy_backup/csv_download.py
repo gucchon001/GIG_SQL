@@ -45,8 +45,7 @@ def csv_download(selected_display_name):
         
         if submit_button:
             df = handle_filter_submission(parquet_file_path)
-            # フィルター適用時もページネーションをリセット
-            st.session_state['limit'] = 20
+            # フィルター適用時はページのみリセット（表示件数は保持）
             st.session_state['current_page'] = 1
         else:
             df = load_and_initialize_data(sql_file_name)
