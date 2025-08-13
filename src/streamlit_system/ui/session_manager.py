@@ -18,6 +18,7 @@ def initialize_session_state() -> None:
         'total_records': 0,
         'current_page': 1,
         'selected_rows': 20,
+        'limit': 50,  # 表示件数のデフォルト値を追加
         'sql_files_dict': {},
         'selected_sql_file': None,
         'last_selected_table': None,
