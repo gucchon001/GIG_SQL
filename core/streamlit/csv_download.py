@@ -1,4 +1,5 @@
 import streamlit as st
+import json
 import os
 from src.core.logging.logger import get_logger
 from src.streamlit_system.ui.session_manager import initialize_session_state
@@ -25,10 +26,8 @@ def csv_download(selected_display_name):
         sql_file_name = get_sql_file_name(selected_display_name)
         logger.info(f"Selected SQL file: {sql_file_name}")
         
-        # キャッシュクリアしてフレッシュなデータを取得
-        if hasattr(load_sheet_from_spreadsheet, 'clear'):
-            load_sheet_from_spreadsheet.clear()
-        data = load_data(sql_file_name)
+        # キャッシュ経由でスプレッドシート設定を取得
+        data = _cached_load_data(sql_file_name)
         logger.debug(f"load_data result: {len(data) if data else 0}件のフィルタ設定を取得")
         
         initialize_session_state()
@@ -68,22 +67,36 @@ def csv_download(selected_display_name):
             st.session_state['current_page'] = 1
             st.session_state['last_selected_table'] = selected_display_name
         
-        with st.expander("絞込検索"):
+        # 初期状態は閉じる。押下後は閉じるためのフラグで制御
+        if 'filter_expanded' not in st.session_state:
+            st.session_state['filter_expanded'] = False
+        with st.expander("絞込検索", expanded=st.session_state.get('filter_expanded', True)):
             submit_button = create_filter_form(data)
         
-        if submit_button:
+        # 直近のフィルター入力がセッションに存在する場合は再実行時もフィルター継続
+        has_filter_state = any(k.startswith('input_') for k in st.session_state.keys())
+
+        if submit_button or has_filter_state:
             logger.info("フィルター送信ボタンが押されました")
-            df = handle_filter_submission(parquet_file_path)
+            filters_signature = json.dumps(st.session_state.get('input_fields', {}), ensure_ascii=False, sort_keys=True, default=str)
+            df = _cached_handle_filter_submission(parquet_file_path, filters_signature)
             logger.info(f"handle_filter_submission結果: {df.shape if df is not None and not df.empty else 'None/Empty'}")
-            # フィルター適用時はページのみリセット（表示件数は保持）
-            st.session_state['current_page'] = 1
+            # ページのリセットは明示的な送信時のみ行う（再描画では保持）
+            if submit_button:
+                st.session_state['current_page'] = 1
+            if submit_button:
+                # ボタン押下直後はアコーディオンを閉じる
+                st.session_state['filter_expanded'] = False
         else:
             logger.info("データ初期読み込み処理を開始")
-            df = load_and_initialize_data(sql_file_name)
+            df = _cached_load_and_initialize_data(sql_file_name)
             logger.info(f"load_and_initialize_data結果: {df.shape if df is not None and not df.empty else 'None/Empty'}")
         
         if df is not None and not df.empty:
-            page_size = st.session_state.get('limit', 50)
+            # Parquet 全件読み込み → クライアント側ページングに戻す
+            page_size = st.session_state.get('limit', 20)
+            st.session_state['total_records'] = len(df)
+            st.session_state['__data_is_paged__'] = False
             logger.info(f"csv_download: Calling display_data with page_size={page_size}")
             display_data(df, page_size, st.session_state['input_fields_types'])
         else:
@@ -128,3 +141,24 @@ def create_filter_form(data):
             submit_button = st.form_submit_button(label='絞込')
     
     return submit_button
+
+
+# ===== キャッシュラッパー =====
+
+@st.cache_data(ttl=300, show_spinner=False, max_entries=64)
+def _cached_load_data(sql_file_name: str):
+    """スプレッドシート設定のキャッシュ取得"""
+    # 旧関数は引数だけで決まるためキャッシュキーは関数引数に委譲
+    return load_data(sql_file_name)
+
+
+@st.cache_data(ttl=300, show_spinner=False, max_entries=16)
+def _cached_load_and_initialize_data(sql_file_name: str):
+    """初期データ読み込みのキャッシュ取得（Parquet）"""
+    return load_and_initialize_data(sql_file_name)
+
+
+@st.cache_data(ttl=120, show_spinner=False, max_entries=64)
+def _cached_handle_filter_submission(parquet_file_path: str, filters_signature: str):
+    """フィルター適用後データのキャッシュ取得（Parquet）。フィルタ条件でキャッシュキーを分離"""
+    return handle_filter_submission(parquet_file_path)

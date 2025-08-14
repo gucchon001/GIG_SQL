@@ -49,7 +49,10 @@ class DatabaseConnection:
                     passwd=self.db_config['password'],
                     database=self.db_config['database'],
                     auth_plugin='mysql_native_password',
-                    connect_timeout=100,
+                    connect_timeout=300,  # 接続タイムアウトを5分に延長
+                    read_timeout=1800,    # 読み取りタイムアウトを30分に設定
+                    write_timeout=1800,   # 書き込みタイムアウトを30分に設定
+                    autocommit=True,      # 自動コミットを有効化
                     use_pure=True
                 )
                 

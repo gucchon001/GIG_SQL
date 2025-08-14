@@ -299,10 +299,25 @@ def prepare_csv_data(df: pd.DataFrame, input_fields_types: Dict[str, str]) -> pd
                 # 日付型の処理は既存のformat_dates関数を使用
                 pass
     
-    # 数値型の調整
-    csv_df = csv_df.map(
-        lambda x: str(int(x)) if isinstance(x, (float, int)) and float(x).is_integer() else str(x)
-    )
+    # 数値型の調整（complex型も安全に処理）
+    def safe_convert(x):
+        try:
+            # 複素数型の場合は実部のみを使用
+            if isinstance(x, complex):
+                x = x.real
+            # NaN、無限大をチェック
+            if pd.isna(x) or (isinstance(x, (float, int)) and not np.isfinite(x)):
+                return ""
+            # 整数値の場合は整数として表示
+            if isinstance(x, (float, int)) and float(x).is_integer():
+                return str(int(x))
+            # その他は文字列として処理
+            return str(x)
+        except (ValueError, TypeError, OverflowError):
+            # 変換エラーの場合は空文字列
+            return ""
+    
+    csv_df = csv_df.map(safe_convert)
     
     logger.info(f"CSV用データ準備完了: {csv_df.shape}")
     return csv_df

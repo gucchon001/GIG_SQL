@@ -590,8 +590,9 @@ def set_period_condition(period_condition, period_criteria, sql_query, category)
 
         LOGGER.info("期間条件設定完了")
         LOGGER.info("=" * 50)
-        LOGGER.info("最終生成SQL:")
-        LOGGER.info(sql_query[:500] + "..." if len(sql_query) > 500 else sql_query)
+        # SQL本文のログ出力は抑制（セキュリティ/可読性のため）
+        LOGGER.info("最終生成SQL（本文非表示）")
+        LOGGER.info(f"SQL長: {len(sql_query)} 文字")
         LOGGER.info("=" * 50)
         
         return sql_query
@@ -687,8 +688,8 @@ def find_submission_table_alias(sql_query):
     
     # SQLの一部を表示してデバッグ
     LOGGER.warning("user_applicationsテーブルのエイリアスが見つかりませんでした")
-    LOGGER.info("SQL内容（最初の300文字）:")
-    LOGGER.info(sql_query[:300] + "..." if len(sql_query) > 300 else sql_query)
+    # SQL本文のログ出力は抑制
+    LOGGER.info(f"SQL長: {len(sql_query)} 文字（本文非表示）")
     
     return None
 
@@ -1283,7 +1284,8 @@ def execute_sql_query_with_conditions(sql_file_name, config, period_condition, p
                 )
             else:
                 sql_query_with_conditions = sql_query_with_period_condition
-                LOGGER.info(f"実行SQLクエリ - ファイル名: {sql_file_name}\n{sql_query_with_conditions}")
+                # SQL本文のログ出力は抑制
+                LOGGER.info(f"実行SQLクエリ - ファイル名: {sql_file_name}（本文非表示, 長さ: {len(sql_query_with_conditions)} 文字）")
             return sql_query_with_conditions
         except Exception as e:
             LOGGER.error(f"SQLクエリの処理中にエラーが発生しました: {e}")

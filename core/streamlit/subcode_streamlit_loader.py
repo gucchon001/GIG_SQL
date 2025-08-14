@@ -440,9 +440,10 @@ def load_and_filter_parquet(parquet_file_path, input_fields, input_fields_types,
                 LOGGER.debug(f"フィルタリング - {field} == '{value}'")
 
             elif input_fields_types[field] == 'チェックボックス':
+                # 元の挙動に戻す：選択ラベルでそのまま比較
                 selected_labels = [label for label, selected in value.items() if selected]
                 if selected_labels:
-                    df[field] = df[field].astype(str)  # 文字列に変換
+                    df[field] = df[field].astype(str)
                     df = df[df[field].isin(selected_labels)]
                     LOGGER.debug(f"フィルタリング - {field} に選択されたラベル {selected_labels} が含まれる")
 

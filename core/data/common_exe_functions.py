@@ -95,8 +95,7 @@ def process_sql_and_csv_files(sql_and_csv_files, conn, config):
                     )
                 else:
                     sql_query_with_conditions = sql_query_with_period_condition
-                LOGGER.info(f"SQLクエリの条件追加が完了しました: {sql_file_name}")
-                LOGGER.info(sql_query_with_conditions)
+                LOGGER.info(f"SQLクエリの条件追加が完了しました: {sql_file_name}（本文非表示, 長さ: {len(sql_query_with_conditions)} 文字）")
             except Exception as e:
                 LOGGER.error(f"SQLクエリの処理中にエラーが発生しました: {e}")
                 result = f"★失敗★　{sql_file_name}: SQLクエリの処理中にエラー"

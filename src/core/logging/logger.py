@@ -162,6 +162,30 @@ class LoggerManager:
         file_handler.setLevel(level)
         file_handler.setFormatter(formatter)
         
+        # Streamlitログ最小化フィルタ（テーブル/絞り込み/ページネーション/CSV関連のみ残す）
+        try:
+            minimal_flag = os.getenv('STREAMLIT_LOG_MINIMAL', 'true').lower() == 'true'
+            if minimal_flag and os.path.basename(log_file) == 'streamlit.log':
+                from typing import List
+                class MinimalStreamlitFilter(logging.Filter):
+                    def __init__(self, keywords: List[str]):
+                        super().__init__()
+                        self.keywords = [kw.strip() for kw in keywords if kw.strip()]
+                    def filter(self, record: logging.LogRecord) -> bool:  # noqa: D401
+                        # 常にエラー/警告は通す
+                        if record.levelno >= logging.WARNING:
+                            return True
+                        msg = f"{record.getMessage()}".lower()
+                        # 主要操作のみ通す
+                        return any(kw in msg for kw in self.keywords)
+
+                # 主要UI操作: テーブル/絞込/ページング/CSV/コピー/アクションボタン
+                default_keywords = 'table,データフレーム,表示,filter,絞込,検索,pagination,ページ,download,ダウンロード,csv,copy,コピー,button,ボタン,action,アクション,clipboard'
+                keywords = os.getenv('STREAMLIT_LOG_KEYWORDS', default_keywords)
+                file_handler.addFilter(MinimalStreamlitFilter(keywords.split(',')))
+        except Exception as _e:  # フィルタ導入に失敗しても無視して続行
+            pass
+        
         # コンソールハンドラ
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setLevel(level)

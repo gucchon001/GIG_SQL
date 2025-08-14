@@ -223,20 +223,8 @@ def check_background_completion():
             LOGGER.info(f"ログファイルが{timeout_threshold//60}分以上更新されていないため完了とみなします: {time_since_update:.1f}秒前")
             return True
         
-        # 正常な日本語での成功パターンのみ（文字化け対応は削除）
-        success_patterns = [
-            r'処理完了',
-            r'Parquet.*正常.*保存.*ました',
-            r'(\d+).*レコード.*処理完了',
-            r'正常に保存されました',
-            r'Parquetファイルが正常に保存されました',
-            r'処理完了.*->',
-            r'ログシートに書き込みました.*成功',
-            r'\d+.*レコード',
-            r'Success',
-            r'success',
-            r'完了',
-        ]
+        # 最終完了メッセージのみで判定（個別の処理完了は除外）
+        # 成功判定は final_completion_indicators のみで行う
         
         # エラーパターン（正常な日本語と英語のみ）
         error_patterns = [
@@ -295,17 +283,43 @@ if st.session_state.batch_status == "実行中":
         st.session_state.batch_status = "完了"
         st.session_state.batch_completion_time = time.strftime("%Y-%m-%d %H:%M:%S")
         st.session_state.show_success_toast = True
+        
+        # 処理完了後に元のテーブルに戻るため、選択状態を復元
+        if 'original_selected_display_name' in st.session_state:
+            try:
+                # 保存された元の選択状態を復元
+                original_display_name = st.session_state.original_selected_display_name
+                st.session_state.child_radio = original_display_name
+                LOGGER.info(f"処理完了後、元のテーブルに戻ります: {original_display_name}")
+                
+                # 復元後は保存された状態をクリア
+                del st.session_state.original_selected_display_name
+            except Exception as e:
+                LOGGER.warning(f"テーブル選択状態の復元に失敗: {e}")
+        
         st.rerun()
     else:
         # バックグラウンド実行中のステータス表示（ページ保持）
-        st.info("🔄 バックグラウンドでデータ更新処理を実行中です...")
+        st.info("🔄 データ更新処理を実行中です（通常2-5分程度かかります）")
+        st.warning("⚠️ 処理完了まで他のページに移動しないでください")
         
         # 実行時間を計算して表示
         if 'batch_start_time' in st.session_state:
             elapsed_time = time.time() - st.session_state.batch_start_time
             minutes = int(elapsed_time // 60)
             seconds = int(elapsed_time % 60)
-            st.info(f"⏱️ 実行時間: {minutes}分{seconds}秒")
+            
+            # 進捗に応じた表示を変更
+            if elapsed_time < 30:
+                st.info(f"🚀 開始中... ({seconds}秒経過)")
+            elif elapsed_time < 120:
+                st.info(f"📊 データ処理中... ({minutes}分{seconds}秒経過)")
+            else:
+                st.info(f"⏳ 大容量データ処理中... ({minutes}分{seconds}秒経過)")
+        
+        # 処理対象を表示
+        if 'current_selected_table' in st.session_state:
+            st.info(f"📋 更新対象: {st.session_state.current_selected_table}")
         
         # 30秒間隔で自動チェック
         import datetime
@@ -318,7 +332,7 @@ if st.session_state.batch_status == "実行中":
             st.rerun()
         
         # 手動更新ボタンを提供
-        if st.button("🔄 状況確認", key="manual_check_button"):
+        if st.button("📊 処理状況を確認", key="manual_check_button"):
             # 手動チェック時にデバッグ情報も表示
             completion_result = check_background_completion()
             st.info(f"完了チェック結果: {completion_result}")
@@ -335,18 +349,16 @@ if st.session_state.batch_status == "実行中":
             st.rerun()
         
         # バッチ状態のリセットボタンを追加
-        if st.button("🔧 状態リセット", key="reset_batch_status", help="処理が正常に完了したのに状態が変わらない場合に使用"):
+        if st.button("❌ 処理を停止", key="reset_batch_status", help="データ更新処理を強制停止して初期状態に戻します"):
             st.session_state.batch_status = "待機"
             if 'batch_start_time' in st.session_state:
                 del st.session_state.batch_start_time
             if 'current_selected_table' in st.session_state:
                 del st.session_state.current_selected_table
-            st.success("バッチ状態をリセットしました")
+            st.success("データ更新処理を停止しました")
             st.rerun()
         
-        # 現在のページ情報を表示
-        if 'current_selected_table' in st.session_state:
-            st.info(f"📊 更新対象: {st.session_state.current_selected_table}")
+        # 重複表示削除（上で既に表示済み）
         
         # ページ遷移を無効化（更新中はトップページに戻らない）
         st.markdown("""
@@ -579,38 +591,37 @@ if selected_parent == "CSVダウンロード":
                                 # ヘッダーからインデックスを取得
                                 try:
                                     sql_file_index = header.index('sqlファイル名')
-                                    main_table_index = header.index('メインテーブル')
+                                    csv_file_index = header.index('CSVファイル呼称')
                                     
-                                    # 対応するメインテーブル名を検索
+                                    # 対応するCSVファイル呼称を検索
                                     for row in data[1:]:
-                                        if len(row) > max(sql_file_index, main_table_index):
+                                        if len(row) > max(sql_file_index, csv_file_index):
                                             if row[sql_file_index] == sql_file_name:
-                                                selected_table = row[main_table_index]
-                                                LOGGER.info(f"個別実行シートから取得したメインテーブル名: {selected_table}")
+                                                selected_table = row[csv_file_index]
+                                                LOGGER.info(f"個別実行シートから取得したCSVファイル呼称: {selected_table}")
                                                 break
                                     
                                     if not selected_table:
-                                        LOGGER.warning(f"SQLファイル '{sql_file_name}' に対応するメインテーブル名が見つかりませんでした。")
+                                        LOGGER.warning(f"SQLファイル '{sql_file_name}' に対応するCSVファイル呼称が見つかりませんでした。")
                                         
                                 except ValueError as e:
-                                    LOGGER.error(f"必要なヘッダー（sqlファイル名またはメインテーブル）が見つかりません: {e}")
+                                    LOGGER.error(f"必要なヘッダー（sqlファイル名またはCSVファイル呼称）が見つかりません: {e}")
                             else:
                                 LOGGER.error("個別実行シートにデータがありません。")
                         else:
                             LOGGER.error("個別実行シートの読み込みに失敗しました。")
                             
                     except Exception as e:
-                        LOGGER.error(f"個別実行シートからメインテーブル名を取得中にエラーが発生: {e}")
+                        LOGGER.error(f"個別実行シートからCSVファイル呼称を取得中にエラーが発生: {e}")
                         # フォールバック：SQLファイル名から推定
                         base_name = sql_file_name.replace('.sql', '')
-                        if '_' in base_name:
-                            selected_table = base_name.split('_')[-1]
-                        else:
-                            selected_table = base_name
-                        LOGGER.info(f"フォールバック: SQLファイル名から推定したメインテーブル名: {selected_table}")
+                        # 数字やハイフンを除去してシンプルな名前にする
+                        selected_table = base_name.split('_')[0] if '_' in base_name else base_name
+                        selected_table = ''.join([c for c in selected_table if not c.isdigit() and c != '-'])
+                        LOGGER.info(f"フォールバック: SQLファイル名から推定したCSVファイル呼称: {selected_table}")
             
             if selected_table:
-                LOGGER.info(f"メインテーブル名が取得できました: {selected_table}")
+                LOGGER.info(f"CSVファイル呼称が取得できました: {selected_table}")
                 LOGGER.info("セッション状態を「実行中」に変更します")
                 st.session_state.batch_status = "実行中"
                 st.session_state.batch_output = ""
@@ -641,13 +652,17 @@ if selected_parent == "CSVダウンロード":
                 except Exception as e:
                     LOGGER.warning(f"初期ファイル情報記録エラー: {e}")
                 
+                # 処理完了後に元のテーブルに戻るため、現在の選択状態を保存
+                st.session_state.original_selected_display_name = selected_display_name
+                LOGGER.info(f"個別更新開始前に選択状態を保存: {selected_display_name}")
+                
                 # バッチ実行開始フラグを設定（即座にプログレスバーを表示するため）
                 st.session_state.pending_batch_execution = selected_table
                 
                 # **即座にUIを更新してプログレスバーを表示**
                 st.rerun()
             else:
-                LOGGER.error("メインテーブル名が取得できませんでした")
+                LOGGER.error("CSVファイル呼称が取得できませんでした")
                 if not selected_display_name:
                     LOGGER.error("selected_display_name が None です")
                     st.sidebar.error("テーブルが選択されていません。左サイドバーのサブメニューからテーブルを選択してください。")

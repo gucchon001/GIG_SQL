@@ -2,6 +2,8 @@
 
 import os
 import pandas as pd
+import mysql.connector
+import time
 from core.config.config_loader import load_config
 try:
     # 新構造のログ管理を優先使用
@@ -98,14 +100,14 @@ def main(sheet_name, execution_column, config_file, selected_table=None):
     conn = get_connection(config_file)
     if conn:
         processed_count = 0
-        total_count = len([e for e in sql_files_list if not selected_table or e[10] == selected_table])
+        total_count = len([e for e in sql_files_list if not selected_table or e[11] == selected_table])
         
         for entry in sql_files_list:
             sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution, category, main_table_name, csv_file_name_column, sheet_name_record = entry
 
-            # テーブル名が指定されている場合、選択されたテーブルのみを処理
-            if selected_table and main_table_name != selected_table:
-                LOGGER.info(f"スキップ: {main_table_name} は選択されたテーブルではありません。")
+            # テーブル名が指定されている場合、CSVファイル呼称で判定
+            if selected_table and csv_file_name_column != selected_table:
+                LOGGER.info(f"スキップ: {csv_file_name_column} は選択されたCSVファイル呼称（{selected_table}）に対応しません。")
                 continue
                 
             processed_count += 1
@@ -150,7 +152,11 @@ def main(sheet_name, execution_column, config_file, selected_table=None):
                     main_table_name
                 )
                 if sql_query:
-                    LOGGER.info(sql_query)
+                    # SQL本文のログ出力は抑制
+                    try:
+                        LOGGER.info(f"実行SQL - ファイル名: {sql_file_name}（本文非表示, 長さ: {len(sql_query)} 文字）")
+                    except Exception:
+                        LOGGER.info(f"実行SQL - ファイル名: {sql_file_name}（本文非表示）")
                     
                     # スプレッドシートの設定に基づいて出力処理を分岐
                     if output_to_spreadsheet == 'CSV':
@@ -230,7 +236,38 @@ def main(sheet_name, execution_column, config_file, selected_table=None):
                             LOGGER.error(f"❌ エラー ({processed_count}/{total_count}): {main_table_name} - {e}")
                     else:
                         # デフォルト処理（従来のParquet出力）
-                        df = pd.read_sql_query(sql_query, conn)
+                        # MySQL接続エラーの対応: 再接続機能付きでSQL実行
+                        max_sql_retries = 3
+                        sql_retry_count = 0
+                        df = None
+                        
+                        while sql_retry_count < max_sql_retries:
+                            try:
+                                # 接続状態をチェック
+                                conn.ping(reconnect=True)
+                                df = pd.read_sql_query(sql_query, conn)
+                                LOGGER.info(f"SQLクエリ実行成功: {sql_file_name}")
+                                break
+                            except mysql.connector.Error as sql_err:
+                                sql_retry_count += 1
+                                LOGGER.warning(f"SQL実行エラー (試行 {sql_retry_count}/{max_sql_retries}): {sql_err}")
+                                if sql_retry_count >= max_sql_retries:
+                                    LOGGER.error(f"SQL実行の最大試行回数に達しました: {sql_file_name}")
+                                    raise sql_err
+                                LOGGER.info("5秒後にSQL実行を再試行します...")
+                                time.sleep(5)
+                            except Exception as sql_err:
+                                sql_retry_count += 1
+                                LOGGER.warning(f"予期しないSQL実行エラー (試行 {sql_retry_count}/{max_sql_retries}): {sql_err}")
+                                if sql_retry_count >= max_sql_retries:
+                                    LOGGER.error(f"SQL実行の最大試行回数に達しました: {sql_file_name}")
+                                    raise sql_err
+                                LOGGER.info("5秒後にSQL実行を再試行します...")
+                                time.sleep(5)
+                        
+                        if df is None:
+                            LOGGER.error(f"SQLクエリの実行に失敗しました: {sql_file_name}")
+                            continue
                         if not df.empty:
                             LOGGER.info(f"{display_name}のデータを取得しました。")
                             

@@ -20,14 +20,22 @@ from src.core.logging.logger import get_logger
 class SQLLoader:
     """SQL ローダー管理クラス"""
     
-    def __init__(self, config: AppConfig):
+    def __init__(self, config: Optional[AppConfig] = None):
         """
         SQL ローダーを初期化
         
         Args:
             config: アプリケーション設定
         """
-        self.config = config
+        # 設定未指定時はデフォルトの設定ファイルから読み込み
+        if config is None:
+            try:
+                self.config = AppConfig.from_config_file('config/settings.ini')
+            except Exception:
+                # 最低限のフォールバック（環境依存部は実行時に例外化する可能性あり）
+                self.config = AppConfig.from_env()
+        else:
+            self.config = config
         self.logger = get_logger(__name__)
         self._cached_sql_files = None
     
@@ -55,7 +63,8 @@ class SQLLoader:
         self,
         sql_file: str,
         conditions: Optional[Dict[str, Any]] = None,
-        limit: Optional[int] = None
+        limit: Optional[int] = None,
+        offset: Optional[int] = None
     ) -> Optional[pd.DataFrame]:
         """
         SQLファイルを実行してデータを取得
@@ -88,9 +97,12 @@ class SQLLoader:
             if conditions:
                 sql_query = self._add_conditions_to_sql(sql_query, conditions)
             
-            # 行数制限を追加
+            # LIMIT / OFFSET を追加
             if limit and limit > 0:
-                sql_query = f"{sql_query} LIMIT {limit}"
+                if offset and offset > 0:
+                    sql_query = f"{sql_query} LIMIT {limit} OFFSET {offset}"
+                else:
+                    sql_query = f"{sql_query} LIMIT {limit}"
             
             # SQLを実行
             data = pd.read_sql(sql_query, conn)
@@ -102,6 +114,37 @@ class SQLLoader:
             self.logger.error(f"SQL実行エラー: {sql_file}, {e}")
             return None
             
+        finally:
+            self._cleanup_connections(db_connection, ssh_tunnel)
+
+    def execute_sql_file_count(
+        self,
+        sql_file: str,
+        conditions: Optional[Dict[str, Any]] = None,
+    ) -> Optional[int]:
+        """
+        対象SQL（条件適用後）の総件数を取得
+        
+        SELECT COUNT(*) FROM (<base_sql_with_conditions>) AS t 形式で集計
+        """
+        ssh_tunnel = None
+        db_connection = None
+        try:
+            self.logger.info(f"件数取得開始: {sql_file}")
+            ssh_tunnel, db_connection, conn = self._establish_connections()
+            if not conn:
+                return None
+            base_sql = self._load_sql_query(sql_file)
+            if not base_sql:
+                return None
+            if conditions:
+                base_sql = self._add_conditions_to_sql(base_sql, conditions)
+            count_sql = f"SELECT COUNT(*) AS cnt FROM ({base_sql}) AS t"
+            df = pd.read_sql(count_sql, conn)
+            return int(df.iloc[0]['cnt']) if not df.empty else 0
+        except Exception as e:
+            self.logger.error(f"件数取得エラー: {e}")
+            return None
         finally:
             self._cleanup_connections(db_connection, ssh_tunnel)
     
