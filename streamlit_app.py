@@ -61,21 +61,19 @@ if 'batch_status' not in st.session_state:
 
 # run_batch_file関数の定義
 def run_batch_file(script_file_path, table_name=None):
-    """バッチファイルを実行する関数"""
+    """バッチファイルを実行する関数（出力はバイトで受け取り安全にデコード）"""
     try:
         # 実行開始時間を記録（毎回更新）
         st.session_state.batch_start_time = time.time()
         st.session_state.batch_status = "実行中"
             
-        # PowerShellスクリプトを実行
+        # PowerShellスクリプトを実行（テキストモードは使用せず、バイトで取得）
         if table_name:
             LOGGER.info(f"PowerShellスクリプトを実行開始: {script_file_path} テーブル: {table_name}")
             result = subprocess.run(
                 ["powershell", "-ExecutionPolicy", "Bypass", "-File", script_file_path, "-TableName", table_name],
                 capture_output=True,
-                text=True,
-                encoding='utf-8',
-                errors='replace',
+                text=False,
                 timeout=1800  # 30分でタイムアウト
             )
         else:
@@ -83,13 +81,26 @@ def run_batch_file(script_file_path, table_name=None):
             result = subprocess.run(
                 ["powershell", "-ExecutionPolicy", "Bypass", "-File", script_file_path],
                 capture_output=True,
-                text=True,
-                encoding='utf-8',
-                errors='replace',
+                text=False,
                 timeout=1800  # 30分でタイムアウト
             )
         
-        LOGGER.info(f"バッチファイルの出力: {result.stdout}")
+        # 出力を安全にデコード（優先: UTF-8、フォールバック: CP932）
+        def safe_decode(b: bytes) -> str:
+            if b is None:
+                return ""
+            try:
+                return b.decode('utf-8')
+            except Exception:
+                try:
+                    return b.decode('cp932', errors='replace')
+                except Exception:
+                    return b.decode('utf-8', errors='replace')
+
+        stdout_text = safe_decode(result.stdout)
+        stderr_text = safe_decode(result.stderr)
+
+        LOGGER.info(f"バッチファイルの出力: {stdout_text}")
         
         # 実行結果から詳細情報を抽出
         import re
@@ -100,24 +111,24 @@ def run_batch_file(script_file_path, table_name=None):
         st.session_state.batch_completion_time = completion_time
         
         # レコード数を抽出（出力から「XXX レコード処理完了」を検索）
-        record_match = re.search(r'(\d+) レコード処理完了', result.stdout)
+        record_match = re.search(r'(\d+) レコード処理完了', stdout_text)
         if record_match:
             st.session_state.batch_records_count = int(record_match.group(1))
         else:
             # 代替パターンを試す
-            record_match = re.search(r'(\d+) レコード', result.stdout)
+            record_match = re.search(r'(\d+) レコード', stdout_text)
             if record_match:
                 st.session_state.batch_records_count = int(record_match.group(1))
             else:
                 st.session_state.batch_records_count = "不明"
         
         # 処理されたファイル名を抽出
-        file_match = re.search(r'処理完了: (\w+)', result.stdout)
+        file_match = re.search(r'処理完了: (\w+)', stdout_text)
         if file_match:
             st.session_state.batch_processed_table = file_match.group(1)
         
         st.session_state.batch_status = "完了"
-        st.session_state.batch_output = result.stdout
+        st.session_state.batch_output = stdout_text if stdout_text else stderr_text
         st.session_state.show_success_toast = True  # 成功トーストフラグ
         
         # バックグラウンドスレッドからはst.rerun()が使えないため削除
