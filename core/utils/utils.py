@@ -223,16 +223,16 @@ def load_and_initialize_data(sql_file_name, num_rows=None):
         try:
             from src.core.config.settings import AppConfig
             app_config = AppConfig.from_config_file('config/settings.ini')
-            csv_base_path = app_config.paths.csv_base_path
+            csv_base_path = os.path.normpath(app_config.paths.csv_base_path)
         except ImportError:
             # フォールバック：旧構造
             import configparser
             config = configparser.ConfigParser()
             config.read('config/settings.ini', encoding='utf-8')
-            csv_base_path = config['Paths']['csv_base_path']
+            csv_base_path = os.path.normpath(config['Paths']['csv_base_path'])
         
-        # 常に設定ファイルのパスを使用
-        parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
+        # 常に設定ファイルのパスを使用（Windows UNCパス対応）
+        parquet_file_path = os.path.join(csv_base_path, f"{sql_file_name}.parquet")
         
         LOGGER.info(f"Parquetファイルパス (utils.py): {parquet_file_path}")
         if os.path.exists(parquet_file_path):

@@ -338,8 +338,11 @@ def parquetfile_export(conn, sql_query, parquet_file_path, main_table_name, cate
 
         LOGGER.info(f"DataFrame info after type conversion:\n{df.info()}")
 
-        # 一時ファイルパスを作成
-        temp_file_path = parquet_file_path + '.temp'
+        # ディレクトリ作成（Windows UNCパス対応）
+        os.makedirs(os.path.dirname(parquet_file_path), exist_ok=True)
+        
+        # 一時ファイルパスを作成（Windows UNCパス対応）
+        temp_file_path = os.path.join(os.path.dirname(parquet_file_path), os.path.basename(parquet_file_path) + '.temp')
 
         try:
             # DataFrameをParquetファイルとして保存
