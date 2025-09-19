@@ -1,0 +1,25 @@
+test
+build
+dist
+myenv
+data_Parquet
+__pycache__
+*.ini
+*.json
+*.log
+*.exe
+*.bat
+*.spec
+*.pyc
+*.pem
+*.csv
+*.xlsx
+*.xls
+*.parquet
+
+# 設定ファイル（秘匿情報）
+config/secrets.env
+config/secrets.*.env
+
+# 旧設定ファイル（後方互換性のため一時的に許可）
+# config.ini は削除済み（config/settings.iniに移行完了）

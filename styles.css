@@ -1,0 +1,93 @@
+/* styles.css */
+.stCheckbox > div {
+    display: flex;
+    flex-wrap: wrap;
+}
+.stCheckbox > div > label {
+    flex: 1 1 45%;
+    max-width: 45%;
+    margin-right: 10px;
+    font-size: 16px;  /* 選択肢のフォントサイズを16pxに変更 */
+}
+
+/* メインコンテナの幅調整 */
+.main > div {
+    max-width: 1200px !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+/* テーブル表示の幅を画面内に収める */
+.stDataFrame > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important; /* 横スクロールを有効 */
+    height: 600px !important;
+    min-height: 600px !important; /* 最小高度を固定 */
+    max-height: 600px !important; /* 最大高度を固定 */
+    overflow-y: auto !important; /* 縦スクロールを有効 */
+}
+
+/* データフレーム表示のスタイル調整 */
+.dataframe {
+    width: 100% !important;
+    font-size: 12px;
+    height: 600px !important;
+    min-height: 600px !important; /* 最小高度を固定 */
+    max-height: 600px !important; /* 最大高度を固定 */
+    overflow: auto !important; /* 縦横両方のスクロールを有効 */
+}
+
+/* テーブルのセル幅を調整 */
+.dataframe th, .dataframe td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 80px !important;
+    max-width: 150px !important;
+    padding: 4px 8px !important;
+}
+
+/* テーブル全体のレスポンシブ設定 */
+.stDataFrame table {
+    width: 100% !important;
+    table-layout: fixed !important; /* 固定レイアウトで幅を制御 */
+    border-collapse: collapse !important;
+}
+
+/* データフレーム全体のコンテナ */
+.stDataFrame {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 600px !important;
+    min-height: 600px !important; /* 最小高度を固定 */
+    max-height: 600px !important; /* 最大高度を固定 */
+    box-sizing: border-box !important;
+}
+
+/* StreamlitのDataFrameの動的高度調整を無効化 */
+div[data-testid="stDataFrame"] {
+    height: 600px !important;
+    min-height: 600px !important;
+    max-height: 600px !important;
+}
+
+/* DataFrameの内部iframeも固定高度 */
+div[data-testid="stDataFrame"] iframe {
+    height: 600px !important;
+    min-height: 600px !important;
+    max-height: 600px !important;
+}
+
+/* CSVダウンロードボタンを右寄せ */
+.stDownloadButton {
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin-bottom: 1rem !important;
+}
+
+.stDownloadButton > button {
+    margin-left: auto !important;
+}
+
+
