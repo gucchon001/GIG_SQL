@@ -58,7 +58,7 @@ def load_data(sql_file_name: str) -> Optional[dict]:
             config.read('config/settings.ini', encoding='utf-8')
             csv_base_path = config['Paths']['csv_base_path']
         
-        parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
+        parquet_file_path = os.path.join(csv_base_path, f"{sql_file_name}.parquet")
         
         # Parquetファイルの存在確認
         import os
@@ -138,7 +138,7 @@ def load_and_initialize_data(sql_file_name: str, num_rows: Optional[int] = None)
             config.read('config/settings.ini', encoding='utf-8')
             csv_base_path = config['Paths']['csv_base_path']
         
-        parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
+        parquet_file_path = os.path.join(csv_base_path, f"{sql_file_name}.parquet")
         
         # Parquetファイル読み込み
         df = load_parquet_file(parquet_file_path, num_rows)

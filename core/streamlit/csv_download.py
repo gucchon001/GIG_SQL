@@ -47,11 +47,15 @@ def csv_download(selected_display_name):
             config.read('config/settings.ini', encoding='utf-8')
             csv_base_path = config['Paths']['csv_base_path']
         
-        # 設定ファイルのパスを使用
-        parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
+        # 設定ファイルのパスを使用（Windows UNCパス対応）
+        parquet_file_path = os.path.join(csv_base_path, f"{sql_file_name}.parquet")
         logger.info(f"Parquetファイルパス: {parquet_file_path}")
         logger.info(f"Parquetファイル存在確認: {os.path.exists(parquet_file_path)}")
         last_modified = get_parquet_file_last_modified(parquet_file_path)
+        
+        # Noneの場合のデフォルト値を設定
+        if last_modified is None:
+            last_modified = "ファイルが見つかりません"
         
         if not data:
             st.error("指定されている項目がありません")

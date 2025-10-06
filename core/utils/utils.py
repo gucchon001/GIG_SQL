@@ -232,7 +232,7 @@ def load_and_initialize_data(sql_file_name, num_rows=None):
             csv_base_path = config['Paths']['csv_base_path']
         
         # 常に設定ファイルのパスを使用
-        parquet_file_path = f"{csv_base_path}/{sql_file_name}.parquet"
+        parquet_file_path = os.path.join(csv_base_path, f"{sql_file_name}.parquet")
         
         LOGGER.info(f"Parquetファイルパス (utils.py): {parquet_file_path}")
         if os.path.exists(parquet_file_path):
