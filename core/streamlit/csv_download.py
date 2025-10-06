@@ -39,13 +39,13 @@ def csv_download(selected_display_name):
         try:
             from src.core.config.settings import AppConfig
             app_config = AppConfig.from_config_file('config/settings.ini')
-            csv_base_path = app_config.paths.csv_base_path
+            csv_base_path = os.path.normpath(app_config.paths.csv_base_path)
         except ImportError:
             # フォールバック：旧構造
             import configparser
             config = configparser.ConfigParser()
             config.read('config/settings.ini', encoding='utf-8')
-            csv_base_path = config['Paths']['csv_base_path']
+            csv_base_path = os.path.normpath(config['Paths']['csv_base_path'])
         
         # 設定ファイルのパスを使用（Windows UNCパス対応）
         parquet_file_path = os.path.join(csv_base_path, f"{sql_file_name}.parquet")
