@@ -77,7 +77,7 @@ try {
     $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
     
     # Execute Python script with explicit UTF-8 encoding
-    $Command = "chcp 65001 > nul & python `"$PythonScript`" `"$TableName`""
+    $Command = "chcp 65001 > nul; python `"$PythonScript`" `"$TableName`""
     cmd /c $Command
     
     if ($LASTEXITCODE -eq 0) {

@@ -34,7 +34,7 @@ try {
     $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
     
     # Execute Python script with explicit UTF-8 encoding
-    cmd /c "chcp 65001 > nul & python `"$PythonScript`""
+    cmd /c "chcp 65001 > nul; python `"$PythonScript`""
     
     # Check exit code
     if ($LASTEXITCODE -ne 0) {

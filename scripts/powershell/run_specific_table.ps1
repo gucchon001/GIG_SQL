@@ -51,7 +51,7 @@ try {
     Write-Host "[INFO] 実行コマンド: python $PythonScript $Arguments" -ForegroundColor Gray
     
     # Execute Python script with explicit UTF-8 encoding
-    cmd /c "chcp 65001 > nul && python $PythonScript $Arguments"
+    cmd /c "chcp 65001 > nul; python $PythonScript $Arguments"
     
     # Check exit code
     if ($LASTEXITCODE -ne 0) {

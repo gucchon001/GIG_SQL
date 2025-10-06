@@ -11,7 +11,7 @@ Write-Host "新しい構造での実行" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
 
 # Pythonパスの設定
-$env:PYTHONPATH = "$PWD;$PWD/src"
+$env:PYTHONPATH = "$PWD;$PWD\src"
 
 Write-Host "サーバー設定:" -ForegroundColor Cyan
 Write-Host "  ホスト: $ServerHost" -ForegroundColor White
