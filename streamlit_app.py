@@ -870,12 +870,9 @@ if selected_parent == "CSVダウンロード":
                 st.sidebar.info("✅ 次回からより正確な進捗予想が可能になります")
                 # 学習データの分析結果を表示
                 try:
-                    performance_data = analyze_historical_performance()
-                    if performance_data:
-                        st.sidebar.info(f"📈 収集データ数: {len(performance_data)} 件")
-                        recent_data = performance_data[-5:]
-                        avg_time = sum(p['estimated_time'] for p in recent_data) / len(recent_data)
-                        st.sidebar.info(f"⏱️ 平均処理時間: {avg_time:.1f}秒")
+                    # 学習データ分析は将来の実装のためコメントアウト
+                    # performance_data = analyze_historical_performance()
+                    pass
                 except:
                     pass
                 # 学習モードフラグをリセット
