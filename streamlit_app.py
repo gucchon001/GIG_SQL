@@ -32,6 +32,18 @@ except ImportError:
     from core.config.my_logging import setup_department_logger
     LOGGER = setup_department_logger('streamlit', app_type='streamlit')
 
+# エラー通知モジュールのインポート
+try:
+    from src.streamlit_system.utils.error_notifier import (
+        notify_critical_error,
+        notify_data_update_error,
+        notify_batch_execution_error
+    )
+    ERROR_NOTIFICATION_AVAILABLE = True
+except ImportError:
+    ERROR_NOTIFICATION_AVAILABLE = False
+    LOGGER.warning("エラー通知モジュールが利用できません")
+
 # サイドバーのタイトルを小さくするためのCSSスタイル
 sidebar_header = """
 <style>
