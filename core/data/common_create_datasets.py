@@ -100,14 +100,14 @@ def main(sheet_name, execution_column, config_file, selected_table=None):
     conn = get_connection(config_file)
     if conn:
         processed_count = 0
-        total_count = len([e for e in sql_files_list if not selected_table or e[11] == selected_table])
+        total_count = len([e for e in sql_files_list if not selected_table or e[10] == selected_table])
         
         for entry in sql_files_list:
             sql_file_name, csv_file_name, period_condition, period_criteria, save_path_id, output_to_spreadsheet, deletion_exclusion, paste_format, test_execution, category, main_table_name, csv_file_name_column, sheet_name_record = entry
 
-            # テーブル名が指定されている場合、CSVファイル呼称で判定
-            if selected_table and csv_file_name_column != selected_table:
-                LOGGER.info(f"スキップ: {csv_file_name_column} は選択されたCSVファイル呼称（{selected_table}）に対応しません。")
+            # テーブル名が指定されている場合、メインテーブル名で判定
+            if selected_table and main_table_name != selected_table:
+                LOGGER.debug(f"スキップ: {csv_file_name_column} (メインテーブル: {main_table_name}) は選択されたテーブル（{selected_table}）に対応しません。")
                 continue
                 
             processed_count += 1
