@@ -53,6 +53,12 @@
    create_datasets.ps1の実行が3回のリトライ後も失敗
    ```
 
+6. **データ更新失敗（定期チェック）** 🆕
+   ```
+   24時間以上更新されていないファイルを検出
+   バッチ実行ログから失敗を検出
+   ```
+
 ### 🟡 手動通知（任意）
 
 以下のコマンドで手動送信可能：
@@ -63,6 +69,12 @@
 
 # 直接エラー通知を送信
 python scripts\python\notify_error.py
+
+# データ更新失敗チェック+通知 🆕
+.\scripts\powershell\check_update_status.ps1 -SendNotification
+
+# エラー通知のテスト 🆕
+python scripts\python\test_error_notification.py
 ```
 
 ---
