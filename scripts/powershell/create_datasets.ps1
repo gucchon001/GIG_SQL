@@ -68,6 +68,15 @@ try {
     
 } catch {
     Write-Host "Error occurred: $($_.Exception.Message)" -ForegroundColor Red
+    
+    # エラー時にSlack通知を送信
+    Write-Host "Slack通知を送信中..." -ForegroundColor Yellow
+    try {
+        python "$ProjectRoot\scripts\python\notify_error.py"
+    } catch {
+        Write-Host "Slack通知の送信に失敗しました" -ForegroundColor Yellow
+    }
+    
     exit 1
 } finally {
     # Return to original directory

@@ -2,7 +2,8 @@
 # 最近のエラーを確認し、サマリーを表示
 
 param(
-    [int]$Hours = 24  # 過去何時間分を確認するか
+    [int]$Hours = 24,  # 過去何時間分を確認するか
+    [switch]$SendSlackNotification  # Slack通知を送信するかどうか
 )
 
 $ErrorActionPreference = "Continue"
@@ -172,6 +173,20 @@ try {
         
         Write-Host ""
         Write-Host "詳細は docs\ERROR_HANDLING_GUIDE.md を参照してください" -ForegroundColor Cyan
+    }
+    
+    # Slack通知オプションが有効な場合
+    if ($SendSlackNotification -and $totalErrors -gt 0) {
+        Write-Host ""
+        Write-Host "========================================" -ForegroundColor Cyan
+        Write-Host "Slack通知を送信しています..." -ForegroundColor Yellow
+        
+        try {
+            python "$ProjectRoot\scripts\python\notify_error.py"
+            Write-Host "✅ Slack通知を送信しました" -ForegroundColor Green
+        } catch {
+            Write-Host "❌ Slack通知の送信に失敗しました: $($_.Exception.Message)" -ForegroundColor Red
+        }
     }
     
 } catch {
