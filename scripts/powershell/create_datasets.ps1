@@ -33,16 +33,38 @@ try {
     [Console]::InputEncoding = [System.Text.Encoding]::UTF8
     $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
     
-    # Execute Python script with explicit UTF-8 encoding
-    cmd /c "chcp 65001 > nul; python `"$PythonScript`""
+    # Retry configuration
+    $MaxRetries = 3
+    $RetryDelaySeconds = 60
+    $RetryCount = 0
+    $Success = $false
     
-    # Check exit code
-    if ($LASTEXITCODE -ne 0) {
-        Write-Host "Python script error occurred" -ForegroundColor Red
-        throw "Python execution error: ExitCode=$LASTEXITCODE"
+    # Execute Python script with retry logic
+    while (-not $Success -and $RetryCount -lt $MaxRetries) {
+        if ($RetryCount -gt 0) {
+            Write-Host "----------------------------------------" -ForegroundColor Yellow
+            Write-Host "リトライ試行 $RetryCount/$MaxRetries" -ForegroundColor Yellow
+            Write-Host "${RetryDelaySeconds}秒待機してから再試行します..." -ForegroundColor Yellow
+            Start-Sleep -Seconds $RetryDelaySeconds
+        }
+        
+        chcp 65001 > $null
+        python "$PythonScript"
+        
+        if ($LASTEXITCODE -eq 0) {
+            $Success = $true
+            Write-Host "Dataset creation completed successfully" -ForegroundColor Green
+        } else {
+            $RetryCount++
+            if ($RetryCount -lt $MaxRetries) {
+                Write-Host "Python script error occurred (ExitCode=$LASTEXITCODE)" -ForegroundColor Red
+                Write-Host "エラーが発生しました。リトライします..." -ForegroundColor Yellow
+            } else {
+                Write-Host "Python script error occurred" -ForegroundColor Red
+                throw "Python execution error: ExitCode=$LASTEXITCODE (最大リトライ回数に達しました)"
+            }
+        }
     }
-    
-    Write-Host "Dataset creation completed successfully" -ForegroundColor Green
     
 } catch {
     Write-Host "Error occurred: $($_.Exception.Message)" -ForegroundColor Red
